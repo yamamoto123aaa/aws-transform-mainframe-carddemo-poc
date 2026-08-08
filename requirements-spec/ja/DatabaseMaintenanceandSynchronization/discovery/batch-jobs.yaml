@@ -1,0 +1,122 @@
+# Database Maintenance and Synchronization - Batch Job Discovery
+# Generated: 2026-08-08T04:25:04Z
+# Source: TransformKG (Python discovery)
+
+function: DatabaseMaintenanceandSynchronization
+jobs:
+  migrate:
+  - id: BAT-001
+    name: CBADMCDJ.jcl
+    description: CICS application resource definition and installation; This job step
+      invokes the CICS configuration utility to read and process application resource
+      definitions from the input stream. The step loads the CICS system library, accesses
+      the CICS configuration data store, and processes a series of DEFINE commands
+      that register screen maps, application programs, and transaction identifiers
+      for the CARDDEMO application group. The utility validates and installs these
+      definitions into the CICS configuration, making the application resources available
+      for runtime execution.
+    programs:
+    - DFHCSDUP
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-002
+    name: CREADB21.jcl
+    description: Database plan and package cleanup; This step invokes a TSO batch
+      utility to free (deallocate) existing database plans and packages before creating
+      a new database. The step is designed to run with a return code of 8 when the
+      plans or packages do not exist, which is an expected outcome and should not
+      cause the job to fail. The step loads the necessary database utilities and control
+      statements to perform the cleanup operation.; Database table creation via TSO
+      batch utility; This job step invokes the DB2 table-creation utility to establish
+      the transaction-type database table using an existing storage group. The step
+      executes under the TSO batch wrapper, reading table-definition control statements
+      and utility parameters from cataloged datasets, and produces diagnostic output
+      to the job log.; Transaction type database table loading; This job pack executes
+      two sequential database table-load operations via the DB2 test execution program.
+      The first step loads the transaction type lookup table; the second step, conditional
+      on the first step's success, loads the transaction type category table. Both
+      steps invoke the same DB2 utility program with different control and input datasets
+      to populate the application's reference data.
+    programs:
+    - IEFBR14
+    - IKJEFT01
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-003
+    name: DBPAUTP0.jcl
+    description: Database authorization unload operation; This job step extracts and
+      unloads the authorization database (DBPAUTP0) using the IMS database utility.
+      The step invokes the database unload service with conditional activation, reading
+      from authorization data stores and IMS control libraries, and writing the extracted
+      records to a new output dataset. The operation supports IMS recovery and audit
+      functions by capturing the current state of authorization definitions.
+    programs:
+    - DFSRRC00
+    - IEFBR14
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-004
+    name: LOADPADB.jcl
+    description: Payment audit database load operation; This job executes an IMS batch
+      message processing program to load payment audit database records. The job invokes
+      the IMS runtime environment (DFSRRC00) with parameters specifying batch mode
+      execution, the payment audit load PSB (PAUDBLOD), and the authentication PSB
+      (PSBPAUTB). Input data flows from two source datasets (root and child records),
+      and the IMS runtime processes them against the configured database and PSB libraries,
+      producing diagnostic output to standard print and error streams.
+    programs:
+    - DFSRRC00
+    - PAUDBLOD
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-005
+    name: MNTTRDB2.jcl
+    description: Database transaction table maintenance; This job maintains a DB2
+      transaction table by processing batch input records that specify add, update,
+      or delete operations. The job reads transaction records from the input file,
+      where each record begins with an operation code (A for add, D for delete, U
+      for update, or * for comment), followed by a transaction type and description.
+      The job delegates to the transaction update program to execute the specified
+      database operations against the transaction table.
+    programs:
+    - COBTUPDT
+    - IKJEFT01
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-006
+    name: UNLDGSAM.jcl
+    description: IMS database unload execution; This job step executes the IMS database
+      unload program (DBUNLDGS) through the IMS runtime controller. The step allocates
+      access to IMS runtime libraries, database definition libraries, GSAM data stores,
+      and authorization databases, then invokes the unload process to extract data
+      from the IMS database hierarchy. Output is directed to standard print and error
+      streams.
+    programs:
+    - DBUNLDGS
+    - DFSRRC00
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-007
+    name: UNLDPADB.jcl
+    description: IMS database unload to sequential files; This job step invokes the
+      IMS database unload utility to extract data from the authorization database
+      (PAUTDB) in DLI mode, writing root and child records to separate sequential
+      output files. The utility reads the IMS database definitions, accesses the authorization
+      database through DLI, and produces two output datasets containing the extracted
+      records.
+    programs:
+    - DFSRRC00
+    - IEFBR14
+    - PAUDBUNL
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

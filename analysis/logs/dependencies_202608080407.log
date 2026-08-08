@@ -1,0 +1,2219 @@
+2026-08-08 04:07:35,065 [main] INFO : Generating dependencies with the Specific analysis
+2026-08-08 04:07:35,066 [main] INFO : Generating dependencies with the Specific analysis
+2026-08-08 04:07:35,116 [main] INFO : Dependency analysis started at : 04:07:35 (version 20260724160613)
+2026-08-08 04:07:35,156 [main] INFO : [#M06yay][LegacyTypeDetection] classification file not found ! /ramdisk/1/assets/.classification.json
+2026-08-08 04:07:35,156 [main] INFO : [#M06yay][LegacyTypeDetection] classification file not found !
+2026-08-08 04:07:35,164 [main] INFO : [#WClcdV][LegacyTypeDetection] classification file location : /ramdisk/1/dependencies/.classification.json
+2026-08-08 04:07:35,164 [main] INFO : [#WClcdV][LegacyTypeDetection] classification file
+2026-08-08 04:07:35,190 [main] INFO : [#WClcdV][LegacyTypeDetection] classification file found ! /ramdisk/1/dependencies/.classification.json
+2026-08-08 04:07:35,190 [main] INFO : [#WClcdV][LegacyTypeDetection] classification file found !
+2026-08-08 04:07:35,402 [main] INFO : Starting step: Finding global object definitions...
+
+2026-08-08 04:07:35,402 [main] INFO : Starting step: Finding global object definitions...
+
+2026-08-08 04:07:35,406 [main] INFO : [1/39] Processing global definition of library "MAINFRAME:demo/scheduler" (2 files)
+2026-08-08 04:07:35,407 [main] INFO : [1/39] Processing global definition of library "MAINFRAME:demo/scheduler" (2 files)
+2026-08-08 04:07:35,408 [main] INFO : Starting step: library "MAINFRAME:demo/scheduler" (2 files)...
+
+2026-08-08 04:07:35,408 [main] INFO : Starting step: library "MAINFRAME:demo/scheduler" (2 files)...
+
+2026-08-08 04:07:35,474 [main] INFO : Ending step : library "MAINFRAME:demo/scheduler" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,474 [main] INFO : Ending step : library "MAINFRAME:demo/scheduler" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,474 [main] INFO : [1/39] Processing global definition of library "MAINFRAME:demo/scheduler" (2 files) : Done"
+2026-08-08 04:07:35,474 [main] INFO : [1/39] Processing global definition of library "MAINFRAME:demo/scheduler" (2 files) : Done"
+2026-08-08 04:07:35,474 [main] INFO : [2/39] Processing global definition of library "MAINFRAME:demo/proc" (2 files)
+2026-08-08 04:07:35,474 [main] INFO : [2/39] Processing global definition of library "MAINFRAME:demo/proc" (2 files)
+2026-08-08 04:07:35,474 [main] INFO : Starting step: library "MAINFRAME:demo/proc" (2 files)...
+
+2026-08-08 04:07:35,474 [main] INFO : Starting step: library "MAINFRAME:demo/proc" (2 files)...
+
+2026-08-08 04:07:35,501 [main] INFO : Ending step : library "MAINFRAME:demo/proc" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,502 [main] INFO : Ending step : library "MAINFRAME:demo/proc" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,502 [main] INFO : [2/39] Processing global definition of library "MAINFRAME:demo/proc" (2 files) : Done"
+2026-08-08 04:07:35,502 [main] INFO : [2/39] Processing global definition of library "MAINFRAME:demo/proc" (2 files) : Done"
+2026-08-08 04:07:35,502 [main] INFO : [3/39] Processing global definition of library "MAINFRAME:demo/maclib" (2 files)
+2026-08-08 04:07:35,502 [main] INFO : [3/39] Processing global definition of library "MAINFRAME:demo/maclib" (2 files)
+2026-08-08 04:07:35,502 [main] INFO : Starting step: library "MAINFRAME:demo/maclib" (2 files)...
+
+2026-08-08 04:07:35,502 [main] INFO : Starting step: library "MAINFRAME:demo/maclib" (2 files)...
+
+2026-08-08 04:07:35,508 [main] INFO : Ending step : library "MAINFRAME:demo/maclib" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,508 [main] INFO : Ending step : library "MAINFRAME:demo/maclib" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,508 [main] INFO : [3/39] Processing global definition of library "MAINFRAME:demo/maclib" (2 files) : Done"
+2026-08-08 04:07:35,508 [main] INFO : [3/39] Processing global definition of library "MAINFRAME:demo/maclib" (2 files) : Done"
+2026-08-08 04:07:35,508 [main] INFO : [4/39] Processing global definition of library "MAINFRAME:demo/jcl" (38 files)
+2026-08-08 04:07:35,508 [main] INFO : [4/39] Processing global definition of library "MAINFRAME:demo/jcl" (38 files)
+2026-08-08 04:07:35,509 [main] INFO : Starting step: library "MAINFRAME:demo/jcl" (38 files)...
+
+2026-08-08 04:07:35,509 [main] INFO : Starting step: library "MAINFRAME:demo/jcl" (38 files)...
+
+2026-08-08 04:07:35,552 [main] INFO : Ending step : library "MAINFRAME:demo/jcl" (38 files) in 0 sec
+
+
+2026-08-08 04:07:35,552 [main] INFO : Ending step : library "MAINFRAME:demo/jcl" (38 files) in 0 sec
+
+
+2026-08-08 04:07:35,552 [main] INFO : [4/39] Processing global definition of library "MAINFRAME:demo/jcl" (38 files) : Done"
+2026-08-08 04:07:35,552 [main] INFO : [4/39] Processing global definition of library "MAINFRAME:demo/jcl" (38 files) : Done"
+2026-08-08 04:07:35,552 [main] INFO : [5/39] Processing global definition of library "MAINFRAME:demo/ctl" (1 files)
+2026-08-08 04:07:35,552 [main] INFO : [5/39] Processing global definition of library "MAINFRAME:demo/ctl" (1 files)
+2026-08-08 04:07:35,552 [main] INFO : Starting step: library "MAINFRAME:demo/ctl" (1 files)...
+
+2026-08-08 04:07:35,552 [main] INFO : Starting step: library "MAINFRAME:demo/ctl" (1 files)...
+
+2026-08-08 04:07:35,556 [main] INFO : Ending step : library "MAINFRAME:demo/ctl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,556 [main] INFO : Ending step : library "MAINFRAME:demo/ctl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,556 [main] INFO : [5/39] Processing global definition of library "MAINFRAME:demo/ctl" (1 files) : Done"
+2026-08-08 04:07:35,556 [main] INFO : [5/39] Processing global definition of library "MAINFRAME:demo/ctl" (1 files) : Done"
+2026-08-08 04:07:35,556 [main] INFO : [6/39] Processing global definition of library "MAINFRAME:demo/csd" (1 files)
+2026-08-08 04:07:35,556 [main] INFO : [6/39] Processing global definition of library "MAINFRAME:demo/csd" (1 files)
+2026-08-08 04:07:35,556 [main] INFO : Starting step: library "MAINFRAME:demo/csd" (1 files)...
+
+2026-08-08 04:07:35,556 [main] INFO : Starting step: library "MAINFRAME:demo/csd" (1 files)...
+
+2026-08-08 04:07:35,568 [main] INFO : Ending step : library "MAINFRAME:demo/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,568 [main] INFO : Ending step : library "MAINFRAME:demo/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,568 [main] INFO : [6/39] Processing global definition of library "MAINFRAME:demo/csd" (1 files) : Done"
+2026-08-08 04:07:35,568 [main] INFO : [6/39] Processing global definition of library "MAINFRAME:demo/csd" (1 files) : Done"
+2026-08-08 04:07:35,569 [main] INFO : [7/39] Processing global definition of library "MAINFRAME:demo/cpy-bms" (17 files)
+2026-08-08 04:07:35,569 [main] INFO : [7/39] Processing global definition of library "MAINFRAME:demo/cpy-bms" (17 files)
+2026-08-08 04:07:35,569 [main] INFO : Starting step: library "MAINFRAME:demo/cpy-bms" (17 files)...
+
+2026-08-08 04:07:35,569 [main] INFO : Starting step: library "MAINFRAME:demo/cpy-bms" (17 files)...
+
+2026-08-08 04:07:35,570 [main] INFO : Ending step : library "MAINFRAME:demo/cpy-bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:35,571 [main] INFO : Ending step : library "MAINFRAME:demo/cpy-bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:35,571 [main] INFO : [7/39] Processing global definition of library "MAINFRAME:demo/cpy-bms" (17 files) : Done"
+2026-08-08 04:07:35,571 [main] INFO : [7/39] Processing global definition of library "MAINFRAME:demo/cpy-bms" (17 files) : Done"
+2026-08-08 04:07:35,571 [main] INFO : [8/39] Processing global definition of library "MAINFRAME:demo/cpy" (30 files)
+2026-08-08 04:07:35,571 [main] INFO : [8/39] Processing global definition of library "MAINFRAME:demo/cpy" (30 files)
+2026-08-08 04:07:35,571 [main] INFO : Starting step: library "MAINFRAME:demo/cpy" (30 files)...
+
+2026-08-08 04:07:35,571 [main] INFO : Starting step: library "MAINFRAME:demo/cpy" (30 files)...
+
+2026-08-08 04:07:35,573 [main] INFO : Ending step : library "MAINFRAME:demo/cpy" (30 files) in 0 sec
+
+
+2026-08-08 04:07:35,573 [main] INFO : Ending step : library "MAINFRAME:demo/cpy" (30 files) in 0 sec
+
+
+2026-08-08 04:07:35,573 [main] INFO : [8/39] Processing global definition of library "MAINFRAME:demo/cpy" (30 files) : Done"
+2026-08-08 04:07:35,573 [main] INFO : [8/39] Processing global definition of library "MAINFRAME:demo/cpy" (30 files) : Done"
+2026-08-08 04:07:35,573 [main] INFO : [9/39] Processing global definition of library "MAINFRAME:demo/cbl" (31 files)
+2026-08-08 04:07:35,573 [main] INFO : [9/39] Processing global definition of library "MAINFRAME:demo/cbl" (31 files)
+2026-08-08 04:07:35,573 [main] INFO : Starting step: library "MAINFRAME:demo/cbl" (31 files)...
+
+2026-08-08 04:07:35,573 [main] INFO : Starting step: library "MAINFRAME:demo/cbl" (31 files)...
+
+2026-08-08 04:07:35,675 [main] INFO : Ending step : library "MAINFRAME:demo/cbl" (31 files) in 0 sec
+
+
+2026-08-08 04:07:35,676 [main] INFO : Ending step : library "MAINFRAME:demo/cbl" (31 files) in 0 sec
+
+
+2026-08-08 04:07:35,676 [main] INFO : [9/39] Processing global definition of library "MAINFRAME:demo/cbl" (31 files) : Done"
+2026-08-08 04:07:35,676 [main] INFO : [9/39] Processing global definition of library "MAINFRAME:demo/cbl" (31 files) : Done"
+2026-08-08 04:07:35,676 [main] INFO : [10/39] Processing global definition of library "MAINFRAME:demo/catlg" (1 files)
+2026-08-08 04:07:35,676 [main] INFO : [10/39] Processing global definition of library "MAINFRAME:demo/catlg" (1 files)
+2026-08-08 04:07:35,676 [main] INFO : Starting step: library "MAINFRAME:demo/catlg" (1 files)...
+
+2026-08-08 04:07:35,676 [main] INFO : Starting step: library "MAINFRAME:demo/catlg" (1 files)...
+
+2026-08-08 04:07:35,687 [main] INFO : Ending step : library "MAINFRAME:demo/catlg" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,688 [main] INFO : Ending step : library "MAINFRAME:demo/catlg" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,688 [main] INFO : [10/39] Processing global definition of library "MAINFRAME:demo/catlg" (1 files) : Done"
+2026-08-08 04:07:35,688 [main] INFO : [10/39] Processing global definition of library "MAINFRAME:demo/catlg" (1 files) : Done"
+2026-08-08 04:07:35,688 [main] INFO : [11/39] Processing global definition of library "MAINFRAME:demo/bms" (17 files)
+2026-08-08 04:07:35,688 [main] INFO : [11/39] Processing global definition of library "MAINFRAME:demo/bms" (17 files)
+2026-08-08 04:07:35,688 [main] INFO : Starting step: library "MAINFRAME:demo/bms" (17 files)...
+
+2026-08-08 04:07:35,688 [main] INFO : Starting step: library "MAINFRAME:demo/bms" (17 files)...
+
+2026-08-08 04:07:35,702 [main] INFO : Ending step : library "MAINFRAME:demo/bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:35,702 [main] INFO : Ending step : library "MAINFRAME:demo/bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:35,703 [main] INFO : [11/39] Processing global definition of library "MAINFRAME:demo/bms" (17 files) : Done"
+2026-08-08 04:07:35,703 [main] INFO : [11/39] Processing global definition of library "MAINFRAME:demo/bms" (17 files) : Done"
+2026-08-08 04:07:35,703 [main] INFO : [12/39] Processing global definition of library "MAINFRAME:demo/asm" (2 files)
+2026-08-08 04:07:35,703 [main] INFO : [12/39] Processing global definition of library "MAINFRAME:demo/asm" (2 files)
+2026-08-08 04:07:35,703 [main] INFO : Starting step: library "MAINFRAME:demo/asm" (2 files)...
+
+2026-08-08 04:07:35,703 [main] INFO : Starting step: library "MAINFRAME:demo/asm" (2 files)...
+
+2026-08-08 04:07:35,705 [main] INFO : Ending step : library "MAINFRAME:demo/asm" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,705 [main] INFO : Ending step : library "MAINFRAME:demo/asm" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,705 [main] INFO : [12/39] Processing global definition of library "MAINFRAME:demo/asm" (2 files) : Done"
+2026-08-08 04:07:35,705 [main] INFO : [12/39] Processing global definition of library "MAINFRAME:demo/asm" (2 files) : Done"
+2026-08-08 04:07:35,705 [main] INFO : [13/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)
+2026-08-08 04:07:35,705 [main] INFO : [13/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)
+2026-08-08 04:07:35,705 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)...
+
+2026-08-08 04:07:35,705 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)...
+
+2026-08-08 04:07:35,707 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,707 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,707 [main] INFO : [13/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) : Done"
+2026-08-08 04:07:35,707 [main] INFO : [13/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) : Done"
+2026-08-08 04:07:35,707 [main] INFO : [14/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)
+2026-08-08 04:07:35,707 [main] INFO : [14/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)
+2026-08-08 04:07:35,707 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)...
+
+2026-08-08 04:07:35,707 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)...
+
+2026-08-08 04:07:35,714 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,714 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,714 [main] INFO : [14/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) : Done"
+2026-08-08 04:07:35,714 [main] INFO : [14/39] Processing global definition of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) : Done"
+2026-08-08 04:07:35,714 [main] INFO : [15/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)
+2026-08-08 04:07:35,714 [main] INFO : [15/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)
+2026-08-08 04:07:35,714 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)...
+
+2026-08-08 04:07:35,714 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)...
+
+2026-08-08 04:07:35,716 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:35,716 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:35,716 [main] INFO : [15/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) : Done"
+2026-08-08 04:07:35,716 [main] INFO : [15/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) : Done"
+2026-08-08 04:07:35,716 [main] INFO : [16/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)
+2026-08-08 04:07:35,716 [main] INFO : [16/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)
+2026-08-08 04:07:35,717 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)...
+
+2026-08-08 04:07:35,717 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)...
+
+2026-08-08 04:07:35,717 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,717 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,717 [main] INFO : [16/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) : Done"
+2026-08-08 04:07:35,717 [main] INFO : [16/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) : Done"
+2026-08-08 04:07:35,717 [main] INFO : [17/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)
+2026-08-08 04:07:35,717 [main] INFO : [17/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)
+2026-08-08 04:07:35,717 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)...
+
+2026-08-08 04:07:35,717 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)...
+
+2026-08-08 04:07:35,719 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:35,719 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:35,719 [main] INFO : [17/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) : Done"
+2026-08-08 04:07:35,719 [main] INFO : [17/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) : Done"
+2026-08-08 04:07:35,719 [main] INFO : [18/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)
+2026-08-08 04:07:35,719 [main] INFO : [18/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)
+2026-08-08 04:07:35,719 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)...
+
+2026-08-08 04:07:35,719 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)...
+
+2026-08-08 04:07:35,721 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,721 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,721 [main] INFO : [18/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) : Done"
+2026-08-08 04:07:35,721 [main] INFO : [18/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) : Done"
+2026-08-08 04:07:35,721 [main] INFO : [19/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)
+2026-08-08 04:07:35,721 [main] INFO : [19/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)
+2026-08-08 04:07:35,721 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)...
+
+2026-08-08 04:07:35,721 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)...
+
+2026-08-08 04:07:35,721 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,721 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,721 [main] INFO : [19/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) : Done"
+2026-08-08 04:07:35,722 [main] INFO : [19/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) : Done"
+2026-08-08 04:07:35,722 [main] INFO : [20/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)
+2026-08-08 04:07:35,722 [main] INFO : [20/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)
+2026-08-08 04:07:35,722 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)...
+
+2026-08-08 04:07:35,722 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)...
+
+2026-08-08 04:07:35,722 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,722 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,722 [main] INFO : [20/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) : Done"
+2026-08-08 04:07:35,722 [main] INFO : [20/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) : Done"
+2026-08-08 04:07:35,722 [main] INFO : [21/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)
+2026-08-08 04:07:35,722 [main] INFO : [21/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)
+2026-08-08 04:07:35,723 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)...
+
+2026-08-08 04:07:35,723 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)...
+
+2026-08-08 04:07:35,739 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:35,739 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:35,739 [main] INFO : [21/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) : Done"
+2026-08-08 04:07:35,739 [main] INFO : [21/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) : Done"
+2026-08-08 04:07:35,739 [main] INFO : [22/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)
+2026-08-08 04:07:35,739 [main] INFO : [22/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)
+2026-08-08 04:07:35,739 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)...
+
+2026-08-08 04:07:35,739 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)...
+
+2026-08-08 04:07:35,741 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,741 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,741 [main] INFO : [22/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) : Done"
+2026-08-08 04:07:35,741 [main] INFO : [22/39] Processing global definition of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) : Done"
+2026-08-08 04:07:35,741 [main] INFO : [23/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)
+2026-08-08 04:07:35,741 [main] INFO : [23/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)
+2026-08-08 04:07:35,741 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)...
+
+2026-08-08 04:07:35,741 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)...
+
+2026-08-08 04:07:35,744 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) in 0 sec
+
+
+2026-08-08 04:07:35,744 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) in 0 sec
+
+
+2026-08-08 04:07:35,744 [main] INFO : [23/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) : Done"
+2026-08-08 04:07:35,744 [main] INFO : [23/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) : Done"
+2026-08-08 04:07:35,744 [main] INFO : [24/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files)
+2026-08-08 04:07:35,744 [main] INFO : [24/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files)
+2026-08-08 04:07:35,744 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files)...
+
+2026-08-08 04:07:35,744 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files)...
+
+2026-08-08 04:07:35,746 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files) in 0 sec
+
+
+2026-08-08 04:07:35,747 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files) in 0 sec
+
+
+2026-08-08 04:07:35,747 [main] INFO : [24/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files) : Done"
+2026-08-08 04:07:35,747 [main] INFO : [24/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (8 files) : Done"
+2026-08-08 04:07:35,747 [main] INFO : [25/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)
+2026-08-08 04:07:35,747 [main] INFO : [25/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)
+2026-08-08 04:07:35,747 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)...
+
+2026-08-08 04:07:35,747 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)...
+
+2026-08-08 04:07:35,747 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,747 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,747 [main] INFO : [25/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) : Done"
+2026-08-08 04:07:35,747 [main] INFO : [25/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) : Done"
+2026-08-08 04:07:35,747 [main] INFO : [26/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)
+2026-08-08 04:07:35,747 [main] INFO : [26/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)
+2026-08-08 04:07:35,747 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)...
+
+2026-08-08 04:07:35,747 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)...
+
+2026-08-08 04:07:35,749 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,749 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,749 [main] INFO : [26/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) : Done"
+2026-08-08 04:07:35,749 [main] INFO : [26/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) : Done"
+2026-08-08 04:07:35,749 [main] INFO : [27/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)
+2026-08-08 04:07:35,749 [main] INFO : [27/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)
+2026-08-08 04:07:35,749 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)...
+
+2026-08-08 04:07:35,749 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)...
+
+2026-08-08 04:07:35,749 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,749 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,749 [main] INFO : [27/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) : Done"
+2026-08-08 04:07:35,749 [main] INFO : [27/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) : Done"
+2026-08-08 04:07:35,750 [main] INFO : [28/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)
+2026-08-08 04:07:35,750 [main] INFO : [28/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)
+2026-08-08 04:07:35,750 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)...
+
+2026-08-08 04:07:35,750 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)...
+
+2026-08-08 04:07:35,751 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) in 0 sec
+
+
+2026-08-08 04:07:35,751 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) in 0 sec
+
+
+2026-08-08 04:07:35,751 [main] INFO : [28/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) : Done"
+2026-08-08 04:07:35,751 [main] INFO : [28/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) : Done"
+2026-08-08 04:07:35,751 [main] INFO : [29/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)
+2026-08-08 04:07:35,751 [main] INFO : [29/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)
+2026-08-08 04:07:35,751 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)...
+
+2026-08-08 04:07:35,751 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)...
+
+2026-08-08 04:07:35,761 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) in 0 sec
+
+
+2026-08-08 04:07:35,761 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) in 0 sec
+
+
+2026-08-08 04:07:35,761 [main] INFO : [29/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) : Done"
+2026-08-08 04:07:35,761 [main] INFO : [29/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) : Done"
+2026-08-08 04:07:35,761 [main] INFO : [30/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)
+2026-08-08 04:07:35,761 [main] INFO : [30/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)
+2026-08-08 04:07:35,761 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)...
+
+2026-08-08 04:07:35,761 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)...
+
+2026-08-08 04:07:35,763 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,763 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,763 [main] INFO : [30/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) : Done"
+2026-08-08 04:07:35,763 [main] INFO : [30/39] Processing global definition of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) : Done"
+2026-08-08 04:07:35,763 [main] INFO : [31/39] Processing global definition of library "OTHER:demo/data/EBCDIC" (13 files)
+2026-08-08 04:07:35,764 [main] INFO : [31/39] Processing global definition of library "OTHER:demo/data/EBCDIC" (13 files)
+2026-08-08 04:07:35,764 [main] INFO : Starting step: library "OTHER:demo/data/EBCDIC" (13 files)...
+
+2026-08-08 04:07:35,764 [main] INFO : Starting step: library "OTHER:demo/data/EBCDIC" (13 files)...
+
+2026-08-08 04:07:35,765 [main] INFO : Ending step : library "OTHER:demo/data/EBCDIC" (13 files) in 0 sec
+
+
+2026-08-08 04:07:35,765 [main] INFO : Ending step : library "OTHER:demo/data/EBCDIC" (13 files) in 0 sec
+
+
+2026-08-08 04:07:35,766 [main] INFO : [31/39] Processing global definition of library "OTHER:demo/data/EBCDIC" (13 files) : Done"
+2026-08-08 04:07:35,766 [main] INFO : [31/39] Processing global definition of library "OTHER:demo/data/EBCDIC" (13 files) : Done"
+2026-08-08 04:07:35,766 [main] INFO : [32/39] Processing global definition of library "OTHER:demo/data/ASCII" (9 files)
+2026-08-08 04:07:35,766 [main] INFO : [32/39] Processing global definition of library "OTHER:demo/data/ASCII" (9 files)
+2026-08-08 04:07:35,766 [main] INFO : Starting step: library "OTHER:demo/data/ASCII" (9 files)...
+
+2026-08-08 04:07:35,766 [main] INFO : Starting step: library "OTHER:demo/data/ASCII" (9 files)...
+
+2026-08-08 04:07:35,767 [main] INFO : Ending step : library "OTHER:demo/data/ASCII" (9 files) in 0 sec
+
+
+2026-08-08 04:07:35,767 [main] INFO : Ending step : library "OTHER:demo/data/ASCII" (9 files) in 0 sec
+
+
+2026-08-08 04:07:35,767 [main] INFO : [32/39] Processing global definition of library "OTHER:demo/data/ASCII" (9 files) : Done"
+2026-08-08 04:07:35,767 [main] INFO : [32/39] Processing global definition of library "OTHER:demo/data/ASCII" (9 files) : Done"
+2026-08-08 04:07:35,767 [main] INFO : [33/39] Processing global definition of library "OTHER:demo/app-vsam-mq" (1 files)
+2026-08-08 04:07:35,768 [main] INFO : [33/39] Processing global definition of library "OTHER:demo/app-vsam-mq" (1 files)
+2026-08-08 04:07:35,768 [main] INFO : Starting step: library "OTHER:demo/app-vsam-mq" (1 files)...
+
+2026-08-08 04:07:35,768 [main] INFO : Starting step: library "OTHER:demo/app-vsam-mq" (1 files)...
+
+2026-08-08 04:07:35,768 [main] INFO : Ending step : library "OTHER:demo/app-vsam-mq" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,768 [main] INFO : Ending step : library "OTHER:demo/app-vsam-mq" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,768 [main] INFO : [33/39] Processing global definition of library "OTHER:demo/app-vsam-mq" (1 files) : Done"
+2026-08-08 04:07:35,768 [main] INFO : [33/39] Processing global definition of library "OTHER:demo/app-vsam-mq" (1 files) : Done"
+2026-08-08 04:07:35,768 [main] INFO : [34/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2" (1 files)
+2026-08-08 04:07:35,768 [main] INFO : [34/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2" (1 files)
+2026-08-08 04:07:35,768 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2" (1 files)...
+
+2026-08-08 04:07:35,768 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2" (1 files)...
+
+2026-08-08 04:07:35,769 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,769 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,769 [main] INFO : [34/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2" (1 files) : Done"
+2026-08-08 04:07:35,769 [main] INFO : [34/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2" (1 files) : Done"
+2026-08-08 04:07:35,769 [main] INFO : [35/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)
+2026-08-08 04:07:35,769 [main] INFO : [35/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)
+2026-08-08 04:07:35,769 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)...
+
+2026-08-08 04:07:35,769 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)...
+
+2026-08-08 04:07:35,793 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:35,793 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:35,793 [main] INFO : [35/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) : Done"
+2026-08-08 04:07:35,793 [main] INFO : [35/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) : Done"
+2026-08-08 04:07:35,793 [main] INFO : [36/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)
+2026-08-08 04:07:35,793 [main] INFO : [36/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)
+2026-08-08 04:07:35,793 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)...
+
+2026-08-08 04:07:35,793 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)...
+
+2026-08-08 04:07:35,798 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:35,798 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:35,798 [main] INFO : [36/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) : Done"
+2026-08-08 04:07:35,798 [main] INFO : [36/39] Processing global definition of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) : Done"
+2026-08-08 04:07:35,798 [main] INFO : [37/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq" (1 files)
+2026-08-08 04:07:35,798 [main] INFO : [37/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq" (1 files)
+2026-08-08 04:07:35,798 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq" (1 files)...
+
+2026-08-08 04:07:35,798 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq" (1 files)...
+
+2026-08-08 04:07:35,799 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,799 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,799 [main] INFO : [37/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq" (1 files) : Done"
+2026-08-08 04:07:35,799 [main] INFO : [37/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq" (1 files) : Done"
+2026-08-08 04:07:35,799 [main] INFO : [38/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)
+2026-08-08 04:07:35,799 [main] INFO : [38/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)
+2026-08-08 04:07:35,799 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)...
+
+2026-08-08 04:07:35,799 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)...
+
+2026-08-08 04:07:35,801 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,801 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,802 [main] INFO : [38/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) : Done"
+2026-08-08 04:07:35,802 [main] INFO : [38/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) : Done"
+2026-08-08 04:07:35,802 [main] INFO : [39/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files)
+2026-08-08 04:07:35,802 [main] INFO : [39/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files)
+2026-08-08 04:07:35,802 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files)...
+
+2026-08-08 04:07:35,802 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files)...
+
+2026-08-08 04:07:35,802 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,802 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,802 [main] INFO : [39/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files) : Done"
+2026-08-08 04:07:35,802 [main] INFO : [39/39] Processing global definition of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (1 files) : Done"
+2026-08-08 04:07:35,804 [main] INFO : [40/39] Processing objects of Remaining objects turn #1 (5 objects)
+2026-08-08 04:07:35,804 [main] INFO : [40/39] Processing objects of Remaining objects turn #1 (5 objects)
+2026-08-08 04:07:35,804 [main] INFO : Starting step: Remaining objects turn #1 (5 objects)...
+
+2026-08-08 04:07:35,804 [main] INFO : Starting step: Remaining objects turn #1 (5 objects)...
+
+2026-08-08 04:07:35,805 [main] INFO : Ending step : Remaining objects turn #1 (5 objects) in 0 sec
+
+
+2026-08-08 04:07:35,805 [main] INFO : Ending step : Remaining objects turn #1 (5 objects) in 0 sec
+
+
+2026-08-08 04:07:35,805 [main] INFO : [40/39] Processing objects of Remaining objects turn #1 (5 objects) Done
+2026-08-08 04:07:35,805 [main] INFO : [40/39] Processing objects of Remaining objects turn #1 (5 objects) Done
+2026-08-08 04:07:35,805 [main] INFO : [41/39] Processing objects of Last turn (5 objects)
+2026-08-08 04:07:35,805 [main] INFO : [41/39] Processing objects of Last turn (5 objects)
+2026-08-08 04:07:35,805 [main] INFO : Starting step: Last turn (5 objects)...
+
+2026-08-08 04:07:35,805 [main] INFO : Starting step: Last turn (5 objects)...
+
+2026-08-08 04:07:35,806 [main] INFO : Ending step : Last turn (5 objects) in 0 sec
+
+
+2026-08-08 04:07:35,806 [main] INFO : Ending step : Last turn (5 objects) in 0 sec
+
+
+2026-08-08 04:07:35,806 [main] INFO : [41/39] Processing objects of Last turn (5 objects) Done
+2026-08-08 04:07:35,806 [main] INFO : [41/39] Processing objects of Last turn (5 objects) Done
+2026-08-08 04:07:35,809 [main] INFO : Ending step : Finding global object definitions in 0 sec
+
+
+2026-08-08 04:07:35,809 [main] INFO : Ending step : Finding global object definitions in 0 sec
+
+
+2026-08-08 04:07:35,810 [main] INFO : Starting step: Finding dependencies...
+
+2026-08-08 04:07:35,810 [main] INFO : Starting step: Finding dependencies...
+
+2026-08-08 04:07:35,811 [main] INFO : [1/41] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files)
+2026-08-08 04:07:35,811 [main] INFO : [1/41] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files)
+2026-08-08 04:07:35,812 [main] INFO : Starting step: library "MAINFRAME:demo/scheduler" (2 files)...
+
+2026-08-08 04:07:35,812 [main] INFO : Starting step: library "MAINFRAME:demo/scheduler" (2 files)...
+
+2026-08-08 04:07:35,860 [main] INFO : Ending step : library "MAINFRAME:demo/scheduler" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,860 [main] INFO : Ending step : library "MAINFRAME:demo/scheduler" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,860 [main] INFO : [1/41] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files) Done
+2026-08-08 04:07:35,860 [main] INFO : [1/41] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files) Done
+2026-08-08 04:07:35,860 [main] INFO : [2/41] Processing dependencies of library "MAINFRAME:demo/proc" (2 files)
+2026-08-08 04:07:35,860 [main] INFO : [2/41] Processing dependencies of library "MAINFRAME:demo/proc" (2 files)
+2026-08-08 04:07:35,860 [main] INFO : Starting step: library "MAINFRAME:demo/proc" (2 files)...
+
+2026-08-08 04:07:35,861 [main] INFO : Starting step: library "MAINFRAME:demo/proc" (2 files)...
+
+2026-08-08 04:07:35,911 [main] INFO : Ending step : library "MAINFRAME:demo/proc" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,912 [main] INFO : Ending step : library "MAINFRAME:demo/proc" (2 files) in 0 sec
+
+
+2026-08-08 04:07:35,912 [main] INFO : [2/41] Processing dependencies of library "MAINFRAME:demo/proc" (2 files) Done
+2026-08-08 04:07:35,912 [main] INFO : [2/41] Processing dependencies of library "MAINFRAME:demo/proc" (2 files) Done
+2026-08-08 04:07:35,912 [main] INFO : [3/41] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files)
+2026-08-08 04:07:35,912 [main] INFO : [3/41] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files)
+2026-08-08 04:07:35,912 [main] INFO : Starting step: library "MAINFRAME:demo/maclib" (1 files)...
+
+2026-08-08 04:07:35,912 [main] INFO : Starting step: library "MAINFRAME:demo/maclib" (1 files)...
+
+2026-08-08 04:07:35,943 [main] INFO : Ending step : library "MAINFRAME:demo/maclib" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,943 [main] INFO : Ending step : library "MAINFRAME:demo/maclib" (1 files) in 0 sec
+
+
+2026-08-08 04:07:35,943 [main] INFO : [3/41] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files) Done
+2026-08-08 04:07:35,943 [main] INFO : [3/41] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files) Done
+2026-08-08 04:07:35,943 [main] INFO : [4/41] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files)
+2026-08-08 04:07:35,943 [main] INFO : [4/41] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files)
+2026-08-08 04:07:35,943 [main] INFO : Starting step: library "MAINFRAME:demo/jcl" (38 files)...
+
+2026-08-08 04:07:35,943 [main] INFO : Starting step: library "MAINFRAME:demo/jcl" (38 files)...
+
+2026-08-08 04:07:36,020 [main] INFO : Ending step : library "MAINFRAME:demo/jcl" (38 files) in 1 sec
+
+
+2026-08-08 04:07:36,020 [main] INFO : Ending step : library "MAINFRAME:demo/jcl" (38 files) in 1 sec
+
+
+2026-08-08 04:07:36,020 [main] INFO : [4/41] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files) Done
+2026-08-08 04:07:36,020 [main] INFO : [4/41] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files) Done
+2026-08-08 04:07:36,021 [main] INFO : [5/41] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files)
+2026-08-08 04:07:36,021 [main] INFO : [5/41] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files)
+2026-08-08 04:07:36,021 [main] INFO : Starting step: library "MAINFRAME:demo/ctl" (1 files)...
+
+2026-08-08 04:07:36,021 [main] INFO : Starting step: library "MAINFRAME:demo/ctl" (1 files)...
+
+2026-08-08 04:07:36,048 [main] INFO : Ending step : library "MAINFRAME:demo/ctl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,048 [main] INFO : Ending step : library "MAINFRAME:demo/ctl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,048 [main] INFO : [5/41] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files) Done
+2026-08-08 04:07:36,048 [main] INFO : [5/41] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files) Done
+2026-08-08 04:07:36,048 [main] INFO : [6/41] Processing dependencies of library "MAINFRAME:demo/csd" (1 files)
+2026-08-08 04:07:36,048 [main] INFO : [6/41] Processing dependencies of library "MAINFRAME:demo/csd" (1 files)
+2026-08-08 04:07:36,048 [main] INFO : Starting step: library "MAINFRAME:demo/csd" (1 files)...
+
+2026-08-08 04:07:36,048 [main] INFO : Starting step: library "MAINFRAME:demo/csd" (1 files)...
+
+2026-08-08 04:07:36,083 [main] INFO : Ending step : library "MAINFRAME:demo/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,084 [main] INFO : Ending step : library "MAINFRAME:demo/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,084 [main] INFO : [6/41] Processing dependencies of library "MAINFRAME:demo/csd" (1 files) Done
+2026-08-08 04:07:36,084 [main] INFO : [6/41] Processing dependencies of library "MAINFRAME:demo/csd" (1 files) Done
+2026-08-08 04:07:36,084 [main] INFO : [7/41] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (0 files)
+2026-08-08 04:07:36,084 [main] INFO : [7/41] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (0 files)
+2026-08-08 04:07:36,084 [main] INFO : Starting step: library "MAINFRAME:demo/cpy-bms" (0 files)...
+
+2026-08-08 04:07:36,084 [main] INFO : Starting step: library "MAINFRAME:demo/cpy-bms" (0 files)...
+
+2026-08-08 04:07:36,110 [main] INFO : Ending step : library "MAINFRAME:demo/cpy-bms" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,110 [main] INFO : Ending step : library "MAINFRAME:demo/cpy-bms" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,110 [main] INFO : [7/41] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (0 files) Done
+2026-08-08 04:07:36,110 [main] INFO : [7/41] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (0 files) Done
+2026-08-08 04:07:36,111 [main] INFO : [8/41] Processing dependencies of library "MAINFRAME:demo/cpy" (5 files)
+2026-08-08 04:07:36,111 [main] INFO : [8/41] Processing dependencies of library "MAINFRAME:demo/cpy" (5 files)
+2026-08-08 04:07:36,111 [main] INFO : Starting step: library "MAINFRAME:demo/cpy" (5 files)...
+
+2026-08-08 04:07:36,111 [main] INFO : Starting step: library "MAINFRAME:demo/cpy" (5 files)...
+
+2026-08-08 04:07:36,151 [main] INFO : Ending step : library "MAINFRAME:demo/cpy" (5 files) in 0 sec
+
+
+2026-08-08 04:07:36,151 [main] INFO : Ending step : library "MAINFRAME:demo/cpy" (5 files) in 0 sec
+
+
+2026-08-08 04:07:36,151 [main] INFO : [8/41] Processing dependencies of library "MAINFRAME:demo/cpy" (5 files) Done
+2026-08-08 04:07:36,151 [main] INFO : [8/41] Processing dependencies of library "MAINFRAME:demo/cpy" (5 files) Done
+2026-08-08 04:07:36,151 [main] INFO : [9/41] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files)
+2026-08-08 04:07:36,151 [main] INFO : [9/41] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files)
+2026-08-08 04:07:36,151 [main] INFO : Starting step: library "MAINFRAME:demo/cbl" (31 files)...
+
+2026-08-08 04:07:36,151 [main] INFO : Starting step: library "MAINFRAME:demo/cbl" (31 files)...
+
+2026-08-08 04:07:36,394 [main] INFO : Ending step : library "MAINFRAME:demo/cbl" (31 files) in 0 sec
+
+
+2026-08-08 04:07:36,394 [main] INFO : Ending step : library "MAINFRAME:demo/cbl" (31 files) in 0 sec
+
+
+2026-08-08 04:07:36,394 [main] INFO : [9/41] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files) Done
+2026-08-08 04:07:36,394 [main] INFO : [9/41] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files) Done
+2026-08-08 04:07:36,394 [main] INFO : [10/41] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files)
+2026-08-08 04:07:36,394 [main] INFO : [10/41] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files)
+2026-08-08 04:07:36,394 [main] INFO : Starting step: library "MAINFRAME:demo/catlg" (1 files)...
+
+2026-08-08 04:07:36,394 [main] INFO : Starting step: library "MAINFRAME:demo/catlg" (1 files)...
+
+2026-08-08 04:07:36,428 [main] INFO : Ending step : library "MAINFRAME:demo/catlg" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,429 [main] INFO : Ending step : library "MAINFRAME:demo/catlg" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,429 [main] INFO : [10/41] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files) Done
+2026-08-08 04:07:36,429 [main] INFO : [10/41] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files) Done
+2026-08-08 04:07:36,429 [main] INFO : [11/41] Processing dependencies of library "MAINFRAME:demo/bms" (17 files)
+2026-08-08 04:07:36,429 [main] INFO : [11/41] Processing dependencies of library "MAINFRAME:demo/bms" (17 files)
+2026-08-08 04:07:36,429 [main] INFO : Starting step: library "MAINFRAME:demo/bms" (17 files)...
+
+2026-08-08 04:07:36,429 [main] INFO : Starting step: library "MAINFRAME:demo/bms" (17 files)...
+
+2026-08-08 04:07:36,459 [main] INFO : Ending step : library "MAINFRAME:demo/bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:36,460 [main] INFO : Ending step : library "MAINFRAME:demo/bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:36,460 [main] INFO : [11/41] Processing dependencies of library "MAINFRAME:demo/bms" (17 files) Done
+2026-08-08 04:07:36,460 [main] INFO : [11/41] Processing dependencies of library "MAINFRAME:demo/bms" (17 files) Done
+2026-08-08 04:07:36,460 [main] INFO : [12/41] Processing dependencies of library "MAINFRAME:demo/asm" (2 files)
+2026-08-08 04:07:36,460 [main] INFO : [12/41] Processing dependencies of library "MAINFRAME:demo/asm" (2 files)
+2026-08-08 04:07:36,460 [main] INFO : Starting step: library "MAINFRAME:demo/asm" (2 files)...
+
+2026-08-08 04:07:36,460 [main] INFO : Starting step: library "MAINFRAME:demo/asm" (2 files)...
+
+2026-08-08 04:07:36,492 [main] INFO : Ending step : library "MAINFRAME:demo/asm" (2 files) in 0 sec
+
+
+2026-08-08 04:07:36,492 [main] INFO : Ending step : library "MAINFRAME:demo/asm" (2 files) in 0 sec
+
+
+2026-08-08 04:07:36,492 [main] INFO : [12/41] Processing dependencies of library "MAINFRAME:demo/asm" (2 files) Done
+2026-08-08 04:07:36,492 [main] INFO : [12/41] Processing dependencies of library "MAINFRAME:demo/asm" (2 files) Done
+2026-08-08 04:07:36,492 [main] INFO : [13/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)
+2026-08-08 04:07:36,492 [main] INFO : [13/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)
+2026-08-08 04:07:36,493 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)...
+
+2026-08-08 04:07:36,493 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)...
+
+2026-08-08 04:07:36,523 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,523 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,523 [main] INFO : [13/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) Done
+2026-08-08 04:07:36,523 [main] INFO : [13/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) Done
+2026-08-08 04:07:36,523 [main] INFO : [14/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)
+2026-08-08 04:07:36,523 [main] INFO : [14/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)
+2026-08-08 04:07:36,523 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)...
+
+2026-08-08 04:07:36,523 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)...
+
+2026-08-08 04:07:36,567 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:36,567 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:36,567 [main] INFO : [14/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) Done
+2026-08-08 04:07:36,567 [main] INFO : [14/41] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) Done
+2026-08-08 04:07:36,567 [main] INFO : [15/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)
+2026-08-08 04:07:36,567 [main] INFO : [15/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)
+2026-08-08 04:07:36,567 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)...
+
+2026-08-08 04:07:36,567 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)...
+
+2026-08-08 04:07:36,612 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:36,612 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:36,612 [main] INFO : [15/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) Done
+2026-08-08 04:07:36,612 [main] INFO : [15/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) Done
+2026-08-08 04:07:36,612 [main] INFO : [16/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files)
+2026-08-08 04:07:36,612 [main] INFO : [16/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files)
+2026-08-08 04:07:36,612 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files)...
+
+2026-08-08 04:07:36,612 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files)...
+
+2026-08-08 04:07:36,638 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,638 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,638 [main] INFO : [16/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files) Done
+2026-08-08 04:07:36,638 [main] INFO : [16/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (0 files) Done
+2026-08-08 04:07:36,638 [main] INFO : [17/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)
+2026-08-08 04:07:36,638 [main] INFO : [17/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)
+2026-08-08 04:07:36,639 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)...
+
+2026-08-08 04:07:36,639 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)...
+
+2026-08-08 04:07:36,669 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:36,669 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:36,669 [main] INFO : [17/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) Done
+2026-08-08 04:07:36,669 [main] INFO : [17/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) Done
+2026-08-08 04:07:36,669 [main] INFO : [18/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)
+2026-08-08 04:07:36,669 [main] INFO : [18/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)
+2026-08-08 04:07:36,669 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)...
+
+2026-08-08 04:07:36,669 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)...
+
+2026-08-08 04:07:36,698 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,698 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:36,698 [main] INFO : [18/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) Done
+2026-08-08 04:07:36,698 [main] INFO : [18/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) Done
+2026-08-08 04:07:36,698 [main] INFO : [19/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files)
+2026-08-08 04:07:36,698 [main] INFO : [19/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files)
+2026-08-08 04:07:36,698 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files)...
+
+2026-08-08 04:07:36,698 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files)...
+
+2026-08-08 04:07:36,724 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,724 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,724 [main] INFO : [19/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files) Done
+2026-08-08 04:07:36,724 [main] INFO : [19/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (0 files) Done
+2026-08-08 04:07:36,724 [main] INFO : [20/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files)
+2026-08-08 04:07:36,724 [main] INFO : [20/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files)
+2026-08-08 04:07:36,724 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files)...
+
+2026-08-08 04:07:36,724 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files)...
+
+2026-08-08 04:07:36,750 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,750 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,750 [main] INFO : [20/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files) Done
+2026-08-08 04:07:36,750 [main] INFO : [20/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (0 files) Done
+2026-08-08 04:07:36,750 [main] INFO : [21/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)
+2026-08-08 04:07:36,750 [main] INFO : [21/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)
+2026-08-08 04:07:36,750 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)...
+
+2026-08-08 04:07:36,750 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)...
+
+2026-08-08 04:07:36,838 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:36,838 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:36,838 [main] INFO : [21/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) Done
+2026-08-08 04:07:36,838 [main] INFO : [21/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) Done
+2026-08-08 04:07:36,838 [main] INFO : [22/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)
+2026-08-08 04:07:36,838 [main] INFO : [22/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)
+2026-08-08 04:07:36,839 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)...
+
+2026-08-08 04:07:36,839 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)...
+
+2026-08-08 04:07:36,869 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:36,869 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:36,870 [main] INFO : [22/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) Done
+2026-08-08 04:07:36,870 [main] INFO : [22/41] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) Done
+2026-08-08 04:07:36,870 [main] INFO : [23/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)
+2026-08-08 04:07:36,870 [main] INFO : [23/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)
+2026-08-08 04:07:36,870 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)...
+
+2026-08-08 04:07:36,870 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)...
+
+2026-08-08 04:07:36,910 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) in 0 sec
+
+
+2026-08-08 04:07:36,910 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) in 0 sec
+
+
+2026-08-08 04:07:36,910 [main] INFO : [23/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) Done
+2026-08-08 04:07:36,910 [main] INFO : [23/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) Done
+2026-08-08 04:07:36,910 [main] INFO : [24/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)
+2026-08-08 04:07:36,910 [main] INFO : [24/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)
+2026-08-08 04:07:36,910 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)...
+
+2026-08-08 04:07:36,910 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)...
+
+2026-08-08 04:07:36,944 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) in 0 sec
+
+
+2026-08-08 04:07:36,944 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) in 0 sec
+
+
+2026-08-08 04:07:36,944 [main] INFO : [24/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) Done
+2026-08-08 04:07:36,944 [main] INFO : [24/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) Done
+2026-08-08 04:07:36,944 [main] INFO : [25/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files)
+2026-08-08 04:07:36,944 [main] INFO : [25/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files)
+2026-08-08 04:07:36,944 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files)...
+
+2026-08-08 04:07:36,944 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files)...
+
+2026-08-08 04:07:36,971 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,971 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files) in 0 sec
+
+
+2026-08-08 04:07:36,971 [main] INFO : [25/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files) Done
+2026-08-08 04:07:36,971 [main] INFO : [25/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (0 files) Done
+2026-08-08 04:07:36,971 [main] INFO : [26/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)
+2026-08-08 04:07:36,971 [main] INFO : [26/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)
+2026-08-08 04:07:36,971 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)...
+
+2026-08-08 04:07:36,971 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)...
+
+2026-08-08 04:07:37,003 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) in 1 sec
+
+
+2026-08-08 04:07:37,003 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) in 1 sec
+
+
+2026-08-08 04:07:37,003 [main] INFO : [26/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) Done
+2026-08-08 04:07:37,003 [main] INFO : [26/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) Done
+2026-08-08 04:07:37,003 [main] INFO : [27/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files)
+2026-08-08 04:07:37,003 [main] INFO : [27/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files)
+2026-08-08 04:07:37,003 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files)...
+
+2026-08-08 04:07:37,003 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files)...
+
+2026-08-08 04:07:37,031 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,031 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,031 [main] INFO : [27/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files) Done
+2026-08-08 04:07:37,031 [main] INFO : [27/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (0 files) Done
+2026-08-08 04:07:37,032 [main] INFO : [28/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files)
+2026-08-08 04:07:37,032 [main] INFO : [28/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files)
+2026-08-08 04:07:37,032 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files)...
+
+2026-08-08 04:07:37,032 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files)...
+
+2026-08-08 04:07:37,060 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,060 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,060 [main] INFO : [28/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files) Done
+2026-08-08 04:07:37,060 [main] INFO : [28/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (0 files) Done
+2026-08-08 04:07:37,060 [main] INFO : [29/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)
+2026-08-08 04:07:37,060 [main] INFO : [29/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)
+2026-08-08 04:07:37,060 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)...
+
+2026-08-08 04:07:37,060 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)...
+
+2026-08-08 04:07:37,113 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) in 0 sec
+
+
+2026-08-08 04:07:37,113 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) in 0 sec
+
+
+2026-08-08 04:07:37,113 [main] INFO : [29/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) Done
+2026-08-08 04:07:37,113 [main] INFO : [29/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) Done
+2026-08-08 04:07:37,113 [main] INFO : [30/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)
+2026-08-08 04:07:37,113 [main] INFO : [30/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)
+2026-08-08 04:07:37,113 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)...
+
+2026-08-08 04:07:37,113 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)...
+
+2026-08-08 04:07:37,145 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:37,146 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:37,146 [main] INFO : [30/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) Done
+2026-08-08 04:07:37,146 [main] INFO : [30/41] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) Done
+2026-08-08 04:07:37,146 [main] INFO : [31/41] Processing dependencies of library "MAINFRAME:" (0 files)
+2026-08-08 04:07:37,146 [main] INFO : [31/41] Processing dependencies of library "MAINFRAME:" (0 files)
+2026-08-08 04:07:37,146 [main] INFO : Starting step: library "MAINFRAME:" (0 files)...
+
+2026-08-08 04:07:37,146 [main] INFO : Starting step: library "MAINFRAME:" (0 files)...
+
+2026-08-08 04:07:37,173 [main] INFO : Ending step : library "MAINFRAME:" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,173 [main] INFO : Ending step : library "MAINFRAME:" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,173 [main] INFO : [31/41] Processing dependencies of library "MAINFRAME:" (0 files) Done
+2026-08-08 04:07:37,173 [main] INFO : [31/41] Processing dependencies of library "MAINFRAME:" (0 files) Done
+2026-08-08 04:07:37,173 [main] INFO : [32/41] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files)
+2026-08-08 04:07:37,173 [main] INFO : [32/41] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files)
+2026-08-08 04:07:37,174 [main] INFO : Starting step: library "OTHER:demo/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:37,174 [main] INFO : Starting step: library "OTHER:demo/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:37,201 [main] INFO : Ending step : library "OTHER:demo/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,201 [main] INFO : Ending step : library "OTHER:demo/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,201 [main] INFO : [32/41] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:37,201 [main] INFO : [32/41] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:37,201 [main] INFO : [33/41] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files)
+2026-08-08 04:07:37,201 [main] INFO : [33/41] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files)
+2026-08-08 04:07:37,201 [main] INFO : Starting step: library "OTHER:demo/data/ASCII" (0 files)...
+
+2026-08-08 04:07:37,201 [main] INFO : Starting step: library "OTHER:demo/data/ASCII" (0 files)...
+
+2026-08-08 04:07:37,229 [main] INFO : Ending step : library "OTHER:demo/data/ASCII" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,229 [main] INFO : Ending step : library "OTHER:demo/data/ASCII" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,229 [main] INFO : [33/41] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files) Done
+2026-08-08 04:07:37,229 [main] INFO : [33/41] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files) Done
+2026-08-08 04:07:37,229 [main] INFO : [34/41] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files)
+2026-08-08 04:07:37,229 [main] INFO : [34/41] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files)
+2026-08-08 04:07:37,229 [main] INFO : Starting step: library "OTHER:demo/app-vsam-mq" (0 files)...
+
+2026-08-08 04:07:37,229 [main] INFO : Starting step: library "OTHER:demo/app-vsam-mq" (0 files)...
+
+2026-08-08 04:07:37,256 [main] INFO : Ending step : library "OTHER:demo/app-vsam-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,257 [main] INFO : Ending step : library "OTHER:demo/app-vsam-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,257 [main] INFO : [34/41] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files) Done
+2026-08-08 04:07:37,257 [main] INFO : [34/41] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files) Done
+2026-08-08 04:07:37,257 [main] INFO : [35/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files)
+2026-08-08 04:07:37,257 [main] INFO : [35/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files)
+2026-08-08 04:07:37,257 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2" (0 files)...
+
+2026-08-08 04:07:37,257 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2" (0 files)...
+
+2026-08-08 04:07:37,283 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,283 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,283 [main] INFO : [35/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files) Done
+2026-08-08 04:07:37,283 [main] INFO : [35/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files) Done
+2026-08-08 04:07:37,283 [main] INFO : [36/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)
+2026-08-08 04:07:37,283 [main] INFO : [36/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)
+2026-08-08 04:07:37,284 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)...
+
+2026-08-08 04:07:37,284 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)...
+
+2026-08-08 04:07:37,317 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:37,317 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:37,317 [main] INFO : [36/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) Done
+2026-08-08 04:07:37,317 [main] INFO : [36/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) Done
+2026-08-08 04:07:37,317 [main] INFO : [37/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)
+2026-08-08 04:07:37,317 [main] INFO : [37/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)
+2026-08-08 04:07:37,318 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)...
+
+2026-08-08 04:07:37,318 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)...
+
+2026-08-08 04:07:37,355 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:37,355 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:37,355 [main] INFO : [37/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) Done
+2026-08-08 04:07:37,355 [main] INFO : [37/41] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) Done
+2026-08-08 04:07:37,355 [main] INFO : [38/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)
+2026-08-08 04:07:37,355 [main] INFO : [38/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)
+2026-08-08 04:07:37,355 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)...
+
+2026-08-08 04:07:37,355 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)...
+
+2026-08-08 04:07:37,381 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,382 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,382 [main] INFO : [38/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) Done
+2026-08-08 04:07:37,382 [main] INFO : [38/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) Done
+2026-08-08 04:07:37,382 [main] INFO : [39/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)
+2026-08-08 04:07:37,382 [main] INFO : [39/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)
+2026-08-08 04:07:37,382 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)...
+
+2026-08-08 04:07:37,382 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)...
+
+2026-08-08 04:07:37,413 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:37,413 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:37,413 [main] INFO : [39/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) Done
+2026-08-08 04:07:37,413 [main] INFO : [39/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) Done
+2026-08-08 04:07:37,413 [main] INFO : [40/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)
+2026-08-08 04:07:37,413 [main] INFO : [40/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)
+2026-08-08 04:07:37,413 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:37,413 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:37,440 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,440 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,440 [main] INFO : [40/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:37,440 [main] INFO : [40/41] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:37,440 [main] INFO : [41/41] Processing dependencies of library "OTHER:" (0 files)
+2026-08-08 04:07:37,440 [main] INFO : [41/41] Processing dependencies of library "OTHER:" (0 files)
+2026-08-08 04:07:37,440 [main] INFO : Starting step: library "OTHER:" (0 files)...
+
+2026-08-08 04:07:37,440 [main] INFO : Starting step: library "OTHER:" (0 files)...
+
+2026-08-08 04:07:37,467 [main] INFO : Ending step : library "OTHER:" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,467 [main] INFO : Ending step : library "OTHER:" (0 files) in 0 sec
+
+
+2026-08-08 04:07:37,467 [main] INFO : [41/41] Processing dependencies of library "OTHER:" (0 files) Done
+2026-08-08 04:07:37,467 [main] INFO : [41/41] Processing dependencies of library "OTHER:" (0 files) Done
+2026-08-08 04:07:37,468 [main] INFO : [42/41] Processing dependencies of Remaining files turn #1 (143 files)
+2026-08-08 04:07:37,468 [main] INFO : [42/41] Processing dependencies of Remaining files turn #1 (143 files)
+2026-08-08 04:07:37,468 [main] INFO : Starting step: Remaining files turn #1 (143 files)...
+
+2026-08-08 04:07:37,468 [main] INFO : Starting step: Remaining files turn #1 (143 files)...
+
+2026-08-08 04:07:37,678 [main] INFO : Ending step : Remaining files turn #1 (143 files) in 0 sec
+
+
+2026-08-08 04:07:37,678 [main] INFO : Ending step : Remaining files turn #1 (143 files) in 0 sec
+
+
+2026-08-08 04:07:37,678 [main] INFO : [42/41] Processing dependencies of Remaining files turn #1 (143 files) Done
+2026-08-08 04:07:37,678 [main] INFO : [42/41] Processing dependencies of Remaining files turn #1 (143 files) Done
+2026-08-08 04:07:37,678 [main] INFO : [43/41] Processing dependencies of Remaining files turn #2 (39 files)
+2026-08-08 04:07:37,678 [main] INFO : [43/41] Processing dependencies of Remaining files turn #2 (39 files)
+2026-08-08 04:07:37,678 [main] INFO : Starting step: Remaining files turn #2 (39 files)...
+
+2026-08-08 04:07:37,678 [main] INFO : Starting step: Remaining files turn #2 (39 files)...
+
+2026-08-08 04:07:37,826 [main] INFO : Ending step : Remaining files turn #2 (39 files) in 0 sec
+
+
+2026-08-08 04:07:37,826 [main] INFO : Ending step : Remaining files turn #2 (39 files) in 0 sec
+
+
+2026-08-08 04:07:37,826 [main] INFO : [43/41] Processing dependencies of Remaining files turn #2 (39 files) Done
+2026-08-08 04:07:37,826 [main] INFO : [43/41] Processing dependencies of Remaining files turn #2 (39 files) Done
+2026-08-08 04:07:37,826 [main] INFO : [44/41] Processing dependencies of Remaining files turn #3 (3 files)
+2026-08-08 04:07:37,826 [main] INFO : [44/41] Processing dependencies of Remaining files turn #3 (3 files)
+2026-08-08 04:07:37,826 [main] INFO : Starting step: Remaining files turn #3 (3 files)...
+
+2026-08-08 04:07:37,826 [main] INFO : Starting step: Remaining files turn #3 (3 files)...
+
+2026-08-08 04:07:37,885 [main] INFO : Ending step : Remaining files turn #3 (3 files) in 0 sec
+
+
+2026-08-08 04:07:37,885 [main] INFO : Ending step : Remaining files turn #3 (3 files) in 0 sec
+
+
+2026-08-08 04:07:37,885 [main] INFO : [44/41] Processing dependencies of Remaining files turn #3 (3 files) Done
+2026-08-08 04:07:37,885 [main] INFO : [44/41] Processing dependencies of Remaining files turn #3 (3 files) Done
+2026-08-08 04:07:37,885 [main] INFO : [45/41] Processing dependencies of Remaining files turn #4 (4 files)
+2026-08-08 04:07:37,885 [main] INFO : [45/41] Processing dependencies of Remaining files turn #4 (4 files)
+2026-08-08 04:07:37,885 [main] INFO : Starting step: Remaining files turn #4 (4 files)...
+
+2026-08-08 04:07:37,885 [main] INFO : Starting step: Remaining files turn #4 (4 files)...
+
+2026-08-08 04:07:37,927 [main] INFO : Ending step : Remaining files turn #4 (4 files) in 0 sec
+
+
+2026-08-08 04:07:37,927 [main] INFO : Ending step : Remaining files turn #4 (4 files) in 0 sec
+
+
+2026-08-08 04:07:37,927 [main] INFO : [45/41] Processing dependencies of Remaining files turn #4 (4 files) Done
+2026-08-08 04:07:37,927 [main] INFO : [45/41] Processing dependencies of Remaining files turn #4 (4 files) Done
+2026-08-08 04:07:37,927 [main] INFO : [46/41] Processing dependencies of Remaining files turn #5 (3 files)
+2026-08-08 04:07:37,927 [main] INFO : [46/41] Processing dependencies of Remaining files turn #5 (3 files)
+2026-08-08 04:07:37,927 [main] INFO : Starting step: Remaining files turn #5 (3 files)...
+
+2026-08-08 04:07:37,927 [main] INFO : Starting step: Remaining files turn #5 (3 files)...
+
+2026-08-08 04:07:37,966 [main] INFO : Ending step : Remaining files turn #5 (3 files) in 0 sec
+
+
+2026-08-08 04:07:37,966 [main] INFO : Ending step : Remaining files turn #5 (3 files) in 0 sec
+
+
+2026-08-08 04:07:37,966 [main] INFO : [46/41] Processing dependencies of Remaining files turn #5 (3 files) Done
+2026-08-08 04:07:37,966 [main] INFO : [46/41] Processing dependencies of Remaining files turn #5 (3 files) Done
+2026-08-08 04:07:37,966 [main] INFO : [47/41] Processing dependencies of Remaining files turn #6 (1 files)
+2026-08-08 04:07:37,966 [main] INFO : [47/41] Processing dependencies of Remaining files turn #6 (1 files)
+2026-08-08 04:07:37,966 [main] INFO : Starting step: Remaining files turn #6 (1 files)...
+
+2026-08-08 04:07:37,966 [main] INFO : Starting step: Remaining files turn #6 (1 files)...
+
+2026-08-08 04:07:38,003 [main] INFO : Ending step : Remaining files turn #6 (1 files) in 1 sec
+
+
+2026-08-08 04:07:38,003 [main] INFO : Ending step : Remaining files turn #6 (1 files) in 1 sec
+
+
+2026-08-08 04:07:38,003 [main] INFO : [47/41] Processing dependencies of Remaining files turn #6 (1 files) Done
+2026-08-08 04:07:38,003 [main] INFO : [47/41] Processing dependencies of Remaining files turn #6 (1 files) Done
+2026-08-08 04:07:38,004 [main] INFO : [48/41] Processing dependencies of Remaining files turn #7 (1 files)
+2026-08-08 04:07:38,004 [main] INFO : [48/41] Processing dependencies of Remaining files turn #7 (1 files)
+2026-08-08 04:07:38,004 [main] INFO : Starting step: Remaining files turn #7 (1 files)...
+
+2026-08-08 04:07:38,004 [main] INFO : Starting step: Remaining files turn #7 (1 files)...
+
+2026-08-08 04:07:38,040 [main] INFO : Ending step : Remaining files turn #7 (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,040 [main] INFO : Ending step : Remaining files turn #7 (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,040 [main] INFO : [48/41] Processing dependencies of Remaining files turn #7 (1 files) Done
+2026-08-08 04:07:38,040 [main] INFO : [48/41] Processing dependencies of Remaining files turn #7 (1 files) Done
+2026-08-08 04:07:38,041 [main] INFO : [49/41] Processing dependencies of Last turn (1 files)
+2026-08-08 04:07:38,041 [main] INFO : [49/41] Processing dependencies of Last turn (1 files)
+2026-08-08 04:07:38,041 [main] INFO : Starting step: Last turn (1 files)...
+
+2026-08-08 04:07:38,041 [main] INFO : Starting step: Last turn (1 files)...
+
+2026-08-08 04:07:38,077 [main] INFO : Ending step : Last turn (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,077 [main] INFO : Ending step : Last turn (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,077 [main] INFO : [49/41] Processing dependencies of Last turn (1 files) Done
+2026-08-08 04:07:38,077 [main] INFO : [49/41] Processing dependencies of Last turn (1 files) Done
+2026-08-08 04:07:38,077 [main] INFO : Ending step : Finding dependencies in 3 sec
+
+
+2026-08-08 04:07:38,077 [main] INFO : Ending step : Finding dependencies in 3 sec
+
+
+2026-08-08 04:07:38,078 [main] INFO : Starting step: Analysis postprocessing...
+
+2026-08-08 04:07:38,078 [main] INFO : Starting step: Analysis postprocessing...
+
+2026-08-08 04:07:38,097 [main] INFO : Starting step: Retrying dependencies...
+
+2026-08-08 04:07:38,097 [main] INFO : Starting step: Retrying dependencies...
+
+2026-08-08 04:07:38,098 [main] INFO : [1/42] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files)
+2026-08-08 04:07:38,098 [main] INFO : [1/42] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files)
+2026-08-08 04:07:38,098 [main] INFO : Starting step: library "MAINFRAME:demo/scheduler" (2 files)...
+
+2026-08-08 04:07:38,098 [main] INFO : Starting step: library "MAINFRAME:demo/scheduler" (2 files)...
+
+2026-08-08 04:07:38,138 [main] INFO : Ending step : library "MAINFRAME:demo/scheduler" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,138 [main] INFO : Ending step : library "MAINFRAME:demo/scheduler" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,138 [main] INFO : [1/42] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files) Done
+2026-08-08 04:07:38,138 [main] INFO : [1/42] Processing dependencies of library "MAINFRAME:demo/scheduler" (2 files) Done
+2026-08-08 04:07:38,138 [main] INFO : [2/42] Processing dependencies of library "MAINFRAME:demo/proc" (2 files)
+2026-08-08 04:07:38,138 [main] INFO : [2/42] Processing dependencies of library "MAINFRAME:demo/proc" (2 files)
+2026-08-08 04:07:38,139 [main] INFO : Starting step: library "MAINFRAME:demo/proc" (2 files)...
+
+2026-08-08 04:07:38,139 [main] INFO : Starting step: library "MAINFRAME:demo/proc" (2 files)...
+
+2026-08-08 04:07:38,170 [main] INFO : Ending step : library "MAINFRAME:demo/proc" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,170 [main] INFO : Ending step : library "MAINFRAME:demo/proc" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,170 [main] INFO : [2/42] Processing dependencies of library "MAINFRAME:demo/proc" (2 files) Done
+2026-08-08 04:07:38,170 [main] INFO : [2/42] Processing dependencies of library "MAINFRAME:demo/proc" (2 files) Done
+2026-08-08 04:07:38,170 [main] INFO : [3/42] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files)
+2026-08-08 04:07:38,170 [main] INFO : [3/42] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files)
+2026-08-08 04:07:38,170 [main] INFO : Starting step: library "MAINFRAME:demo/maclib" (1 files)...
+
+2026-08-08 04:07:38,170 [main] INFO : Starting step: library "MAINFRAME:demo/maclib" (1 files)...
+
+2026-08-08 04:07:38,200 [main] INFO : Ending step : library "MAINFRAME:demo/maclib" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,200 [main] INFO : Ending step : library "MAINFRAME:demo/maclib" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,200 [main] INFO : [3/42] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files) Done
+2026-08-08 04:07:38,200 [main] INFO : [3/42] Processing dependencies of library "MAINFRAME:demo/maclib" (1 files) Done
+2026-08-08 04:07:38,201 [main] INFO : [4/42] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files)
+2026-08-08 04:07:38,201 [main] INFO : [4/42] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files)
+2026-08-08 04:07:38,201 [main] INFO : Starting step: library "MAINFRAME:demo/jcl" (38 files)...
+
+2026-08-08 04:07:38,201 [main] INFO : Starting step: library "MAINFRAME:demo/jcl" (38 files)...
+
+2026-08-08 04:07:38,230 [main] INFO : Ending step : library "MAINFRAME:demo/jcl" (38 files) in 0 sec
+
+
+2026-08-08 04:07:38,230 [main] INFO : Ending step : library "MAINFRAME:demo/jcl" (38 files) in 0 sec
+
+
+2026-08-08 04:07:38,230 [main] INFO : [4/42] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files) Done
+2026-08-08 04:07:38,230 [main] INFO : [4/42] Processing dependencies of library "MAINFRAME:demo/jcl" (38 files) Done
+2026-08-08 04:07:38,230 [main] INFO : [5/42] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files)
+2026-08-08 04:07:38,230 [main] INFO : [5/42] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files)
+2026-08-08 04:07:38,230 [main] INFO : Starting step: library "MAINFRAME:demo/ctl" (1 files)...
+
+2026-08-08 04:07:38,230 [main] INFO : Starting step: library "MAINFRAME:demo/ctl" (1 files)...
+
+2026-08-08 04:07:38,259 [main] INFO : Ending step : library "MAINFRAME:demo/ctl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,259 [main] INFO : Ending step : library "MAINFRAME:demo/ctl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,259 [main] INFO : [5/42] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files) Done
+2026-08-08 04:07:38,259 [main] INFO : [5/42] Processing dependencies of library "MAINFRAME:demo/ctl" (1 files) Done
+2026-08-08 04:07:38,259 [main] INFO : [6/42] Processing dependencies of library "MAINFRAME:demo/csd" (1 files)
+2026-08-08 04:07:38,259 [main] INFO : [6/42] Processing dependencies of library "MAINFRAME:demo/csd" (1 files)
+2026-08-08 04:07:38,259 [main] INFO : Starting step: library "MAINFRAME:demo/csd" (1 files)...
+
+2026-08-08 04:07:38,259 [main] INFO : Starting step: library "MAINFRAME:demo/csd" (1 files)...
+
+2026-08-08 04:07:38,288 [main] INFO : Ending step : library "MAINFRAME:demo/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,288 [main] INFO : Ending step : library "MAINFRAME:demo/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,288 [main] INFO : [6/42] Processing dependencies of library "MAINFRAME:demo/csd" (1 files) Done
+2026-08-08 04:07:38,288 [main] INFO : [6/42] Processing dependencies of library "MAINFRAME:demo/csd" (1 files) Done
+2026-08-08 04:07:38,288 [main] INFO : [7/42] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (17 files)
+2026-08-08 04:07:38,288 [main] INFO : [7/42] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (17 files)
+2026-08-08 04:07:38,289 [main] INFO : Starting step: library "MAINFRAME:demo/cpy-bms" (17 files)...
+
+2026-08-08 04:07:38,289 [main] INFO : Starting step: library "MAINFRAME:demo/cpy-bms" (17 files)...
+
+2026-08-08 04:07:38,317 [main] INFO : Ending step : library "MAINFRAME:demo/cpy-bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:38,317 [main] INFO : Ending step : library "MAINFRAME:demo/cpy-bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:38,317 [main] INFO : [7/42] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (17 files) Done
+2026-08-08 04:07:38,317 [main] INFO : [7/42] Processing dependencies of library "MAINFRAME:demo/cpy-bms" (17 files) Done
+2026-08-08 04:07:38,317 [main] INFO : [8/42] Processing dependencies of library "MAINFRAME:demo/cpy" (28 files)
+2026-08-08 04:07:38,317 [main] INFO : [8/42] Processing dependencies of library "MAINFRAME:demo/cpy" (28 files)
+2026-08-08 04:07:38,317 [main] INFO : Starting step: library "MAINFRAME:demo/cpy" (28 files)...
+
+2026-08-08 04:07:38,317 [main] INFO : Starting step: library "MAINFRAME:demo/cpy" (28 files)...
+
+2026-08-08 04:07:38,346 [main] INFO : Ending step : library "MAINFRAME:demo/cpy" (28 files) in 0 sec
+
+
+2026-08-08 04:07:38,346 [main] INFO : Ending step : library "MAINFRAME:demo/cpy" (28 files) in 0 sec
+
+
+2026-08-08 04:07:38,346 [main] INFO : [8/42] Processing dependencies of library "MAINFRAME:demo/cpy" (28 files) Done
+2026-08-08 04:07:38,346 [main] INFO : [8/42] Processing dependencies of library "MAINFRAME:demo/cpy" (28 files) Done
+2026-08-08 04:07:38,346 [main] INFO : [9/42] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files)
+2026-08-08 04:07:38,346 [main] INFO : [9/42] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files)
+2026-08-08 04:07:38,346 [main] INFO : Starting step: library "MAINFRAME:demo/cbl" (31 files)...
+
+2026-08-08 04:07:38,346 [main] INFO : Starting step: library "MAINFRAME:demo/cbl" (31 files)...
+
+2026-08-08 04:07:38,375 [main] INFO : Ending step : library "MAINFRAME:demo/cbl" (31 files) in 0 sec
+
+
+2026-08-08 04:07:38,375 [main] INFO : Ending step : library "MAINFRAME:demo/cbl" (31 files) in 0 sec
+
+
+2026-08-08 04:07:38,375 [main] INFO : [9/42] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files) Done
+2026-08-08 04:07:38,375 [main] INFO : [9/42] Processing dependencies of library "MAINFRAME:demo/cbl" (31 files) Done
+2026-08-08 04:07:38,375 [main] INFO : [10/42] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files)
+2026-08-08 04:07:38,375 [main] INFO : [10/42] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files)
+2026-08-08 04:07:38,376 [main] INFO : Starting step: library "MAINFRAME:demo/catlg" (1 files)...
+
+2026-08-08 04:07:38,376 [main] INFO : Starting step: library "MAINFRAME:demo/catlg" (1 files)...
+
+2026-08-08 04:07:38,405 [main] INFO : Ending step : library "MAINFRAME:demo/catlg" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,405 [main] INFO : Ending step : library "MAINFRAME:demo/catlg" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,405 [main] INFO : [10/42] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files) Done
+2026-08-08 04:07:38,405 [main] INFO : [10/42] Processing dependencies of library "MAINFRAME:demo/catlg" (1 files) Done
+2026-08-08 04:07:38,405 [main] INFO : [11/42] Processing dependencies of library "MAINFRAME:demo/bms" (17 files)
+2026-08-08 04:07:38,405 [main] INFO : [11/42] Processing dependencies of library "MAINFRAME:demo/bms" (17 files)
+2026-08-08 04:07:38,405 [main] INFO : Starting step: library "MAINFRAME:demo/bms" (17 files)...
+
+2026-08-08 04:07:38,405 [main] INFO : Starting step: library "MAINFRAME:demo/bms" (17 files)...
+
+2026-08-08 04:07:38,434 [main] INFO : Ending step : library "MAINFRAME:demo/bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:38,435 [main] INFO : Ending step : library "MAINFRAME:demo/bms" (17 files) in 0 sec
+
+
+2026-08-08 04:07:38,435 [main] INFO : [11/42] Processing dependencies of library "MAINFRAME:demo/bms" (17 files) Done
+2026-08-08 04:07:38,435 [main] INFO : [11/42] Processing dependencies of library "MAINFRAME:demo/bms" (17 files) Done
+2026-08-08 04:07:38,435 [main] INFO : [12/42] Processing dependencies of library "MAINFRAME:demo/asm" (2 files)
+2026-08-08 04:07:38,435 [main] INFO : [12/42] Processing dependencies of library "MAINFRAME:demo/asm" (2 files)
+2026-08-08 04:07:38,435 [main] INFO : Starting step: library "MAINFRAME:demo/asm" (2 files)...
+
+2026-08-08 04:07:38,435 [main] INFO : Starting step: library "MAINFRAME:demo/asm" (2 files)...
+
+2026-08-08 04:07:38,463 [main] INFO : Ending step : library "MAINFRAME:demo/asm" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,464 [main] INFO : Ending step : library "MAINFRAME:demo/asm" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,464 [main] INFO : [12/42] Processing dependencies of library "MAINFRAME:demo/asm" (2 files) Done
+2026-08-08 04:07:38,464 [main] INFO : [12/42] Processing dependencies of library "MAINFRAME:demo/asm" (2 files) Done
+2026-08-08 04:07:38,464 [main] INFO : [13/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)
+2026-08-08 04:07:38,464 [main] INFO : [13/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)
+2026-08-08 04:07:38,464 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)...
+
+2026-08-08 04:07:38,464 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/csd" (1 files)...
+
+2026-08-08 04:07:38,492 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,492 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,492 [main] INFO : [13/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) Done
+2026-08-08 04:07:38,492 [main] INFO : [13/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/csd" (1 files) Done
+2026-08-08 04:07:38,492 [main] INFO : [14/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)
+2026-08-08 04:07:38,492 [main] INFO : [14/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)
+2026-08-08 04:07:38,492 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)...
+
+2026-08-08 04:07:38,492 [main] INFO : Starting step: library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files)...
+
+2026-08-08 04:07:38,521 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,521 [main] INFO : Ending step : library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,521 [main] INFO : [14/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) Done
+2026-08-08 04:07:38,521 [main] INFO : [14/42] Processing dependencies of library "MAINFRAME:demo/app-vsam-mq/cbl" (2 files) Done
+2026-08-08 04:07:38,521 [main] INFO : [15/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)
+2026-08-08 04:07:38,521 [main] INFO : [15/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)
+2026-08-08 04:07:38,522 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)...
+
+2026-08-08 04:07:38,522 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files)...
+
+2026-08-08 04:07:38,550 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:38,550 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:38,550 [main] INFO : [15/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) Done
+2026-08-08 04:07:38,550 [main] INFO : [15/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/jcl" (3 files) Done
+2026-08-08 04:07:38,550 [main] INFO : [16/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)
+2026-08-08 04:07:38,550 [main] INFO : [16/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)
+2026-08-08 04:07:38,550 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)...
+
+2026-08-08 04:07:38,550 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files)...
+
+2026-08-08 04:07:38,577 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,577 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,577 [main] INFO : [16/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) Done
+2026-08-08 04:07:38,577 [main] INFO : [16/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/dcl" (2 files) Done
+2026-08-08 04:07:38,577 [main] INFO : [17/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)
+2026-08-08 04:07:38,577 [main] INFO : [17/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)
+2026-08-08 04:07:38,578 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)...
+
+2026-08-08 04:07:38,578 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files)...
+
+2026-08-08 04:07:38,605 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:38,605 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:38,605 [main] INFO : [17/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) Done
+2026-08-08 04:07:38,605 [main] INFO : [17/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/ctl" (4 files) Done
+2026-08-08 04:07:38,605 [main] INFO : [18/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)
+2026-08-08 04:07:38,605 [main] INFO : [18/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)
+2026-08-08 04:07:38,605 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)...
+
+2026-08-08 04:07:38,605 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files)...
+
+2026-08-08 04:07:38,633 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,634 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,634 [main] INFO : [18/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) Done
+2026-08-08 04:07:38,634 [main] INFO : [18/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/csd" (1 files) Done
+2026-08-08 04:07:38,634 [main] INFO : [19/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)
+2026-08-08 04:07:38,634 [main] INFO : [19/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)
+2026-08-08 04:07:38,634 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)...
+
+2026-08-08 04:07:38,634 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files)...
+
+2026-08-08 04:07:38,663 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,663 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,663 [main] INFO : [19/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) Done
+2026-08-08 04:07:38,663 [main] INFO : [19/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy-bms" (2 files) Done
+2026-08-08 04:07:38,663 [main] INFO : [20/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)
+2026-08-08 04:07:38,663 [main] INFO : [20/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)
+2026-08-08 04:07:38,663 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)...
+
+2026-08-08 04:07:38,663 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files)...
+
+2026-08-08 04:07:38,692 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,692 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,692 [main] INFO : [20/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) Done
+2026-08-08 04:07:38,692 [main] INFO : [20/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cpy" (2 files) Done
+2026-08-08 04:07:38,692 [main] INFO : [21/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)
+2026-08-08 04:07:38,692 [main] INFO : [21/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)
+2026-08-08 04:07:38,692 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)...
+
+2026-08-08 04:07:38,692 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files)...
+
+2026-08-08 04:07:38,720 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:38,720 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:38,720 [main] INFO : [21/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) Done
+2026-08-08 04:07:38,720 [main] INFO : [21/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/cbl" (3 files) Done
+2026-08-08 04:07:38,720 [main] INFO : [22/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)
+2026-08-08 04:07:38,720 [main] INFO : [22/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)
+2026-08-08 04:07:38,720 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)...
+
+2026-08-08 04:07:38,720 [main] INFO : Starting step: library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files)...
+
+2026-08-08 04:07:38,749 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,749 [main] INFO : Ending step : library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,749 [main] INFO : [22/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) Done
+2026-08-08 04:07:38,749 [main] INFO : [22/42] Processing dependencies of library "MAINFRAME:demo/app-transaction-type-db2/bms" (2 files) Done
+2026-08-08 04:07:38,749 [main] INFO : [23/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)
+2026-08-08 04:07:38,749 [main] INFO : [23/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)
+2026-08-08 04:07:38,749 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)...
+
+2026-08-08 04:07:38,749 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files)...
+
+2026-08-08 04:07:38,777 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) in 0 sec
+
+
+2026-08-08 04:07:38,777 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) in 0 sec
+
+
+2026-08-08 04:07:38,777 [main] INFO : [23/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) Done
+2026-08-08 04:07:38,777 [main] INFO : [23/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/jcl" (5 files) Done
+2026-08-08 04:07:38,777 [main] INFO : [24/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)
+2026-08-08 04:07:38,777 [main] INFO : [24/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)
+2026-08-08 04:07:38,777 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)...
+
+2026-08-08 04:07:38,777 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files)...
+
+2026-08-08 04:07:38,804 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) in 0 sec
+
+
+2026-08-08 04:07:38,805 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) in 0 sec
+
+
+2026-08-08 04:07:38,805 [main] INFO : [24/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) Done
+2026-08-08 04:07:38,805 [main] INFO : [24/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/ims" (4 files) Done
+2026-08-08 04:07:38,805 [main] INFO : [25/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)
+2026-08-08 04:07:38,805 [main] INFO : [25/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)
+2026-08-08 04:07:38,805 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)...
+
+2026-08-08 04:07:38,805 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files)...
+
+2026-08-08 04:07:38,833 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,833 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,833 [main] INFO : [25/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) Done
+2026-08-08 04:07:38,833 [main] INFO : [25/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/dcl" (1 files) Done
+2026-08-08 04:07:38,833 [main] INFO : [26/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)
+2026-08-08 04:07:38,833 [main] INFO : [26/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)
+2026-08-08 04:07:38,833 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)...
+
+2026-08-08 04:07:38,833 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files)...
+
+2026-08-08 04:07:38,861 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,861 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) in 0 sec
+
+
+2026-08-08 04:07:38,861 [main] INFO : [26/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) Done
+2026-08-08 04:07:38,861 [main] INFO : [26/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/csd" (1 files) Done
+2026-08-08 04:07:38,861 [main] INFO : [27/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)
+2026-08-08 04:07:38,861 [main] INFO : [27/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)
+2026-08-08 04:07:38,861 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)...
+
+2026-08-08 04:07:38,861 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files)...
+
+2026-08-08 04:07:38,889 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,889 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,889 [main] INFO : [27/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) Done
+2026-08-08 04:07:38,889 [main] INFO : [27/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy-bms" (2 files) Done
+2026-08-08 04:07:38,889 [main] INFO : [28/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)
+2026-08-08 04:07:38,889 [main] INFO : [28/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)
+2026-08-08 04:07:38,889 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)...
+
+2026-08-08 04:07:38,889 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files)...
+
+2026-08-08 04:07:38,916 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) in 0 sec
+
+
+2026-08-08 04:07:38,916 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) in 0 sec
+
+
+2026-08-08 04:07:38,917 [main] INFO : [28/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) Done
+2026-08-08 04:07:38,917 [main] INFO : [28/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cpy" (9 files) Done
+2026-08-08 04:07:38,917 [main] INFO : [29/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)
+2026-08-08 04:07:38,917 [main] INFO : [29/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)
+2026-08-08 04:07:38,917 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)...
+
+2026-08-08 04:07:38,917 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files)...
+
+2026-08-08 04:07:38,944 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) in 0 sec
+
+
+2026-08-08 04:07:38,945 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) in 0 sec
+
+
+2026-08-08 04:07:38,945 [main] INFO : [29/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) Done
+2026-08-08 04:07:38,945 [main] INFO : [29/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/cbl" (8 files) Done
+2026-08-08 04:07:38,945 [main] INFO : [30/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)
+2026-08-08 04:07:38,945 [main] INFO : [30/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)
+2026-08-08 04:07:38,945 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)...
+
+2026-08-08 04:07:38,945 [main] INFO : Starting step: library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files)...
+
+2026-08-08 04:07:38,972 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,972 [main] INFO : Ending step : library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) in 0 sec
+
+
+2026-08-08 04:07:38,972 [main] INFO : [30/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) Done
+2026-08-08 04:07:38,972 [main] INFO : [30/42] Processing dependencies of library "MAINFRAME:demo/app-authorization-ims-db2-mq/bms" (2 files) Done
+2026-08-08 04:07:38,972 [main] INFO : [31/42] Processing dependencies of library "MAINFRAME:dependencies" (40 files)
+2026-08-08 04:07:38,972 [main] INFO : [31/42] Processing dependencies of library "MAINFRAME:dependencies" (40 files)
+2026-08-08 04:07:38,972 [main] INFO : Starting step: library "MAINFRAME:dependencies" (40 files)...
+
+2026-08-08 04:07:38,972 [main] INFO : Starting step: library "MAINFRAME:dependencies" (40 files)...
+
+2026-08-08 04:07:38,999 [main] INFO : Ending step : library "MAINFRAME:dependencies" (40 files) in 0 sec
+
+
+2026-08-08 04:07:38,999 [main] INFO : Ending step : library "MAINFRAME:dependencies" (40 files) in 0 sec
+
+
+2026-08-08 04:07:38,999 [main] INFO : [31/42] Processing dependencies of library "MAINFRAME:dependencies" (40 files) Done
+2026-08-08 04:07:38,999 [main] INFO : [31/42] Processing dependencies of library "MAINFRAME:dependencies" (40 files) Done
+2026-08-08 04:07:38,999 [main] INFO : [32/42] Processing dependencies of library "MAINFRAME:" (0 files)
+2026-08-08 04:07:38,999 [main] INFO : [32/42] Processing dependencies of library "MAINFRAME:" (0 files)
+2026-08-08 04:07:38,999 [main] INFO : Starting step: library "MAINFRAME:" (0 files)...
+
+2026-08-08 04:07:38,999 [main] INFO : Starting step: library "MAINFRAME:" (0 files)...
+
+2026-08-08 04:07:39,027 [main] INFO : Ending step : library "MAINFRAME:" (0 files) in 1 sec
+
+
+2026-08-08 04:07:39,027 [main] INFO : Ending step : library "MAINFRAME:" (0 files) in 1 sec
+
+
+2026-08-08 04:07:39,027 [main] INFO : [32/42] Processing dependencies of library "MAINFRAME:" (0 files) Done
+2026-08-08 04:07:39,027 [main] INFO : [32/42] Processing dependencies of library "MAINFRAME:" (0 files) Done
+2026-08-08 04:07:39,027 [main] INFO : [33/42] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files)
+2026-08-08 04:07:39,027 [main] INFO : [33/42] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files)
+2026-08-08 04:07:39,027 [main] INFO : Starting step: library "OTHER:demo/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:39,027 [main] INFO : Starting step: library "OTHER:demo/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:39,055 [main] INFO : Ending step : library "OTHER:demo/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,055 [main] INFO : Ending step : library "OTHER:demo/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,055 [main] INFO : [33/42] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:39,055 [main] INFO : [33/42] Processing dependencies of library "OTHER:demo/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:39,055 [main] INFO : [34/42] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files)
+2026-08-08 04:07:39,055 [main] INFO : [34/42] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files)
+2026-08-08 04:07:39,055 [main] INFO : Starting step: library "OTHER:demo/data/ASCII" (0 files)...
+
+2026-08-08 04:07:39,055 [main] INFO : Starting step: library "OTHER:demo/data/ASCII" (0 files)...
+
+2026-08-08 04:07:39,082 [main] INFO : Ending step : library "OTHER:demo/data/ASCII" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,082 [main] INFO : Ending step : library "OTHER:demo/data/ASCII" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,082 [main] INFO : [34/42] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files) Done
+2026-08-08 04:07:39,082 [main] INFO : [34/42] Processing dependencies of library "OTHER:demo/data/ASCII" (0 files) Done
+2026-08-08 04:07:39,082 [main] INFO : [35/42] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files)
+2026-08-08 04:07:39,082 [main] INFO : [35/42] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files)
+2026-08-08 04:07:39,082 [main] INFO : Starting step: library "OTHER:demo/app-vsam-mq" (0 files)...
+
+2026-08-08 04:07:39,082 [main] INFO : Starting step: library "OTHER:demo/app-vsam-mq" (0 files)...
+
+2026-08-08 04:07:39,111 [main] INFO : Ending step : library "OTHER:demo/app-vsam-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,111 [main] INFO : Ending step : library "OTHER:demo/app-vsam-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,111 [main] INFO : [35/42] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files) Done
+2026-08-08 04:07:39,111 [main] INFO : [35/42] Processing dependencies of library "OTHER:demo/app-vsam-mq" (0 files) Done
+2026-08-08 04:07:39,111 [main] INFO : [36/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files)
+2026-08-08 04:07:39,111 [main] INFO : [36/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files)
+2026-08-08 04:07:39,111 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2" (0 files)...
+
+2026-08-08 04:07:39,111 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2" (0 files)...
+
+2026-08-08 04:07:39,138 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,138 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,138 [main] INFO : [36/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files) Done
+2026-08-08 04:07:39,138 [main] INFO : [36/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2" (0 files) Done
+2026-08-08 04:07:39,138 [main] INFO : [37/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)
+2026-08-08 04:07:39,138 [main] INFO : [37/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)
+2026-08-08 04:07:39,138 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)...
+
+2026-08-08 04:07:39,138 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ddl" (4 files)...
+
+2026-08-08 04:07:39,167 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:39,167 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) in 0 sec
+
+
+2026-08-08 04:07:39,167 [main] INFO : [37/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) Done
+2026-08-08 04:07:39,167 [main] INFO : [37/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ddl" (4 files) Done
+2026-08-08 04:07:39,167 [main] INFO : [38/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)
+2026-08-08 04:07:39,167 [main] INFO : [38/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)
+2026-08-08 04:07:39,167 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)...
+
+2026-08-08 04:07:39,167 [main] INFO : Starting step: library "OTHER:demo/app-transaction-type-db2/ctl" (3 files)...
+
+2026-08-08 04:07:39,195 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:39,195 [main] INFO : Ending step : library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) in 0 sec
+
+
+2026-08-08 04:07:39,195 [main] INFO : [38/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) Done
+2026-08-08 04:07:39,195 [main] INFO : [38/42] Processing dependencies of library "OTHER:demo/app-transaction-type-db2/ctl" (3 files) Done
+2026-08-08 04:07:39,195 [main] INFO : [39/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)
+2026-08-08 04:07:39,195 [main] INFO : [39/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)
+2026-08-08 04:07:39,195 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)...
+
+2026-08-08 04:07:39,195 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq" (0 files)...
+
+2026-08-08 04:07:39,223 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,223 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,223 [main] INFO : [39/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) Done
+2026-08-08 04:07:39,223 [main] INFO : [39/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq" (0 files) Done
+2026-08-08 04:07:39,224 [main] INFO : [40/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)
+2026-08-08 04:07:39,224 [main] INFO : [40/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)
+2026-08-08 04:07:39,224 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)...
+
+2026-08-08 04:07:39,224 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files)...
+
+2026-08-08 04:07:39,251 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:39,252 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) in 0 sec
+
+
+2026-08-08 04:07:39,252 [main] INFO : [40/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) Done
+2026-08-08 04:07:39,252 [main] INFO : [40/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/ddl" (2 files) Done
+2026-08-08 04:07:39,252 [main] INFO : [41/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)
+2026-08-08 04:07:39,252 [main] INFO : [41/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)
+2026-08-08 04:07:39,252 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:39,252 [main] INFO : Starting step: library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files)...
+
+2026-08-08 04:07:39,280 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,280 [main] INFO : Ending step : library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,280 [main] INFO : [41/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:39,281 [main] INFO : [41/42] Processing dependencies of library "OTHER:demo/app-authorization-ims-db2-mq/data/EBCDIC" (0 files) Done
+2026-08-08 04:07:39,281 [main] INFO : [42/42] Processing dependencies of library "OTHER:" (0 files)
+2026-08-08 04:07:39,281 [main] INFO : [42/42] Processing dependencies of library "OTHER:" (0 files)
+2026-08-08 04:07:39,281 [main] INFO : Starting step: library "OTHER:" (0 files)...
+
+2026-08-08 04:07:39,281 [main] INFO : Starting step: library "OTHER:" (0 files)...
+
+2026-08-08 04:07:39,309 [main] INFO : Ending step : library "OTHER:" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,309 [main] INFO : Ending step : library "OTHER:" (0 files) in 0 sec
+
+
+2026-08-08 04:07:39,309 [main] INFO : [42/42] Processing dependencies of library "OTHER:" (0 files) Done
+2026-08-08 04:07:39,309 [main] INFO : [42/42] Processing dependencies of library "OTHER:" (0 files) Done
+2026-08-08 04:07:39,309 [main] INFO : [43/42] Processing dependencies of Remaining files turn #1 (1 files)
+2026-08-08 04:07:39,309 [main] INFO : [43/42] Processing dependencies of Remaining files turn #1 (1 files)
+2026-08-08 04:07:39,309 [main] INFO : Starting step: Remaining files turn #1 (1 files)...
+
+2026-08-08 04:07:39,309 [main] INFO : Starting step: Remaining files turn #1 (1 files)...
+
+2026-08-08 04:07:39,343 [main] INFO : Ending step : Remaining files turn #1 (1 files) in 0 sec
+
+
+2026-08-08 04:07:39,343 [main] INFO : Ending step : Remaining files turn #1 (1 files) in 0 sec
+
+
+2026-08-08 04:07:39,343 [main] INFO : [43/42] Processing dependencies of Remaining files turn #1 (1 files) Done
+2026-08-08 04:07:39,343 [main] INFO : [43/42] Processing dependencies of Remaining files turn #1 (1 files) Done
+2026-08-08 04:07:39,343 [main] INFO : [44/42] Processing dependencies of Remaining files turn #2 (1 files)
+2026-08-08 04:07:39,343 [main] INFO : [44/42] Processing dependencies of Remaining files turn #2 (1 files)
+2026-08-08 04:07:39,343 [main] INFO : Starting step: Remaining files turn #2 (1 files)...
+
+2026-08-08 04:07:39,343 [main] INFO : Starting step: Remaining files turn #2 (1 files)...
+
+2026-08-08 04:07:39,379 [main] INFO : Ending step : Remaining files turn #2 (1 files) in 0 sec
+
+
+2026-08-08 04:07:39,379 [main] INFO : Ending step : Remaining files turn #2 (1 files) in 0 sec
+
+
+2026-08-08 04:07:39,379 [main] INFO : [44/42] Processing dependencies of Remaining files turn #2 (1 files) Done
+2026-08-08 04:07:39,379 [main] INFO : [44/42] Processing dependencies of Remaining files turn #2 (1 files) Done
+2026-08-08 04:07:39,379 [main] INFO : [45/42] Processing dependencies of Last turn (1 files)
+2026-08-08 04:07:39,379 [main] INFO : [45/42] Processing dependencies of Last turn (1 files)
+2026-08-08 04:07:39,379 [main] INFO : Starting step: Last turn (1 files)...
+
+2026-08-08 04:07:39,379 [main] INFO : Starting step: Last turn (1 files)...
+
+2026-08-08 04:07:39,412 [main] INFO : Ending step : Last turn (1 files) in 0 sec
+
+
+2026-08-08 04:07:39,412 [main] INFO : Ending step : Last turn (1 files) in 0 sec
+
+
+2026-08-08 04:07:39,412 [main] INFO : [45/42] Processing dependencies of Last turn (1 files) Done
+2026-08-08 04:07:39,412 [main] INFO : [45/42] Processing dependencies of Last turn (1 files) Done
+2026-08-08 04:07:39,412 [main] INFO : Ending step : Retrying dependencies in 1 sec
+
+
+2026-08-08 04:07:39,412 [main] INFO : Ending step : Retrying dependencies in 1 sec
+
+
+2026-08-08 04:07:39,412 [main] INFO : Ending step : Analysis postprocessing in 1 sec
+
+
+2026-08-08 04:07:39,412 [main] INFO : Ending step : Analysis postprocessing in 1 sec
+
+
+2026-08-08 04:07:39,413 [main] INFO : Starting step: Clearing global declarations cache...
+
+2026-08-08 04:07:39,413 [main] INFO : Starting step: Clearing global declarations cache...
+
+2026-08-08 04:07:39,413 [main] INFO : Ending step : Clearing global declarations cache in 0 sec
+
+
+2026-08-08 04:07:39,413 [main] INFO : Ending step : Clearing global declarations cache in 0 sec
+
+
+2026-08-08 04:07:39,413 [main] INFO : Starting step: Retrying resolution for file dependencies...
+
+2026-08-08 04:07:39,413 [main] INFO : Starting step: Retrying resolution for file dependencies...
+
+2026-08-08 04:07:39,480 [main] INFO : Ending step : Retrying resolution for file dependencies in 0 sec
+
+
+2026-08-08 04:07:39,480 [main] INFO : Ending step : Retrying resolution for file dependencies in 0 sec
+
+
+2026-08-08 04:07:39,480 [main] INFO : Starting step: Retrying resolution for missing dependency sources...
+
+2026-08-08 04:07:39,480 [main] INFO : Starting step: Retrying resolution for missing dependency sources...
+
+2026-08-08 04:07:39,480 [main] INFO : Ending step : Retrying resolution for missing dependency sources in 0 sec
+
+
+2026-08-08 04:07:39,480 [main] INFO : Ending step : Retrying resolution for missing dependency sources in 0 sec
+
+
+2026-08-08 04:07:39,481 [main] INFO : ====== Files and Objects Statistics ========
+2026-08-08 04:07:39,481 [main] INFO : ====== Files and Objects Statistics ========
+2026-08-08 04:07:39,481 [main] INFO : Total files analyzed: 277
+2026-08-08 04:07:39,481 [main] INFO : Total files analyzed: 277
+2026-08-08 04:07:39,482 [main] INFO :   Type: PS (12 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: PS (12 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: Virtual Copybook Replaced (40 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: Virtual Copybook Replaced (40 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: DBD (4 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: DBD (4 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: ASM_CPY (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: ASM_CPY (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: BMS (21 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: BMS (21 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CONTROLM (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CONTROLM (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CPY (65 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CPY (65 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: SQL (9 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: SQL (9 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: txt (9 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: txt (9 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: JCL (46 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: JCL (46 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: INIT (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: INIT (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: PROC (2 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: PROC (2 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: dat (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: dat (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: MACRO (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: MACRO (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: COB (44 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: COB (44 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: md (3 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: md (3 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CA7 (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CA7 (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CTL (5 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CTL (5 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: ASM (2 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: ASM (2 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: LISTCAT (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: LISTCAT (1 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CSDCOMMAND (4 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: CSDCOMMAND (4 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: PSB (4 files)
+2026-08-08 04:07:39,482 [main] INFO :   Type: PSB (4 files)
+2026-08-08 04:07:39,482 [main] INFO : Total objects: 354
+2026-08-08 04:07:39,482 [main] INFO : Total objects: 354
+2026-08-08 04:07:39,482 [main] INFO : Scope: GLOBAL (354 objects)
+2026-08-08 04:07:39,482 [main] INFO : Scope: GLOBAL (354 objects)
+2026-08-08 04:07:39,482 [main] INFO :   SCHEDULED_TASK: 15
+2026-08-08 04:07:39,482 [main] INFO :   SCHEDULED_TASK: 15
+2026-08-08 04:07:39,482 [main] INFO :   DATASET: 30
+2026-08-08 04:07:39,482 [main] INFO :   DATASET: 30
+2026-08-08 04:07:39,482 [main] INFO :   CICS_FILE: 8
+2026-08-08 04:07:39,482 [main] INFO :   CICS_FILE: 8
+2026-08-08 04:07:39,482 [main] INFO :   TRANSACTION: 25
+2026-08-08 04:07:39,482 [main] INFO :   TRANSACTION: 25
+2026-08-08 04:07:39,482 [main] INFO :   FILE_DEFINITION: 201
+2026-08-08 04:07:39,482 [main] INFO :   FILE_DEFINITION: 201
+2026-08-08 04:07:39,482 [main] INFO :   COPY: 10
+2026-08-08 04:07:39,482 [main] INFO :   COPY: 10
+2026-08-08 04:07:39,482 [main] INFO :   BMS_MAPSET: 21
+2026-08-08 04:07:39,482 [main] INFO :   BMS_MAPSET: 21
+2026-08-08 04:07:39,482 [main] INFO :   BMS_MAP: 21
+2026-08-08 04:07:39,482 [main] INFO :   BMS_MAP: 21
+2026-08-08 04:07:39,482 [main] INFO :   COBOL_ENTRY: 3
+2026-08-08 04:07:39,482 [main] INFO :   COBOL_ENTRY: 3
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]TABLE: 3
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]TABLE: 3
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]INDEX: 8
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]INDEX: 8
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]DATABASE: 1
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]DATABASE: 1
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]TABLESPACE: 4
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]TABLESPACE: 4
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]CURSOR: 2
+2026-08-08 04:07:39,482 [main] INFO :   [SQL]CURSOR: 2
+2026-08-08 04:07:39,482 [main] INFO :   PDS: 2
+2026-08-08 04:07:39,482 [main] INFO :   PDS: 2
+2026-08-08 04:07:39,482 [main] INFO : ===========================================
+2026-08-08 04:07:39,482 [main] INFO : ===========================================
+2026-08-08 04:07:39,483 [main] INFO : Starting step: Removing and modifying dependencies...
+
+2026-08-08 04:07:39,483 [main] INFO : Starting step: Removing and modifying dependencies...
+
+2026-08-08 04:07:39,514 [main] INFO : Ending step : Removing and modifying dependencies in 0 sec
+
+
+2026-08-08 04:07:39,514 [main] INFO : Ending step : Removing and modifying dependencies in 0 sec
+
+
+2026-08-08 04:07:39,514 [main] INFO : ====== Performances report ======
+2026-08-08 04:07:39,514 [main] INFO : ====== Performances report ======
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.engine.sql.SQLFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/ctl/DB2CREAT.ctl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/ctl/DB2LTCAT.ctl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/ctl/DB2LTTYP.ctl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-authorization-ims-db2-mq/ddl/AUTHFRDS.ddl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/ddl/TRNTYCAT.ddl : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.engine.sql.SQLFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.bms.BMSFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/bms/COCRDSL.bms : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/bms/COTRN00.bms : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/bms/COTRTUP.bms : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/bms/COTRTLI.bms : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-authorization-ims-db2-mq/bms/COPAU01.bms : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.bms.BMSFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.csd.CsdDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/csd/CARDDEMO.CSD : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-authorization-ims-db2-mq/csd/CRDDEMO2.csd : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-vsam-mq/csd/CRDDEMOM.csd : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/app-transaction-type-db2/csd/CRDDEMOD.csd : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.csd.CsdDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.scheduler.ca7.Ca7FileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/scheduler/CardDemo.ca7 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.scheduler.ca7.Ca7FileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.scheduler.controlm.ControlMFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/scheduler/CardDemo.controlm : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.scheduler.controlm.ControlMFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.asm.ASMFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/asm/COBDATFT.asm : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/asm/MVSWAIT.asm : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/maclib/ASMWAIT.mac : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.asm.ASMFileDependenciesFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.cobol.COBOLFileDependenciesLineByLineFinder 
+2026-08-08 04:07:39,517 [main] INFO : demo/cbl/COACTUPC.cbl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/cbl/COCRDLIC.cbl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/cbl/COCRDUPC.cbl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/cbl/CBTRN02C.cbl : 0s
+2026-08-08 04:07:39,517 [main] INFO : demo/cbl/CBACT04C.cbl : 0s
+2026-08-08 04:07:39,517 [main] INFO : ==
+2026-08-08 04:07:39,517 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.cobol.COBOLFileDependenciesLineByLineFinder 
+2026-08-08 04:07:39,517 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,517 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.cobol.DataCopyFileDependenciesLineByLineFinder 
+2026-08-08 04:07:39,518 [main] INFO : demo/cpy/CSLKPCDY.cpy : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/cpy-bms/COACTUP.CPY : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/cpy-bms/COTRN00.CPY : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-authorization-ims-db2-mq/cpy-bms/COPAU00.cpy : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-transaction-type-db2/cpy-bms/COTRTLI.cpy : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.cobol.DataCopyFileDependenciesLineByLineFinder 
+2026-08-08 04:07:39,518 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.cobol.ProgramCopyFileDependenciesLineByLineFinder 
+2026-08-08 04:07:39,518 [main] INFO : demo/app-transaction-type-db2/cpy/CSDB2RPY.cpy : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/cpy/CSUTLDPY.cpy : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/cpy/CSSETATY.cpy.replaced_3130127190 : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-authorization-ims-db2-mq/dcl/AUTHFRDS.dcl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/cpy/CSSTRPFY.cpy : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.cobol.ProgramCopyFileDependenciesLineByLineFinder 
+2026-08-08 04:07:39,518 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.ctl.CTLFileDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : demo/app-transaction-type-db2/ctl/DB2TEP41.ctl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-transaction-type-db2/ctl/DB2TIAD1.ctl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-transaction-type-db2/ctl/REPROCT.ctl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-transaction-type-db2/ctl/DB2FREE.ctl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/ctl/REPROCT.ctl : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.ctl.CTLFileDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.ims.psb.PSBFileDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : demo/app-authorization-ims-db2-mq/ims/PSBPAUTL.psb : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-authorization-ims-db2-mq/ims/PSBPAUTB.psb : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-authorization-ims-db2-mq/ims/PAUTBUNL.PSB : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/app-authorization-ims-db2-mq/ims/DLIGSAMP.PSB : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.ims.psb.PSBFileDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.jcl.JCLFileDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : demo/jcl/TRANFILE.jcl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/jcl/PRTCATBL.jcl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/jcl/TRANBKP.jcl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/jcl/ESDSRRDS.jcl : 0s
+2026-08-08 04:07:39,518 [main] INFO : demo/proc/TRANREPT.prc : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.jcl.JCLFileDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #2 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #3 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #4 : 0s
+2026-08-08 04:07:39,518 [main] INFO : #5 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.listcat.ListcatDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : demo/catlg/LISTCAT.txt : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : == Category: processDependencies > com.netfective.bluage.analyse.dependency.mainframe.v2.listcat.ListcatDependenciesFinder 
+2026-08-08 04:07:39,518 [main] INFO : #1 : 0s
+2026-08-08 04:07:39,518 [main] INFO : ==
+2026-08-08 04:07:39,518 [main] INFO : ======
+2026-08-08 04:07:39,518 [main] INFO : ======
+2026-08-08 04:07:39,576 [main] INFO : Analysis successful, finished at : 04:07:39
+2026-08-08 04:07:39,576 [main] INFO : Global duration : 4 sec

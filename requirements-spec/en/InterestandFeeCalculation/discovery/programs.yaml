@@ -1,0 +1,61 @@
+# Interest and Fee Calculation - Program Discovery
+# Generated: 2026-08-08T04:25:17Z
+# Source: TransformKG (Python discovery)
+
+function: InterestandFeeCalculation
+programs:
+- name: CBACT04C
+  type: COBOL
+  execution: batch
+  description: Account interest accrual and transaction posting; The program processes
+    transaction category balance records sequentially, retrieving associated account
+    and card cross-reference data. For each account, it retrieves the applicable interest
+    rate from the discount group file, computes monthly interest, and writes interest
+    transactions to the transaction file. Account balances are updated with accumulated
+    interest and cycle amounts are reset.
+  transaction_id: null
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.DISCGRP.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.SYSTRAN
+  calls:
+  - CEE3ABD
+  includes:
+  - CVACT01Y
+  - CVACT03Y
+  - CVTRA01Y
+  - CVTRA02Y
+  - CVTRA05Y
+- name: INTCALC
+  type: JCL
+  execution: batch
+  description: Interest and fee calculation batch process; This batch job invokes
+    the interest and fee calculation program to process transaction balances and compute
+    accrued interest and applicable fees. The program reads account data from the
+    account master store, transaction reference data from the cross-reference stores,
+    and discount group definitions, then writes the computed transaction records to
+    the output transaction store. The job passes a business date parameter (2022071800)
+    to control the calculation period.
+  transaction_id: null
+  calls:
+  - CBACT04C
+  invokes: CBACT04C
+- name: CBACT04C
+  type: COBOL
+  execution: subroutine
+  description: Account interest accrual and transaction posting; The program processes
+    transaction category balance records sequentially, retrieving associated account
+    and card cross-reference data. For each account, it retrieves the applicable interest
+    rate from the discount group file, computes monthly interest, and writes interest
+    transactions to the transaction file. Account balances are updated with accumulated
+    interest and cycle amounts are reset.
+  data_stores_read: *id001
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.SYSTRAN
+  calls:
+  - CEE3ABD

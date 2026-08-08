@@ -1,0 +1,230 @@
+# Account and Card Inquiry Services - Program Discovery
+# Generated: 2026-08-08T04:24:26Z
+# Source: TransformKG (Python discovery)
+
+function: AccountandCardInquiryServices
+programs:
+- name: CBACT01C
+  type: COBOL
+  execution: batch
+  description: Account record processing and output; The program reads account records
+    sequentially from an indexed account file, transforms each record by populating
+    an output structure with account details and converting date formats via an external
+    date-conversion service, and writes the enriched record to a sequential output
+    file. Processing continues until the input file is exhausted, with application
+    result codes tracking success, end-of-file, and error conditions.; Account balance
+    array file production; This capability reads account records sequentially from
+    the account file and writes them to a sequential array-formatted output file.
+    Each account record is enriched with hardcoded cycle debit amounts and balance
+    values across five array positions before being written. Processing continues
+    until all account records have been read, with end-of-file and error conditions
+    tracked via an application result code.; Account data variable-block export; This
+    capability reads all accounts sequentially from the account data store and writes
+    two variable-length output records per account to the variable-block output file.
+    The first output record captures the account identifier and active status; the
+    second captures the account identifier, current balance, credit limit, and reissue
+    year. Processing continues until all accounts have been read, with end-of-file
+    and I/O error conditions setting the appropriate application result to control
+    loop termination.
+  transaction_id: null
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.ARRYPS
+  - AWS.M2.CARDDEMO.ACCTDATA.PSCOMP
+  - AWS.M2.CARDDEMO.ACCTDATA.VBPS
+  calls:
+  - CEE3ABD
+  - COBDATFT
+  includes:
+  - CODATECN
+  - CVACT01Y
+- name: CBACT02C
+  type: COBOL
+  execution: batch
+  description: Card file batch retrieval and display; The program opens an indexed
+    card file and iterates through its records sequentially. For each record successfully
+    retrieved, the program displays the card record. The iteration continues until
+    the end of the file is reached or an error occurs. The application result code
+    is set to indicate success (0), end-of-file (16), or other errors (12).
+  transaction_id: null
+  data_stores_read: &id002
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  calls:
+  - CEE3ABD
+  includes:
+  - CVACT02Y
+- name: CBACT03C
+  type: COBOL
+  execution: batch
+  description: Card cross-reference file retrieval and display; The program opens
+    a card cross-reference file (XREFFILE) and iterates through its records sequentially.
+    For each record successfully read, the program displays the card cross-reference
+    record. The loop terminates when the end of file is reached or when a file I/O
+    error occurs.
+  transaction_id: null
+  data_stores_read: &id003
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  calls:
+  - CEE3ABD
+  includes:
+  - CVACT03Y
+- name: CBCUS01C
+  type: COBOL
+  execution: batch
+  description: Customer file sequential read and display; The program opens the customer
+    file and sequentially reads records, displaying each customer record to the output.
+    The read operation returns a success code when a record is retrieved, an end-of-file
+    code when no more records are available, or an error code when the read fails.
+    The program terminates when the end-of-file condition is reached.
+  transaction_id: null
+  data_stores_read: &id004
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  calls:
+  - CEE3ABD
+  includes:
+  - CVCUS01Y
+- name: COACCT01
+  type: COBOL
+  execution: batch
+  description: Message queue request-reply account inquiry; The program retrieves
+    account inquiry requests from an input message queue, looks up account details
+    from a file, and sends replies to an output queue. When errors occur during queue
+    operations or file lookups, error messages are sent to an error queue. All queue
+    handles are properly closed at termination.
+  transaction_id: null
+  data_stores_read:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  calls:
+  - MQCLOSE
+  - MQGET
+  - MQOPEN
+  - MQPUT
+  includes:
+  - CMQGMOV
+  - CMQMDV
+  - CMQODV
+  - CMQPMOV
+  - CMQTML
+  - CMQV
+  - CVACT01Y
+- name: READACCT
+  type: JCL
+  execution: batch
+  description: 'Account master file processing and output generation; This JCL job
+    executes a program that reads account records from the account master data store
+    and writes the processed results to three output datasets: a fixed-record output
+    file, an array-format output file, and a variable-record output file. The job
+    allocates the input account master store for shared read access and creates three
+    new output stores with appropriate record formats and storage allocation.'
+  transaction_id: null
+  calls:
+  - CBACT01C
+  - IEFBR14
+  invokes: CBACT01C, IEFBR14
+- name: READCARD
+  type: JCL
+  execution: batch
+  description: Card master file read operation; This JCL job executes a program that
+    reads card master records from a VSAM key-sequenced dataset. The job allocates
+    the program library and the card data store, then invokes the card-reading program
+    to process the card master file. Output is directed to the system output device.
+  transaction_id: null
+  calls:
+  - CBACT02C
+  invokes: CBACT02C
+- name: READCUST
+  type: JCL
+  execution: batch
+  description: Customer master file retrieval; This JCL job executes a program that
+    reads customer records from the customer master data store. The job allocates
+    the program library and the customer data store, then invokes the customer retrieval
+    program to process the customer master file and produce output to the system output
+    device.
+  transaction_id: null
+  calls:
+  - CBCUS01C
+  invokes: CBCUS01C
+- name: READXREF
+  type: JCL
+  execution: batch
+  description: Cross-reference file read operation; This JCL job executes a program
+    that reads and processes records from a cross-reference master data store. The
+    job allocates the program library and the cross-reference dataset, then invokes
+    the processing program to retrieve and handle the cross-reference data. Output
+    is directed to the system output stream.
+  transaction_id: null
+  calls:
+  - CBACT03C
+  invokes: CBACT03C
+- name: CBACT01C
+  type: COBOL
+  execution: subroutine
+  description: Account record processing and output; The program reads account records
+    sequentially from an indexed account file, transforms each record by populating
+    an output structure with account details and converting date formats via an external
+    date-conversion service, and writes the enriched record to a sequential output
+    file. Processing continues until the input file is exhausted, with application
+    result codes tracking success, end-of-file, and error conditions.; Account balance
+    array file production; This capability reads account records sequentially from
+    the account file and writes them to a sequential array-formatted output file.
+    Each account record is enriched with hardcoded cycle debit amounts and balance
+    values across five array positions before being written. Processing continues
+    until all account records have been read, with end-of-file and error conditions
+    tracked via an application result code.; Account data variable-block export; This
+    capability reads all accounts sequentially from the account data store and writes
+    two variable-length output records per account to the variable-block output file.
+    The first output record captures the account identifier and active status; the
+    second captures the account identifier, current balance, credit limit, and reissue
+    year. Processing continues until all accounts have been read, with end-of-file
+    and I/O error conditions setting the appropriate application result to control
+    loop termination.
+  data_stores_read: *id001
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.ARRYPS
+  - AWS.M2.CARDDEMO.ACCTDATA.PSCOMP
+  - AWS.M2.CARDDEMO.ACCTDATA.VBPS
+  calls:
+  - CEE3ABD
+  - COBDATFT
+- name: CBACT02C
+  type: COBOL
+  execution: subroutine
+  description: Card file batch retrieval and display; The program opens an indexed
+    card file and iterates through its records sequentially. For each record successfully
+    retrieved, the program displays the card record. The iteration continues until
+    the end of the file is reached or an error occurs. The application result code
+    is set to indicate success (0), end-of-file (16), or other errors (12).
+  data_stores_read: *id002
+  calls:
+  - CEE3ABD
+- name: CBACT03C
+  type: COBOL
+  execution: subroutine
+  description: Card cross-reference file retrieval and display; The program opens
+    a card cross-reference file (XREFFILE) and iterates through its records sequentially.
+    For each record successfully read, the program displays the card cross-reference
+    record. The loop terminates when the end of file is reached or when a file I/O
+    error occurs.
+  data_stores_read: *id003
+  calls:
+  - CEE3ABD
+- name: CBCUS01C
+  type: COBOL
+  execution: subroutine
+  description: Customer file sequential read and display; The program opens the customer
+    file and sequentially reads records, displaying each customer record to the output.
+    The read operation returns a success code when a record is retrieved, an end-of-file
+    code when no more records are available, or an error code when the read fails.
+    The program terminates when the end-of-file condition is reached.
+  data_stores_read: *id004
+  calls:
+  - CEE3ABD
+- name: COBDATFT
+  type: COBOL
+  execution: subroutine
+  description: 'Date format transformation and validation; This program transforms
+    date formats between two representations: dates without separators (YYYYMMDD)
+    and dates with hyphens (YYYY-MM-DD). It validates that the input type indicator
+    matches the input date format, rejects mismatched output type requests, and populates
+    an error message when validation fails.'

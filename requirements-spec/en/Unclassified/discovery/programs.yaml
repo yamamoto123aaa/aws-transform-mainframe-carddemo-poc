@@ -1,0 +1,96 @@
+# Unclassified - Program Discovery
+# Generated: 2026-08-08T04:25:42Z
+# Source: TransformKG (Python discovery)
+
+function: Unclassified
+programs:
+- name: COSGN00C
+  type: COBOL
+  execution: online
+  description: Signon screen display and user authentication; The program displays
+    a signon screen to collect user credentials, validates the entered user ID and
+    password against a security file, and redisplays the screen with appropriate error
+    messages when validation fails. The screen is populated with current date, time,
+    application identifiers, and transaction information on each display.; Sign-on
+    authentication and user session routing; The program implements a sign-on flow
+    that collects user credentials from a screen, validates them against a security
+    file, and routes authenticated users to either an administrator or general menu
+    based on their user type. The program receives input via the Enter key, validates
+    that both user ID and password are provided, retrieves the user's security record,
+    verifies the password, and transfers control to the appropriate downstream application
+    with the authenticated user's context.
+  transaction_id: null
+  screens:
+  - COSGN00.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  calls:
+  - COADM01C
+  - COMEN01C
+  includes:
+  - COCOM01Y
+  - COSGN00
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COADM01C
+  type: COBOL
+  execution: subroutine
+  description: Administrator menu option selection and navigation; The program receives
+    the administrator menu screen input, validates the user's selected option number,
+    and transfers control to the corresponding administrator function program. The
+    validation ensures the option is numeric, within the valid range (1-6), and not
+    a placeholder entry. When validation succeeds and the selected program is not
+    a dummy entry, the program transfers control to that program via XCTL, passing
+    the communication area containing the originating transaction and program context.;
+    Signon screen navigation control; The program handles terminal input and navigation
+    logic for a card demonstration application. When the communication area is empty,
+    the program immediately transfers control to the signon screen. When the communication
+    area contains data and the user presses PF3, the program sets the destination
+    to the signon screen program and transfers control. If the destination program
+    name is not set or contains invalid values, the program defaults it to the signon
+    screen before transferring control.; Administration menu screen display; This
+    capability drives the CardDemo administration menu screen, presenting up to six
+    numbered menu options to the user along with header information (title, date,
+    time, transaction, and program identifiers). On first entry the menu is displayed
+    immediately; on re-entry the user's key press is evaluated — the Enter key triggers
+    option validation and navigation, PF3 exits, and any other key causes an invalid-key
+    error message to be shown. If a referenced option program is not installed, a
+    'not installed' message is displayed instead of navigating.
+- name: COMEN01C
+  type: COBOL
+  execution: subroutine
+  description: Menu option selection and program transfer; The program receives a
+    menu screen input from the user, validates the selected option against available
+    menu choices and user authorization, and transfers control to the corresponding
+    target program via XCTL. The validation ensures the option is numeric, within
+    the valid range, and authorized for the user type. When validation succeeds and
+    the target program is available, the program transfers control with the communication
+    area containing the originating transaction and program context.; Menu option
+    selection and program transfer; The program receives a menu screen input from
+    the user, validates the selected option against available menu choices and user
+    authorization, and transfers control to the corresponding target program via CICS
+    XCTL. The validation ensures the option is numeric, within the valid range, and
+    authorized for the user type; invalid selections trigger an error flag. The communication
+    area is populated with originating transaction and program context before the
+    transfer.; Card demonstration application navigation control; The program receives
+    a communication area from CICS, validates the reentry context, and routes user
+    navigation based on function key input. When the PF3 key is pressed, the program
+    sets the destination to the sign-on screen and transfers control. If no destination
+    is set or the destination is empty, the program defaults to the sign-on screen
+    before transferring control to the target program.; Menu screen display and option
+    selection; The program manages a CardDemo menu interface, displaying transaction
+    information, menu options, and error messages to the user. When the program is
+    first invoked, it displays the menu screen with header information and available
+    options. When the user re-enters after selecting an option, the program receives
+    the user's menu selection, validates it against business rules (numeric range,
+    user authorization), and either displays an error message or processes the selected
+    option. The final output is the menu screen sent to the terminal with all populated
+    fields.
+  shared_with:
+  - AuthorizationManagement
+  - InteractiveNavigationandScreenControl
+  note: '[SHARED-SUBROUTINE: COMEN01C — also called by AuthorizationManagement, InteractiveNavigationandScreenControl]'

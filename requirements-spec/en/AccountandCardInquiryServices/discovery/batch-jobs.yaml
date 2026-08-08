@@ -1,0 +1,59 @@
+# Account and Card Inquiry Services - Batch Job Discovery
+# Generated: 2026-08-08T04:24:26Z
+# Source: TransformKG (Python discovery)
+
+function: AccountandCardInquiryServices
+jobs:
+  migrate:
+  - id: BAT-001
+    name: READACCT.jcl
+    description: 'Account master file processing and output generation; This JCL job
+      executes a program that reads account records from the account master data store
+      and writes the processed results to three output datasets: a fixed-record output
+      file, an array-format output file, and a variable-record output file. The job
+      allocates the input account master store for shared read access and creates
+      three new output stores with appropriate record formats and storage allocation.'
+    programs:
+    - CBACT01C
+    - IEFBR14
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-002
+    name: READCARD.jcl
+    description: Card master file read operation; This JCL job executes a program
+      that reads card master records from a VSAM key-sequenced dataset. The job allocates
+      the program library and the card data store, then invokes the card-reading program
+      to process the card master file. Output is directed to the system output device.
+    programs:
+    - CBACT02C
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-003
+    name: READCUST.jcl
+    description: Customer master file retrieval; This JCL job executes a program that
+      reads customer records from the customer master data store. The job allocates
+      the program library and the customer data store, then invokes the customer retrieval
+      program to process the customer master file and produce output to the system
+      output device.
+    programs:
+    - CBCUS01C
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-004
+    name: READXREF.jcl
+    description: Cross-reference file read operation; This JCL job executes a program
+      that reads and processes records from a cross-reference master data store. The
+      job allocates the program library and the cross-reference dataset, then invokes
+      the processing program to retrieve and handle the cross-reference data. Output
+      is directed to the system output stream.
+    programs:
+    - CBACT03C
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

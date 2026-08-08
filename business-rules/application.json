@@ -1,0 +1,734 @@
+{
+  "executive_summary": "This mainframe application is a comprehensive card and account management system designed to support financial services operations across interactive and batch processing environments. The application encompasses 92 programs organized into 12 core business capabilities, serving approximately 173 distinct business rules. Key capabilities include interactive account and card inquiry services that enable real-time customer information access, transaction processing and posting functions that validate and record daily financial transactions, and authorization management that handles authorization requests and fraud event tracking. The system generates comprehensive statements and reports for business analysis, maintains data consistency through database synchronization operations, and supports bulk data import/export across multiple data sources. Additional capabilities include interest and fee calculation, batch file resource management, and data store lifecycle management for VSAM datasets. The application is built on a foundation of interactive navigation controls and utility services that coordinate user workflows and provide common processing functions. This integrated platform enables the organization to efficiently manage card portfolios, process transactions, maintain regulatory compliance, and deliver timely financial reporting while ensuring data integrity and system resource optimization across both online and batch processing modes.",
+  "business_functions": [
+    {
+      "name": "Interactive Navigation and Screen Control",
+      "description": "Manages user navigation, screen transitions, and menu selection across the card demonstration application. Handles function key mapping, attention identifiers, and program transfer control for interactive user workflows.",
+      "program_names": [
+        "COADM01C",
+        "COACTVWC",
+        "COCRDSLC",
+        "COACTUPC",
+        "COUSR02C",
+        "COUSR03C",
+        "COTRN01C",
+        "COMEN01C",
+        "COUSR01C",
+        "COTRTUPC",
+        "COCRDUPC",
+        "COTRN02C",
+        "CORPT00C",
+        "COTRN00C",
+        "COTRTLIC",
+        "COCRDLIC",
+        "COUSR00C",
+        "COBIL00C"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "COADM01C",
+          "relative_path": "src/demo/cbl/COADM01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Administrator menu option selection and navigation; The program receives the administrator menu screen input, validates the user's selected option number, and transfers control to the corresponding administrator function program. The validation ensures the option is numeric, within the valid range (1-6), and not a placeholder entry. When validation succeeds and the selected program is not a dummy entry, the program transfers control to that program via XCTL, passing the communication area containing the originating transaction and program context.; Signon screen navigation control; The program handles terminal input and navigation logic for a card demonstration application. When the communication area is empty, the program immediately transfers control to the signon screen. When the communication area contains data and the user presses PF3, the program sets the destination to the signon screen program and transfers control. If the destination program name is not set or contains invalid values, the program defaults it to the signon screen before transferring control.; Administration menu screen display; This capability drives the CardDemo administration menu screen, presenting up to six numbered menu options to the user along with header information (title, date, time, transaction, and program identifiers). On first entry the menu is displayed immediately; on re-entry the user's key press is evaluated — the Enter key triggers option validation and navigation, PF3 exits, and any other key causes an invalid-key error message to be shown. If a referenced option program is not installed, a 'not installed' message is displayed instead of navigating."
+        },
+        {
+          "program_name": "COACTVWC",
+          "relative_path": "src/demo/cbl/COACTVWC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Credit card activity screen navigation handler; The program receives user input from a credit card activity screen, maps function keys to business actions, and routes control to the appropriate destination program based on the user's key press. When the user presses PF3 (exit), the program determines whether to return to the calling program or the main menu, populates the navigation context, and transfers control to the destination program via the shared communication area.; Account activity display screen management; The program manages the account activity view screen lifecycle, handling user input validation, account data retrieval, and screen display. It processes function key inputs to determine navigation flow, validates account identifiers entered by the user, retrieves account and customer data from multiple files, and displays the populated screen with appropriate status messages and field attributes."
+        },
+        {
+          "program_name": "COCRDSLC",
+          "relative_path": "src/demo/cbl/COCRDSLC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Credit card transaction routing and function key handling; The program initializes the credit card work area and communication context, maps user keyboard input (function keys and control keys) to internal action codes, validates the input against allowed actions, and routes the transaction to the appropriate destination program based on the user's selection. When the user presses PF3 (exit), the program determines the target program and transaction from the communication area or defaults to the menu, then transfers control to that destination with the updated context.; Card inquiry and display screen; The program manages a card inquiry transaction that displays cardholder information on a 3270 terminal screen. It initializes the display with current date/time and application titles, populates card details when available, applies visual attributes (colors, protection) based on validation state, and sends the formatted screen to the user. The screen supports user input for account and card number searches, with error messages displayed when validation fails or records are not found."
+        },
+        {
+          "program_name": "COACTUPC",
+          "relative_path": "src/demo/cbl/COACTUPC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Account update screen navigation and exit handling; The program initializes working storage and communication areas, maps terminal function keys to internal codes, validates the pressed key against the current screen state, and routes the user to the appropriate next program based on the exit key (PF3) or other valid inputs. When the user presses PF3 or the exit condition is met, the program transfers control to either the originating program or the main menu, passing the navigation context through the communication area.; Account and customer record update processing; This slice implements a complete account update workflow for a credit card system. It receives user input from a screen, validates all account and customer data fields, compares changes against previously fetched values, and conditionally updates both the account master file (`LIT-ACCTFILENAME`) and customer master file (`LIT-CUSTFILENAME`) when changes are confirmed. The process includes comprehensive field validation, cross-field edits, and error handling for file access failures.; Account update screen input validation and date editing; This slice validates user input from an account update screen, including account identifiers, dates, numeric fields, and customer information. It performs comprehensive field-level validation (required/optional, numeric, alphabetic, format checks), cross-field validation (state-ZIP code combinations), and delegates to an external date validation service (`CSUTLDTC`) to verify date values. The validation results determine whether the input is accepted or rejected with specific error messages."
+        },
+        {
+          "program_name": "COUSR02C",
+          "relative_path": "src/demo/cbl/COUSR02C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Screen navigation and program transfer control; This program handles user navigation through a card demonstration application. When invoked without a communication area, it transfers to the signon screen. When re-entered with a communication area, it evaluates the user's key press (PF3, PF5, or Enter) to determine the destination program, then transfers control to that program with updated navigation context.; User account update and screen management; This program manages a user account update transaction through a CICS screen interface. It receives user input, validates required fields, retrieves the user record from the security file, compares changes, and writes updated user data back to the security file. The program displays status messages and screen data based on validation results and file operation outcomes."
+        },
+        {
+          "program_name": "COUSR03C",
+          "relative_path": "src/demo/cbl/COUSR03C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Program navigation and screen transition control; This program manages navigation between screens in a card demonstration application. It receives user input via attention identifiers (function keys) and determines the destination program based on the key pressed and the originating program context. The program transfers control to the destination program via XCTL, passing navigation state through a shared communication area.; User deletion screen management and security file operations; This program manages a user deletion interface, allowing operators to search for users by ID, display their information, and delete them from the security file. The program displays a BMS screen (COUSR3A) with user details and processes function key inputs to either retrieve user records, delete selected users, or clear the screen. Successful deletions are confirmed with a green-colored message; errors are reported with appropriate messages and the user ID field is repositioned for correction."
+        },
+        {
+          "program_name": "COTRN01C",
+          "relative_path": "src/demo/cbl/COTRN01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Transaction navigation and screen routing; The program handles user navigation through a card demonstration application by evaluating function key inputs and routing control to the appropriate destination program. When the communication area is empty, it routes to the sign-on program. When re-entering with a valid context, it evaluates the pressed function key (Enter, PF3, PF4, PF5) and routes to the corresponding destination program (menu, previous program, or transaction main). The destination program name is validated and defaulted to sign-on if missing, then control is transferred with the communication area context.; Transaction view screen display and input handling; The program manages a transaction inquiry screen (COTRN1A) that displays transaction details and merchant information. It initializes the screen on first entry, receives user input on subsequent entries, validates the transaction ID, retrieves the matching transaction record, and displays the results or error messages. The screen is sent to the user after populating header information (current date, time, program name, and titles) and either transaction details or validation error messages."
+        },
+        {
+          "program_name": "COMEN01C",
+          "relative_path": "src/demo/cbl/COMEN01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Menu option selection and program transfer; The program receives a menu screen input from the user, validates the selected option against available menu choices and user authorization, and transfers control to the corresponding target program via XCTL. The validation ensures the option is numeric, within the valid range, and authorized for the user type. When validation succeeds and the target program is available, the program transfers control with the communication area containing the originating transaction and program context.; Menu option selection and program transfer; The program receives a menu screen input from the user, validates the selected option against available menu choices and user authorization, and transfers control to the corresponding target program via CICS XCTL. The validation ensures the option is numeric, within the valid range, and authorized for the user type; invalid selections trigger an error flag. The communication area is populated with originating transaction and program context before the transfer.; Card demonstration application navigation control; The program receives a communication area from CICS, validates the reentry context, and routes user navigation based on function key input. When the PF3 key is pressed, the program sets the destination to the sign-on screen and transfers control. If no destination is set or the destination is empty, the program defaults to the sign-on screen before transferring control to the target program.; Menu screen display and option selection; The program manages a CardDemo menu interface, displaying transaction information, menu options, and error messages to the user. When the program is first invoked, it displays the menu screen with header information and available options. When the user re-enters after selecting an option, the program receives the user's menu selection, validates it against business rules (numeric range, user authorization), and either displays an error message or processes the selected option. The final output is the menu screen sent to the terminal with all populated fields."
+        },
+        {
+          "program_name": "COUSR01C",
+          "relative_path": "src/demo/cbl/COUSR01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Card demonstration application navigation; This program handles user navigation within a card demonstration application. When invoked without a communication area, it defaults to the signon screen. When re-entered with a communication area, it evaluates the user's key press (Enter, PF3, or PF4) to determine the next destination program. The program then transfers control to the selected destination, passing along the communication context.; User account creation and screen management; This program manages the user account creation workflow for the CardDemo application. It displays the user-addition screen, collects user input (first name, last name, user ID, password, user type), validates that all required fields are populated, and writes valid user records to the user security file. The program handles screen navigation via function keys and displays appropriate success or error messages based on the outcome of each operation."
+        },
+        {
+          "program_name": "COTRTUPC",
+          "relative_path": "src/demo/app-transaction-type-db2/cbl/COTRTUPC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Transaction type update screen navigation; The program initializes working storage and communication areas, captures the user's terminal input key, and routes control to the appropriate destination program based on the key pressed and application context. When the user presses PF3 (exit), the program prepares the communication area with routing information and transfers control to the calling program or administration menu.; Transaction type maintenance screen display; The program prepares and displays a transaction type maintenance screen to the user. It initializes screen fields with current date/time, transaction type details, and informational messages based on the current processing state. The screen is formatted with appropriate field protections, colors, and function key indicators before being sent to the terminal.; Transaction type database update and insert; The program initializes working storage and communication areas, maps terminal attention keys to internal flags, and evaluates business conditions to determine whether to update or insert transaction type records in the transaction type database. When the user presses PFK05 while changes are pending confirmation, the program updates the existing transaction type record; if no matching record exists (SQL code +100), it inserts a new transaction type record instead.; Transaction type deletion from database; The program initializes working storage and communication areas, maps keyboard input to function keys, and evaluates user actions. When the user presses PF4 while confirming a delete operation, the program retrieves the original transaction type code and deletes the corresponding record from the transaction type database store."
+        },
+        {
+          "program_name": "COCRDUPC",
+          "relative_path": "src/demo/cbl/COCRDUPC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Card update program navigation and control transfer; This program receives card update requests through a communication area, validates user input via function key mapping, and routes control to the appropriate destination program based on the user's action and current processing state. The primary business outcome is transferring control to either the originating program, the main menu, or a specialized card-processing handler, with the communication area carrying account, card, and navigation context across program boundaries.; Credit card update transaction processing; This program manages the interactive update of credit card details through a terminal screen interface. It receives user input for card information changes, validates the input against business rules, retrieves the current card record from the card data store, compares old and new values to detect changes, and writes the updated card record back to the store when changes are confirmed. The program displays the card update screen with appropriate field protections and error messages based on the validation state and user actions."
+        },
+        {
+          "program_name": "COTRN02C",
+          "relative_path": "src/demo/cbl/COTRN02C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Card demonstration transaction navigation; The program receives a communication area from a calling transaction or initializes with a default sign-on target. It evaluates the user's attention key (ENTER, PF3, PF4, PF5) to determine the next program to invoke. When PF3 is pressed, it routes to the originating program if available, otherwise to the menu. The program then transfers control to the destination program via XCTL, passing the updated communication area.; Transaction entry and validation workflow; The program manages a transaction entry screen where users input transaction details, validates the input against business rules and format requirements, performs lookups to cross-reference account and card information, and writes validated transactions to the transaction file. The workflow handles user interactions through function keys, displays validation errors on the screen, and manages the transaction record lifecycle from entry through persistence."
+        },
+        {
+          "program_name": "CORPT00C",
+          "relative_path": "src/demo/cbl/CORPT00C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Screen navigation and program transfer; The program receives a communication area from a calling program or initializes a default navigation context. It evaluates the user's key press (ENTER or PF3) to determine the destination program, populates the communication area with the current program's identity and transaction code, and transfers control to the destination program via XCTL.; Transaction report generation and job submission; The program manages a transaction report request interface where users select report types (monthly, yearly, or custom date range) and confirm job submission. It validates user inputs, constructs job parameters, submits JCL statements to the job queue, and displays status messages on the transaction report screen. The program delegates date validation to an external utility service and handles confirmation logic before writing JCL records to the transactional data queue."
+        },
+        {
+          "program_name": "COTRN00C",
+          "relative_path": "src/demo/cbl/COTRN00C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Transaction selection and navigation handler; The program receives a transaction list screen from the user, evaluates which transaction option was selected, and transfers control to the appropriate destination program when a valid selection is made. The program manages program re-entry state and passes transaction context through a shared communication area.; Screen navigation and program transfer; The program handles user navigation through function-key inputs and manages transitions between screens. When the communication area is empty, it defaults to the signon screen. When re-entering with a function key, it evaluates the key pressed and routes to the appropriate destination program, populating the communication area with navigation context before transferring control.; Transaction list display and navigation; The program manages a paginated transaction list display on a 3270 terminal screen. It handles user input (ENTER, PF7, PF8 keys) to navigate forward and backward through transaction records, retrieves transaction data from the transaction file, populates the screen with up to 10 transactions per page, and sends the formatted display to the user. Error conditions during file access or invalid user input are captured and displayed as error messages on the screen."
+        },
+        {
+          "program_name": "COTRTLIC",
+          "relative_path": "src/demo/app-transaction-type-db2/cbl/COTRTLIC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Credit card transaction license navigation and control; This program manages navigation and control flow for credit card transaction licensing operations. It initializes the communication area on first entry, maps terminal function keys to business actions, validates key presses against the current processing state, and routes the user to the appropriate destination program based on the key pressed and navigation context.; Credit card transaction listing and navigation; The program initializes the credit card work area and communication context, maps user function-key inputs to business actions, validates the pressed key against the current processing state, and transfers control to the add-transaction program when the user requests a new transaction entry. The program preserves session context across screen transitions and enforces valid key sequences for the transaction listing workflow.; Transaction type list management and display; This program manages a paginated list of transaction types retrieved from the database, allowing users to filter by type code and description, select rows for update or delete operations, and display the results on a BMS screen. The program handles forward and backward pagination, validates user input against business rules, processes database operations (update/delete), and formats error messages using the DSNTIAC utility when database errors occur.; Transaction type record maintenance; This program manages transaction type records in the database, allowing users to update or delete transaction type descriptions through a screen interface. The program receives user input, validates filter criteria against the transaction type store, and executes the requested update or delete operation when the user confirms the action with the appropriate function key."
+        },
+        {
+          "program_name": "COCRDLIC",
+          "relative_path": "src/demo/cbl/COCRDLIC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Credit card inquiry screen navigation and input handling; This program manages the credit card inquiry user interface, receiving user input from the card inquiry screen, validating the entered account and card numbers, and routing the user to the main menu when the exit key is pressed. The program maps function keys to business actions, validates numeric input fields, and transfers control to the menu program when requested.; Credit card list navigation and detail transfer; The program initializes the credit card work area and communication context, receives and validates user input from the card list screen, maps function keys to business actions, and transfers control to the card detail program when a card is selected for viewing. The program enforces input validation rules for account identifiers and card numbers, ensures only one card row is selected at a time, and maintains navigation state across pagination and re-entry scenarios.; Credit card update delegation and navigation; The program initializes the credit card work area and communication context, receives and validates user input from the screen, maps function keys to business actions, and when the user selects a card for update, transfers control to the card update program with the selected account and card details in the shared communication area.; Card listing and pagination interface; This program displays a paginated list of payment cards filtered by optional account and card number criteria. It retrieves card records from the card file, validates user input, manages screen pagination with forward and backward navigation, and displays the results on a BMS screen with selection and status indicators. The program handles user interactions through function keys (Enter, PF3, PF7, PF8) to control navigation and selection actions."
+        },
+        {
+          "program_name": "COUSR00C",
+          "relative_path": "src/demo/cbl/COUSR00C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "User selection navigation and transfer; The program receives a user list screen input, evaluates the user's selection from up to 10 available rows, and transfers control to the appropriate destination program based on the selected user and action type. When the user selects a row with a valid action flag (user detail or deletion), the program populates the communication area with the selection details and transfers control to the destination program; otherwise, it clears the selection fields.; User list selection and routing; This capability handles the user list screen, where an operator selects a user record for update or deletion. On initial entry the program immediately processes the selection; on re-entry it first collects the operator's screen input, then evaluates the key pressed. When the Enter key is pressed, the program identifies which row was selected, captures the action flag and user identifier, and transfers control to the appropriate destination program based on whether the action is an update or a delete.; Screen navigation and program transfer control; The program initializes the next-page flag, receives input from the user via CICS, and based on the communication area state and attention identifier (function key pressed), determines the destination program for navigation. When the communication area is empty or when PF3 is pressed during re-entry, the program prepares the navigation context and transfers control to the destination program via XCTL.; User list display and navigation; The program manages a paginated user list display on a 3270 terminal screen. It retrieves user records from the user security file, populates the screen with up to 10 users per page, and handles pagination via PF7 (backward) and PF8 (forward) keys. The screen is sent to the terminal with current date, time, transaction ID, and any error or status messages."
+        },
+        {
+          "program_name": "COBIL00C",
+          "relative_path": "src/demo/cbl/COBIL00C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Card demonstration application navigation; This program handles user navigation within a card demonstration application. When invoked with no communication area, it routes to the signon screen. When invoked with a communication area, it processes user key presses (ENTER, PF3, PF4) to determine the next destination program, then transfers control to that program with updated navigation context.; Bill payment transaction processing and screen management; This program manages an interactive bill payment workflow through a CICS BMS screen interface. It receives user input for account identification and payment confirmation, validates the account and card cross-reference data, constructs and writes a transaction record, updates the account balance, and displays status messages and transaction details back to the user. The three primary output operations are the screen display (SEND MAP), the account balance update (REWRITE), and the transaction record creation (WRITE)."
+        }
+      ]
+    },
+    {
+      "name": "Account and Card Inquiry Services",
+      "description": "Provides interactive and message queue-based inquiry capabilities for account and card information. Retrieves and displays account details, card cross-reference data, and customer information through online screens and asynchronous message queues.",
+      "program_names": [
+        "CBACT01C",
+        "COACCT01",
+        "CBACT03C",
+        "CBACT02C",
+        "CBCUS01C",
+        "READACCT",
+        "READCARD",
+        "READXREF",
+        "READCUST"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "CBACT01C",
+          "relative_path": "src/demo/cbl/CBACT01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Account record processing and output; The program reads account records sequentially from an indexed account file, transforms each record by populating an output structure with account details and converting date formats via an external date-conversion service, and writes the enriched record to a sequential output file. Processing continues until the input file is exhausted, with application result codes tracking success, end-of-file, and error conditions.; Account balance array file production; This capability reads account records sequentially from the account file and writes them to a sequential array-formatted output file. Each account record is enriched with hardcoded cycle debit amounts and balance values across five array positions before being written. Processing continues until all account records have been read, with end-of-file and error conditions tracked via an application result code.; Account data variable-block export; This capability reads all accounts sequentially from the account data store and writes two variable-length output records per account to the variable-block output file. The first output record captures the account identifier and active status; the second captures the account identifier, current balance, credit limit, and reissue year. Processing continues until all accounts have been read, with end-of-file and I/O error conditions setting the appropriate application result to control loop termination."
+        },
+        {
+          "program_name": "COACCT01",
+          "relative_path": "src/demo/app-vsam-mq/cbl/COACCT01.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Message queue request-reply account inquiry; The program retrieves account inquiry requests from an input message queue, looks up account details from a file, and sends replies to an output queue. When errors occur during queue operations or file lookups, error messages are sent to an error queue. All queue handles are properly closed at termination."
+        },
+        {
+          "program_name": "CBACT03C",
+          "relative_path": "src/demo/cbl/CBACT03C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Card cross-reference file retrieval and display; The program opens a card cross-reference file (XREFFILE) and iterates through its records sequentially. For each record successfully read, the program displays the card cross-reference record. The loop terminates when the end of file is reached or when a file I/O error occurs."
+        },
+        {
+          "program_name": "CBACT02C",
+          "relative_path": "src/demo/cbl/CBACT02C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Card file batch retrieval and display; The program opens an indexed card file and iterates through its records sequentially. For each record successfully retrieved, the program displays the card record. The iteration continues until the end of the file is reached or an error occurs. The application result code is set to indicate success (0), end-of-file (16), or other errors (12)."
+        },
+        {
+          "program_name": "CBCUS01C",
+          "relative_path": "src/demo/cbl/CBCUS01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Customer file sequential read and display; The program opens the customer file and sequentially reads records, displaying each customer record to the output. The read operation returns a success code when a record is retrieved, an end-of-file code when no more records are available, or an error code when the read fails. The program terminates when the end-of-file condition is reached."
+        },
+        {
+          "program_name": "READACCT",
+          "relative_path": "src/demo/jcl/READACCT.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Account master file processing and output generation; This JCL job executes a program that reads account records from the account master data store and writes the processed results to three output datasets: a fixed-record output file, an array-format output file, and a variable-record output file. The job allocates the input account master store for shared read access and creates three new output stores with appropriate record formats and storage allocation."
+        },
+        {
+          "program_name": "READCARD",
+          "relative_path": "src/demo/jcl/READCARD.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Card master file read operation; This JCL job executes a program that reads card master records from a VSAM key-sequenced dataset. The job allocates the program library and the card data store, then invokes the card-reading program to process the card master file. Output is directed to the system output device."
+        },
+        {
+          "program_name": "READXREF",
+          "relative_path": "src/demo/jcl/READXREF.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Cross-reference file read operation; This JCL job executes a program that reads and processes records from a cross-reference master data store. The job allocates the program library and the cross-reference dataset, then invokes the processing program to retrieve and handle the cross-reference data. Output is directed to the system output stream."
+        },
+        {
+          "program_name": "READCUST",
+          "relative_path": "src/demo/jcl/READCUST.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Customer master file retrieval; This JCL job executes a program that reads customer records from the customer master data store. The job allocates the program library and the customer data store, then invokes the customer retrieval program to process the customer master file and produce output to the system output device."
+        }
+      ]
+    },
+    {
+      "name": "Transaction Processing and Posting",
+      "description": "Processes daily transactions including validation, account lookup, posting, and rejection handling. Validates transactions against cross-reference and account data, posts valid transactions to accounts, and manages rejected transaction records.",
+      "program_names": [
+        "CBTRN02C",
+        "CBTRN01C",
+        "COMBTRAN",
+        "POSTTRAN"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "CBTRN02C",
+          "relative_path": "src/demo/cbl/CBTRN02C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Daily transaction validation and rejection handling; The program processes daily transaction records by validating each transaction against cross-reference and account data, then either posts valid transactions to the account or writes rejected transactions to a rejection file. Validation checks include card number validity, account existence, credit limit compliance, and account expiration status. Rejected transactions are written to the daily rejection file with the specific validation failure reason and description.; Daily transaction posting and balance updates; The program processes daily transaction records sequentially, validating each transaction against card cross-reference and account master data, then posting approved transactions to update transaction category balances and account balances. Validation checks card existence, account existence, available credit, and account expiration; transactions failing any check are rejected. Approved transactions create new category balance records or update existing ones, and adjust the account's current balance and cycle credit/debit amounts.; Daily transaction posting and account reconciliation; The program processes daily transactions from an input file, validates each transaction against cross-reference and account records, and posts approved transactions to both the account master file and a transaction archive. Validation checks that the card number exists in the cross-reference file, the associated account exists and has not expired, and the transaction amount does not exceed available credit. Approved transactions update the account's current balance and cycle credit/debit amounts, then are written to the transaction archive with a processing timestamp."
+        },
+        {
+          "program_name": "CBTRN01C",
+          "relative_path": "src/demo/cbl/CBTRN01C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Daily transaction account lookup and validation; The program processes daily transaction records sequentially, looking up each transaction's card number in a cross-reference file to obtain the associated account identifier, then retrieving the corresponding account record to validate its existence. When an account is not found, the program displays an error message with the account identifier.; Daily transaction card cross-reference lookup; The program opens two files—a daily transaction file and a card cross-reference file—then processes each transaction record by reading the card number, looking up the corresponding cross-reference record, and displaying the matched card, account, and customer identifiers. Processing continues until the daily transaction file is exhausted.; Daily transaction card verification processing; The program reads daily transaction records sequentially, displays each transaction, and verifies the associated card number against a cross-reference file. When a card is found in the cross-reference file, processing continues; when a card cannot be verified, the transaction is logged and skipped. The program terminates when all daily transactions have been processed."
+        },
+        {
+          "program_name": "COMBTRAN",
+          "relative_path": "src/demo/jcl/COMBTRAN.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction consolidation and indexing; This job combines transaction records from two sources (backup and system-generated), sorts them by transaction identifier in ascending order, and loads the consolidated result into a transaction master index. The sort operation merges the two input datasets and produces a combined output; the subsequent load operation copies the sorted records into the indexed transaction store for fast retrieval."
+        },
+        {
+          "program_name": "POSTTRAN",
+          "relative_path": "src/demo/jcl/POSTTRAN.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Daily transaction posting and balance update; This job step invokes the transaction posting program to process daily transaction records, validate them against account and cross-reference data, and produce a rejected-transaction output dataset. The program reads from the daily transaction file, account master store, and card cross-reference store, then writes accepted transactions to the transaction master and rejected transactions to a new rejection dataset."
+        }
+      ]
+    },
+    {
+      "name": "Authorization Management",
+      "description": "Manages authorization request processing, pending authorization records, and fraud event recording. Handles authorization selection, detail screens, fraud flagging, and expiration-based cleanup of authorization records.",
+      "program_names": [
+        "COPAUS2C",
+        "CBPAUP0C",
+        "COPAUS0C",
+        "COPAUA0C",
+        "CBPAUP0J",
+        "COPAUS1C"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "COPAUS2C",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Fraud authorization record insertion; This capability records a flagged card authorization as a fraud event. It derives a formatted authorization timestamp from the original authorization date and time components supplied in the input parameters, assembles all transaction and merchant details into a fraud authorization record, and inserts that record into the fraud authorization store with the current date as the fraud report date.; Authorization fraud record update; This capability updates an existing fraud record in the authorization fraud store when a duplicate-key condition is detected during a prior operation. It reconstructs the authorization timestamp from its numeric and date components, assembles the fraud record key fields, and — only when a duplicate-key conflict was previously encountered — overwrites the fraud indicator and report date for the matching card number and timestamp. The fraud action code supplied by the caller drives the value written to the fraud indicator field.; Fraud record add or update; This capability records a fraud report by capturing the current date and attempting to add or update a fraud authorization record. When the initial insert succeeds, the fraud update status is marked as successful with an 'ADD SUCCESS' message. When a duplicate key is detected, the capability falls back to an update path and reports 'UPDT SUCCESS' or a database error message accordingly. Any other database failure sets the status to failed and records the specific error code and state in the fraud action message."
+        },
+        {
+          "program_name": "CBPAUP0C",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Expired authorization record cleanup; The program processes pending authorization records from an IMS database, identifies those that have expired based on a configurable expiry threshold, and deletes the expired records while updating the authorization summary totals. The expiry threshold is either provided as input or defaults to 5 days. Records are evaluated by comparing the authorization date against the current date, and approved or declined amounts are decremented from the summary based on the authorization response code.; Pending authorization expiry and cleanup; The program processes pending authorization records from an IMS database, checking each authorization detail against an expiry threshold. When an authorization has expired, the program adjusts the summary counts and amounts accordingly. When all authorizations in a summary have expired (both approved and declined counts reach zero), the program deletes the summary record from the database."
+        },
+        {
+          "program_name": "COPAUS0C",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Authorization selection and program navigation; The program receives user input from the authorization selection screen, validates the account identifier and selection choices, and transfers control to the appropriate authorization details program. The flow handles screen input collection, validates that required fields are populated with valid data, maps the user's selection to the corresponding authorization key, and navigates to the authorization details screen when valid selections are made.; Authorization screen navigation and control transfer; The program receives a communication area from a calling program, evaluates the user's key input when re-entering, and routes control to the appropriate destination program based on the key pressed or a default target. When PF3 is pressed, the menu program is selected as the destination; when the destination is unset, the signon screen is used as a fallback. The program then transfers control to the selected destination program, passing the updated communication area.; Pending authorization list display and navigation; The program displays a list of pending authorizations for a customer account, allowing the user to navigate through pages of authorization records. It retrieves account details, customer information, and authorization summaries from multiple data sources, then formats and displays them on a 3270 terminal screen. The user can enter an account ID, select specific authorizations, and navigate forward and backward through pages of results using function keys."
+        },
+        {
+          "program_name": "COPAUA0C",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Authorization request processing and response delivery; This program processes pending authorization requests received from a message queue, validates card and account information against master files and an IMS database, makes approval or decline decisions based on available credit limits, and sends authorization responses back through the message queue. Error conditions at each stage are logged to an audit queue."
+        },
+        {
+          "program_name": "CBPAUP0J",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Batch authorization expiration cleanup; This job executes an IMS batch program to delete expired authorization records from the authorization database. The job invokes the authorization-update program under the IMS batch message processing environment, passing configuration parameters that specify the target program, the PSB (Program Specification Block) for database access, and control flags. The program processes authorization records and removes those that have exceeded their validity period, with execution output and diagnostics routed to standard job output datasets."
+        },
+        {
+          "program_name": "COPAUS1C",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Authorization detail screen navigation; The program handles authorization detail screen interactions and navigation. When the communication area is empty, it initializes the context and transfers to the authorization summary screen. When re-entering with user input, it evaluates the terminal key pressed: PF3 returns to the authorization summary screen, while other keys trigger alternative processing. Navigation transfers control to the destination program with updated context information.; Authorization transaction fraud detection and display; This program manages the display and processing of pending authorization transactions with fraud detection capabilities. It retrieves authorization records from the database, populates a 3270 terminal screen with transaction details, and allows users to mark authorizations as fraudulent or remove fraud flags via function keys. The program delegates fraud-status updates to an external service and displays the current authorization state with merchant and transaction information.; Authorization fraud status update workflow; The program processes authorization fraud status changes initiated by user function-key input. When the user presses PF5 on a reentry transaction, the program retrieves the pending authorization record from the database, toggles its fraud status (confirmed to removed, or removed to confirmed), delegates to a fraud-processing service to validate and record the change, and updates the authorization record in the database with the new fraud status."
+        }
+      ]
+    },
+    {
+      "name": "Statement and Report Generation",
+      "description": "Generates customer account statements, transaction reports, and category balance reports. Enriches transaction data with cross-reference and account information, applies multi-level totals, and produces formatted output for business analysis.",
+      "program_names": [
+        "CBTRN03C",
+        "CBSTM03B",
+        "CBSTM03A",
+        "TRANREPT",
+        "CREASTMT",
+        "PRTCATBL"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "CBTRN03C",
+          "relative_path": "src/demo/cbl/CBTRN03C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Transaction report generation with multi-level totals; The program reads transaction records from the transaction file, enriches each transaction with cross-reference account data and transaction type/category descriptions from lookup files, and writes formatted transaction detail lines and periodic totals (page, account, and grand totals) to a report file. The report is organized by card number with page breaks every 20 lines, and processing is controlled by date parameters read from a date-parameters file."
+        },
+        {
+          "program_name": "CBSTM03B",
+          "relative_path": "src/demo/cbl/CBSTM03B.CBL",
+          "component_type": "Transaction",
+          "business_rule_overview": "Multi-file record retrieval dispatcher; The program dispatches file access requests based on a data definition identifier in the M03B linkage area control group. For each of four supported files (transaction, cross-reference, customer, and account), the program performs the requested operation (open, read, or close) and returns the file status code to the caller. Keyed reads for customer and account files extract the access key from the linkage area before retrieving the record."
+        },
+        {
+          "program_name": "CBSTM03A",
+          "relative_path": "src/demo/cbl/CBSTM03A.CBL",
+          "component_type": "Transaction",
+          "business_rule_overview": "Customer account statement generation; This capability reads card cross-reference, customer, account, and transaction data to produce formatted customer account statements. For each card cross-reference record, it retrieves the associated customer and account details, assembles a multi-section statement header, matches transactions from an in-memory table, and writes each transaction line followed by a total and footer. The output is a structured statement file containing customer identity, account balance, FICO score, itemized transactions, and a running total.; File lifecycle and record retrieval orchestration; This program orchestrates the opening, reading, and closing of four data files (transaction, cross-reference, customer, and account) through a state-machine dispatcher. It retrieves cross-reference records sequentially, uses the customer and account IDs from each cross-reference to perform keyed lookups in the customer and account files, and closes all files at the end of processing. All file operations delegate to a file-handling service (`CBSTM03B`)."
+        },
+        {
+          "program_name": "TRANREPT",
+          "relative_path": "src/demo/jcl/TRANREPT.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction report generation and filtering; This job pack unloads processed transactions from a VSAM store, filters them by date range, sorts them by card number, and produces a formatted transaction report. The flow involves copying transactions to a backup dataset, filtering and sorting by transaction date and card identifier, then delegating to a report formatter that enriches the sorted transactions with reference data (card cross-reference, transaction type, transaction category, and date parameters) to produce the final report output."
+        },
+        {
+          "program_name": "CREASTMT",
+          "relative_path": "src/demo/jcl/CREASTMT.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "Card transaction statement generation pipeline; This batch job orchestrates the creation of card transaction statements by first deleting and recreating a keyed transaction file, then sorting transaction records by card number and transaction ID, copying the sorted records into a VSAM cluster, deleting previous statement reports, and finally invoking a statement generation program that reads transaction, card reference, account, and customer data to produce text and HTML statement reports."
+        },
+        {
+          "program_name": "PRTCATBL",
+          "relative_path": "src/demo/jcl/PRTCATBL.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction category balance report generation; This job unloads processed transaction category balance records from a data store, filters and sorts them by account identifier, transaction type, and category code, and produces a formatted report output. The job executes two sequential steps: first, a data copy operation retrieves the transaction category balance records; second, a sort operation reorganizes the records in ascending order by account, type, and category, reformats each record to include space-separated fields and a formatted balance amount, and writes the sorted result to the report dataset."
+        }
+      ]
+    },
+    {
+      "name": "Data Import and Export Operations",
+      "description": "Manages bulk data import and export operations across multiple data sources. Transforms and consolidates customer, account, card, transaction, and cross-reference data between VSAM files and sequential datasets.",
+      "program_names": [
+        "CBIMPORT",
+        "TRANEXTR",
+        "CBEXPORT"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "CBIMPORT",
+          "relative_path": "src/demo/jcl/CBIMPORT.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Customer data import and file splitting; The job invokes the import program to read customer data from a multi-record export file and split it into separate normalized output files for customer records, account records, card cross-reference records, and transaction records. Error records are written to a dedicated error file. The program processes the entire export dataset and distributes each record type to its corresponding output store."
+        },
+        {
+          "program_name": "TRANEXTR",
+          "relative_path": "src/demo/app-transaction-type-db2/jcl/TRANEXTR.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction type data extraction and backup; This job extracts transaction type and transaction category data from a database and creates backup copies of the previous versions. The job performs three sequential operations: backing up the current transaction type file to a generation data group, backing up the current transaction category file to a generation data group, and then extracting fresh transaction type and category data from the database tables, writing the results to new datasets. The job uses conditional execution to skip steps if previous steps fail, ensuring data integrity throughout the extraction process."
+        },
+        {
+          "program_name": "CBEXPORT",
+          "relative_path": "src/demo/cbl/CBEXPORT.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Multi-source data export with sequential record assembly; The program orchestrates the export of customer, account, cross-reference, transaction, and card data from five input sources into a unified export file. Each data category is read sequentially, transformed into a standardized export record format with a common header (record type, timestamp, sequence number, branch, and region), and written to the export output store. The export process is driven by a main control loop that invokes specialized export procedures for each data category in sequence."
+        }
+      ]
+    },
+    {
+      "name": "Database Maintenance and Synchronization",
+      "description": "Maintains database consistency through transaction record insertion, authorization record loading, and database plan management. Handles IMS and DB2 database operations including unload, load, and cleanup activities.",
+      "program_names": [
+        "COBTUPDT",
+        "CREADB21",
+        "CBADMCDJ",
+        "PAUDBLOD",
+        "UNLDPADB",
+        "DBUNLDGS",
+        "DBPAUTP0",
+        "PAUDBUNL",
+        "UNLDGSAM",
+        "LOADPADB",
+        "MNTTRDB2"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "COBTUPDT",
+          "relative_path": "src/demo/app-transaction-type-db2/cbl/COBTUPDT.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Transaction record insertion into database; The program reads transaction records sequentially from an input file, evaluates each record's type indicator, and for records marked as insert operations (type 'A'), inserts the transaction reference number and description into the transaction type database table. The process continues until the end of the input file is reached.; Transaction type database update processing; The program reads transaction records sequentially from an input file, evaluates each record's type indicator, and when the type is 'U' (update), updates the corresponding transaction type record in the database with the new description. The process continues until the end of the input file is reached.; Transaction type record deletion; The program reads transaction records sequentially from an input file, evaluates each record's type indicator, and when the type is marked for deletion, removes the corresponding transaction type record from the database. The process continues until the end of the input file is reached."
+        },
+        {
+          "program_name": "CREADB21",
+          "relative_path": "src/demo/app-transaction-type-db2/jcl/CREADB21.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Database plan and package cleanup; This step invokes a TSO batch utility to free (deallocate) existing database plans and packages before creating a new database. The step is designed to run with a return code of 8 when the plans or packages do not exist, which is an expected outcome and should not cause the job to fail. The step loads the necessary database utilities and control statements to perform the cleanup operation.; Database table creation via TSO batch utility; This job step invokes the DB2 table-creation utility to establish the transaction-type database table using an existing storage group. The step executes under the TSO batch wrapper, reading table-definition control statements and utility parameters from cataloged datasets, and produces diagnostic output to the job log.; Transaction type database table loading; This job pack executes two sequential database table-load operations via the DB2 test execution program. The first step loads the transaction type lookup table; the second step, conditional on the first step's success, loads the transaction type category table. Both steps invoke the same DB2 utility program with different control and input datasets to populate the application's reference data."
+        },
+        {
+          "program_name": "CBADMCDJ",
+          "relative_path": "src/demo/jcl/CBADMCDJ.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "CICS application resource definition and installation; This job step invokes the CICS configuration utility to read and process application resource definitions from the input stream. The step loads the CICS system library, accesses the CICS configuration data store, and processes a series of DEFINE commands that register screen maps, application programs, and transaction identifiers for the CARDDEMO application group. The utility validates and installs these definitions into the CICS configuration, making the application resources available for runtime execution."
+        },
+        {
+          "program_name": "PAUDBLOD",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL",
+          "component_type": "Transaction",
+          "business_rule_overview": "Authorization record insertion into IMS database; The program reads root and child segment records from two sequential input files, validates the data, and inserts them into an IMS database via the CBLTDLI interface. Root segments are inserted directly; child segments are inserted only after a qualified Get Unique lookup succeeds, ensuring referential integrity within the hierarchical database structure."
+        },
+        {
+          "program_name": "UNLDPADB",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "IMS database unload to sequential files; This job step invokes the IMS database unload utility to extract data from the authorization database (PAUTDB) in DLI mode, writing root and child records to separate sequential output files. The utility reads the IMS database definitions, accesses the authorization database through DLI, and produces two output datasets containing the extracted records."
+        },
+        {
+          "program_name": "DBUNLDGS",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL",
+          "component_type": "Transaction",
+          "business_rule_overview": "Pending authorization record retrieval and insertion; The program retrieves pending authorization summary and detail records from an IMS database using hierarchical Get Next operations, validates the account identifier, and inserts matching records into output data stores. The process iterates through root-level authorization summaries, and for each valid summary, retrieves and inserts all associated child-level authorization details until the end of each hierarchy level is reached."
+        },
+        {
+          "program_name": "DBPAUTP0",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Database authorization unload operation; This job step extracts and unloads the authorization database (DBPAUTP0) using the IMS database utility. The step invokes the database unload service with conditional activation, reading from authorization data stores and IMS control libraries, and writing the extracted records to a new output dataset. The operation supports IMS recovery and audit functions by capturing the current state of authorization definitions."
+        },
+        {
+          "program_name": "PAUDBUNL",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL",
+          "component_type": "Transaction",
+          "business_rule_overview": "Authorization record batch processing and output; The program retrieves pending authorization summary records from a database, validates the account identifier, and writes matching records to an output file. For each valid summary record, the program also retrieves and processes associated detail records. The process continues until all root-level records have been exhausted.; Pending authorization batch extraction and output; The program retrieves pending authorization records from a hierarchical database, organized as root segments (accounts) and child segments (authorization details). For each root segment found, the program retrieves all associated child segments and writes them to an output file. Processing terminates when no more root segments are available."
+        },
+        {
+          "program_name": "UNLDGSAM",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "IMS database unload execution; This job step executes the IMS database unload program (DBUNLDGS) through the IMS runtime controller. The step allocates access to IMS runtime libraries, database definition libraries, GSAM data stores, and authorization databases, then invokes the unload process to extract data from the IMS database hierarchy. Output is directed to standard print and error streams."
+        },
+        {
+          "program_name": "LOADPADB",
+          "relative_path": "src/demo/app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "Payment audit database load operation; This job executes an IMS batch message processing program to load payment audit database records. The job invokes the IMS runtime environment (DFSRRC00) with parameters specifying batch mode execution, the payment audit load PSB (PAUDBLOD), and the authentication PSB (PSBPAUTB). Input data flows from two source datasets (root and child records), and the IMS runtime processes them against the configured database and PSB libraries, producing diagnostic output to standard print and error streams."
+        },
+        {
+          "program_name": "MNTTRDB2",
+          "relative_path": "src/demo/app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Database transaction table maintenance; This job maintains a DB2 transaction table by processing batch input records that specify add, update, or delete operations. The job reads transaction records from the input file, where each record begins with an operation code (A for add, D for delete, U for update, or * for comment), followed by a transaction type and description. The job delegates to the transaction update program to execute the specified database operations against the transaction table."
+        }
+      ]
+    },
+    {
+      "name": "Data Store Initialization and Lifecycle Management",
+      "description": "Prepares and manages the lifecycle of VSAM datasets and generation data groups. Creates indexed-sequential datasets, defines alternate indexes, manages backup versions, and handles dataset deletion and recreation.",
+      "program_names": [
+        "XREFFILE",
+        "TRANBKP",
+        "ESDSRRDS",
+        "DISCGRP",
+        "TRANTYPE",
+        "TRANCATG",
+        "ACCTFILE",
+        "TCATBALF",
+        "DEFGDGB",
+        "TRANIDX",
+        "DUSRSECJ",
+        "DEFGDGD",
+        "DEFCUST",
+        "DALYREJS",
+        "REPTFILE"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "XREFFILE",
+          "relative_path": "src/demo/jcl/XREFFILE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Card reference index lifecycle management; This job manages the alternate index for card account cross-reference data. It first removes any existing alternate index to ensure a clean state, then creates a new alternate index keyed on account ID (positions 11–25) with non-unique keys, upgrade capability, and specified storage allocation on volume AWSHJ1. The index relates to the primary card reference dataset and includes both data and index components.; Alternate index path definition; This step defines a path that relates an alternate index to its base cluster in the card reference data store. The path enables efficient access to the alternate index by establishing the logical relationship between the alternate index and the base cluster it indexes.; Card cross-reference VSAM file initialization; This job pack prepares a card cross-reference data store by removing any existing instance, defining a new indexed sequential structure with 16-byte keys and 50-byte records, and populating it from a flat sequential source file. The final step builds an alternate index over the newly loaded data to enable secondary-key lookups."
+        },
+        {
+          "program_name": "TRANBKP",
+          "relative_path": "src/demo/jcl/TRANBKP.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction master index cleanup; The job step removes the alternate index for the transaction master file if it already exists in the system. This cleanup operation ensures a fresh state before subsequent processing steps that may recreate the index structure. The deletion is performed using the dataset management utility, reading deletion instructions from the control input.; Transaction master data store initialization; This job pack prepares a transaction master data store for use by deleting any existing instance and then creating a new indexed sequential dataset with specific storage and sharing parameters. The deletion step executes unconditionally; the creation step executes only if the deletion succeeds or is not needed (condition code less than 4). The final outcome is a fresh, empty transaction master store ready for transaction processing."
+        },
+        {
+          "program_name": "ESDSRRDS",
+          "relative_path": "src/demo/jcl/ESDSRRDS.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "User security file initialization and VSAM store setup; This job creates and populates user security data stores for a card-management system. It begins by generating a sequential file containing administrator and standard user records with their credentials and access levels, then defines and populates two VSAM data stores—one entry-sequenced (ESDS) and one relative-record (RRDS)—both sourced from the sequential file. The job establishes the foundational security infrastructure required for user authentication and authorization."
+        },
+        {
+          "program_name": "DISCGRP",
+          "relative_path": "src/demo/jcl/DISCGRP.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Disclosure group VSAM dataset initialization; This job prepares a disclosure group VSAM indexed-sequential dataset for use. It first removes any existing dataset, then defines a new indexed-sequential cluster with a 16-byte key and 50-byte records on a dedicated volume, and finally populates it by copying records from a flat sequential file. The three-step sequence ensures a clean, initialized dataset ready for production access."
+        },
+        {
+          "program_name": "TRANTYPE",
+          "relative_path": "src/demo/jcl/TRANTYPE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction type dataset initialization; This job pack prepares a transaction type reference dataset by removing any existing version, defining a new indexed sequential dataset structure, and populating it with transaction type records from a flat file source. The three-step sequence ensures a clean, consistent dataset ready for application use."
+        },
+        {
+          "program_name": "TRANCATG",
+          "relative_path": "src/demo/jcl/TRANCATG.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction category VSAM dataset initialization; This job prepares a transaction category reference dataset by deleting any existing VSAM cluster, defining a new indexed-sequential cluster with a 6-byte key and 60-byte records, and populating it from a flat file source. The three-step sequence ensures a clean, initialized dataset ready for transaction categorization lookups."
+        },
+        {
+          "program_name": "ACCTFILE",
+          "relative_path": "src/demo/jcl/ACCTFILE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Account data store initialization and population; This JCL job prepares a keyed sequential data store for account records by first removing any existing store, then defining a new indexed store with specific allocation parameters, and finally populating it with account data from a sequential source file. The three-step process ensures a clean, properly-configured account data repository ready for production use."
+        },
+        {
+          "program_name": "TCATBALF",
+          "relative_path": "src/demo/jcl/TCATBALF.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction category balance data store setup; This job prepares a transaction category balance data store by first removing any existing instance, then defining a new indexed-sequential data store with specific capacity and sharing parameters, and finally populating it with transaction records from a flat file. The three sequential steps ensure a clean, initialized data store ready for production use."
+        },
+        {
+          "program_name": "DEFGDGB",
+          "relative_path": "src/demo/jcl/DEFGDGB.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Generation data group definition for transaction backup; This job defines a generation data group (GDG) base named AWS.M2.CARDDEMO.TRANSACT.BKUP to support the card demonstration project. The GDG is configured to retain a maximum of 5 generations and automatically scratch (delete) the oldest generation when the limit is exceeded. This provides a rolling backup capability for transaction data, ensuring that recent backup versions are preserved while older versions are automatically cleaned up.; Generation data group base definition; The job defines a generation data group (GDG) base for the card transaction daily dataset. The GDG base is configured to retain a maximum of 5 generations, with older generations automatically deleted when the limit is exceeded. This setup enables the system to maintain a rolling history of daily transaction files while automatically managing storage by removing obsolete generations.; Transaction report dataset versioning setup; This job defines a generation data group (GDG) base for the transaction report dataset, establishing a versioning container that automatically manages up to five generations of report output. When the generation limit is exceeded, the oldest generations are automatically deleted to maintain storage efficiency. The GDG base enables the batch reporting process to create successive versions of the transaction report without manual dataset management.; Generation data group definition for backup dataset; The job defines a generation data group (GDG) base named AWS.M2.CARDDEMO.TCATBALF.BKUP to manage versioned backup datasets for the card demonstration project. The GDG is configured to retain a maximum of 5 generations and automatically scratch (delete) the oldest generation when the limit is exceeded, enabling rolling backup retention without manual dataset cleanup.; Generation data group base definition; The job defines a generation data group base for the card transaction system, establishing a versioned dataset container that retains up to five generations of transaction data with automatic cleanup of older versions. The definition uses inline control statements to configure the generational dataset parameters, enabling the system to maintain a rolling history of transaction records without manual dataset management.; Generational dataset base creation for transaction records; The job defines a generational dataset group (GDG) base to manage versioned copies of combined transaction records. The GDG base retains up to 5 generations and automatically deletes older generations when the limit is exceeded, ensuring controlled archival and space management for the card-demo transaction processing pipeline."
+        },
+        {
+          "program_name": "TRANIDX",
+          "relative_path": "src/demo/jcl/TRANIDX.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Transaction timestamp index creation; This job step creates an alternate index on the transaction data store, keyed by processed timestamp to enable efficient retrieval of transactions by their processing date. The alternate index is defined as non-unique (multiple transactions may share the same timestamp) with automatic upgrade capability, allocated on the specified volume with a fixed record size and storage allocation.; Alternate index path definition; The job defines a path that relates an alternate index to its base cluster, enabling indexed access to transaction records. The path definition establishes the logical connection between the alternate index (AWS.M2.CARDDEMO.TRANSACT.VSAM.AIX) and its corresponding path name (AWS.M2.CARDDEMO.TRANSACT.VSAM.AIX.PATH), allowing applications to query transactions through this alternate index structure.; Transaction record indexing; The job builds an alternate index over the transaction master store to enable efficient lookups by secondary key. The index is constructed from the primary transaction dataset and written to a dedicated alternate-index dataset, enabling queries that would otherwise require sequential scans."
+        },
+        {
+          "program_name": "DUSRSECJ",
+          "relative_path": "src/demo/jcl/DUSRSECJ.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "User security file initialization and VSAM indexing; This job creates and populates a user security file by first generating a sequential dataset from embedded user records (administrators and standard users), then defining a VSAM indexed cluster, and finally copying the sequential data into the indexed store for efficient access by user ID. The job establishes the foundational security data structure required for user authentication and authorization."
+        },
+        {
+          "program_name": "DEFGDGD",
+          "relative_path": "src/demo/jcl/DEFGDGD.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Generation data group definition for transaction reference backup; This job defines a generation data group (GDG) to manage versioned backups of transaction type reference data. The GDG is configured to retain up to 5 generations and automatically scratch (delete) the oldest generation when the limit is exceeded. The definition is submitted via the IDCAMS utility, which processes the inline control statements to create the GDG structure in the catalog.; Generation data group setup for transaction reference data; This batch job establishes generation data group (GDG) infrastructure for transaction reference data by defining a GDG base with a retention limit of 5 generations and automatic scratch-on-delete, then populates the first generation by copying transaction type records from the source dataset. The job ensures transaction reference data is versioned and managed under GDG lifecycle rules.; Generational dataset initialization for transaction reference data; This job establishes generational dataset groups (GDGs) for transaction type and transaction category reference data, with a retention limit of 5 generations. The job defines the GDG structures via IDCAMS and populates the first generation of each GDG by copying source reference data into the newly created backup datasets.; Generation data group lifecycle management; The job defines a generation data group for the disclosure backup dataset with a retention policy of five generations. When the limit is exceeded, non-current generations are automatically deleted to maintain the configured capacity.; Disclosure group generational backup; The job creates a generational backup of the disclosure group dataset. STEP50 invokes a catalog utility to prepare the environment. STEP60 copies the current disclosure group records to a new generation of the backup store, executing only if the previous step succeeds. The backup is allocated with fixed record format and cataloged for retention."
+        },
+        {
+          "program_name": "DEFCUST",
+          "relative_path": "src/demo/jcl/DEFCUST.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Customer data store deletion; This job step removes an existing customer data store if one is already present in the system. The step invokes a utility to delete the customer data store cluster, enabling a clean re-initialization of the customer master data. The deletion is unconditional and occurs as part of a setup or reset procedure.; Customer data store initialization; This job pack defines and initializes the customer master data store. It first attempts to delete any existing customer data cluster to ensure a clean state, then creates a new indexed sequential customer data store with specific allocation parameters (1 primary cylinder, 5 secondary cylinders, 10-byte keys, 500-byte records) and sharing options to support concurrent batch and online access."
+        },
+        {
+          "program_name": "DALYREJS",
+          "relative_path": "src/demo/jcl/DALYREJS.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Daily rejection dataset generation setup; This job step defines a generation data group for the daily rejection master dataset, establishing a versioning container that retains up to five generations of the dataset with automatic scratch (deletion) of the oldest generation when the limit is exceeded. The step uses the dataset definition utility to create the generation data group structure, enabling the job to manage multiple historical versions of daily rejection records."
+        },
+        {
+          "program_name": "REPTFILE",
+          "relative_path": "src/demo/jcl/REPTFILE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Generation data group definition for transaction reports; This JCL job defines a generation data group for transaction report datasets, configuring it to retain a maximum of 10 generations. The job uses the dataset management utility to create the generation data group structure, enabling automatic versioning and retention of historical transaction reports."
+        }
+      ]
+    },
+    {
+      "name": "Batch File and Resource Management",
+      "description": "Manages file opening and closing operations for batch processing, CICS region resource coordination, and operator command execution. Enables exclusive batch access to shared resources through coordinated file lifecycle management.",
+      "program_names": [
+        "INTRDRJ2",
+        "TRANFILE",
+        "CARDFILE",
+        "CUSTFILE",
+        "CLOSEFIL",
+        "OPENFIL",
+        "INTRDRJ1"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "INTRDRJ2",
+          "relative_path": "src/demo/jcl/INTRDRJ2.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": ""
+        },
+        {
+          "program_name": "TRANFILE",
+          "relative_path": "src/demo/jcl/TRANFILE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Close transaction files in CICS region; The job invokes the SDSF operator command interface to close two transaction-related files (TRANSACT and CXACAIX) in the CICS application region for exclusive batch access. The step reads operator commands from the ISFIN dataset and routes output to SYSOUT for monitoring.; Transaction index rebuild and maintenance; This job pack removes an existing alternate index on the transaction master file and then recreates it with updated specifications. The alternate index enables efficient lookups by processed timestamp on the transaction records, with automatic synchronization when the base transaction cluster is modified. The two-step process ensures a clean rebuild of the index structure.; Alternate index path definition; The job defines a VSAM alternate index path that relates an alternate index to its base cluster, enabling efficient access to transaction records through the alternate index structure. The path definition establishes the logical connection between the alternate index and the base cluster, allowing queries to be routed through the alternate index when appropriate.; Transaction data store initialization and indexing; This job pack prepares a transaction data store by removing any existing instance, defining a new indexed structure with specific capacity and key characteristics, loading transaction records from a source file, and building an alternate index for efficient access. The sequence ensures a clean, properly-configured store ready for transaction processing.; File access enablement for batch processing; This job step invokes the operator command interface to open transaction files in the CICS region for exclusive batch access. The step sends two file-open commands targeting the TRANSACT and CXACAIX files, allowing the batch job to read and process transaction data while the CICS region temporarily suspends access to those resources."
+        },
+        {
+          "program_name": "CARDFILE",
+          "relative_path": "src/demo/jcl/CARDFILE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Close CICS region files for batch access; This job step invokes the SDSF operator command interface to close specific files in the CICS region, enabling exclusive batch processing. The step reads CEMT (CICS master terminal) commands from inline data, directing the CICS region to close the CARDDAT and CARDAIX files. Output from the command execution is routed to standard output for operator visibility.; Alternate index lifecycle management; This batch job manages the alternate index for the card data store. It first removes any existing alternate index to ensure a clean state, then defines a new alternate index keyed on the account ID field (bytes 11–16) with non-unique key support and automatic upgrade capability. The alternate index enables efficient lookups and range scans on account ID without requiring sequential access to the primary key-sequenced dataset.; Alternate index path definition; The job defines a path that relates an alternate index to its base cluster, enabling indexed access to card data through the alternate index. The DEFINE PATH operation establishes the logical connection between the alternate index (AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX) and its path name (AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX.PATH), allowing applications to query card records through this alternate key.; Card data store initialization and indexing; This job prepares a card data store by removing any existing instance, creating a new indexed store with specific capacity and key characteristics, populating it from a source file, and building an alternate index for efficient lookups. The job executes three sequential steps: deletion of the prior store (if present), creation of a new indexed store with 16-byte keys and 150-byte records, and population of the store from a flat-file source followed by index construction.; CICS file open operation; The job step invokes the system operator interface to open two CICS files for exclusive batch access. The step reads operator commands from inline data, directing the CICS region to open the card data file and its associated index file, enabling batch processing to proceed with file access."
+        },
+        {
+          "program_name": "CUSTFILE",
+          "relative_path": "src/demo/jcl/CUSTFILE.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "CICS file closure via batch operator command; This job step invokes the system operator interface to execute a file-closure command against a CICS region. The step reads a command from inline data that directs the CICS region to close a specific file, enabling exclusive batch access or maintenance. The command is submitted asynchronously through the operator interface; the job does not wait for or validate the closure outcome.; Customer data store initialization and population; This job prepares a customer data store by first removing any existing store, then defining a new indexed-sequential store with specific capacity and sharing parameters, and finally populating it by copying customer records from a flat file. The three sequential steps ensure a clean, properly-configured store ready for production use.; CICS file access enablement; This job step invokes the system facility to send an operator command that opens a specific file for exclusive batch access within the CICS region. The command targets the CUSTDAT file, transitioning it from closed to open state so that batch processing can proceed with direct file I/O."
+        },
+        {
+          "program_name": "CLOSEFIL",
+          "relative_path": "src/demo/jcl/CLOSEFIL.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Batch file closure for exclusive access; This job step closes multiple files in the transaction processing region to enable exclusive batch access. The step invokes the system operator interface to issue close commands for five critical files: the transaction log, cross-reference index, account data, account index, and user security store. Each file is closed sequentially via operator commands, allowing the batch process to proceed with guaranteed exclusive access to these resources."
+        },
+        {
+          "program_name": "OPENFIL",
+          "relative_path": "src/demo/jcl/OPENFIL.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "File opening in batch environment; This JCL job invokes the SDSF utility to send operator commands that open five critical files (TRANSACT, CCXREF, ACCTDAT, CXACAIX, USRSEC) for exclusive batch access. The commands are issued to the CICS region, marking each file with the open status so that batch processing can proceed without contention from online users."
+        },
+        {
+          "program_name": "INTRDRJ1",
+          "relative_path": "src/demo/jcl/INTRDRJ1.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "JCL member copy to print queue; This job step copies a JCL member from a partitioned dataset to the system print queue. The step reads the source member (AWS.M2.CARDDEMO.JCL(INTRDRJ2)) and writes each record to print class A with intrdr processing, producing a 80-byte fixed-length output suitable for job submission or archival."
+        }
+      ]
+    },
+    {
+      "name": "Utility and Support Services",
+      "description": "Provides common utility functions including date format transformation, date/time services, wait time operations, and file transfer capabilities. Supports batch processing coordination and data format conversions.",
+      "program_names": [
+        "MVSWAIT",
+        "COBSWAIT",
+        "CSUTLDTC",
+        "CODATE01",
+        "COBDATFT",
+        "FTPJCL",
+        "WAITSTEP",
+        "TXT2PDF1"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "MVSWAIT",
+          "relative_path": "src/demo/asm/MVSWAIT.asm",
+          "component_type": "Transaction",
+          "business_rule_overview": "Interval timer delay execution; This program receives a delay interval value from its caller, stores it in the timer event control block, and invokes the interval control timer to pause execution for the specified duration. Upon timer completion, the program restores the caller's registers and returns control."
+        },
+        {
+          "program_name": "COBSWAIT",
+          "relative_path": "src/demo/cbl/COBSWAIT.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Wait time service invocation; The program accepts a wait time parameter from standard input, converts it to the internal wait-time format, and delegates to the wait-time service to pause execution for the specified duration in milliseconds."
+        },
+        {
+          "program_name": "CSUTLDTC",
+          "relative_path": "src/demo/cbl/CSUTLDTC.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Date validation and Lillian conversion; The program accepts a date string and format mask from the caller, delegates to the system date service to convert the date to Lillian format and validate it, captures the validation result and any error feedback, and returns a formatted message describing the outcome to the caller."
+        },
+        {
+          "program_name": "CODATE01",
+          "relative_path": "src/demo/app-vsam-mq/cbl/CODATE01.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Message queue request-reply date service; This program implements a message queue-based request-reply service that retrieves date and time information. It opens three queues (input, output, and error), retrieves incoming requests from the input queue, processes each request by capturing the current system date and time, and sends the formatted response back to the reply queue. If any operation fails, error details are sent to the error queue. All queues are properly closed at termination."
+        },
+        {
+          "program_name": "COBDATFT",
+          "relative_path": "src/demo/asm/COBDATFT.asm",
+          "component_type": "Transaction",
+          "business_rule_overview": "Date format transformation and validation; This program transforms date formats between two representations: dates without separators (YYYYMMDD) and dates with hyphens (YYYY-MM-DD). It validates that the input type indicator matches the input date format, rejects mismatched output type requests, and populates an error message when validation fails."
+        },
+        {
+          "program_name": "FTPJCL",
+          "relative_path": "src/demo/jcl/FTPJCL.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "File transfer via FTP protocol; This job executes an FTP session to transfer a file from the mainframe to a remote FTP server. The job connects to an FTP server using provided credentials, navigates to a specified folder, and uploads a mainframe dataset to the remote system as a text file. The FTP commands are supplied via inline control statements that specify the server address, authentication, directory navigation, and the PUT operation to send the file."
+        },
+        {
+          "program_name": "WAITSTEP",
+          "relative_path": "src/demo/jcl/WAITSTEP.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Batch wait operation with configurable delay; This job step invokes a wait utility program to pause batch processing for a specified duration. The program reads a delay value in centiseconds from inline input and suspends execution accordingly, allowing time-based sequencing between dependent batch steps. The delay is specified as 36 seconds (3600 centiseconds) in the control input."
+        },
+        {
+          "program_name": "TXT2PDF1",
+          "relative_path": "src/demo/jcl/TXT2PDF1.JCL",
+          "component_type": "Batch",
+          "business_rule_overview": "Text-to-PDF conversion batch job; This job converts a text file to PDF format using a TSO batch wrapper. The job reads the input text dataset, invokes the conversion process with browsing enabled, and writes the output PDF to a named dataset. The conversion is triggered unconditionally as the main batch operation."
+        }
+      ]
+    },
+    {
+      "name": "Interest and Fee Calculation",
+      "description": "Processes transaction category balances to calculate accrued interest and applicable fees. Retrieves account and card cross-reference data, applies interest calculations, and updates account balances with computed amounts.",
+      "program_names": [
+        "CBACT04C",
+        "INTCALC"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "CBACT04C",
+          "relative_path": "src/demo/cbl/CBACT04C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Account interest accrual and transaction posting; The program processes transaction category balance records sequentially, retrieving associated account and card cross-reference data. For each account, it retrieves the applicable interest rate from the discount group file, computes monthly interest, and writes interest transactions to the transaction file. Account balances are updated with accumulated interest and cycle amounts are reset."
+        },
+        {
+          "program_name": "INTCALC",
+          "relative_path": "src/demo/jcl/INTCALC.jcl",
+          "component_type": "Batch",
+          "business_rule_overview": "Interest and fee calculation batch process; This batch job invokes the interest and fee calculation program to process transaction balances and compute accrued interest and applicable fees. The program reads account data from the account master store, transaction reference data from the cross-reference stores, and discount group definitions, then writes the computed transaction records to the output transaction store. The job passes a business date parameter (2022071800) to control the calculation period."
+        }
+      ]
+    },
+    {
+      "name": "Unclassified",
+      "description": "Programs not assigned to any business function by the LLM.",
+      "program_names": [
+        "COSGN00C"
+      ],
+      "entry_point_summaries": [
+        {
+          "program_name": "COSGN00C",
+          "relative_path": "src/demo/cbl/COSGN00C.cbl",
+          "component_type": "Transaction",
+          "business_rule_overview": "Signon screen display and user authentication; The program displays a signon screen to collect user credentials, validates the entered user ID and password against a security file, and redisplays the screen with appropriate error messages when validation fails. The screen is populated with current date, time, application identifiers, and transaction information on each display.; Sign-on authentication and user session routing; The program implements a sign-on flow that collects user credentials from a screen, validates them against a security file, and routes authenticated users to either an administrator or general menu based on their user type. The program receives input via the Enter key, validates that both user ID and password are provided, retrieves the user's security record, verifies the password, and transfers control to the appropriate downstream application with the authenticated user's context."
+        }
+      ]
+    }
+  ],
+  "total_programs": 92,
+  "total_business_functions": 12,
+  "total_business_rules": 173
+}

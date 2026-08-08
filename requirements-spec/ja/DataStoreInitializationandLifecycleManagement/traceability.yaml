@@ -1,0 +1,1284 @@
+function: DataStoreInitializationandLifecycleManagement
+generated_at: '2026-08-08T04:25:22Z'
+summary:
+  total_rules: 60
+  captured: 48
+  not_applicable: 12
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 60
+    written: 60
+    shortfall: 0
+rules:
+- rule_id: a5fa4d01_1b58_4b41_9b16_7829d7464e20
+  program: ACCTFILE
+  disposition: captured
+  rule_name: 索引アクセスを用いた新規口座データストアの定義
+  rule_text: '口座データストア初期化THEは、11バイトのキー、300バイトの固定長レコード、ボリュームAWSHJ1上の1次シリンダ1個・2次シリンダ5個、削除時の消去、および同時アクセス共有オプションを持つ新規索引付き口座データストア(AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS)をSHALL定義する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-002
+  traceability_lines:
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+- rule_id: a73720a6_ec70_4015_a4d8_746d3b07a9e5
+  program: ACCTFILE
+  disposition: captured
+  rule_name: 既存の口座データストアが存在する場合の削除
+  rule_text: 口座データストア初期化THEは、既存の口座データストア(AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS)(`SYSIN`)が存在する場合、それをSHALL削除し、後続の定義ステップが競合なく進行できるようにする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+- rule_id: e3a3f076_e14b_4c4f_a478_38b4b48f3182
+  program: ACCTFILE
+  disposition: captured
+  rule_name: 順次ソースからの口座データストアへのデータ投入
+  rule_text: '口座データストア投入THEは、順次ソースファイル(ACCTDATA)内の全口座レコードを索引付き口座データストア(ACCTVSAM)へSHALLコピーし、初期口座データセットを確立する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-003
+  traceability_lines:
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+- rule_id: d5720472_e36d_47f1_bb77_7c4376c5aa6b
+  program: DALYREJS
+  disposition: captured
+  program_path: demo/jcl/DALYREJS.jcl
+  rule_name: 日次リジェクション用世代データグループの定義
+  rule_text: データセット世代管理THEは、5世代の保持上限と、上限を超えた場合の最古世代の自動削除を伴う、日次リジェクションレコード用の世代データグループ(`SYSIN`)をSHALL定義する。
+  req_id: REQ-F-004
+  traceability_lines:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+- rule_id: 173ed552_6e74_4fb6_9f71_c759616e025c
+  program: DEFCUST
+  disposition: captured
+  rule_name: 索引付き顧客データクラスタの作成
+  rule_text: 顧客データストア初期化THEは、1次シリンダ1個・2次シリンダ5個、10バイトのキー、500バイトの固定長レコード(`SYSIN`)、排他書き込み・複数読み取り共有、自動スペース消去、およびデータ部とインデックス部の分離構成を持つ索引順編成顧客データクラスタをSHALL作成する。
+  req_id: REQ-F-007
+  traceability_lines:
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+- rule_id: 9174e803_cde7_48f0_90c9_37417215912c
+  program: DEFCUST
+  disposition: captured
+  rule_name: 既存の顧客データクラスタの削除
+  rule_text: 顧客データストア初期化THEは、既存の顧客データクラスタが存在する場合はそれをSHALL削除し、存在しない場合はエラーなく処理をSHALL続行する。
+  req_id: REQ-F-007
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+- rule_id: f845e247_5da6_4f12_a60b_63b0e0ece6d4
+  program: DEFCUST
+  disposition: captured
+  program_path: demo/jcl/DEFCUST.jcl
+  rule_name: 既存の顧客データストアの削除
+  rule_text: '顧客データストア管理THEは、顧客データストアクラスタ(`AWS.CCDA.CUSTDATA.CLUSTER`)をカタログからSHALL削除する。(物理ストア:
+    `SYSIN`)'
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+  traceability_lines:
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+- rule_id: 1312e5c1_938b_4378_a19e_b4ba931661e1
+  program: DEFGDGB
+  disposition: captured
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: トランザクションデータセット世代ベースの定義
+  rule_text: 'データセット管理THEは、5世代の保持上限と、上限を超えた場合の古い世代の自動削除を伴う世代データグループベース(AWS.M2.CARDDEMO.TRANSACT.DALY)をSHALL定義する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-008
+  traceability_lines:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+- rule_id: 6b77eb34_14c2_46d4_be1b_e7268289df71
+  program: DEFGDGB
+  disposition: captured
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: トランザクションレコード用世代データグループの定義
+  rule_text: '世代データグループマネージャーTHEは、5世代の保持上限と、置き換えられたバージョンの自動スクラッチ(削除)を伴う、AWS.M2.CARDDEMO.SYSTRANという名称の世代データグループベースをSHALL定義する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-009
+  traceability_lines:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+- rule_id: 1eb59eb7_fe9f_4051_8957_b517f26ac072
+  program: DEFGDGB
+  disposition: captured
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: バックアップ保持用世代データグループの定義
+  rule_text: 'バックアップデータセット管理THEは、5世代の保持上限と、上限を超えた場合の最古世代の自動削除を伴う世代データグループベース(AWS.M2.CARDDEMO.TCATBALF.BKUP)をSHALL定義する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-010
+  traceability_lines:
+  - 21
+  - 22
+  - 23
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+- rule_id: 3f3b72d9_5dd6_4193_b716_37aae145cb15
+  program: DEFGDGB
+  disposition: not_applicable
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: トランザクションバックアップ用世代データグループの定義
+  rule_text: ジョブ文書THEは、著作権およびライセンス情報をSHALL表示する。
+  reason: '[LLM-classified] 著作権およびライセンスのヘッダーコメント — 業務動作を伴わない文書化上の仕組み'
+- rule_id: 393dd114_71f5_45ae_a42f_8e02ce478000
+  program: DEFGDGB
+  disposition: captured
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: GDGベースを定義するためのカタログ管理ユーティリティの呼び出し
+  rule_text: 'カタログ管理THEは、5世代の保持上限と、上限を超えた場合の最古世代の自動スクラッチを伴う世代データグループベース(AWS.M2.CARDDEMO.TRANSACT.BKUP)をSHALL定義する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-011
+  traceability_lines:
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+- rule_id: 94309bb3_da77_49f0_9578_274a7d285029
+  program: DEFGDGB
+  disposition: not_applicable
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: トランザクションバックアップ用世代データグループの定義
+  rule_text: ジョブ文書THEは、著作権およびライセンス情報をSHALL表示する。
+  reason: '[LLM-classified] 著作権およびライセンスのヘッダーコメント — 業務動作を伴わない文書化上の仕組み'
+- rule_id: 3d44669e_aa4b_4aa2_826a_7ac660654be9
+  program: DEFGDGB
+  disposition: captured
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: トランザクションレコード用世代データセットベースの定義
+  rule_text: データセット管理THEは、5世代の保持上限と、上限を超えた場合の古い世代の自動削除を伴う、AWS.M2.CARDDEMO.TRANSACT.COMBINEDという名称の世代データセット(`SYSIN`)グループベースをSHALL定義する。
+  req_id: REQ-F-012
+  traceability_lines:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+- rule_id: 79cc0c13_b1e8_497e_88b6_60e86224ac41
+  program: DEFGDGB
+  disposition: captured
+  program_path: demo/jcl/DEFGDGB.jcl
+  rule_name: トランザクションレポート用世代データグループの定義
+  rule_text: 'データセット管理THEは、5世代の保持上限と、上限を超えた場合の古い世代の自動削除を伴う世代データグループベース(AWS.M2.CARDDEMO.TRANREPT)をSHALL定義する。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-013
+  traceability_lines:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+- rule_id: 374ea275_4d3e_4159_bfe1_395fb5b8865a
+  program: DEFGDGD
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージの初期化'
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: トランザクションタイプ用世代データセットグループの定義
+  rule_text: 'データセット定義ハンドラーTHEは、5世代の保持上限と、期限切れ世代の自動スクラッチを伴う、トランザクションタイプ参照データ用の世代データセットグループをSHALL定義する。(物理ストア:
+    `SYSIN`、`SYSUT1`、`SYSUT2`)'
+- rule_id: 6e9e031a_6d5e_4772_985e_223264790317
+  program: DEFGDGD
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージの初期化'
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: トランザクションカテゴリバックアップ用世代データグループの定義
+  rule_text: '世代データグループマネージャーTHEは、5世代の保持上限と、削除時の自動スクラッチ動作を伴う、AWS.M2.CARDDEMO.TRANCATG.PS.BKUPという名称の世代データグループベースをSHALL定義する。(物理ストア:
+    `SYSIN`)'
+- rule_id: 7c874bcf_6c3b_46d2_a237_fb8b6b5adb40
+  program: DEFGDGD
+  disposition: not_applicable
+  reason: '[BRE機能] ワーキングストレージの初期化'
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: トランザクションタイプレコードの最初のGDG世代へのコピー
+  rule_text: '前段のステップ(GDG定義)が成功したWHEN、トランザクションタイプバックアップローダーTHEは、ソースデータセットからGDGバックアップデータセットの最初の世代へトランザクションタイプレコードをSHALLコピーし、固定ブロック形式、60バイトレコード、600バイトブロックでストレージを割り付ける。(物理ストア:
+    `SYSUT1`、`SYSUT2`)'
+- rule_id: b2ec0560_3072_40d6_a550_010f91cf1d5b
+  program: DEFGDGD
+  disposition: captured
+  rule_name: 取引カテゴリ参照データを第1世代へコピー
+  rule_text: '取引カテゴリGDG定義が成功した場合、取引カテゴリデータローダーは、取引カテゴリ参照データをソースデータセットからバックアップGDGの第1世代へコピーし、固定長ブロック形式のレコードフォーマットで新しいカタログ化された世代を作成するものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_id: REQ-F-018
+  traceability_lines:
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+  - 65
+  - 66
+- rule_id: 4ef1cb48_8fd7_437c_bc0b_969ec48b5769
+  program: DEFGDGD
+  disposition: captured
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 開示グループを世代バックアップへコピー
+  rule_text: 'カタログ準備ステップが正常に完了した場合、開示グループバックアップは、開示グループレコードをソースデータセットからバックアップストアの新しい世代へコピーし、固定長レコードフォーマットでバックアップを割り当て、保存のためにカタログ化するものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_id: REQ-F-020
+  traceability_lines:
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+- rule_id: 7bd00d4c_9611_4579_abce_a244cdfc086d
+  program: DEFGDGD
+  disposition: captured
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 開示グループバックアップ用のカタログを準備
+  rule_text: カタログ準備は、開示グループバックアップの環境を準備するためにカタログ（`SYSIN`）ユーティリティを呼び出すものとする。
+  req_id: REQ-F-019
+  traceability_lines:
+  - 70
+  - 71
+  - 72
+- rule_id: 57e3a73f_2363_406a_9c40_ddf376a2b338
+  program: DEFGDGD
+  disposition: captured
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 取引タイプバックアップ用の世代データグループを定義
+  rule_text: 'データセット管理ユーティリティは、AWS.M2.CARDDEMO.TRANTYPE.BKUPという名前の世代データグループを、5世代の保持上限および上限超過時の最古世代の自動削除とともに定義するものとする。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-014
+  traceability_lines:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+- rule_id: 0ab2bdef_0fcf_4e9a_8939_7d073e04d374
+  program: DEFGDGD
+  disposition: captured
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 開示バックアップ用の世代データグループを定義
+  rule_text: 世代データグループマネージャーは、開示バックアップデータセット（`SYSIN`）用の世代データグループを、5世代の保持上限および過剰な非カレント世代の自動削除とともに定義するものとする。
+  req_id: REQ-F-016
+  traceability_lines:
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 75
+  - 76
+  - 77
+- rule_id: 78b9fcd5_9b17_4fc0_ae6c_bf6b72aead78
+  program: DEFGDGD
+  disposition: captured
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 取引タイプレコードを最初のGDG世代へコピー
+  rule_text: '前のステップ（GDG定義）が成功した場合、取引タイプバックアップローダーは、取引タイプレコードをソースデータセットからGDGバックアップデータセットの第1世代へコピーし、固定長ブロック形式、60バイトレコード、600バイトブロックでストレージを割り当てるものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_id: REQ-F-017
+  traceability_lines:
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+- rule_id: 8b01d471_93b1_4e25_a7c4_ea01f778a785
+  program: DEFGDGD
+  disposition: captured
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 取引カテゴリバックアップ用の世代データグループを定義
+  rule_text: '世代データグループマネージャーは、AWS.M2.CARDDEMO.TRANCATG.PS.BKUPという名前の世代データグループベースを、5世代の保持上限および削除時自動スクラッチ動作とともに定義するものとする。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-015
+  traceability_lines:
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+- rule_id: b07e305c_2895_4270_89fa_9ee03e1ec668
+  program: DEFGDGD
+  disposition: not_applicable
+  program_path: demo/jcl/DEFGDGD.jcl
+  rule_name: 取引カテゴリ参照用の世代データグループを定義
+  rule_text: 'データセット定義ユーティリティは、取引参照データ用の世代データグループベースを定義するために、インライン制御文を処理するものとする。(物理ストア:
+    `SYSIN`)'
+  reason: '[LLM-classified] インライン制御文を読み取るユーティリティ呼び出しの仕組みを説明している ― REQ-F-001およびREQ-F-002に記載されている内容を超える独立したビジネスルールはない'
+- rule_id: a3bace70_3dd5_4e4a_afa4_432dcedcef59
+  program: DISCGRP
+  disposition: captured
+  rule_name: 開示グループVSAM索引順編成クラスタを定義
+  rule_text: データセット管理は、16バイトキー、50バイト固定長レコード（`SYSIN`）の新しいVSAM索引順編成クラスタを定義し、ボリュームAWSHJ1上に1次1シリンダ、2次5シリンダで割り当て、2リーダーおよび3ライターの共有アクセスと自動スペース消去を行うものとする。
+  req_id: REQ-F-022
+  traceability_lines:
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+- rule_id: a8c88036_c391_4a09_863f_d2166c212c6c
+  program: DISCGRP
+  disposition: captured
+  rule_name: 既存の開示グループデータセットを削除
+  rule_text: 'データセット管理は、開示グループVSAMクラスタが存在する場合は削除し、存在しない場合はエラーなく処理を続行するものとする。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-021
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+- rule_id: ae65336d_1248_4a3e_8fba_da6b30f049af
+  program: DISCGRP
+  disposition: captured
+  rule_name: 順編成ファイルから開示グループVSAMへデータを投入
+  rule_text: 'データセット管理は、開示グループ順編成ファイルのすべてのレコードを開示グループVSAM索引順編成クラスタへコピーし、埋め込みキーフィールドを使用して各書き込みを位置決めするものとする。(物理ストア:
+    `DISCGRP`, `DISCVSAM`, `SYSIN`)'
+  req_id: REQ-F-023
+  traceability_lines:
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+- rule_id: 384cfad1_778f_457f_91a4_81864ea9cb88
+  program: DUSRSECJ
+  disposition: captured
+  rule_name: 埋め込みデータからユーザーセキュリティレコードをロード
+  rule_text: 'ユーザーセキュリティファイルローダーは、埋め込みユーザーレコード（管理者5名および標準ユーザー5名）を、80バイト固定形式レコードの順編成データセットにロードするものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_id: REQ-F-024
+  traceability_lines:
+  - 28
+  - 29
+  - 30
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+- rule_id: 7d39387e_7511_46ca_b063_98f98ddb05fd
+  program: DUSRSECJ
+  disposition: captured
+  rule_name: 順編成ストアから索引編成ストアへユーザーレコードをコピー
+  rule_text: 'ユーザーセキュリティデータ移行は、順編成データセットのすべてのユーザーレコードをVSAM索引編成クラスタへコピーし、ユーザー識別子によるキーベースの索引付けを確立するものとする。(物理ストア:
+    `IN`, `OUT`, `SYSIN`)'
+  req_id: REQ-F-026
+  traceability_lines:
+  - 76
+  - 77
+  - 78
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+- rule_id: 9807c4f1_5a7f_4b8f_882b_c59d461c3ccb
+  program: DUSRSECJ
+  disposition: captured
+  rule_name: ユーザーセキュリティ用のVSAM索引編成クラスタを定義
+  rule_text: VSAMクラスタ定義は、既存のユーザーセキュリティクラスタを削除し、8バイトキー、80バイト固定長レコード（`SYSIN`）、1次45トラック、2次15トラック、データ空き領域10％、索引空き領域15％、8192バイトのコントロールインターバルで新しい索引編成クラスタを定義するものとする。
+  req_id: REQ-F-025
+  traceability_lines:
+  - 54
+  - 55
+  - 56
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+- rule_id: 3a37ce34_331e_49e6_810c_0e28b560fee4
+  program: ESDSRRDS
+  disposition: captured
+  rule_name: ユーザーセキュリティレコードをエントリ順編成ストアへコピー
+  rule_text: 'ユーザーセキュリティレコードレプリケーターは、順編成ファイルのすべてのユーザーセキュリティレコードを、エントリ順序でエントリ順編成VSAMストアへコピーするものとする。(物理ストア:
+    `OUT`, `SYSIN`)'
+  req_id: REQ-F-030
+  traceability_lines:
+  - 75
+  - 76
+  - 77
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+- rule_id: 5a465860_3726_4b35_8d53_3733031f59ba
+  program: ESDSRRDS
+  disposition: captured
+  rule_name: ユーザーセキュリティレコードを相対レコードストアへコピー
+  rule_text: 'ユーザーセキュリティレコードレプリケーターは、順編成ファイルのすべてのユーザーセキュリティレコードを相対レコードVSAMストアへコピーし、挿入順に基づいて相対レコード番号を割り当てるものとする。(物理ストア:
+    `IN`, `OUT`, `SYSIN`)'
+  req_id: REQ-F-031
+  traceability_lines:
+  - 109
+  - 110
+  - 111
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+- rule_id: 62bb24ff_dd8a_4ead_ad01_ef486f598243
+  program: ESDSRRDS
+  disposition: captured
+  rule_name: ユーザーセキュリティ用の相対レコードVSAMストアを定義
+  rule_text: 'VSAM相対レコードストアマネージャーは、既存の相対レコードクラスタを削除し、80バイトレコード、1次45トラック、2次15トラック、空き領域10％、8192バイトのコントロールインターバルを持つ新しい相対レコードVSAMクラスタを定義するものとする。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-029
+  traceability_lines:
+  - 89
+  - 90
+  - 91
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 99
+  - 100
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+- rule_id: bab7a6fa_732f_45bb_b85e_459a3d0dd431
+  program: ESDSRRDS
+  disposition: captured
+  rule_name: インラインデータからユーザーセキュリティレコードを生成
+  rule_text: 'ユーザーセキュリティファイルジェネレーターは、ユーザー識別子、氏名、セカンダリ識別子、およびパスワードタイプを含む管理者および標準ユーザーレコードを格納する順編成ファイルを生成するものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_id: REQ-F-027
+  traceability_lines:
+  - 29
+  - 30
+  - 31
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+- rule_id: c59d11bd_0563_4889_bbd5_8eb5706ae1f2
+  program: ESDSRRDS
+  disposition: captured
+  rule_name: ユーザーセキュリティ用のエントリ順編成VSAMストアを定義
+  rule_text: VSAMエントリ順編成ストアマネージャーは、既存のエントリ順編成クラスタを削除し、80バイトレコード（`SYSIN`）、1次45トラック、2次15トラック、空き領域10％、8192バイトのコントロールインターバルを持つ新しいエントリ順編成VSAMクラスタを定義するものとする。
+  req_id: REQ-F-028
+  traceability_lines:
+  - 55
+  - 56
+  - 57
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+- rule_id: 32404e4b_c6ca_474b_9a37_cc7b36abe851
+  program: REPTFILE
+  disposition: captured
+  program_path: demo/jcl/REPTFILE.jcl
+  rule_name: 取引レポート用世代データグループの定義
+  rule_text: データセット管理機能は、最大保持世代数10で世代を自動管理し、履歴データセット(`SYSIN`)を保持する、AWS.M2.CARDDEMO.TRANREPTという名前の世代データグループを定義しなければならない(SHALL)。
+  req_id: REQ-F-032
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+- rule_id: 1758ff6d_7228_436b_8ffa_3c2206a70974
+  program: TCATBALF
+  disposition: captured
+  program_path: demo/jcl/TCATBALF.jcl
+  rule_name: フラットファイルから取引カテゴリ残高データストアへの投入
+  rule_text: 'データストア投入機能は、フラットファイル(`AWS.M2.CARDDEMO.TCATBALF.PS`)内のすべての取引カテゴリ残高レコードを、17バイトのキーフィールドをキーとする索引順次データストア(`AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS`)にコピーしなければならない(SHALL)。(物理ストア:
+    `SYSIN`, `TCATBAL`, `TCATBALV`)'
+  req_ids:
+  - REQ-F-035
+  - REQ-N-001
+  traceability_lines:
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+- rule_id: 2ddd37d0_a04d_416d_ae74_b050dcf5e267
+  program: TCATBALF
+  disposition: captured
+  program_path: demo/jcl/TCATBALF.jcl
+  rule_name: 新規取引カテゴリ残高データストアの定義
+  rule_text: 'データストアライフサイクル管理機能は、17バイトキー、50バイト固定長レコード、ボリュームAWSHJ1上に1次シリンダ1個および2次エクステント5個、同時読み取り/排他書き込み共有、自動スペース消去を備えた新規索引順次データストア(`AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS`)を定義しなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-034
+  traceability_lines:
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+- rule_id: 7102538b_ec3b_4e8c_a75b_91df0a2f4068
+  program: TCATBALF
+  disposition: captured
+  program_path: demo/jcl/TCATBALF.jcl
+  rule_name: 既存の取引カテゴリ残高データストアの削除
+  rule_text: データストアライフサイクル管理機能は、取引カテゴリ残高データストア(`AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS`)(`SYSIN`)が存在する場合、それを削除しなければならない(SHALL)。
+  req_id: REQ-F-033
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+- rule_id: 500888eb_dc99_47b0_bbe2_2da56c6e6755
+  program: TRANBKP
+  disposition: captured
+  rule_name: 索引順次構造を持つ新規取引マスタストアの作成
+  rule_text: '削除ステップが条件コード4未満で完了したとき(WHEN)、取引マスタストアライフサイクル機能は、先頭16バイトをキーとする350バイト固定長レコードを持ち、ボリュームAWSHJ1上に1次シリンダ1個・2次シリンダ5個で割り付けられ、共有アクセス(書き込み2、読み取り3)用に構成され、削除時消去指定がされた新規索引順次取引マスタストア(AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS)を作成しなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-038
+  traceability_lines:
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+- rule_id: 6864517c_b3cf_43e1_a33a_0140828d9b61
+  program: TRANBKP
+  disposition: captured
+  rule_name: 既存の取引マスタストアの削除
+  rule_text: '取引マスタストアライフサイクル機能は、取引マスタストア(AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS)が存在する場合、それを削除し、診断出力をシステム印刷キューに書き込まなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-039
+  traceability_lines:
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+- rule_id: 85a95363_24ee_4b49_a14e_af99b3633fdb
+  program: TRANBKP
+  disposition: captured
+  program_path: demo/jcl/TRANBKP.jcl
+  rule_name: 取引マスタ代替インデックスの削除
+  rule_text: '取引マスタインデックスクリーンアップ機能は、取引マスタファイルの代替インデックス(AWS.M2.CARDDEMO.TRANSACT.VSAM.AIX)を、インデックスが存在するか否かにかかわらず正常に完了する形で削除しなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+  req_ids:
+  - REQ-F-036
+  - REQ-F-037
+  traceability_lines:
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 43
+  - 44
+- rule_id: 09d06092_1fb6_41d4_9d2d_9a02452f72a0
+  program: TRANCATG
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/jcl/TRANCATG.jcl
+  rule_name: 取引カテゴリVSAMクラスタの定義
+  rule_text: データセット初期化機能は、6バイトキー、60バイト固定長レコード(`SYSIN`)、ボリュームAWSHJ1上に1次シリンダ1個・2次シリンダ5個、共有オプション(2
+    3)、ERASE属性を備えた新規索引順次VSAMクラスタ(AWS.M2.CARDDEMO.TRANCATG.VSAM.KSDS)を定義しなければならない(SHALL)。
+- rule_id: 4fcb8259_1511_4772_b7b2_65124b5e0dce
+  program: TRANCATG
+  disposition: captured
+  rule_name: ソースからの取引カテゴリデータセットへの投入
+  rule_text: 'データセット初期化機能は、ソースファイル(AWS.M2.CARDDEMO.TRANCATG.PS)内のすべての取引カテゴリレコードを、対象VSAMクラスタ(AWS.M2.CARDDEMO.TRANCATG.VSAM.KSDS)にコピーしなければならない(SHALL)。(物理ストア:
+    `SYSIN`, `TCATVSAM`)'
+  req_id: REQ-F-042
+  traceability_lines:
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+- rule_id: d6b398bf_2066_4181_8bdb_630a7001d7f6
+  program: TRANCATG
+  disposition: captured
+  rule_name: 既存の取引カテゴリデータセットの削除
+  rule_text: 'データセット初期化機能は、取引カテゴリデータセット(AWS.M2.CARDDEMO.TRANCATG.VSAM.KSDS)が存在する場合、それを削除し、データセットが見つからない場合はエラーなく処理を続行しなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-040
+  traceability_lines:
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+- rule_id: 715f2239_59c1_4a0a_90d5_7ac5f684138b
+  program: TRANIDX
+  disposition: captured
+  program_path: demo/jcl/TRANIDX.jcl
+  rule_name: 取引アクセス用代替インデックスパスの定義
+  rule_text: 代替インデックスパス定義機能は、代替インデックスAWS.M2.CARDDEMO.TRANSACT.VSAM.AIXを参照するAWS.M2.CARDDEMO.TRANSACT.VSAM.AIX.PATHという名前のパスを定義し、取引レコードへの索引アクセスを確立しなければならない(SHALL)(`SYSIN`)。
+  req_id: REQ-F-044
+  traceability_lines:
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+- rule_id: 81a7b392_e902_45c3_9164_df0f95e4f900
+  program: TRANIDX
+  disposition: captured
+  program_path: demo/jcl/TRANIDX.jcl
+  rule_name: 取引レコード用代替インデックスの構築
+  rule_text: インデックスビルダー機能は、取引マスタストア上に代替インデックスを構築し、プライマリデータセットからすべてのレコードを読み取り、インデックス構造を代替インデックスデータセットに書き込まなければならない(SHALL)。
+  req_id: REQ-F-045
+  traceability_lines:
+  - 52
+  - 53
+  - 54
+- rule_id: 828b0b72_a1fa_4ace_85e6_a45a6a88c1ba
+  program: TRANIDX
+  disposition: captured
+  program_path: demo/jcl/TRANIDX.jcl
+  rule_name: 取引タイムスタンプに対する代替インデックスの作成
+  rule_text: '取引インデックス管理機能は、処理タイムスタンプをキーとする、非一意で自動更新に設定された代替インデックスを取引データストア上に作成し、指定されたボリューム上に固定レコードサイズで割り付けなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-043
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+- rule_id: d041154a_3199_4641_86b9_c81ed166ed98
+  program: TRANTYPE
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/jcl/TRANTYPE.jcl
+  rule_name: 取引タイプデータセット構造の定義
+  rule_text: '取引タイプデータセットライフサイクル機能は、2バイトキー、60バイトレコード、索引アクセス、消去保護を備え、指定されたボリューム上に割り付けられた新規索引順次データセットを定義しなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+- rule_id: 869e3564_e454_4285_923f_2a2ac30aec08
+  program: TRANTYPE
+  disposition: captured
+  rule_name: 既存の取引タイプデータセットの削除
+  rule_text: 取引タイプデータセットライフサイクル機能は、既存の取引タイプデータセット(VSAM KSDS)(`SYSIN`)が存在する場合、それを削除し、新規定義のための準備を整えなければならない(SHALL)。
+  req_id: REQ-F-047
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+- rule_id: 9a1c8ef1_1409_470e_b99b_9cd9c959808d
+  program: TRANTYPE
+  disposition: captured
+  rule_name: ソースファイルからの取引タイプデータセットへの投入
+  rule_text: '取引タイプデータセット投入機能は、フラットファイルソース(AWS.M2.CARDDEMO.TRANTYPE.PS)内のすべての取引タイプレコードを、索引順次データセット(AWS.M2.CARDDEMO.TRANTYPE.VSAM.KSDS)にコピーしなければならない(SHALL)。(物理ストア:
+    `SYSIN`, `TTYPVSAM`)'
+  req_id: REQ-F-048
+  traceability_lines:
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+- rule_id: 0240d792_ab1f_4d45_9e13_dd63162196cf
+  program: XREFFILE
+  disposition: not_applicable
+  reason: '[BRE function] Working storage initialization'
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: カード相互参照データストア用代替インデックスの構築
+  rule_text: カード相互参照ストアインデックス作成機能は、投入済みのカード相互参照データストア上に代替インデックスを構築し、相互参照レコードに対する副次キー検索を可能にしなければならない(SHALL)。
+- rule_id: 472d5111_6d9f_4a32_a009_2c13984a9f8c
+  program: XREFFILE
+  disposition: not_applicable
+  reason: '[BRE function] Working storage initialization'
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: 索引付きカード相互参照データストアの定義
+  rule_text: 'カード相互参照ストア初期化機能は、16バイトキー、50バイトレコード、ボリュームAWSHJ1上に1次シリンダ1個・2次シリンダ5個を備え、同時読み取りおよび排他書き込みアクセス用に構成され、削除時にレコードを消去する新規索引順次データストアを定義しなければならない(SHALL)。(物理ストア:
+    `SYSIN`)'
+- rule_id: 5b75775f_0e6a_47ae_8a05_5892a515f077
+  program: XREFFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージの初期化'
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: 順編成ソースからカードクロスリファレンスデータストアを populate する
+  rule_text: 'カードクロスリファレンスストアの populate 処理は、順編成ソースファイル(XREFDATA)の全レコードを索引順編成データストア(XREFVSAM)にコピーし、初期のクロスリファレンスマッピングを確立するものとする。
+    (物理ストア: `SYSIN`)'
+- rule_id: 89e81f37_8e18_4d2f_8a0b_0b6286bb0d1b
+  program: XREFFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージの初期化'
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: 既存のカードクロスリファレンスデータストアを削除する
+  rule_text: カードクロスリファレンスデータストアの初期化処理は、既存のカードクロスリファレンスデータストア(`SYSIN`)クラスタが存在する場合はこれを削除し、ジョブが新規定義で進行できるようにするものとする。
+- rule_id: d4c98f62_4dc3_42ee_979f_87b72e6d19a6
+  program: XREFFILE
+  disposition: captured
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: カード参照データの代替インデックスパスを定義する
+  rule_text: '代替インデックスパス定義処理は、代替インデックスAWS.M2.CARDDEMO.CARDXREF.VSAM.AIXとそのベースクラスタとの関係を確立するAWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATHという名前のパスを定義するものとする。
+    (物理ストア: `SYSIN`)'
+  req_id: REQ-F-051
+  traceability_lines:
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+  - 92
+- rule_id: 6302f6dc_62cb_4143_81c6_8e5899230be2
+  program: XREFFILE
+  disposition: captured
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: 既存のカード参照代替インデックスを削除する
+  rule_text: カード参照インデックスライフサイクル処理は、カード参照データセット(`SYSIN`)に既存の代替インデックスが存在する場合はこれを削除するものとする。
+  req_id: REQ-F-049
+  traceability_lines:
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 28
+  - 29
+- rule_id: f175c355_946b_4de2_bd92_8f118728e25a
+  program: XREFFILE
+  disposition: captured
+  program_path: demo/jcl/XREFFILE.jcl
+  rule_name: アカウントIDに基づくカード参照代替インデックスを作成する
+  rule_text: カード参照インデックスライフサイクル処理は、アカウントID(11〜25桁目)をキーとし、非一意キー、アップグレード機能、50バイト固定長レコード(`SYSIN`)、10%および20%のフリースペース、ボリュームAWSHJ1上でプライマリ5シリンダおよびセカンダリ1シリンダの割り当て、データおよびインデックスの両コンポーネントを備えた代替インデックスを作成するものとする。
+  req_id: REQ-F-050
+  traceability_lines:
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - a73720a6_ec70_4015_a4d8_746d3b07a9e5
+- req_id: REQ-F-002
+  rule_ids:
+  - a5fa4d01_1b58_4b41_9b16_7829d7464e20
+- req_id: REQ-F-003
+  rule_ids:
+  - e3a3f076_e14b_4c4f_a478_38b4b48f3182
+- req_id: REQ-F-004
+  rule_ids:
+  - d5720472_e36d_47f1_bb77_7c4376c5aa6b
+- req_id: REQ-F-005
+  rule_ids:
+  - f845e247_5da6_4f12_a60b_63b0e0ece6d4
+- req_id: REQ-F-006
+  rule_ids:
+  - f845e247_5da6_4f12_a60b_63b0e0ece6d4
+- req_id: REQ-F-007
+  rule_ids:
+  - 9174e803_cde7_48f0_90c9_37417215912c
+  - 173ed552_6e74_4fb6_9f71_c759616e025c
+- req_id: REQ-F-008
+  rule_ids:
+  - 1312e5c1_938b_4378_a19e_b4ba931661e1
+- req_id: REQ-F-009
+  rule_ids:
+  - 6b77eb34_14c2_46d4_be1b_e7268289df71
+- req_id: REQ-F-010
+  rule_ids:
+  - 1eb59eb7_fe9f_4051_8957_b517f26ac072
+- req_id: REQ-F-011
+  rule_ids:
+  - 393dd114_71f5_45ae_a42f_8e02ce478000
+- req_id: REQ-F-012
+  rule_ids:
+  - 3d44669e_aa4b_4aa2_826a_7ac660654be9
+- req_id: REQ-F-013
+  rule_ids:
+  - 79cc0c13_b1e8_497e_88b6_60e86224ac41
+- req_id: REQ-F-014
+  rule_ids:
+  - 57e3a73f_2363_406a_9c40_ddf376a2b338
+- req_id: REQ-F-015
+  rule_ids:
+  - 8b01d471_93b1_4e25_a7c4_ea01f778a785
+- req_id: REQ-F-016
+  rule_ids:
+  - 0ab2bdef_0fcf_4e9a_8939_7d073e04d374
+- req_id: REQ-F-017
+  rule_ids:
+  - 78b9fcd5_9b17_4fc0_ae6c_bf6b72aead78
+- req_id: REQ-F-018
+  rule_ids:
+  - b2ec0560_3072_40d6_a550_010f91cf1d5b
+- req_id: REQ-F-019
+  rule_ids:
+  - 7bd00d4c_9611_4579_abce_a244cdfc086d
+- req_id: REQ-F-020
+  rule_ids:
+  - 4ef1cb48_8fd7_437c_bc0b_969ec48b5769
+- req_id: REQ-F-021
+  rule_ids:
+  - a8c88036_c391_4a09_863f_d2166c212c6c
+- req_id: REQ-F-022
+  rule_ids:
+  - a3bace70_3dd5_4e4a_afa4_432dcedcef59
+- req_id: REQ-F-023
+  rule_ids:
+  - ae65336d_1248_4a3e_8fba_da6b30f049af
+- req_id: REQ-F-024
+  rule_ids:
+  - 384cfad1_778f_457f_91a4_81864ea9cb88
+- req_id: REQ-F-025
+  rule_ids:
+  - 9807c4f1_5a7f_4b8f_882b_c59d461c3ccb
+- req_id: REQ-F-026
+  rule_ids:
+  - 7d39387e_7511_46ca_b063_98f98ddb05fd
+- req_id: REQ-F-027
+  rule_ids:
+  - bab7a6fa_732f_45bb_b85e_459a3d0dd431
+- req_id: REQ-F-028
+  rule_ids:
+  - c59d11bd_0563_4889_bbd5_8eb5706ae1f2
+- req_id: REQ-F-029
+  rule_ids:
+  - 62bb24ff_dd8a_4ead_ad01_ef486f598243
+- req_id: REQ-F-030
+  rule_ids:
+  - 3a37ce34_331e_49e6_810c_0e28b560fee4
+- req_id: REQ-F-031
+  rule_ids:
+  - 5a465860_3726_4b35_8d53_3733031f59ba
+- req_id: REQ-F-032
+  rule_ids:
+  - 32404e4b_c6ca_474b_9a37_cc7b36abe851
+- req_id: REQ-F-033
+  rule_ids:
+  - 7102538b_ec3b_4e8c_a75b_91df0a2f4068
+- req_id: REQ-F-034
+  rule_ids:
+  - 2ddd37d0_a04d_416d_ae74_b050dcf5e267
+- req_id: REQ-F-035
+  rule_ids:
+  - 1758ff6d_7228_436b_8ffa_3c2206a70974
+- req_id: REQ-F-036
+  rule_ids:
+  - 85a95363_24ee_4b49_a14e_af99b3633fdb
+- req_id: REQ-F-037
+  rule_ids:
+  - 85a95363_24ee_4b49_a14e_af99b3633fdb
+- req_id: REQ-F-038
+  rule_ids:
+  - 500888eb_dc99_47b0_bbe2_2da56c6e6755
+- req_id: REQ-F-039
+  rule_ids:
+  - 6864517c_b3cf_43e1_a33a_0140828d9b61
+- req_id: REQ-F-040
+  rule_ids:
+  - d6b398bf_2066_4181_8bdb_630a7001d7f6
+- req_id: REQ-F-041
+  rule_ids:
+  - 09d06092_1fb6_41d4_9d2d_9a02452f72a0
+- req_id: REQ-F-042
+  rule_ids:
+  - 4fcb8259_1511_4772_b7b2_65124b5e0dce
+- req_id: REQ-F-043
+  rule_ids:
+  - 828b0b72_a1fa_4ace_85e6_a45a6a88c1ba
+- req_id: REQ-F-044
+  rule_ids:
+  - 715f2239_59c1_4a0a_90d5_7ac5f684138b
+- req_id: REQ-F-045
+  rule_ids:
+  - 81a7b392_e902_45c3_9164_df0f95e4f900
+- req_id: REQ-F-047
+  rule_ids:
+  - 869e3564_e454_4285_923f_2a2ac30aec08
+- req_id: REQ-F-048
+  rule_ids:
+  - 9a1c8ef1_1409_470e_b99b_9cd9c959808d
+- req_id: REQ-F-049
+  rule_ids:
+  - 6302f6dc_62cb_4143_81c6_8e5899230be2
+- req_id: REQ-F-050
+  rule_ids:
+  - f175c355_946b_4de2_bd92_8f118728e25a
+- req_id: REQ-F-051
+  rule_ids:
+  - d4c98f62_4dc3_42ee_979f_87b72e6d19a6
+- req_id: REQ-N-001
+  rule_ids:
+  - 1758ff6d_7228_436b_8ffa_3c2206a70974

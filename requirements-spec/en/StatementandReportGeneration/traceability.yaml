@@ -1,0 +1,1747 @@
+function: StatementandReportGeneration
+generated_at: '2026-08-08T04:27:18Z'
+summary:
+  total_rules: 65
+  captured: 59
+  not_applicable: 6
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 65
+    written: 65
+    shortfall: 0
+rules:
+- rule_id: 7dec4675_312a_47db_a46c_0bccc9090782
+  program: CBSTM03A
+  disposition: captured
+  rule_name: Initialize output files and transaction table
+  rule_text: THE Statement Generation Process SHALL open the statement output store
+    (`STMT-FILE`) and the HTML output store (`HTML-FILE`) for writing, and initialize
+    the transaction table and its counters to empty
+  req_id: REQ-F-001
+  traceability_lines:
+  - 262
+  - 293
+  - 294
+  - 296
+- rule_id: 28f052b7_9b5b_4bd8_9b79_44028961dce2
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Drive per-card statement generation loop
+  rule_text: WHILE the end-of-file indicator (`END-OF-FILE`) is not 'Y', THE Statement
+    Generation Loop SHALL read the next cross-reference record, and when a valid record
+    is available, retrieve the customer and account records, create the statement
+    header, reset the total amount accumulator (`WS-TOTAL-AMT`) to zero, and perform
+    transaction matching and footer writing to produce one complete statement per
+    card
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 316
+  - 317
+  - 318
+  - 319
+  - 320
+  - 321
+  - 322
+  - 323
+  - 325
+  - 326
+  - 327
+  - 328
+  - 329
+- rule_id: 6b11a38a_26d5_40bd_991a_57170461678e
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open account file
+  rule_text: WHEN the account file open operation is dispatched, THE Account File
+    Opener SHALL delegate to the file access service (`CBSTM03B`) to open the account
+    file ('ACCTFILE')
+  req_id: REQ-F-045
+  traceability_lines:
+  - 801
+  - 802
+  - 803
+  - 804
+  - 805
+- rule_id: 6d9fad7a_b786_4c59_8564_61f280770c49
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open cross-reference file and advance to customer file
+  rule_text: WHEN the cross-reference file open operation is dispatched, THE Cross-Reference
+    File Opener SHALL delegate to the file access service (`CBSTM03B`) to open the
+    cross-reference file ('XREFFILE'), then set the dataset name (`WS-FL-DD`) to 'CUSTFILE'
+    to trigger the customer file open on the next iteration
+  req_id: REQ-F-045
+  traceability_lines:
+  - 765
+  - 766
+  - 767
+  - 768
+  - 769
+  - 779
+- rule_id: 6e8a3d5e_45bf_4735_b51f_582fb4eb8360
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Route file operations to correct open handler
+  rule_text: WHILE the file operation dispatch loop is active, THE File Operation
+    Router SHALL evaluate the current file dataset name (`WS-FL-DD`) and direct control
+    to the transaction file open handler for 'TRNXFILE', the cross-reference file
+    open handler for 'XREFFILE', the customer file open handler for 'CUSTFILE', the
+    account file open handler for 'ACCTFILE', or the transaction read routine for
+    'READTRNX'
+  reason: '[LLM-classified] File operation routing/dispatch mechanics — state-machine
+    control flow with no independent business consequence beyond what REQ-F-004 captures'
+- rule_id: 71e1da90_c086_401a_bd3c_5ef2ec3a6956
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open transaction file and prime first record
+  rule_text: WHEN the transaction file open operation is dispatched, THE Transaction
+    File Initializer SHALL delegate to the file access service (`CBSTM03B`) to open
+    the transaction file ('TRNXFILE') and read the first record, load the first transaction
+    record (`TRNX-RECORD`), save the card number as the reference card (`WS-SAVE-CARD`),
+    set the credit record counter (`CR-CNT`) to 1, the transaction record counter
+    (`TR-CNT`) to 0, and advance the dataset name (`WS-FL-DD`) to 'READTRNX'
+  req_ids:
+  - REQ-F-002
+  - REQ-F-045
+  traceability_lines:
+  - 730
+  - 731
+  - 732
+  - 733
+  - 734
+  - 744
+  - 745
+  - 746
+  - 756
+  - 757
+  - 758
+  - 759
+  - 760
+- rule_id: 8c94e7d6_2588_4891_a5cb_0adb48b63efd
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Retrieve account record by account identifier
+  rule_text: WHEN a card cross-reference record has been successfully read and an
+    account identifier is available, THE Account Record Retrieval SHALL delegate to
+    the file access service (`CBSTM03B`) to perform a keyed read of the account file
+    using the account identifier (`XREF-ACCT-ID`) as the key, and populate the account
+    record (`ACCOUNT-RECORD`) with the retrieved data
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 392
+  - 394
+  - 395
+  - 396
+  - 398
+  - 399
+  - 400
+  - 401
+  - 412
+- rule_id: 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Match transactions, accumulate total, write statement footer
+  rule_text: WHEN the statement header has been written and the transaction total
+    accumulator has been reset to zero, THE Transaction Matching and Statement Footer
+    Writer SHALL scan the transaction table for entries matching the current card
+    number (`XREF-CARD-NUM`), write each matching transaction line, accumulate the
+    total amount (`WS-TOTAL-AMT`), then write the separator line, the total transaction
+    line with the accumulated total (`ST-TOTAL-TRAMT`), and the statement footer line
+    to the statement output store (`STMT-FILE`)
+  req_ids:
+  - REQ-F-008
+  - REQ-F-010
+  - REQ-F-051
+  traceability_lines:
+  - 416
+  - 417
+  - 418
+  - 419
+  - 420
+  - 422
+  - 423
+  - 424
+  - 425
+  - 426
+  - 427
+  - 428
+  - 429
+  - 430
+  - 431
+  - 432
+  - 433
+  - 434
+  - 435
+  - 436
+  - 437
+- rule_id: 9457e3d9_d3b6_4831_bf70_a21a5f24c018
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Write individual transaction detail line
+  rule_text: WHEN a transaction matching the current card number is identified in
+    the transaction table, THE Transaction Line Writer SHALL populate the transaction
+    identifier (`ST-TRANID`), description (`ST-TRANDT`), and amount (`ST-TRANAMT`)
+    display fields from the current transaction record, and write the transaction
+    line to the statement output store (`STMT-FILE`)
+  req_ids:
+  - REQ-F-009
+  - REQ-F-052
+  traceability_lines:
+  - 675
+  - 676
+  - 677
+  - 678
+  - 679
+- rule_id: c128c7c5_943f_4dce_b9fc_0b77bce60445
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Assemble and write customer statement header
+  rule_text: WHEN customer and account records have been retrieved for the current
+    card cross-reference record, THE Statement Header Assembler SHALL clear the statement
+    lines, assemble the customer name from first (`CUST-FIRST-NAME`), middle (`CUST-MIDDLE-NAME`),
+    and last name (`CUST-LAST-NAME`) fields, populate address and account detail fields,
+    and write the header line, name line, address lines, separators, section headers,
+    account identifier line, balance line, FICO score line, and column header lines
+    to the statement output store (`STMT-FILE`)
+  req_ids:
+  - REQ-F-007
+  - REQ-F-050
+  traceability_lines:
+  - 458
+  - 459
+  - 460
+  - 462
+  - 463
+  - 464
+  - 465
+  - 466
+  - 467
+  - 468
+  - 469
+  - 470
+  - 471
+  - 472
+  - 473
+  - 474
+  - 475
+  - 476
+  - 477
+  - 478
+  - 479
+  - 480
+  - 481
+  - 483
+  - 484
+  - 485
+  - 488
+  - 489
+  - 490
+  - 491
+  - 492
+  - 493
+  - 494
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+  - 500
+  - 501
+  - 502
+- rule_id: c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Read next cross-reference record sequentially
+  rule_text: WHEN the next cross-reference record is requested, THE Cross-Reference
+    Record Reader SHALL delegate to the file access service (`CBSTM03B`) to read the
+    next record from the cross-reference file; on success, populate the card cross-reference
+    record (`CARD-XREF-RECORD`) with the retrieved data; on end-of-file, set the end-of-file
+    indicator (`END-OF-FILE`) to 'Y'
+  req_ids:
+  - REQ-F-006
+  - REQ-F-048
+  - REQ-F-049
+  traceability_lines:
+  - 345
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 353
+  - 356
+  - 357
+  - 362
+  - 364
+- rule_id: d54e6c5a_c7f3_4a29_8e46_5e2c718735ce
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Load transaction records into in-memory table
+  rule_text: WHEN the transaction read operation ('READTRNX') is dispatched, THE Transaction
+    Table Loader SHALL read each transaction record sequentially via the file access
+    service (`CBSTM03B`); group transactions by card number (`TRNX-CARD-NUM`) into
+    the transaction table (`WS-TRNX-TABLE`), incrementing the transaction record counter
+    (`TR-CNT`) for same-card records and advancing the credit record counter (`CR-CNT`)
+    for new cards; store the transaction identifier (`TRNX-ID`) and detail data (`TRNX-REST`)
+    at the appropriate table position; on end-of-file, invoke the exit routine to
+    finalize the last card's transaction count
+  req_ids:
+  - REQ-F-003
+  - REQ-F-046
+  traceability_lines:
+  - 818
+  - 819
+  - 820
+  - 821
+  - 822
+  - 823
+  - 824
+  - 825
+  - 827
+  - 828
+  - 829
+  - 830
+  - 832
+  - 833
+  - 834
+  - 835
+  - 837
+  - 838
+  - 839
+  - 841
+  - 842
+  - 847
+- rule_id: d6ed14a5_86f1_4a72_905d_83636f6b07dd
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Dispatch to specific file open procedure
+  rule_text: WHEN a file open target has been set by the routing step, THE File Open
+    Dispatcher SHALL invoke the transaction file open procedure for target 8100-TRNXFILE-OPEN,
+    the cross-reference file open procedure for 8200-XREFFILE-OPEN, the customer file
+    open procedure for 8300-CUSTFILE-OPEN, the account file open procedure for 8400-ACCTFILE-OPEN,
+    or the transaction file open procedure as the default for any other target
+  reason: '[LLM-classified] File open dispatcher mechanics — duplicate of routing
+    logic already covered by REQ-F-004'
+- rule_id: d820cf3e_af77_4a51_a5f2_0b56e3d3c61f
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Finalize last card transaction count at end of file
+  rule_text: WHEN the end of the transaction file is reached during table loading,
+    THE Transaction Table Finalizer SHALL store the current transaction record counter
+    (`TR-CNT`) as the transaction count (`WS-TRCT`) for the last card slot, and set
+    the file dataset name (`WS-FL-DD`) to 'XREFFILE' to initiate cross-reference record
+    reading
+  req_ids:
+  - REQ-F-004
+  - REQ-F-047
+  traceability_lines:
+  - 849
+  - 850
+  - 851
+- rule_id: e223e4eb_ac6f_4b31_86c6_9dae3a0a0055
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open customer file and advance to account file
+  rule_text: WHEN the customer file open operation is dispatched, THE Customer File
+    Opener SHALL delegate to the file access service (`CBSTM03B`) to open the customer
+    master file ('CUSTFILE'), then set the dataset name (`WS-FL-DD`) to 'ACCTFILE'
+    to trigger the account file open on the next iteration
+  req_id: REQ-F-045
+  traceability_lines:
+  - 783
+  - 784
+  - 785
+  - 786
+  - 787
+  - 797
+- rule_id: f9e1d2bb_c822_48df_a23f_f9ea228e9edb
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Retrieve customer record by customer identifier
+  rule_text: WHEN a card cross-reference record has been successfully read and a customer
+    identifier is available, THE Customer Record Retrieval SHALL delegate to the file
+    access service (`CBSTM03B`) to perform a keyed read of the customer master file
+    using the customer identifier (`XREF-CUST-ID`) as the key, and populate the customer
+    record (`CUSTOMER-RECORD`) with the retrieved data
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 368
+  - 370
+  - 371
+  - 372
+  - 374
+  - 375
+  - 376
+  - 377
+  - 388
+- rule_id: 004a8ad3_fb16_41b4_9c03_a7cf518946f7
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Close customer file
+  rule_text: WHEN the program needs to close the customer file, THE Customer File
+    Close SHALL delegate to the file-handling service (`CBSTM03B`) to close the customer
+    file
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 889
+  - 890
+  - 891
+  - 892
+  - 893
+- rule_id: 0a264113_0f61_4743_b3ae_d444259aad8c
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Retrieve next cross-reference record
+  rule_text: WHEN the program requests the next cross-reference record, THE Cross-Reference
+    Record Retrieval SHALL delegate to the file-handling service (`CBSTM03B`) to read
+    the next record from the cross-reference file, set the end-of-file indicator to
+    'Y' when no more records are available, and move the retrieved data into the cross-reference
+    record structure
+  req_ids:
+  - REQ-F-006
+  - REQ-F-048
+  - REQ-F-049
+  traceability_lines:
+  - 345
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 353
+  - 356
+  - 357
+  - 362
+  - 364
+  - 368
+  - 370
+  - 371
+  - 372
+  - 374
+- rule_id: 22534aa6_3d36_45b0_8981_f5a4d93d2105
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Dispatch to specific file open procedure
+  rule_text: WHEN a file open target has been set by the routing step, THE File Open
+    Dispatcher SHALL invoke the transaction file open procedure for target 8100-TRNXFILE-OPEN,
+    the cross-reference file open procedure for 8200-XREFFILE-OPEN, the customer file
+    open procedure for 8300-CUSTFILE-OPEN, the account file open procedure for 8400-ACCTFILE-OPEN,
+    or the transaction file open procedure as the default for any other target
+  reason: '[LLM-classified] File open dispatcher mechanics — duplicate of routing
+    logic already covered by REQ-F-004'
+- rule_id: 22fe4e50_868f_4b7f_9a97_5a03a750e8e6
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open account file
+  rule_text: WHEN the account file open operation is dispatched, THE Account File
+    Opener SHALL delegate to the file access service (`CBSTM03B`) to open the account
+    file ('ACCTFILE')
+  req_id: REQ-F-045
+  traceability_lines:
+  - 801
+  - 802
+  - 803
+  - 804
+  - 805
+- rule_id: 4ed1f883_9772_492a_b166_f616bc541a0c
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Route file operation by dataset name
+  rule_text: WHILE the program is in the main control loop, THE File Operation Router
+    SHALL evaluate the file dataset name and dispatch to the corresponding file operation
+    handler (open transaction file, open cross-reference file, open customer file,
+    open account file, or read transaction file)
+  reason: '[LLM-classified] File operation routing mechanics — control-loop dispatch
+    with no independent business consequence beyond what REQ-F-004 captures'
+- rule_id: 63cbf0e1_9a35_40aa_87c5_204b80b40005
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Close cross-reference file
+  rule_text: WHEN the program needs to close the cross-reference file, THE Cross-Reference
+    File Close SHALL delegate to the file-handling service (`CBSTM03B`) to close the
+    cross-reference file
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 873
+  - 874
+  - 875
+  - 876
+  - 877
+- rule_id: 8795f508_c730_4093_917e_beaab3d365f6
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Retrieve account record by account ID
+  rule_text: WHEN the program needs to retrieve the account record corresponding to
+    the account ID in the cross-reference record, THE Account Record Lookup SHALL
+    delegate to the file-handling service (`CBSTM03B`) to retrieve the account record
+    using the account ID as the lookup key
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 392
+  - 394
+  - 395
+  - 396
+  - 398
+  - 399
+  - 400
+  - 401
+- rule_id: 9f5dab18_a702_4fd1_808d_effe3f2d81c0
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Retrieve customer record by customer ID
+  rule_text: WHEN the program needs to retrieve the customer record corresponding
+    to the customer ID in the cross-reference record, THE Customer Record Lookup SHALL
+    delegate to the file-handling service (`CBSTM03B`) to retrieve the customer record
+    using the customer ID as the lookup key
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 368
+  - 370
+  - 371
+  - 372
+  - 374
+  - 375
+  - 376
+  - 377
+- rule_id: 9fe41d37_c47e_449d_96b0_b47651501b80
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Exit transaction file read loop
+  rule_text: WHEN the transaction file read loop reaches end of file, THE Transaction
+    File Read Exit SHALL exit the read loop and set the file dataset name to 'XREFFILE'
+    to signal the next operation
+  req_ids:
+  - REQ-F-004
+  - REQ-F-047
+  traceability_lines:
+  - 849
+  - 851
+- rule_id: a0e40d9a_fd18_41de_86b3_4709b5e9fd00
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Close transaction file
+  rule_text: WHEN the program needs to close the transaction file, THE Transaction
+    File Close SHALL delegate to the file-handling service (`CBSTM03B`) to close the
+    transaction file
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 856
+  - 857
+  - 858
+  - 859
+  - 860
+- rule_id: a5b1b9a3_544f_4d7b_ab15_2bb0d17b2224
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open customer file and advance to account file
+  rule_text: WHEN the customer file open operation is dispatched, THE Customer File
+    Opener SHALL delegate to the file access service (`CBSTM03B`) to open the customer
+    master file ('CUSTFILE'), then set the dataset name (`WS-FL-DD`) to 'ACCTFILE'
+    to trigger the account file open on the next iteration
+  req_id: REQ-F-045
+  traceability_lines:
+  - 783
+  - 784
+  - 785
+  - 786
+  - 787
+  - 797
+- rule_id: a7cecece_5f9b_4f5c_a18f_c27a1ec6cad5
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Read transaction file until end of file
+  rule_text: WHILE the transaction file read loop is active, THE Transaction File
+    Read Loop SHALL delegate to the file-handling service (`CBSTM03B`) to read records
+    from the transaction file, exit the loop when end of file is reached
+  req_ids:
+  - REQ-F-003
+  - REQ-F-046
+  traceability_lines:
+  - 818
+  - 832
+  - 833
+  - 834
+  - 835
+  - 837
+  - 841
+  - 842
+  - 847
+- rule_id: acba4e2c_5b7f_41bd_83ac_28893180c4b2
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Close account file
+  rule_text: WHEN the program needs to close the account file, THE Account File Close
+    SHALL delegate to the file-handling service (`CBSTM03B`) to close the account
+    file
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 905
+  - 906
+  - 907
+  - 908
+  - 909
+- rule_id: dcd62c6c_13dd_4b84_9a73_84b0ac965f6e
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open transaction file
+  rule_text: WHEN the program needs to open the transaction file, THE Transaction
+    File Open SHALL delegate to the file-handling service (`CBSTM03B`) to open the
+    transaction file, then prepare for reading by setting the operation type to read
+    and clearing the file data buffer
+  req_ids:
+  - REQ-F-002
+  - REQ-F-045
+  traceability_lines:
+  - 730
+  - 731
+  - 732
+  - 733
+  - 734
+  - 744
+  - 745
+  - 746
+  - 760
+- rule_id: e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Process records until end of file
+  rule_text: WHILE records remain available in the cross-reference file, THE Record
+    Processing Loop SHALL retrieve the next cross-reference record, and if successful,
+    retrieve the corresponding customer and account records; after all records are
+    processed, close all four files
+  req_ids:
+  - REQ-F-005
+  - REQ-F-011
+  - REQ-F-048
+  - REQ-F-053
+  traceability_lines:
+  - 316
+  - 317
+  - 318
+  - 319
+  - 320
+  - 321
+  - 322
+  - 327
+  - 328
+  - 329
+  - 331
+  - 333
+  - 335
+  - 337
+- rule_id: fb9acdcd_7b96_4f4f_960e_ff50f395ac26
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: Open cross-reference file and advance to customer file
+  rule_text: WHEN the cross-reference file open operation is dispatched, THE Cross-Reference
+    File Opener SHALL delegate to the file access service (`CBSTM03B`) to open the
+    cross-reference file ('XREFFILE'), then set the dataset name (`WS-FL-DD`) to 'CUSTFILE'
+    to trigger the customer file open on the next iteration
+  req_id: REQ-F-045
+  traceability_lines:
+  - 765
+  - 766
+  - 767
+  - 768
+  - 769
+  - 779
+- rule_id: 4be5eb7c_6c29_41ba_bf78_e58ddb9f6dd5
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: Process customer file operation with keyed access
+  rule_text: WHEN a customer file operation is requested via the M03B linkage area,
+    THE Customer File Handler SHALL perform the requested operation (open, keyed read,
+    or close) on the customer file store (`CUST-FILE`), and return the file status
+    code.
+  req_id: REQ-F-017
+  traceability_lines:
+  - 181
+  - 183
+  - 184
+  - 185
+  - 186
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 195
+  - 196
+  - 197
+  - 198
+  - 200
+  - 201
+- rule_id: 74e3e04f_883b_4d88_9a3c_542dbbf4cc5f
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: Process cross-reference file operation
+  rule_text: WHEN a cross-reference file operation is requested via the M03B linkage
+    area, THE Cross-Reference File Handler SHALL perform the requested operation (open,
+    read, or close) on the cross-reference file store (`XREF-FILE`), and return the
+    file status code.
+  req_id: REQ-F-015
+  traceability_lines:
+  - 157
+  - 159
+  - 160
+  - 161
+  - 162
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  - 170
+  - 171
+  - 172
+  - 173
+  - 175
+  - 176
+- rule_id: 76a7be20_fe5d_4da0_9583_a0fe755369c4
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: Process transaction file operation
+  rule_text: WHEN a transaction file operation is requested via the M03B linkage area,
+    THE Transaction File Handler SHALL perform the requested operation (open, read,
+    or close) on the transaction file store (`TRNX-FILE`), and return the file status
+    code.
+  req_id: REQ-F-014
+  traceability_lines:
+  - 133
+  - 135
+  - 136
+  - 137
+  - 138
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 146
+  - 147
+  - 148
+  - 149
+  - 151
+  - 152
+- rule_id: 7ea2d7ad_38b2_4683_9aca_8c06014a8406
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: Process account file operation with keyed access
+  rule_text: WHEN an account file operation is requested via the M03B linkage area,
+    THE Account File Handler SHALL perform the requested operation (open, keyed read,
+    or close) on the account file store (`ACCT-FILE`), and return the file status
+    code.
+  req_id: REQ-F-019
+  traceability_lines:
+  - 206
+  - 208
+  - 209
+  - 210
+  - 211
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 220
+  - 221
+  - 222
+  - 223
+  - 225
+  - 226
+- rule_id: 8e9418f3_be85_4020_a51a_8af18513821d
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: Dispatch file operation by data definition identifier
+  rule_text: THE File Operation Dispatcher SHALL evaluate the data definition identifier
+    and route to the corresponding file-processing procedure.
+  req_ids:
+  - REQ-F-012
+  - REQ-F-013
+  traceability_lines:
+  - 116
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+- rule_id: 081e8258_3810_406c_9bfd_ae1e8504ee44
+  program: CBTRN03C
+  disposition: captured
+  rule_name: Read next transaction record
+  rule_text: 'WHEN the next transaction record is read from the transaction file,
+    THE Transaction record retrieval SHALL set the application result code to 0 when
+    the read succeeds, set it to 16 and the end-of-file flag to ''Y'' when end-of-file
+    is reached, and set it to 12 when a file error occurs. (physical store: `TRANSACT-FILE`)'
+  req_ids:
+  - REQ-F-025
+  - REQ-F-026
+  - REQ-F-027
+  traceability_lines:
+  - 246
+  - 248
+  - 249
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 256
+  - 257
+  - 258
+  - 260
+  - 262
+  - 263
+  - 264
+  - 270
+  - 271
+- rule_id: 0bcdeec4_7311_4a2d_a8ef_fd9b24b687b7
+  program: CBTRN03C
+  disposition: captured
+  rule_name: Write transaction detail line to report
+  rule_text: THE Transaction detail report writer SHALL initialize the transaction
+    detail report record, populate it with the transaction ID, account ID, transaction
+    type code and description, transaction category code and description, transaction
+    source, and transaction amount, move the assembled record to the report file buffer,
+    write the record to the report file, and increment the line counter by one.
+  req_id: REQ-F-032
+  traceability_lines:
+  - 361
+  - 362
+  - 363
+  - 364
+  - 365
+  - 366
+  - 367
+  - 368
+  - 369
+  - 370
+  - 371
+  - 372
+  - 373
+- rule_id: ffef1b61_3167_40bb_b000_fb98cfe97717
+  program: CBTRN03C
+  disposition: captured
+  rule_name: Read date parameters for report period
+  rule_text: 'WHEN the date-parameters file is read, THE Date parameter retrieval
+    SHALL set the application result code to 0 when the read succeeds, set it to 16
+    and the end-of-file flag to ''Y'' when end-of-file is reached, and set it to 12
+    when a file error occurs. (physical store: `DATE-PARMS-FILE`)'
+  req_ids:
+  - REQ-F-021
+  - REQ-F-039
+  - REQ-F-040
+  - REQ-F-041
+  traceability_lines:
+  - 219
+  - 220
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+  - 231
+  - 234
+  - 235
+  - 236
+  - 242
+- rule_id: 06b75365_3122_4f0a_b7b9_e3123633e53c
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Write page total and separator line
+  rule_text: THE Page total report writer SHALL move the page total amount to the
+    page total report record, write the record to the report file, add the page total
+    to the grand total, reset the page total to zero, write a separator line to the
+    report, and increment the line counter by two.
+  req_ids:
+  - REQ-F-035
+  - REQ-F-069
+  traceability_lines:
+  - 293
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+- rule_id: 076b1bb7_ee4f_4f6c_ab06_76508583f0a4
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Check and handle page break condition
+  rule_text: WHEN the line counter reaches a multiple of the page size (20 lines),
+    THE Page break handler SHALL write the page total, reset the page total to zero,
+    and write the report header lines for the new page.
+  req_ids:
+  - REQ-F-034
+  - REQ-F-068
+  traceability_lines:
+  - 282
+  - 283
+  - 284
+  - 285
+- rule_id: 23ca3bf2_85fc_45e4_bbee_a2955030608e
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Retrieve transaction category description
+  rule_text: WHEN a transaction category lookup is required, THE Transaction category
+    lookup SHALL read the transaction category file (`TRANCATG-FILE`) using the transaction
+    type code and transaction category code as the composite key to retrieve the associated
+    transaction category description.
+  req_ids:
+  - REQ-F-031
+  - REQ-F-064
+  traceability_lines:
+  - 504
+  - 505
+- rule_id: 405c71df_b782_405b_85a1_c50da36a7859
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Write report header lines
+  rule_text: THE Report header writer SHALL write the report name header with start
+    and end dates, write a blank line, write the transaction column header line, write
+    a separator line, and increment the line counter by four.
+  req_ids:
+  - REQ-F-023
+  - REQ-F-061
+  traceability_lines:
+  - 324
+  - 325
+  - 326
+  - 327
+  - 329
+  - 330
+  - 331
+  - 333
+  - 334
+  - 335
+  - 337
+  - 338
+  - 339
+- rule_id: 43ceca2d_c1b6_4c66_a551_e6707a404964
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Write report record to file
+  rule_text: 'THE Report file writer SHALL write the report record to the report file.
+    (physical store: `REPORT-FILE`)'
+  req_ids:
+  - REQ-F-032
+  - REQ-F-066
+  traceability_lines:
+  - 343
+  - 345
+- rule_id: 51c70a8f_c8ba_464b_bd01_1aad141e6c54
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Accumulate transaction amount to page and account totals
+  rule_text: THE Transaction amount accumulator SHALL add the transaction amount to
+    the page total and account total accumulators.
+  req_ids:
+  - REQ-F-033
+  - REQ-F-067
+  traceability_lines:
+  - 287
+  - 288
+  - 289
+- rule_id: 774eee9f_7531_4c05_ad42_a03b1fb69d11
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Retrieve card cross-reference account ID
+  rule_text: WHEN a card number lookup is required, THE Card cross-reference lookup
+    SHALL read the card cross-reference file (`XREF-FILE`) using the card number as
+    the key to retrieve the associated account ID.
+  req_ids:
+  - REQ-F-029
+  - REQ-F-062
+  traceability_lines:
+  - 484
+  - 485
+- rule_id: 9605811b_ed6d_48b1_bc7a_050682ebcf73
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Initialize report processing on first transaction
+  rule_text: WHEN the first transaction is processed, THE Report initialization SHALL
+    set the first-time flag to 'N', move the report start and end dates to the report
+    header, and write the report header lines.
+  req_ids:
+  - REQ-F-022
+  - REQ-F-060
+  traceability_lines:
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  - 279
+  - 280
+- rule_id: 983f5310_4e93_4448_a995_e774d7602700
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Retrieve transaction type description
+  rule_text: WHEN a transaction type lookup is required, THE Transaction type lookup
+    SHALL read the transaction type file (`TRANTYPE-FILE`) using the transaction type
+    code as the key to retrieve the associated transaction type description.
+  req_ids:
+  - REQ-F-030
+  - REQ-F-035
+  - REQ-F-063
+  traceability_lines:
+  - 494
+  - 495
+- rule_id: 9d9a01ad_ce91_4b27_b4a3_89da27d4afe5
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Open transaction input and lookup files
+  rule_text: 'THE File initialization SHALL open the transaction file, card cross-reference
+    file, transaction type file, transaction category file, date-parameters file for
+    input, and the report file for output. (physical stores: `DATE-PARMS-FILE`, `REPORT-FILE`,
+    `TRANCATG-FILE`, `TRANSACT-FILE`, `TRANTYPE-FILE`, `XREF-FILE`)'
+  req_ids:
+  - REQ-F-020
+  - REQ-F-059
+  traceability_lines:
+  - 159
+  - 161
+  - 162
+  - 163
+  - 164
+  - 165
+  - 166
+  - 376
+  - 378
+  - 394
+  - 396
+  - 412
+  - 414
+  - 430
+  - 432
+  - 448
+  - 450
+  - 466
+  - 468
+- rule_id: b4599545_61f1_48de_8fbf_50655bc03557
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Write grand total to report
+  rule_text: THE Grand total report writer SHALL move the grand total amount to the
+    grand total report record and write the record to the report file.
+  req_ids:
+  - REQ-F-038
+  - REQ-F-072
+  traceability_lines:
+  - 318
+  - 319
+  - 320
+  - 321
+- rule_id: b8a4f85a_0ff1_4c7c_a123_2ab57dc3771b
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Detect card number change and write account total
+  rule_text: WHEN the card number changes from the previously processed card, THE
+    Card number change handler SHALL when not on the first transaction, write the
+    account total for the previous card, update the current card number to the new
+    card number, and perform lookups for account ID, transaction type description,
+    and transaction category description.
+  req_ids:
+  - REQ-F-028
+  - REQ-F-065
+  traceability_lines:
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+- rule_id: d4f8a547_f885_4032_b151_719d8bd8e1ca
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Write account total and separator line
+  rule_text: THE Account total report writer SHALL move the account total amount to
+    the account total report record, write the record to the report file, reset the
+    account total to zero, write a separator line to the report, and increment the
+    line counter by two.
+  req_ids:
+  - REQ-F-036
+  - REQ-F-070
+  traceability_lines:
+  - 306
+  - 307
+  - 308
+  - 309
+  - 310
+  - 311
+  - 312
+  - 313
+  - 314
+- rule_id: f0aa6175_f308_4ec9_a8bf_c8a86b0c31a0
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Accumulate transaction amount when end-of-file reached
+  rule_text: WHEN end-of-file is reached on the transaction file, THE Final transaction
+    accumulator SHALL add the final transaction amount to the page total and account
+    total accumulators, write the page total, and write the grand total.
+  req_ids:
+  - REQ-F-037
+  - REQ-F-071
+  traceability_lines:
+  - 197
+  - 200
+  - 201
+  - 202
+  - 203
+  - 204
+- rule_id: f8419a41_62f9_4211_83f6_4b79cd17ca64
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: Process transaction batch until end of file
+  rule_text: WHILE the end-of-file flag is 'N', THE Transaction batch processor SHALL
+    read the next transaction record; when a new card number is detected and not on
+    the first transaction, write the account total for the previous card; update the
+    current card number and perform lookups for account ID, transaction type description,
+    and transaction category description; write the transaction detail line; when
+    end-of-file is reached, write the page total and grand total.
+  req_ids:
+  - REQ-F-024
+  - REQ-F-028
+  - REQ-F-073
+  traceability_lines:
+  - 168
+  - 170
+  - 171
+  - 172
+  - 179
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 195
+  - 196
+  - 197
+  - 200
+  - 201
+  - 202
+  - 203
+  - 204
+  - 205
+  - 206
+- rule_id: ee82ed1b_ff89_44ab_905d_644f2b989938
+  program: CREASTMT
+  disposition: not_applicable
+  reason: '[Pattern-classified] Sort/merge verb mechanics'
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: Copy sorted records to VSAM transaction cluster
+  rule_text: 'WHEN the sort step completes successfully, THE Dataset Copy SHALL copy
+    all records from the sequential transaction file to the VSAM transaction cluster,
+    using the cluster''s 32-byte key to index each record. (physical stores: `INFILE`,
+    `OUTFILE`, `SYSIN`)'
+- rule_id: 74008c3c_fbb2_4417_a262_cda55d031e45
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: Delete and recreate transaction file cluster
+  rule_text: 'THE Dataset Management SHALL delete the sequential transaction file
+    and the existing VSAM transaction cluster, then define a new indexed VSAM cluster
+    named AWS.M2.CARDDEMO.TRXFL.VSAM.KSDS with a 32-byte key, 350-byte fixed records,
+    concurrent-read/exclusive-write sharing, and 1 primary plus 5 secondary cylinders
+    of storage. (physical store: `SYSIN`)'
+  req_id: REQ-F-042
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+- rule_id: 895606c9_09f0_474c_8a1e_0f1fa4195fff
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: Sort transaction records by card and transaction ID
+  rule_text: 'THE Transaction Sort SHALL sort transaction records from the source
+    transaction file by card number (16 bytes at offset 263, ascending) as primary
+    key and transaction ID (16 bytes at offset 1, ascending) as secondary key, then
+    reconstruct each output record with card number in positions 1-16, transaction
+    ID in positions 17-278, and a 50-byte segment from offset 279, writing the sorted
+    records to the sequential transaction file. (physical stores: `SORTIN`, `SORTOUT`,
+    `SYSIN`)'
+  req_id: REQ-F-043
+  traceability_lines:
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+- rule_id: c3540919_243a_487d_875a_6eeb676372f4
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: Delete previous statement report files
+  rule_text: 'WHEN the copy step completes successfully, THE Report Cleanup SHALL
+    delete the HTML statement file (AWS.M2.CARDDEMO.STATEMNT.HTML) and the text statement
+    file (AWS.M2.CARDDEMO.STATEMNT.PS) from the previous run. (physical stores: `HTMLFILE`,
+    `STMTFILE`)'
+  req_id: REQ-F-044
+  traceability_lines:
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 75
+- rule_id: de586a0c_f2a7_4f0b_bc6e_c27e13cba4db
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: Generate card transaction statements
+  rule_text: 'WHEN the cleanup step completes successfully, THE Statement Generation
+    SHALL invoke the statement generation program to read transaction records from
+    the transaction file, card reference data from the card reference file, account
+    details from the account data file, and customer information from the customer
+    data file, then produce text and HTML statement reports in the statement output
+    files. (physical stores: `ACCTFILE`, `CUSTFILE`, `HTMLFILE`, `STEPLIB`, `STMTFILE`,
+    `TRNXFILE`, `XREFFILE`)'
+  req_id: REQ-F-045
+  traceability_lines:
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: 308e34ce_95e2_42fd_8dde_59887e2cb4e2
+  program: PRTCATBL
+  disposition: captured
+  program_path: demo/jcl/PRTCATBL.jcl
+  rule_name: Copy transaction category balance records to backup
+  rule_text: 'THE Data Copy Handler SHALL retrieve transaction category balance records
+    from the source store and write them to a backup dataset. (physical stores: `FILEIN`,
+    `FILEOUT`, `SYSIN`)'
+  req_id: REQ-F-054
+  traceability_lines:
+  - file: demo/jcl/PRTCATBL.jcl
+    lines:
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+  - file: demo/proc/REPROC.prc
+    lines:
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+- rule_id: d7b56d4e_408f_469c_970a_1a81de77ad38
+  program: PRTCATBL
+  disposition: captured
+  program_path: demo/jcl/PRTCATBL.jcl
+  rule_name: Sort and format transaction category balance report
+  rule_text: 'THE Sort and Report Formatter SHALL sort transaction category balance
+    records by account identifier, transaction type, and category code in ascending
+    order; reformat each record to include space-separated account, type, category,
+    and formatted balance fields; write the sorted and formatted records to the report
+    dataset. (physical stores: `SORTIN`, `SORTOUT`, `SYMNAMES`, `SYSIN`)'
+  req_ids:
+  - REQ-F-055
+  - REQ-F-056
+  traceability_lines:
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+- rule_id: 84f459db_17a1_4943_b355_5184e4d8f300
+  program: TRANREPT
+  disposition: not_applicable
+  program_path: demo/jcl/TRANREPT.jcl
+  rule_name: Generate formatted transaction report with reference data
+  rule_text: 'THE Transaction Report Formatter SHALL delegate to the report formatter
+    (`CBTRN03C`) to read sorted transactions from the daily store, enrich each record
+    with card cross-reference, transaction type, and transaction category data, apply
+    date parameters, and write the formatted 133-byte report records to the transaction
+    report output store. (physical stores: `CARDXREF`, `DATEPARM`, `STEPLIB`, `TRANCATG`,
+    `TRANFILE`, `TRANREPT`, `TRANTYPE`)'
+  reason: '[LLM-classified] Covered by REQ-F-003 through REQ-F-017 collectively; the
+    rule describes the overall delegation to the report formatter which is decomposed
+    into individual business requirements above'
+- rule_id: 8a392794_74f1_4932_bbed_1fb7b3ce09e7
+  program: TRANREPT
+  disposition: captured
+  program_path: demo/jcl/TRANREPT.jcl
+  rule_name: Filter and sort transactions by date and card number
+  rule_text: 'THE Transaction Filter and Sort SHALL filter transactions by processing
+    date between 2022-01-01 and 2022-07-06 (inclusive), sort the filtered records
+    by card number in ascending order, and write the sorted output to the daily transaction
+    store. (physical stores: `SORTIN`, `SORTOUT`, `SYMNAMES`, `SYSIN`)'
+  req_id: REQ-F-058
+  traceability_lines:
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+- rule_id: fb0bc5d8_223b_4d38_a8ff_8c94abcfbd72
+  program: TRANREPT
+  disposition: captured
+  program_path: demo/jcl/TRANREPT.jcl
+  rule_name: Copy transaction records to backup storage
+  rule_text: 'THE Transaction Backup Handler SHALL copy the transaction records from
+    the source store to a backup dataset, preserving the original data structure and
+    format. (physical stores: `FILEIN`, `FILEOUT`, `SYSIN`)'
+  req_id: REQ-F-057
+  traceability_lines:
+  - file: demo/jcl/TRANREPT.jcl
+    lines:
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+  - file: demo/proc/REPROC.prc
+    lines:
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 7dec4675_312a_47db_a46c_0bccc9090782
+- req_id: REQ-F-002
+  rule_ids:
+  - 71e1da90_c086_401a_bd3c_5ef2ec3a6956
+  - dcd62c6c_13dd_4b84_9a73_84b0ac965f6e
+- req_id: REQ-F-003
+  rule_ids:
+  - d54e6c5a_c7f3_4a29_8e46_5e2c718735ce
+  - a7cecece_5f9b_4f5c_a18f_c27a1ec6cad5
+- req_id: REQ-F-004
+  rule_ids:
+  - d820cf3e_af77_4a51_a5f2_0b56e3d3c61f
+  - 9fe41d37_c47e_449d_96b0_b47651501b80
+- req_id: REQ-F-005
+  rule_ids:
+  - 28f052b7_9b5b_4bd8_9b79_44028961dce2
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  - f9e1d2bb_c822_48df_a23f_f9ea228e9edb
+  - 8c94e7d6_2588_4891_a5cb_0adb48b63efd
+  - 9f5dab18_a702_4fd1_808d_effe3f2d81c0
+  - 8795f508_c730_4093_917e_beaab3d365f6
+- req_id: REQ-F-006
+  rule_ids:
+  - c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  - 0a264113_0f61_4743_b3ae_d444259aad8c
+- req_id: REQ-F-007
+  rule_ids:
+  - c128c7c5_943f_4dce_b9fc_0b77bce60445
+- req_id: REQ-F-008
+  rule_ids:
+  - 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+- req_id: REQ-F-009
+  rule_ids:
+  - 9457e3d9_d3b6_4831_bf70_a21a5f24c018
+- req_id: REQ-F-010
+  rule_ids:
+  - 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+- req_id: REQ-F-011
+  rule_ids:
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  - a0e40d9a_fd18_41de_86b3_4709b5e9fd00
+  - 63cbf0e1_9a35_40aa_87c5_204b80b40005
+  - 004a8ad3_fb16_41b4_9c03_a7cf518946f7
+  - acba4e2c_5b7f_41bd_83ac_28893180c4b2
+- req_id: REQ-F-012
+  rule_ids:
+  - 8e9418f3_be85_4020_a51a_8af18513821d
+- req_id: REQ-F-013
+  rule_ids:
+  - 8e9418f3_be85_4020_a51a_8af18513821d
+- req_id: REQ-F-014
+  rule_ids:
+  - 76a7be20_fe5d_4da0_9583_a0fe755369c4
+- req_id: REQ-F-015
+  rule_ids:
+  - 74e3e04f_883b_4d88_9a3c_542dbbf4cc5f
+- req_id: REQ-F-017
+  rule_ids:
+  - 4be5eb7c_6c29_41ba_bf78_e58ddb9f6dd5
+- req_id: REQ-F-019
+  rule_ids:
+  - 7ea2d7ad_38b2_4683_9aca_8c06014a8406
+- req_id: REQ-F-020
+  rule_ids:
+  - 9d9a01ad_ce91_4b27_b4a3_89da27d4afe5
+- req_id: REQ-F-021
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-022
+  rule_ids:
+  - 9605811b_ed6d_48b1_bc7a_050682ebcf73
+- req_id: REQ-F-023
+  rule_ids:
+  - 405c71df_b782_405b_85a1_c50da36a7859
+- req_id: REQ-F-024
+  rule_ids:
+  - f8419a41_62f9_4211_83f6_4b79cd17ca64
+- req_id: REQ-F-025
+  rule_ids:
+  - 081e8258_3810_406c_9bfd_ae1e8504ee44
+- req_id: REQ-F-026
+  rule_ids:
+  - 081e8258_3810_406c_9bfd_ae1e8504ee44
+- req_id: REQ-F-027
+  rule_ids:
+  - 081e8258_3810_406c_9bfd_ae1e8504ee44
+- req_id: REQ-F-028
+  rule_ids:
+  - b8a4f85a_0ff1_4c7c_a123_2ab57dc3771b
+  - f8419a41_62f9_4211_83f6_4b79cd17ca64
+- req_id: REQ-F-029
+  rule_ids:
+  - 774eee9f_7531_4c05_ad42_a03b1fb69d11
+- req_id: REQ-F-030
+  rule_ids:
+  - 983f5310_4e93_4448_a995_e774d7602700
+- req_id: REQ-F-031
+  rule_ids:
+  - 23ca3bf2_85fc_45e4_bbee_a2955030608e
+- req_id: REQ-F-032
+  rule_ids:
+  - 0bcdeec4_7311_4a2d_a8ef_fd9b24b687b7
+  - 43ceca2d_c1b6_4c66_a551_e6707a404964
+- req_id: REQ-F-033
+  rule_ids:
+  - 51c70a8f_c8ba_464b_bd01_1aad141e6c54
+- req_id: REQ-F-034
+  rule_ids:
+  - 076b1bb7_ee4f_4f6c_ab06_76508583f0a4
+- req_id: REQ-F-035
+  rule_ids:
+  - 06b75365_3122_4f0a_b7b9_e3123633e53c
+  - 983f5310_4e93_4448_a995_e774d7602700
+- req_id: REQ-F-036
+  rule_ids:
+  - d4f8a547_f885_4032_b151_719d8bd8e1ca
+- req_id: REQ-F-037
+  rule_ids:
+  - f0aa6175_f308_4ec9_a8bf_c8a86b0c31a0
+- req_id: REQ-F-038
+  rule_ids:
+  - b4599545_61f1_48de_8fbf_50655bc03557
+- req_id: REQ-F-039
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-040
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-041
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-042
+  rule_ids:
+  - 74008c3c_fbb2_4417_a262_cda55d031e45
+- req_id: REQ-F-043
+  rule_ids:
+  - 895606c9_09f0_474c_8a1e_0f1fa4195fff
+- req_id: REQ-F-044
+  rule_ids:
+  - c3540919_243a_487d_875a_6eeb676372f4
+- req_id: REQ-F-045
+  rule_ids:
+  - de586a0c_f2a7_4f0b_bc6e_c27e13cba4db
+  - 71e1da90_c086_401a_bd3c_5ef2ec3a6956
+  - 6d9fad7a_b786_4c59_8564_61f280770c49
+  - e223e4eb_ac6f_4b31_86c6_9dae3a0a0055
+  - 6b11a38a_26d5_40bd_991a_57170461678e
+  - dcd62c6c_13dd_4b84_9a73_84b0ac965f6e
+  - fb9acdcd_7b96_4f4f_960e_ff50f395ac26
+  - a5b1b9a3_544f_4d7b_ab15_2bb0d17b2224
+  - 22fe4e50_868f_4b7f_9a97_5a03a750e8e6
+- req_id: REQ-F-046
+  rule_ids:
+  - d54e6c5a_c7f3_4a29_8e46_5e2c718735ce
+  - a7cecece_5f9b_4f5c_a18f_c27a1ec6cad5
+- req_id: REQ-F-047
+  rule_ids:
+  - d820cf3e_af77_4a51_a5f2_0b56e3d3c61f
+  - 9fe41d37_c47e_449d_96b0_b47651501b80
+- req_id: REQ-F-048
+  rule_ids:
+  - 28f052b7_9b5b_4bd8_9b79_44028961dce2
+  - c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  - 0a264113_0f61_4743_b3ae_d444259aad8c
+  - f9e1d2bb_c822_48df_a23f_f9ea228e9edb
+  - 9f5dab18_a702_4fd1_808d_effe3f2d81c0
+  - 8c94e7d6_2588_4891_a5cb_0adb48b63efd
+  - 8795f508_c730_4093_917e_beaab3d365f6
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+- req_id: REQ-F-049
+  rule_ids:
+  - c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  - 0a264113_0f61_4743_b3ae_d444259aad8c
+- req_id: REQ-F-050
+  rule_ids:
+  - c128c7c5_943f_4dce_b9fc_0b77bce60445
+- req_id: REQ-F-051
+  rule_ids:
+  - 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+- req_id: REQ-F-052
+  rule_ids:
+  - 9457e3d9_d3b6_4831_bf70_a21a5f24c018
+- req_id: REQ-F-053
+  rule_ids:
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  - a0e40d9a_fd18_41de_86b3_4709b5e9fd00
+  - 63cbf0e1_9a35_40aa_87c5_204b80b40005
+  - 004a8ad3_fb16_41b4_9c03_a7cf518946f7
+  - acba4e2c_5b7f_41bd_83ac_28893180c4b2
+- req_id: REQ-F-054
+  rule_ids:
+  - 308e34ce_95e2_42fd_8dde_59887e2cb4e2
+- req_id: REQ-F-055
+  rule_ids:
+  - d7b56d4e_408f_469c_970a_1a81de77ad38
+- req_id: REQ-F-056
+  rule_ids:
+  - d7b56d4e_408f_469c_970a_1a81de77ad38
+- req_id: REQ-F-057
+  rule_ids:
+  - fb0bc5d8_223b_4d38_a8ff_8c94abcfbd72
+- req_id: REQ-F-058
+  rule_ids:
+  - 8a392794_74f1_4932_bbed_1fb7b3ce09e7
+- req_id: REQ-F-059
+  rule_ids:
+  - 9d9a01ad_ce91_4b27_b4a3_89da27d4afe5
+- req_id: REQ-F-060
+  rule_ids:
+  - 9605811b_ed6d_48b1_bc7a_050682ebcf73
+- req_id: REQ-F-061
+  rule_ids:
+  - 405c71df_b782_405b_85a1_c50da36a7859
+- req_id: REQ-F-062
+  rule_ids:
+  - 774eee9f_7531_4c05_ad42_a03b1fb69d11
+- req_id: REQ-F-063
+  rule_ids:
+  - 983f5310_4e93_4448_a995_e774d7602700
+- req_id: REQ-F-064
+  rule_ids:
+  - 23ca3bf2_85fc_45e4_bbee_a2955030608e
+- req_id: REQ-F-065
+  rule_ids:
+  - b8a4f85a_0ff1_4c7c_a123_2ab57dc3771b
+- req_id: REQ-F-066
+  rule_ids:
+  - 43ceca2d_c1b6_4c66_a551_e6707a404964
+- req_id: REQ-F-067
+  rule_ids:
+  - 51c70a8f_c8ba_464b_bd01_1aad141e6c54
+- req_id: REQ-F-068
+  rule_ids:
+  - 076b1bb7_ee4f_4f6c_ab06_76508583f0a4
+- req_id: REQ-F-069
+  rule_ids:
+  - 06b75365_3122_4f0a_b7b9_e3123633e53c
+- req_id: REQ-F-070
+  rule_ids:
+  - d4f8a547_f885_4032_b151_719d8bd8e1ca
+- req_id: REQ-F-071
+  rule_ids:
+  - f0aa6175_f308_4ec9_a8bf_c8a86b0c31a0
+- req_id: REQ-F-072
+  rule_ids:
+  - b4599545_61f1_48de_8fbf_50655bc03557
+- req_id: REQ-F-073
+  rule_ids:
+  - f8419a41_62f9_4211_83f6_4b79cd17ca64

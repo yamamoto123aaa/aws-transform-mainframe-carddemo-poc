@@ -1,0 +1,26 @@
+2026-08-08 04:06:49,644 [main] INFO : Starting generic analysis
+2026-08-08 04:06:49,646 [main] INFO : Generic analysis started at: 04:06:49 (version 20260724160636)
+2026-08-08 04:06:50,186 [main] INFO : Analysis successful, finished at: 04:06:50
+2026-08-08 04:06:50,186 [main] INFO : 237 files processed
+2026-08-08 04:06:50,186 [main] INFO : Global duration: 1 sec
+2026-08-08 04:06:50,186 [main] INFO : Outcome:
+2026-08-08 04:06:50,187 [main] INFO : - prc: 2
+2026-08-08 04:06:50,187 [main] INFO : - init: 1
+2026-08-08 04:06:50,187 [main] INFO : - ps: 12
+2026-08-08 04:06:50,187 [main] INFO : - controlm: 1
+2026-08-08 04:06:50,187 [main] INFO : - dbd: 4
+2026-08-08 04:06:50,187 [main] INFO : - bms: 21
+2026-08-08 04:06:50,187 [main] INFO : - dcl: 3
+2026-08-08 04:06:50,188 [main] INFO : - cbl: 44
+2026-08-08 04:06:50,188 [main] INFO : - ddl: 6
+2026-08-08 04:06:50,188 [main] INFO : - cpy: 62
+2026-08-08 04:06:50,188 [main] INFO : - mac: 2
+2026-08-08 04:06:50,188 [main] INFO : - txt: 10
+2026-08-08 04:06:50,188 [main] INFO : - jcl: 46
+2026-08-08 04:06:50,188 [main] INFO : - csd: 4
+2026-08-08 04:06:50,188 [main] INFO : - dat: 1
+2026-08-08 04:06:50,188 [main] INFO : - md: 3
+2026-08-08 04:06:50,188 [main] INFO : - ca7: 1
+2026-08-08 04:06:50,188 [main] INFO : - asm: 2
+2026-08-08 04:06:50,188 [main] INFO : - ctl: 8
+2026-08-08 04:06:50,188 [main] INFO : - psb: 4

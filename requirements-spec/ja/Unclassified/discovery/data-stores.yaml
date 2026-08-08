@@ -1,0 +1,37 @@
+offset_convention: 1-based
+data_stores:
+- name: AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  type: VSAM KSDS
+  copybook_views:
+  - copybook: CSUSR01Y.cpy
+    programs:
+    - COSGN00C
+    fields:
+    - name: SEC-USR-ID
+      pic: PIC ALPHANUMERIC(8)
+      offset: 1
+      length: 8
+    - name: SEC-USR-FNAME
+      pic: PIC ALPHANUMERIC(20)
+      offset: 9
+      length: 20
+    - name: SEC-USR-LNAME
+      pic: PIC ALPHANUMERIC(20)
+      offset: 29
+      length: 20
+    - name: SEC-USR-PWD
+      pic: PIC ALPHANUMERIC(8)
+      offset: 49
+      length: 8
+    - name: SEC-USR-TYPE
+      pic: PIC ALPHANUMERIC(1)
+      offset: 57
+      length: 1
+    - name: SEC-USR-FILLER
+      pic: PIC ALPHANUMERIC(23)
+      offset: 58
+      length: 23
+  record_length: 80
+  internal_readers:
+  - COSGN00C
+  internal_writers: []

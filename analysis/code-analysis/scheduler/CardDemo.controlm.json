@@ -1,0 +1,586 @@
+{
+  "sourceFileInfo": {
+    "fileName": "CardDemo.controlm",
+    "filePath": "demo/scheduler/CardDemo.controlm",
+    "fileType": "ControlM"
+  },
+  "context": {},
+  "scheduledTasks": [
+    {
+      "name": "CLOSEFIL",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "DAILY CLOSEFIL",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "activeDaysOfMonth": "ALL",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "DAILY-TransactionBackup",
+      "outConditions": [
+        "DAILY-TransactionBackup-CLOSEFIL"
+      ]
+    },
+    {
+      "name": "TRANBKP",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "DAILY TRANBKP",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeDaysOfMonth": "ALL",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "DAILY-TransactionBackup",
+      "inConditions": [
+        "DAILY-TransactionBackup-CLOSEFIL"
+      ],
+      "outConditions": [
+        "DAILY-TransactionBackup-CLOSEFIL",
+        "DAILY-TransactionBackup-TRANBKP"
+      ]
+    },
+    {
+      "name": "WAITSTEP",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "DAILY WAITSTEP",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeDaysOfMonth": "ALL",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "DAILY-TransactionBackup",
+      "inConditions": [
+        "DAILY-TransactionBackup-TRANBKP"
+      ],
+      "outConditions": [
+        "DAILY-TransactionBackup-TRANBKP",
+        "DAILY-TransactionBackup-WAITSTEP"
+      ]
+    },
+    {
+      "name": "OPENFIL",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "DAILY OPENFIL",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeDaysOfMonth": "ALL",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "DAILY-TransactionBackup",
+      "inConditions": [
+        "DAILY-TransactionBackup-WAITSTEP"
+      ],
+      "outConditions": [
+        "DAILY-TransactionBackup-WAITSTEP"
+      ]
+    },
+    {
+      "name": "MNTTRDB2",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "WEEKLY MNTTRDB2",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "WEEKLY-TransactionTypesDBRefresh",
+      "outConditions": [
+        "WEEKLY-TransactionTypesDBRefresh-MNTTRDB2"
+      ]
+    },
+    {
+      "name": "CLOSEFIL",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "WEEKLY DisclosureGroupsRefresh CLOSEFIL",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "WEEKLY-DisclosureGroupsRefresh",
+      "inConditions": [
+        "WEEKLY-TransactionTypesDBRefresh-MNTTRDB2"
+      ],
+      "outConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-CLOSEFIL"
+      ]
+    },
+    {
+      "name": "DISCGRP",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "WEEKLY DisclosureGroupsRefresh DISCGRP",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "WEEKLY-DisclosureGroupsRefresh",
+      "inConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-CLOSEFIL"
+      ],
+      "outConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-CLOSEFIL",
+        "WEEKLY-DisclosureGroupsRefresh-DISCGRP"
+      ]
+    },
+    {
+      "name": "WAITSTEP",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "WEEKLY DisclosureGroupsRefresh WAITSTEP",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "WEEKLY-DisclosureGroupsRefresh",
+      "inConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-DISCGRP"
+      ],
+      "outConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-DISCGRP",
+        "WEEKLY-DisclosureGroupsRefresh-WAITSTEP"
+      ]
+    },
+    {
+      "name": "OPENFIL",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "WEEKLY DisclosureGroupsRefresh OPENFIL",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "WEEKLY-DisclosureGroupsRefresh",
+      "inConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-WAITSTEP"
+      ],
+      "outConditions": [
+        "WEEKLY-DisclosureGroupsRefresh-WAITSTEP"
+      ]
+    },
+    {
+      "name": "TRANEXTR",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "WEEKLY TransactionTypesDBRefresh TRANEXTR",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "WEEKLY-DisclosureGroupsRefresh",
+      "inConditions": [
+        "WEEKLY-TransactionTypesDBRefresh-MNTTRDB2"
+      ]
+    },
+    {
+      "name": "CLOSEFIL",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "MONTHLY CLOSEFIL",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "MONTHLY-InterestCalculation",
+      "outConditions": [
+        "MONTHLY-InterestCalculation-CLOSEFIL"
+      ]
+    },
+    {
+      "name": "INTCALC",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "MONTHLY INTCALC",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "MONTHLY-InterestCalculation",
+      "inConditions": [
+        "MONTHLY-InterestCalculation-CLOSEFIL"
+      ],
+      "outConditions": [
+        "MONTHLY-InterestCalculation-CLOSEFIL",
+        "MONTHLY-InterestCalculation-INTCALC"
+      ]
+    },
+    {
+      "name": "COMBTRAN",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "MONTHLY COMBTRAN",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "MONTHLY-InterestCalculation",
+      "inConditions": [
+        "MONTHLY-InterestCalculation-INTCALC"
+      ],
+      "outConditions": [
+        "MONTHLY-InterestCalculation-COMBTRAN",
+        "MONTHLY-InterestCalculation-INTCALC"
+      ]
+    },
+    {
+      "name": "WAITSTEP",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "MONTHLY WAITSTEP",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "MONTHLY-InterestCalculation",
+      "inConditions": [
+        "MONTHLY-InterestCalculation-COMBTRAN"
+      ],
+      "outConditions": [
+        "MONTHLY-InterestCalculation-COMBTRAN",
+        "MONTHLY-InterestCalculation-WAITSTEP"
+      ]
+    },
+    {
+      "name": "OPENFIL",
+      "path": "demo/scheduler/CardDemo.controlm",
+      "description": "MONTHLY OPENFIL",
+      "sourceFileURI": "demo/scheduler/CardDemo.controlm",
+      "schedulerSource": "ControlM",
+      "taskType": "JOB",
+      "taskOwner": "xuemingh",
+      "taskApplication": "CARD-DEMO",
+      "inConditionLogic": "AND",
+      "activeMonths": "ALL",
+      "timeUntil": "23:00",
+      "confirmRequired": false,
+      "isCyclic": false,
+      "recoveryRules": [
+        {
+          "recoveryAction": "RERUN",
+          "maxRetryCount": 5
+        }
+      ],
+      "belongsToFolder": "MONTHLY-InterestCalculation",
+      "inConditions": [
+        "MONTHLY-InterestCalculation-WAITSTEP"
+      ],
+      "outConditions": [
+        "MONTHLY-InterestCalculation-WAITSTEP"
+      ]
+    }
+  ],
+  "schedulerFolders": [
+    {
+      "name": "DAILY-TransactionBackup",
+      "tasks": [
+        "CLOSEFIL",
+        "OPENFIL",
+        "TRANBKP",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "MONTHLY-InterestCalculation",
+      "tasks": [
+        "CLOSEFIL",
+        "COMBTRAN",
+        "INTCALC",
+        "OPENFIL",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "WEEKLY-DisclosureGroupsRefresh",
+      "tasks": [
+        "CLOSEFIL",
+        "DISCGRP",
+        "OPENFIL",
+        "TRANEXTR",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "WEEKLY-TransactionTypesDBRefresh",
+      "tasks": [
+        "MNTTRDB2"
+      ]
+    }
+  ],
+  "schedulerConditions": [
+    {
+      "name": "DAILY-TransactionBackup-CLOSEFIL",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "TRANBKP"
+      ],
+      "producerTasks": [
+        "CLOSEFIL",
+        "TRANBKP"
+      ]
+    },
+    {
+      "name": "DAILY-TransactionBackup-TRANBKP",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "WAITSTEP"
+      ],
+      "producerTasks": [
+        "TRANBKP",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "DAILY-TransactionBackup-WAITSTEP",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "OPENFIL"
+      ],
+      "producerTasks": [
+        "OPENFIL",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "MONTHLY-InterestCalculation-CLOSEFIL",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "INTCALC"
+      ],
+      "producerTasks": [
+        "CLOSEFIL",
+        "INTCALC"
+      ]
+    },
+    {
+      "name": "MONTHLY-InterestCalculation-COMBTRAN",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "WAITSTEP"
+      ],
+      "producerTasks": [
+        "COMBTRAN",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "MONTHLY-InterestCalculation-INTCALC",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "COMBTRAN"
+      ],
+      "producerTasks": [
+        "COMBTRAN",
+        "INTCALC"
+      ]
+    },
+    {
+      "name": "MONTHLY-InterestCalculation-WAITSTEP",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "OPENFIL"
+      ],
+      "producerTasks": [
+        "OPENFIL",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "WEEKLY-DisclosureGroupsRefresh-CLOSEFIL",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "DISCGRP"
+      ],
+      "producerTasks": [
+        "CLOSEFIL",
+        "DISCGRP"
+      ]
+    },
+    {
+      "name": "WEEKLY-DisclosureGroupsRefresh-DISCGRP",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "WAITSTEP"
+      ],
+      "producerTasks": [
+        "DISCGRP",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "WEEKLY-DisclosureGroupsRefresh-WAITSTEP",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "OPENFIL"
+      ],
+      "producerTasks": [
+        "OPENFIL",
+        "WAITSTEP"
+      ]
+    },
+    {
+      "name": "WEEKLY-TransactionTypesDBRefresh-MNTTRDB2",
+      "conditionDateReference": "CURRENT_CYCLE",
+      "consumerTasks": [
+        "CLOSEFIL",
+        "TRANEXTR"
+      ],
+      "producerTasks": [
+        "MNTTRDB2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Interest and Fee Calculation - Batch Job Discovery
+# Generated: 2026-08-08T04:25:17Z
+# Source: TransformKG (Python discovery)
+
+function: InterestandFeeCalculation
+jobs:
+  migrate:
+  - id: BAT-001
+    name: INTCALC.jcl
+    description: Interest and fee calculation batch process; This batch job invokes
+      the interest and fee calculation program to process transaction balances and
+      compute accrued interest and applicable fees. The program reads account data
+      from the account master store, transaction reference data from the cross-reference
+      stores, and discount group definitions, then writes the computed transaction
+      records to the output transaction store. The job passes a business date parameter
+      (2022071800) to control the calculation period.
+    programs:
+    - CBACT04C
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

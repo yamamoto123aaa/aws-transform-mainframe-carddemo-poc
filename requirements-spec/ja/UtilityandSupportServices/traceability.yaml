@@ -1,0 +1,844 @@
+function: UtilityandSupportServices
+generated_at: '2026-08-08T04:27:32Z'
+summary:
+  total_rules: 35
+  captured: 28
+  not_applicable: 6
+  unreachable: 1
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 35
+    written: 35
+    shortfall: 0
+rules:
+- rule_id: 1dadc1ec_6020_4aad_bc1e_d1430db64122
+  program: COBDATFT
+  disposition: not_applicable
+  reason: '[Pattern-classified] 表示用データフォーマット'
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: 日付をYYYY-MM-DD形式からYYYYMMDD形式に変換する
+  rule_text: 入力タイプ指標(`COINTYPE`)が'2'の場合、日付変換サービスは出力タイプ指標(`COOUTYPE`)が'1'であることを検証しなければならない。検証に合格した場合は、入力日付(`COINPDT`)をYYYY-MM-DD形式からYYYYMMDD形式に変換して出力日付フィールド(`COOUTDT`)に格納し、検証に失敗した場合はエラーハンドラーへ処理を移す。
+- rule_id: 8583131f_e4ae_4344_b2d5_3c4ba81e67e0
+  program: COBDATFT
+  disposition: not_applicable
+  reason: '[Pattern-classified] 表示用データフォーマット'
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: 日付をYYYYMMDD形式からYYYY-MM-DD形式に変換する
+  rule_text: 入力タイプ指標(`COINTYPE`)が'1'の場合、日付変換サービスは入力日付(`COINPDT`)の5桁目にハイフンが含まれていないこと、および出力タイプ指標(`COOUTYPE`)が'2'であることを検証しなければならない。両方の検証に合格した場合は、入力日付をYYYYMMDD形式からYYYY-MM-DD形式に変換して出力日付フィールド(`COOUTDT`)に格納し、いずれかの検証に失敗した場合はエラーハンドラーへ処理を移す。
+- rule_id: 87159ff2_c3fe_4c41_be9e_f0a626642e9f
+  program: COBDATFT
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: プログラム環境を確立し、入力レコードをロードする
+  rule_text: 日付変換サービスは、プログラム環境を初期化し、入力レコードへのアドレス可能性を確立し、日付形式の検証と変換の準備を行わなければならない。
+- rule_id: a696d0d1_1b04_4144_bd19_61d15ca96f2d
+  program: COBDATFT
+  disposition: unreachable
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: プログラムのセーブ領域とレジスタ等価定義を定義する
+  rule_text: 日付変換サービスは、セーブ領域を定義し、入力レコード構造定義をインクルードし、プログラム実行のためのレジスタ等価定義を確立しなければならない。
+  reason: プログラムの呼び出し元はすべて他の機能に属しており、そこで規則が扱われる
+- rule_id: ba85e6fb_1bab_4612_a7a4_a2e66da67a91
+  program: COBDATFT
+  disposition: captured
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: 入力タイプ指標を検証し、適切なハンドラーへ処理を振り分ける
+  rule_text: 入力タイプ指標(`COINTYPE`)を受信した場合、日付変換サービスは、入力タイプが'1'または'2'であれば適切な日付形式ハンドラーへ処理を振り分け、入力タイプが無効であればエラーハンドラーへ処理を振り分けなければならない。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+- rule_id: c0aed14a_5439_4ce1_9fa3_49f18dd95441
+  program: COBDATFT
+  disposition: captured
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: 無効な入力に対するエラーメッセージを設定する
+  rule_text: 入力タイプ指標が'1'でも'2'でもない場合、または出力タイプ指標が入力タイプと互換性がない場合、日付変換サービスは検証失敗を示すため、エラーメッセージフィールド(`COERMSG`)に'INVALID
+    INPUT'を設定しなければならない。
+  req_ids:
+  - REQ-F-002
+  - REQ-F-003
+  traceability_lines:
+  - 54
+  - 55
+  - 56
+- rule_id: e86bfe41_14ec_443c_a927_ae8c540b41cc
+  program: COBDATFT
+  disposition: captured
+  program_path: demo/asm/COBDATFT.asm
+  rule_name: 呼び出し元コンテキストを復元し、呼び出し元へ処理を返す
+  rule_text: 日付変換サービスは、呼び出し元のレジスタを復元し、リターンコードをゼロに設定し、呼び出し元へ制御を返さなければならない。
+  req_id: REQ-F-004
+  traceability_lines:
+  - 57
+  - 59
+  - 60
+  - 61
+  - 62
+- rule_id: 3479cebe_c9ed_4fd2_8219_4bf0ff354735
+  program: COBSWAIT
+  disposition: captured
+  program_path: demo/cbl/COBSWAIT.cbl
+  rule_name: 待機時間パラメータを受け取り変換する
+  rule_text: パラメータ入力ハンドラーは、標準入力から待機時間パラメータを受け取り、内部の待機時間フィールドへ転送しなければならない。
+  req_ids:
+  - REQ-F-005
+  - REQ-F-030
+  traceability_lines:
+  - 34
+  - 36
+  - 37
+- rule_id: 3e6db102_56a2_4d0a_8d6c_fc8a9b9b91db
+  program: COBSWAIT
+  disposition: captured
+  program_path: demo/cbl/COBSWAIT.cbl
+  rule_name: 待機時間サービスを呼び出す
+  rule_text: 待機時間サービスディスパッチャーは、待機時間フィールドで指定された時間だけ実行を一時停止するため、待機時間サービス(`MVSWAIT`)へ処理を委譲しなければならない。
+  req_ids:
+  - REQ-F-006
+  - REQ-F-031
+  traceability_lines:
+  - 38
+- rule_id: 5b743e48_a6b2_4b46_823a_bfb317af6d05
+  program: CODATE01
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: プログラムを初期化し、キュー名を取得する
+  rule_text: プログラム初期化およびキュー名取得は、ワーキングストレージを初期化し、CICSトランザクションコンテキストから入力キュー名を取得し、応答キュー名を'CARD.DEMO.REPLY.DATE'に設定し、エラー処理のためにCICS応答コードを取得しなければならない。
+- rule_id: 05522ada_5113_4fc1_80b5_aeb814b38e50
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 応答メッセージ送信のために出力キューをオープンする
+  rule_text: 出力キューのオープン操作が開始された場合、出力キューオープンハンドラーは、put アクセスとコンテキストパスオプションを指定して出力キュー(`MQ:OPEN`)をオープンしなければならない。成功時はキューハンドルを格納しRESP-QUEUE-OPENフラグを設定し、失敗時は条件コードと理由コードを取得し、エラーメッセージ'OUT
+    MQOPEN ERR'を記録する。
+  req_id: REQ-F-010
+  traceability_lines:
+  - 206
+  - 209
+  - 210
+  - 212
+  - 213
+  - 214
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  - 221
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 238
+- rule_id: 54294cf5_5109_4212_a257_cb9c8041e048
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: エラーキューをクローズする
+  rule_text: エラーキューのクローズ操作が開始された場合、エラーキュークローズハンドラーは、格納済みのエラーキューハンドルを使用してエラーキュー(`MQ:CLOSE`)をクローズしなければならない。失敗時は条件コードと理由コードを取得し、エラーメッセージ'MQCLOSE
+    ERR'を記録する。
+  req_id: REQ-F-020
+  traceability_lines:
+  - 503
+  - 504
+  - 506
+  - 507
+  - 508
+  - 509
+  - 510
+  - 512
+  - 516
+  - 517
+  - 518
+  - 519
+  - 520
+  - 521
+  - 522
+  - 523
+- rule_id: 5af4c728_b64a_4a6a_abb0_ed8a9eca3fa5
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 入力キューをクローズする
+  rule_text: 入力キューのクローズ操作が開始された場合、入力キュークローズハンドラーは、格納済みの入力キューハンドルを使用して入力キュー(`MQ:CLOSE`)をクローズしなければならない。成功時は条件コードと理由コードを記録し、失敗時は条件コードと理由コードを取得し、エラーメッセージ'MQCLOSE
+    ERR'を記録する。
+  req_id: REQ-F-018
+  traceability_lines:
+  - 456
+  - 458
+  - 459
+  - 461
+  - 462
+  - 463
+  - 464
+  - 465
+  - 467
+  - 468
+  - 469
+  - 470
+  - 471
+  - 472
+  - 473
+  - 474
+  - 475
+  - 476
+  - 477
+  - 478
+- rule_id: 80feac2b_7002_45ea_876e_7c5ef454d4af
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 要求を処理し、日時応答を準備する
+  rule_text: '日時応答準備は、CICSのASKTIMEおよびFORMATTIMEを使用して現在のシステム日時を取得し、日付をMM/DD/YYYY形式、時刻をHH:MM:SS形式で整形し、''SYSTEM
+    DATE : ''に続けて日付、''SYSTEM TIME : ''に続けて時刻を含む応答メッセージを構築しなければならない。'
+  req_id: REQ-F-014
+  traceability_lines:
+  - 343
+  - 344
+  - 345
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 352
+  - 353
+  - 355
+  - 356
+  - 357
+  - 358
+  - 359
+  - 360
+  - 361
+  - 362
+  - 363
+  - 364
+- rule_id: 81ff36a6_0bd6_447f_a5b7_77726dee2936
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: メッセージ取得のために入力キューをオープンする
+  rule_text: 入力キューのオープン操作が開始された場合、入力キューオープンハンドラーは、共有入力アクセスとコンテキストセーブオプションを指定して入力キュー(`MQ:OPEN`)をオープンしなければならない。成功時はキューハンドルを格納しREPLY-QUEUE-OPENフラグを設定し、失敗時は条件コードと理由コードを取得し、エラーメッセージ'INP
+    MQOPEN ERR'を記録する。
+  req_id: REQ-F-009
+  traceability_lines:
+  - 171
+  - 172
+  - 175
+  - 176
+  - 178
+  - 179
+  - 180
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 195
+  - 196
+  - 197
+  - 198
+  - 199
+  - 200
+  - 201
+  - 202
+  - 204
+- rule_id: 9aa3fb81_58f0_419b_9928_abee24a451ac
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 終了時にキューのクローズを統括する
+  rule_text: キュークローズ統括処理は、REPLY-QUEUE-OPENが設定されている場合は入力キューをクローズし、RESP-QUEUE-OPENが設定されている場合は出力キューをクローズし、ERR-QUEUE-OPENが設定されている場合はエラーキューをクローズしなければならない。
+  req_id: REQ-F-017
+  traceability_lines:
+  - 444
+  - 445
+  - 446
+  - 447
+  - 448
+  - 449
+  - 450
+  - 451
+  - 452
+- rule_id: 9e75fedc_f6f8_4eeb_9698_4cb8c946d73f
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: キューのライフサイクルとメッセージ処理ループを統括する
+  rule_text: 入力キューにメッセージが残っている間(NO-MORE-MSGSフラグが設定されていない間)、メッセージ処理ループオーケストレーターは、NO-MORE-MSGSフラグが設定されるまで、メッセージの取得、処理、応答のためにメイン処理を繰り返し呼び出さなければならない。
+  req_id: REQ-F-012
+  traceability_lines:
+  - 164
+  - 165
+  - 279
+  - 280
+- rule_id: a029c68d_234f_440a_b324_3b64b448c420
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 出力キューをクローズする
+  rule_text: 出力キュークローズ操作が開始されると、出力キュークローズハンドラは、保存された出力キューハンドルを使用して出力キューをクローズ（`MQ:CLOSE`）しなければならない（SHALL）。成功時には状態コードおよび理由コードを記録し、失敗時には状態コードおよび理由コードを取得し、エラーメッセージ「MQCLOSE
+    ERR」を記録しなければならない（SHALL）。
+  req_id: REQ-F-019
+  traceability_lines:
+  - 480
+  - 481
+  - 483
+  - 484
+  - 485
+  - 486
+  - 487
+  - 489
+  - 490
+  - 491
+  - 492
+  - 493
+  - 494
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+  - 501
+- rule_id: d2b092a2_a809_465c_9920_4b52574d88f5
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: エラーメッセージをエラーキューへ送信
+  rule_text: エラー状態が検出されると、エラーメッセージ送信ハンドラは、エラー詳細（段落名、リターンメッセージ、状態コード、理由コード、およびキュー名）を含むエラーメッセージを、文字列形式およびキューマネージャの文字セットを使用してエラーキューへ送信（`MQ:PUT`）しなければならない（SHALL）。成功時には状態コードおよび理由コードを記録し、失敗時には状態コードおよび理由コードを取得し、エラーメッセージ「MQPUT
+    ERR」を記録しなければならない（SHALL）。
+  req_id: REQ-F-016
+  traceability_lines:
+  - 405
+  - 406
+  - 409
+  - 410
+  - 411
+  - 412
+  - 414
+  - 416
+  - 417
+  - 418
+  - 420
+  - 421
+  - 422
+  - 423
+  - 424
+  - 425
+  - 426
+  - 427
+  - 429
+  - 430
+  - 431
+  - 432
+  - 433
+  - 434
+  - 435
+  - 436
+  - 437
+  - 439
+  - 440
+  - 442
+- rule_id: e5cfb70c_e366_4df1_b301_366216220df5
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 入力キューから受信要求メッセージを取得
+  rule_text: 入力キューにメッセージが存在する間（WHILE）、入力メッセージ取得ハンドラは、5秒の待機間隔で入力キューから次のメッセージを取得（`MQ:GET`）しなければならない（SHALL）。成功時にはメッセージID、相関ID、および返信先キュー名を抽出して返信用に保存し、メッセージ件数を増分し、メッセージバッファを要求メッセージ領域へ移動しなければならない（SHALL）。メッセージがこれ以上存在しない場合、NO-MORE-MSGSフラグを設定しなければならない（SHALL）。その他の失敗時には状態コードおよび理由コードを取得し、エラーメッセージ「INP
+    MQGET ERR:」を記録しなければならない（SHALL）。
+  req_id: REQ-F-013
+  traceability_lines:
+  - 283
+  - 284
+  - 285
+  - 286
+  - 287
+  - 288
+  - 290
+  - 291
+  - 292
+  - 293
+  - 296
+  - 297
+  - 298
+  - 299
+  - 301
+  - 302
+  - 303
+  - 304
+  - 305
+  - 306
+  - 307
+  - 308
+  - 309
+  - 312
+  - 313
+  - 314
+  - 315
+  - 316
+  - 317
+  - 318
+  - 319
+  - 321
+  - 323
+  - 324
+  - 325
+  - 326
+  - 327
+  - 329
+  - 330
+  - 331
+  - 332
+  - 333
+  - 334
+  - 335
+  - 336
+  - 337
+  - 339
+- rule_id: efe9c397_f640_423a_bde2_d63053f3d187
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: エラーメッセージ送信のためにエラーキューをオープン
+  rule_text: エラーキューオープン操作が開始されると、エラーキューオープンハンドラは、put権限およびコンテキストパスオプションを指定してエラーキューをオープン（`MQ:OPEN`）し、エラーキュー名を「CARD.DEMO.ERROR」に設定しなければならない（SHALL）。成功時にはキューハンドルを保存し、ERR-QUEUE-OPENフラグを設定しなければならない（SHALL）。失敗時には状態コードおよび理由コードを取得し、エラーメッセージ「ERR
+    MQOPEN ERR」を記録しなければならない（SHALL）。
+  req_id: REQ-F-011
+  traceability_lines:
+  - 240
+  - 243
+  - 244
+  - 245
+  - 247
+  - 248
+  - 249
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 256
+  - 258
+  - 259
+  - 260
+  - 261
+  - 262
+  - 263
+  - 264
+  - 265
+  - 266
+  - 267
+  - 268
+  - 270
+  - 271
+  - 274
+- rule_id: f7a4cb0e_0f9a_46e2_adf1_b513629f1c54
+  program: CODATE01
+  disposition: captured
+  program_path: demo/app-vsam-mq/cbl/CODATE01.cbl
+  rule_name: 応答メッセージを出力キューへ送信
+  rule_text: 応答メッセージの送信準備が完了すると、応答メッセージ送信ハンドラは、保存されたメッセージIDおよび相関IDを用いて、文字列形式およびキューマネージャの文字セットを使用して応答メッセージを出力キューへ送信（`MQ:PUT`）しなければならない（SHALL）。成功時には状態コードおよび理由コードを記録し、失敗時には状態コードおよび理由コードを取得し、エラーメッセージ「MQPUT
+    ERR」を記録しなければならない（SHALL）。
+  req_id: REQ-F-015
+  traceability_lines:
+  - 366
+  - 368
+  - 371
+  - 372
+  - 373
+  - 374
+  - 375
+  - 377
+  - 379
+  - 380
+  - 381
+  - 383
+  - 384
+  - 385
+  - 386
+  - 387
+  - 388
+  - 389
+  - 390
+  - 392
+  - 393
+  - 394
+  - 395
+  - 396
+  - 397
+  - 398
+  - 399
+  - 400
+  - 401
+  - 402
+  - 403
+- rule_id: 4f3f09b6_01dd_454e_86b0_f98fb2889466
+  program: CSUTLDTC
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/cbl/CSUTLDTC.cbl
+  rule_name: 変換サービス向けの日付入力を準備
+  rule_text: 日付検証ハンドラは、入力日付文字列をテスト日付フィールドへコピーし、フォーマットマスクをフォーマットフィールドへコピーし、出力Lillian日数をゼロで初期化しなければならない（SHALL）。
+- rule_id: 393a0ba5_6016_4bd2_b9ca_17fd0540b143
+  program: CSUTLDTC
+  disposition: captured
+  program_path: demo/cbl/CSUTLDTC.cbl
+  rule_name: 日付変換・検証サービスを呼び出す
+  rule_text: 日付検証ハンドラは、日付変換サービス（`CEEDAYS`）に処理を委譲して日付の変換および検証を行い、フィードバック構造体から重大度コードおよびメッセージ番号を抽出してメッセージレコードに格納しなければならない（SHALL）。
+  req_id: REQ-F-022
+  traceability_lines:
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 122
+  - 123
+  - 124
+- rule_id: 4a7eb3b0_d228_4767_8152_27bd1e3f9e80
+  program: CSUTLDTC
+  disposition: captured
+  program_path: demo/cbl/CSUTLDTC.cbl
+  rule_name: 日付入力およびフォーマットパラメータを受け取る
+  rule_text: 日付検証ハンドラは、呼び出し元から入力日付文字列、フォーマットマスク、および結果領域を受け取らなければならない（SHALL）。
+  req_id: REQ-F-021
+  traceability_lines:
+  - 88
+  - 93
+  - 94
+- rule_id: 5eb82c84_e9ac_46ae_b2cd_aa3a84e11743
+  program: CSUTLDTC
+  disposition: captured
+  program_path: demo/cbl/CSUTLDTC.cbl
+  rule_name: フォーマット済みの検証結果を呼び出し元へ返す
+  rule_text: 日付検証ハンドラは、フォーマット済みのメッセージレコードを結果領域を介して呼び出し元へ返さなければならない（SHALL）。
+  req_id: REQ-F-024
+  traceability_lines:
+  - 97
+- rule_id: 9134afe8_120c_4799_b048_71d106cc35db
+  program: CSUTLDTC
+  disposition: captured
+  program_path: demo/cbl/CSUTLDTC.cbl
+  rule_name: 検証フィードバックを結果記述へマッピング
+  rule_text: 日付変換サービスが検証結果を示すフィードバックコードを返す場合（WHEN）、日付検証ハンドラは、フィードバックコードを結果記述へマッピングしなければならない（SHALL）。すなわち、無効日付状態には「Date
+    is valid」、データ不足状態には「Insufficient」、日付値不正状態には「Datevalue error」、無効な紀年状態には「Invalid
+    Era」、非対応範囲状態には「Unsupp. Range」、無効な月状態には「Invalid month」、不正なピクチャ文字列状態には「Bad Pic String」、非数値データ状態には「Nonnumeric
+    data」、紀年内年ゼロ状態には「YearInEra is 0」、その他のフィードバックコードには「Date is invalid」を対応させなければならない（SHALL）。
+  req_id: REQ-F-023
+  traceability_lines:
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 139
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+- rule_id: 79755464_a459_4dc0_bedb_5205caaed6c8
+  program: FTPJCL
+  disposition: captured
+  program_path: demo/jcl/FTPJCL.JCL
+  rule_name: FTPファイル転送セッションを実行
+  rule_text: ファイル転送プロトコルハンドラは、提供された認証情報を用いてリモートサーバー（172.31.21.124）へ接続し、/ftpfolderディレクトリへ移動し、メインフレームデータセット（`SYSIN`）をwelcome.txtとしてリモートシステムへアップロードし、接続をクローズするFTPセッションを実行しなければならない（SHALL）。
+  req_id: REQ-F-025
+  traceability_lines:
+  - 5
+  - 6
+  - 7
+  - 9
+  - 10
+  - 11
+  - 13
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+- rule_id: 967e7273_f20e_4fa0_a45a_da459bded6da
+  program: MVSWAIT
+  disposition: captured
+  program_path: demo/asm/MVSWAIT.asm
+  rule_name: 遅延間隔をタイマー制御ブロックへロード
+  rule_text: タイマーイベント制御ブロックマネージャは、遅延間隔値（`delay_interval_value`）をタイマーイベント制御ブロックへ格納しなければならない（SHALL）。
+  req_ids:
+  - REQ-F-007
+  - REQ-F-026
+  traceability_lines:
+  - 20
+- rule_id: b6f95253_8489_4888_af5e_6bd9785641f1
+  program: MVSWAIT
+  disposition: captured
+  program_path: demo/asm/MVSWAIT.asm
+  rule_name: インターバルコントロールタイマーを呼び出す
+  rule_text: インターバルコントロールタイマーは、タイマーイベント制御ブロック（`delay_interval_value`）に指定された遅延間隔だけ実行を一時停止し、間隔が満了すると処理を再開しなければならない（SHALL）。
+  req_ids:
+  - REQ-F-007
+  - REQ-F-027
+  traceability_lines:
+  - 21
+- rule_id: c3f6b224_80cd_413a_a42a_3619a0d916de
+  program: MVSWAIT
+  disposition: captured
+  program_path: demo/asm/MVSWAIT.asm
+  rule_name: 呼び出し元レジスタを復元し処理を返す
+  rule_text: タイマー完了ハンドラは、呼び出し元のレジスタを復元し、リターンコードを正常に設定し、呼び出し元へ制御を返さなければならない（SHALL）。
+  req_ids:
+  - REQ-F-008
+  - REQ-F-028
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 27
+  - 28
+- rule_id: d38d217d_5102_4e25_a8c3_65e755eb8357
+  program: MVSWAIT
+  disposition: not_applicable
+  program_path: demo/asm/MVSWAIT.asm
+  rule_name: タイマーイベント制御ブロックのストレージを定義
+  rule_text: ストレージ割り当ては、タイマーイベント制御ブロック用のフルワードストレージ領域を割り当てなければならない（SHALL）。
+  reason: '[LLM-classified] 内部タイマー制御ブロックのためのストレージ割り当て機構 — 実装上の配管作業以上の業務的意味を持たない'
+- rule_id: f8852cb2_eaa1_41bb_b868_8878fea70f32
+  program: MVSWAIT
+  disposition: captured
+  program_path: demo/asm/MVSWAIT.asm
+  rule_name: 呼び出し元レジスタを保存し、タイマー操作の準備をする
+  rule_text: タイマー初期化ハンドラは、呼び出し元のレジスタを保存し、呼び出し元のパラメータ領域から遅延間隔値を抽出しなければならない（SHALL）。
+  req_ids:
+  - REQ-F-006
+  - REQ-F-007
+  - REQ-F-026
+  traceability_lines:
+  - 17
+  - 18
+  - 19
+- rule_id: 7dbacf77_f54c_42ee_99e4_ed589567d70a
+  program: TXT2PDF1
+  disposition: captured
+  program_path: demo/jcl/TXT2PDF1.JCL
+  rule_name: ブラウジングを有効にしてテキストファイルをPDFへ変換
+  rule_text: テキストからPDFへの変換は、入力データセットから入力テキストファイルを読み取り、ブラウジングを有効にしてPDF形式へ変換し、出力PDFをターゲットデータセットへ書き込まなければならない（SHALL）。（物理ストア：`INDD`、`STEPLIB`、`SYSEXEC`、`SYSTSIN`）
+  req_id: REQ-F-029
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 20
+  - 21
+  - 22
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+- rule_id: ff1dbacd_f00b_43ee_bf02_0c272c514db2
+  program: WAITSTEP
+  disposition: captured
+  program_path: demo/jcl/WAITSTEP.jcl
+  rule_name: 指定された遅延で待機操作を実行
+  rule_text: バッチ待機ハンドラは、待機ユーティリティプログラム（`COBSWAIT`）を呼び出し、制御入力に指定された時間（3600センチ秒）だけ実行を一時停止しなければならない（SHALL）。（物理ストア：`STEPLIB`、`SYSIN`）
+  req_id: REQ-F-030
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - ba85e6fb_1bab_4612_a7a4_a2e66da67a91
+- req_id: REQ-F-002
+  rule_ids:
+  - c0aed14a_5439_4ce1_9fa3_49f18dd95441
+- req_id: REQ-F-003
+  rule_ids:
+  - c0aed14a_5439_4ce1_9fa3_49f18dd95441
+- req_id: REQ-F-004
+  rule_ids:
+  - e86bfe41_14ec_443c_a927_ae8c540b41cc
+- req_id: REQ-F-005
+  rule_ids:
+  - 3479cebe_c9ed_4fd2_8219_4bf0ff354735
+- req_id: REQ-F-006
+  rule_ids:
+  - 3e6db102_56a2_4d0a_8d6c_fc8a9b9b91db
+  - f8852cb2_eaa1_41bb_b868_8878fea70f32
+- req_id: REQ-F-007
+  rule_ids:
+  - 967e7273_f20e_4fa0_a45a_da459bded6da
+  - b6f95253_8489_4888_af5e_6bd9785641f1
+  - f8852cb2_eaa1_41bb_b868_8878fea70f32
+- req_id: REQ-F-008
+  rule_ids:
+  - c3f6b224_80cd_413a_a42a_3619a0d916de
+- req_id: REQ-F-009
+  rule_ids:
+  - 81ff36a6_0bd6_447f_a5b7_77726dee2936
+- req_id: REQ-F-010
+  rule_ids:
+  - 05522ada_5113_4fc1_80b5_aeb814b38e50
+- req_id: REQ-F-011
+  rule_ids:
+  - efe9c397_f640_423a_bde2_d63053f3d187
+- req_id: REQ-F-012
+  rule_ids:
+  - 9e75fedc_f6f8_4eeb_9698_4cb8c946d73f
+- req_id: REQ-F-013
+  rule_ids:
+  - e5cfb70c_e366_4df1_b301_366216220df5
+- req_id: REQ-F-014
+  rule_ids:
+  - 80feac2b_7002_45ea_876e_7c5ef454d4af
+- req_id: REQ-F-015
+  rule_ids:
+  - f7a4cb0e_0f9a_46e2_adf1_b513629f1c54
+- req_id: REQ-F-016
+  rule_ids:
+  - d2b092a2_a809_465c_9920_4b52574d88f5
+- req_id: REQ-F-017
+  rule_ids:
+  - 9aa3fb81_58f0_419b_9928_abee24a451ac
+- req_id: REQ-F-018
+  rule_ids:
+  - 5af4c728_b64a_4a6a_abb0_ed8a9eca3fa5
+- req_id: REQ-F-019
+  rule_ids:
+  - a029c68d_234f_440a_b324_3b64b448c420
+- req_id: REQ-F-020
+  rule_ids:
+  - 54294cf5_5109_4212_a257_cb9c8041e048
+- req_id: REQ-F-021
+  rule_ids:
+  - 4a7eb3b0_d228_4767_8152_27bd1e3f9e80
+- req_id: REQ-F-022
+  rule_ids:
+  - 393a0ba5_6016_4bd2_b9ca_17fd0540b143
+- req_id: REQ-F-023
+  rule_ids:
+  - 9134afe8_120c_4799_b048_71d106cc35db
+- req_id: REQ-F-024
+  rule_ids:
+  - 5eb82c84_e9ac_46ae_b2cd_aa3a84e11743
+- req_id: REQ-F-025
+  rule_ids:
+  - 79755464_a459_4dc0_bedb_5205caaed6c8
+- req_id: REQ-F-026
+  rule_ids:
+  - 967e7273_f20e_4fa0_a45a_da459bded6da
+  - f8852cb2_eaa1_41bb_b868_8878fea70f32
+- req_id: REQ-F-027
+  rule_ids:
+  - b6f95253_8489_4888_af5e_6bd9785641f1
+- req_id: REQ-F-028
+  rule_ids:
+  - c3f6b224_80cd_413a_a42a_3619a0d916de
+- req_id: REQ-F-029
+  rule_ids:
+  - 7dbacf77_f54c_42ee_99e4_ed589567d70a
+- req_id: REQ-F-030
+  rule_ids:
+  - ff1dbacd_f00b_43ee_bf02_0c272c514db2
+  - 3479cebe_c9ed_4fd2_8219_4bf0ff354735
+- req_id: REQ-F-031
+  rule_ids:
+  - 3e6db102_56a2_4d0a_8d6c_fc8a9b9b91db

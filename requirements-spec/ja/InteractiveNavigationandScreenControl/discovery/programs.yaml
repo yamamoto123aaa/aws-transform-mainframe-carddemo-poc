@@ -1,0 +1,987 @@
+# Interactive Navigation and Screen Control - Program Discovery
+# Generated: 2026-08-08T04:25:21Z
+# Source: TransformKG (Python discovery)
+
+function: InteractiveNavigationandScreenControl
+programs:
+- name: COACTUPC
+  type: COBOL
+  execution: online
+  description: Account update screen navigation and exit handling; The program initializes
+    working storage and communication areas, maps terminal function keys to internal
+    codes, validates the pressed key against the current screen state, and routes
+    the user to the appropriate next program based on the exit key (PF3) or other
+    valid inputs. When the user presses PF3 or the exit condition is met, the program
+    transfers control to either the originating program or the main menu, passing
+    the navigation context through the communication area.; Account and customer record
+    update processing; This slice implements a complete account update workflow for
+    a credit card system. It receives user input from a screen, validates all account
+    and customer data fields, compares changes against previously fetched values,
+    and conditionally updates both the account master file (`LIT-ACCTFILENAME`) and
+    customer master file (`LIT-CUSTFILENAME`) when changes are confirmed. The process
+    includes comprehensive field validation, cross-field edits, and error handling
+    for file access failures.; Account update screen input validation and date editing;
+    This slice validates user input from an account update screen, including account
+    identifiers, dates, numeric fields, and customer information. It performs comprehensive
+    field-level validation (required/optional, numeric, alphabetic, format checks),
+    cross-field validation (state-ZIP code combinations), and delegates to an external
+    date validation service (`CSUTLDTC`) to verify date values. The validation results
+    determine whether the input is accepted or rejected with specific error messages.
+  transaction_id: null
+  screens:
+  - COACTUP.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATH
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  calls:
+  - COMEN01C
+  includes:
+  - COACTUP
+  - COCOM01Y
+  - COTTL01Y
+  - CSDAT01Y
+  - CSLKPCDY
+  - CSMSG01Y
+  - CSMSG02Y
+  - CSSETATY
+  - CSSTRPFY
+  - CSUSR01Y
+  - CSUTLDPY
+  - CSUTLDWY
+  - CVACT01Y
+  - CVACT03Y
+  - CVCRD01Y
+  - CVCUS01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COACTVWC
+  type: COBOL
+  execution: online
+  description: Credit card activity screen navigation handler; The program receives
+    user input from a credit card activity screen, maps function keys to business
+    actions, and routes control to the appropriate destination program based on the
+    user's key press. When the user presses PF3 (exit), the program determines whether
+    to return to the calling program or the main menu, populates the navigation context,
+    and transfers control to the destination program via the shared communication
+    area.; Account activity display screen management; The program manages the account
+    activity view screen lifecycle, handling user input validation, account data retrieval,
+    and screen display. It processes function key inputs to determine navigation flow,
+    validates account identifiers entered by the user, retrieves account and customer
+    data from multiple files, and displays the populated screen with appropriate status
+    messages and field attributes.
+  transaction_id: null
+  screens:
+  - COACTVW.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATH
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  calls:
+  - COMEN01C
+  includes:
+  - COACTVW
+  - COCOM01Y
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSMSG02Y
+  - CSSTRPFY
+  - CSUSR01Y
+  - CVACT01Y
+  - CVACT02Y
+  - CVACT03Y
+  - CVCRD01Y
+  - CVCUS01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COADM01C
+  type: COBOL
+  execution: online
+  description: Administrator menu option selection and navigation; The program receives
+    the administrator menu screen input, validates the user's selected option number,
+    and transfers control to the corresponding administrator function program. The
+    validation ensures the option is numeric, within the valid range (1-6), and not
+    a placeholder entry. When validation succeeds and the selected program is not
+    a dummy entry, the program transfers control to that program via XCTL, passing
+    the communication area containing the originating transaction and program context.;
+    Signon screen navigation control; The program handles terminal input and navigation
+    logic for a card demonstration application. When the communication area is empty,
+    the program immediately transfers control to the signon screen. When the communication
+    area contains data and the user presses PF3, the program sets the destination
+    to the signon screen program and transfers control. If the destination program
+    name is not set or contains invalid values, the program defaults it to the signon
+    screen before transferring control.; Administration menu screen display; This
+    capability drives the CardDemo administration menu screen, presenting up to six
+    numbered menu options to the user along with header information (title, date,
+    time, transaction, and program identifiers). On first entry the menu is displayed
+    immediately; on re-entry the user's key press is evaluated — the Enter key triggers
+    option validation and navigation, PF3 exits, and any other key causes an invalid-key
+    error message to be shown. If a referenced option program is not installed, a
+    'not installed' message is displayed instead of navigating.
+  transaction_id: null
+  screens:
+  - COADM01.bms
+  calls:
+  - COSGN00C
+  - Unresolved dynamic call to CDEMO-ADMIN-OPT-PGMNAME
+  includes:
+  - COADM01
+  - COADM02Y
+  - COCOM01Y
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COBIL00C
+  type: COBOL
+  execution: online
+  description: Card demonstration application navigation; This program handles user
+    navigation within a card demonstration application. When invoked with no communication
+    area, it routes to the signon screen. When invoked with a communication area,
+    it processes user key presses (ENTER, PF3, PF4) to determine the next destination
+    program, then transfers control to that program with updated navigation context.;
+    Bill payment transaction processing and screen management; This program manages
+    an interactive bill payment workflow through a CICS BMS screen interface. It receives
+    user input for account identification and payment confirmation, validates the
+    account and card cross-reference data, constructs and writes a transaction record,
+    updates the account balance, and displays status messages and transaction details
+    back to the user. The three primary output operations are the screen display (SEND
+    MAP), the account balance update (REWRITE), and the transaction record creation
+    (WRITE).
+  transaction_id: null
+  screens:
+  - COBIL00.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATH
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  calls:
+  - COMEN01C
+  - COSGN00C
+  includes:
+  - COBIL00
+  - COCOM01Y
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CVACT01Y
+  - CVACT03Y
+  - CVTRA05Y
+  - DFHAID
+  - DFHBMSCA
+- name: COCRDLIC
+  type: COBOL
+  execution: online
+  description: Credit card inquiry screen navigation and input handling; This program
+    manages the credit card inquiry user interface, receiving user input from the
+    card inquiry screen, validating the entered account and card numbers, and routing
+    the user to the main menu when the exit key is pressed. The program maps function
+    keys to business actions, validates numeric input fields, and transfers control
+    to the menu program when requested.; Credit card list navigation and detail transfer;
+    The program initializes the credit card work area and communication context, receives
+    and validates user input from the card list screen, maps function keys to business
+    actions, and transfers control to the card detail program when a card is selected
+    for viewing. The program enforces input validation rules for account identifiers
+    and card numbers, ensures only one card row is selected at a time, and maintains
+    navigation state across pagination and re-entry scenarios.; Credit card update
+    delegation and navigation; The program initializes the credit card work area and
+    communication context, receives and validates user input from the screen, maps
+    function keys to business actions, and when the user selects a card for update,
+    transfers control to the card update program with the selected account and card
+    details in the shared communication area.; Card listing and pagination interface;
+    This program displays a paginated list of payment cards filtered by optional account
+    and card number criteria. It retrieves card records from the card file, validates
+    user input, manages screen pagination with forward and backward navigation, and
+    displays the results on a BMS screen with selection and status indicators. The
+    program handles user interactions through function keys (Enter, PF3, PF7, PF8)
+    to control navigation and selection actions.
+  transaction_id: null
+  screens:
+  - COCRDLI.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  calls:
+  - COCRDSLC
+  - COCRDUPC
+  - COMEN01C
+  includes:
+  - COCOM01Y
+  - COCRDLI
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSSTRPFY
+  - CSUSR01Y
+  - CVACT02Y
+  - CVCRD01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COCRDSLC
+  type: COBOL
+  execution: online
+  description: Credit card transaction routing and function key handling; The program
+    initializes the credit card work area and communication context, maps user keyboard
+    input (function keys and control keys) to internal action codes, validates the
+    input against allowed actions, and routes the transaction to the appropriate destination
+    program based on the user's selection. When the user presses PF3 (exit), the program
+    determines the target program and transaction from the communication area or defaults
+    to the menu, then transfers control to that destination with the updated context.;
+    Card inquiry and display screen; The program manages a card inquiry transaction
+    that displays cardholder information on a 3270 terminal screen. It initializes
+    the display with current date/time and application titles, populates card details
+    when available, applies visual attributes (colors, protection) based on validation
+    state, and sends the formatted screen to the user. The screen supports user input
+    for account and card number searches, with error messages displayed when validation
+    fails or records are not found.
+  transaction_id: null
+  screens:
+  - COCRDSL.bms
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX.PATH
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  calls:
+  - COMEN01C
+  includes:
+  - COCOM01Y
+  - COCRDSL
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSMSG02Y
+  - CSSTRPFY
+  - CSUSR01Y
+  - CVACT02Y
+  - CVCRD01Y
+  - CVCUS01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COCRDUPC
+  type: COBOL
+  execution: online
+  description: Card update program navigation and control transfer; This program receives
+    card update requests through a communication area, validates user input via function
+    key mapping, and routes control to the appropriate destination program based on
+    the user's action and current processing state. The primary business outcome is
+    transferring control to either the originating program, the main menu, or a specialized
+    card-processing handler, with the communication area carrying account, card, and
+    navigation context across program boundaries.; Credit card update transaction
+    processing; This program manages the interactive update of credit card details
+    through a terminal screen interface. It receives user input for card information
+    changes, validates the input against business rules, retrieves the current card
+    record from the card data store, compares old and new values to detect changes,
+    and writes the updated card record back to the store when changes are confirmed.
+    The program displays the card update screen with appropriate field protections
+    and error messages based on the validation state and user actions.
+  transaction_id: null
+  screens:
+  - COCRDUP.bms
+  data_stores_read: &id002
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  calls:
+  - COMEN01C
+  includes:
+  - COCOM01Y
+  - COCRDUP
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSMSG02Y
+  - CSSTRPFY
+  - CSUSR01Y
+  - CVACT02Y
+  - CVCRD01Y
+  - CVCUS01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COMEN01C
+  type: COBOL
+  execution: online
+  description: Menu option selection and program transfer; The program receives a
+    menu screen input from the user, validates the selected option against available
+    menu choices and user authorization, and transfers control to the corresponding
+    target program via XCTL. The validation ensures the option is numeric, within
+    the valid range, and authorized for the user type. When validation succeeds and
+    the target program is available, the program transfers control with the communication
+    area containing the originating transaction and program context.; Menu option
+    selection and program transfer; The program receives a menu screen input from
+    the user, validates the selected option against available menu choices and user
+    authorization, and transfers control to the corresponding target program via CICS
+    XCTL. The validation ensures the option is numeric, within the valid range, and
+    authorized for the user type; invalid selections trigger an error flag. The communication
+    area is populated with originating transaction and program context before the
+    transfer.; Card demonstration application navigation control; The program receives
+    a communication area from CICS, validates the reentry context, and routes user
+    navigation based on function key input. When the PF3 key is pressed, the program
+    sets the destination to the sign-on screen and transfers control. If no destination
+    is set or the destination is empty, the program defaults to the sign-on screen
+    before transferring control to the target program.; Menu screen display and option
+    selection; The program manages a CardDemo menu interface, displaying transaction
+    information, menu options, and error messages to the user. When the program is
+    first invoked, it displays the menu screen with header information and available
+    options. When the user re-enters after selecting an option, the program receives
+    the user's menu selection, validates it against business rules (numeric range,
+    user authorization), and either displays an error message or processes the selected
+    option. The final output is the menu screen sent to the terminal with all populated
+    fields.
+  transaction_id: null
+  screens:
+  - COMEN01.bms
+  calls:
+  - COSGN00C
+  - Unresolved dynamic call to CDEMO-MENU-OPT-PGMNAME
+  includes:
+  - COCOM01Y
+  - COMEN01
+  - COMEN02Y
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: CORPT00C
+  type: COBOL
+  execution: online
+  description: Screen navigation and program transfer; The program receives a communication
+    area from a calling program or initializes a default navigation context. It evaluates
+    the user's key press (ENTER or PF3) to determine the destination program, populates
+    the communication area with the current program's identity and transaction code,
+    and transfers control to the destination program via XCTL.; Transaction report
+    generation and job submission; The program manages a transaction report request
+    interface where users select report types (monthly, yearly, or custom date range)
+    and confirm job submission. It validates user inputs, constructs job parameters,
+    submits JCL statements to the job queue, and displays status messages on the transaction
+    report screen. The program delegates date validation to an external utility service
+    and handles confirmation logic before writing JCL records to the transactional
+    data queue.
+  transaction_id: null
+  screens:
+  - CORPT00.bms
+  calls:
+  - COMEN01C
+  - COSGN00C
+  - CSUTLDTC
+  includes:
+  - COCOM01Y
+  - CORPT00
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CVTRA05Y
+  - DFHAID
+  - DFHBMSCA
+- name: COTRN00C
+  type: COBOL
+  execution: online
+  description: Transaction selection and navigation handler; The program receives
+    a transaction list screen from the user, evaluates which transaction option was
+    selected, and transfers control to the appropriate destination program when a
+    valid selection is made. The program manages program re-entry state and passes
+    transaction context through a shared communication area.; Screen navigation and
+    program transfer; The program handles user navigation through function-key inputs
+    and manages transitions between screens. When the communication area is empty,
+    it defaults to the signon screen. When re-entering with a function key, it evaluates
+    the key pressed and routes to the appropriate destination program, populating
+    the communication area with navigation context before transferring control.; Transaction
+    list display and navigation; The program manages a paginated transaction list
+    display on a 3270 terminal screen. It handles user input (ENTER, PF7, PF8 keys)
+    to navigate forward and backward through transaction records, retrieves transaction
+    data from the transaction file, populates the screen with up to 10 transactions
+    per page, and sends the formatted display to the user. Error conditions during
+    file access or invalid user input are captured and displayed as error messages
+    on the screen.
+  transaction_id: null
+  screens:
+  - COTRN00.bms
+  data_stores_read: &id003
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  calls:
+  - COMEN01C
+  - COSGN00C
+  - COTRN01C
+  includes:
+  - COCOM01Y
+  - COTRN00
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CVTRA05Y
+  - DFHAID
+  - DFHBMSCA
+- name: COTRN01C
+  type: COBOL
+  execution: online
+  description: Transaction navigation and screen routing; The program handles user
+    navigation through a card demonstration application by evaluating function key
+    inputs and routing control to the appropriate destination program. When the communication
+    area is empty, it routes to the sign-on program. When re-entering with a valid
+    context, it evaluates the pressed function key (Enter, PF3, PF4, PF5) and routes
+    to the corresponding destination program (menu, previous program, or transaction
+    main). The destination program name is validated and defaulted to sign-on if missing,
+    then control is transferred with the communication area context.; Transaction
+    view screen display and input handling; The program manages a transaction inquiry
+    screen (COTRN1A) that displays transaction details and merchant information. It
+    initializes the screen on first entry, receives user input on subsequent entries,
+    validates the transaction ID, retrieves the matching transaction record, and displays
+    the results or error messages. The screen is sent to the user after populating
+    header information (current date, time, program name, and titles) and either transaction
+    details or validation error messages.
+  transaction_id: null
+  screens:
+  - COTRN01.bms
+  data_stores_read: &id004
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  calls:
+  - COMEN01C
+  - COSGN00C
+  - COTRN00C
+  includes:
+  - COCOM01Y
+  - COTRN01
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CVTRA05Y
+  - DFHAID
+  - DFHBMSCA
+- name: COTRN02C
+  type: COBOL
+  execution: online
+  description: Card demonstration transaction navigation; The program receives a communication
+    area from a calling transaction or initializes with a default sign-on target.
+    It evaluates the user's attention key (ENTER, PF3, PF4, PF5) to determine the
+    next program to invoke. When PF3 is pressed, it routes to the originating program
+    if available, otherwise to the menu. The program then transfers control to the
+    destination program via XCTL, passing the updated communication area.; Transaction
+    entry and validation workflow; The program manages a transaction entry screen
+    where users input transaction details, validates the input against business rules
+    and format requirements, performs lookups to cross-reference account and card
+    information, and writes validated transactions to the transaction file. The workflow
+    handles user interactions through function keys, displays validation errors on
+    the screen, and manages the transaction record lifecycle from entry through persistence.
+  transaction_id: null
+  screens:
+  - COTRN02.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATH
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  calls:
+  - COMEN01C
+  - COSGN00C
+  - CSUTLDTC
+  includes:
+  - COCOM01Y
+  - COTRN02
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CVACT01Y
+  - CVACT03Y
+  - CVTRA05Y
+  - DFHAID
+  - DFHBMSCA
+- name: COTRTLIC
+  type: COBOL
+  execution: online
+  description: Credit card transaction license navigation and control; This program
+    manages navigation and control flow for credit card transaction licensing operations.
+    It initializes the communication area on first entry, maps terminal function keys
+    to business actions, validates key presses against the current processing state,
+    and routes the user to the appropriate destination program based on the key pressed
+    and navigation context.; Credit card transaction listing and navigation; The program
+    initializes the credit card work area and communication context, maps user function-key
+    inputs to business actions, validates the pressed key against the current processing
+    state, and transfers control to the add-transaction program when the user requests
+    a new transaction entry. The program preserves session context across screen transitions
+    and enforces valid key sequences for the transaction listing workflow.; Transaction
+    type list management and display; This program manages a paginated list of transaction
+    types retrieved from the database, allowing users to filter by type code and description,
+    select rows for update or delete operations, and display the results on a BMS
+    screen. The program handles forward and backward pagination, validates user input
+    against business rules, processes database operations (update/delete), and formats
+    error messages using the DSNTIAC utility when database errors occur.; Transaction
+    type record maintenance; This program manages transaction type records in the
+    database, allowing users to update or delete transaction type descriptions through
+    a screen interface. The program receives user input, validates filter criteria
+    against the transaction type store, and executes the requested update or delete
+    operation when the user confirms the action with the appropriate function key.
+  transaction_id: null
+  screens:
+  - COTRTLI.bms
+  data_stores_write:
+  - CARDDEMO.TRANSACTION_TYPE
+  calls:
+  - COADM01C
+  - COTRTUPC
+  - DSNTIAC
+  includes:
+  - COCOM01Y
+  - COTRTLI
+  - COTTL01Y
+  - CSDAT01Y
+  - CSDB2RPY
+  - CSDB2RWY
+  - CSMSG01Y
+  - CSSTRPFY
+  - CSUSR01Y
+  - CVACT02Y
+  - CVCRD01Y
+  - DCLTRTYP
+  - DFHAID
+  - DFHBMSCA
+  - SQLCA
+- name: COTRTUPC
+  type: COBOL
+  execution: online
+  description: Transaction type update screen navigation; The program initializes
+    working storage and communication areas, captures the user's terminal input key,
+    and routes control to the appropriate destination program based on the key pressed
+    and application context. When the user presses PF3 (exit), the program prepares
+    the communication area with routing information and transfers control to the calling
+    program or administration menu.; Transaction type maintenance screen display;
+    The program prepares and displays a transaction type maintenance screen to the
+    user. It initializes screen fields with current date/time, transaction type details,
+    and informational messages based on the current processing state. The screen is
+    formatted with appropriate field protections, colors, and function key indicators
+    before being sent to the terminal.; Transaction type database update and insert;
+    The program initializes working storage and communication areas, maps terminal
+    attention keys to internal flags, and evaluates business conditions to determine
+    whether to update or insert transaction type records in the transaction type database.
+    When the user presses PFK05 while changes are pending confirmation, the program
+    updates the existing transaction type record; if no matching record exists (SQL
+    code +100), it inserts a new transaction type record instead.; Transaction type
+    deletion from database; The program initializes working storage and communication
+    areas, maps keyboard input to function keys, and evaluates user actions. When
+    the user presses PF4 while confirming a delete operation, the program retrieves
+    the original transaction type code and deletes the corresponding record from the
+    transaction type database store.
+  transaction_id: null
+  screens:
+  - COTRTUP.bms
+  data_stores_write:
+  - CARDDEMO.TRANSACTION_TYPE
+  calls:
+  - COADM01C
+  includes:
+  - COCOM01Y
+  - COTRTUP
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSMSG02Y
+  - CSSETATY
+  - CSSTRPFY
+  - CSUSR01Y
+  - CSUTLDWY
+  - CVCRD01Y
+  - DCLTRCAT
+  - DCLTRTYP
+  - DFHAID
+  - DFHBMSCA
+  - SQLCA
+- name: COUSR00C
+  type: COBOL
+  execution: online
+  description: User selection navigation and transfer; The program receives a user
+    list screen input, evaluates the user's selection from up to 10 available rows,
+    and transfers control to the appropriate destination program based on the selected
+    user and action type. When the user selects a row with a valid action flag (user
+    detail or deletion), the program populates the communication area with the selection
+    details and transfers control to the destination program; otherwise, it clears
+    the selection fields.; User list selection and routing; This capability handles
+    the user list screen, where an operator selects a user record for update or deletion.
+    On initial entry the program immediately processes the selection; on re-entry
+    it first collects the operator's screen input, then evaluates the key pressed.
+    When the Enter key is pressed, the program identifies which row was selected,
+    captures the action flag and user identifier, and transfers control to the appropriate
+    destination program based on whether the action is an update or a delete.; Screen
+    navigation and program transfer control; The program initializes the next-page
+    flag, receives input from the user via CICS, and based on the communication area
+    state and attention identifier (function key pressed), determines the destination
+    program for navigation. When the communication area is empty or when PF3 is pressed
+    during re-entry, the program prepares the navigation context and transfers control
+    to the destination program via XCTL.; User list display and navigation; The program
+    manages a paginated user list display on a 3270 terminal screen. It retrieves
+    user records from the user security file, populates the screen with up to 10 users
+    per page, and handles pagination via PF7 (backward) and PF8 (forward) keys. The
+    screen is sent to the terminal with current date, time, transaction ID, and any
+    error or status messages.
+  transaction_id: null
+  screens:
+  - COUSR00.bms
+  data_stores_read:
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  calls:
+  - COADM01C
+  - COSGN00C
+  - COUSR02C
+  - COUSR03C
+  includes:
+  - COCOM01Y
+  - COTTL01Y
+  - COUSR00
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COUSR01C
+  type: COBOL
+  execution: online
+  description: Card demonstration application navigation; This program handles user
+    navigation within a card demonstration application. When invoked without a communication
+    area, it defaults to the signon screen. When re-entered with a communication area,
+    it evaluates the user's key press (Enter, PF3, or PF4) to determine the next destination
+    program. The program then transfers control to the selected destination, passing
+    along the communication context.; User account creation and screen management;
+    This program manages the user account creation workflow for the CardDemo application.
+    It displays the user-addition screen, collects user input (first name, last name,
+    user ID, password, user type), validates that all required fields are populated,
+    and writes valid user records to the user security file. The program handles screen
+    navigation via function keys and displays appropriate success or error messages
+    based on the outcome of each operation.
+  transaction_id: null
+  screens:
+  - COUSR01.bms
+  data_stores_write:
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  calls:
+  - COADM01C
+  - COSGN00C
+  includes:
+  - COCOM01Y
+  - COTTL01Y
+  - COUSR01
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COUSR02C
+  type: COBOL
+  execution: online
+  description: Screen navigation and program transfer control; This program handles
+    user navigation through a card demonstration application. When invoked without
+    a communication area, it transfers to the signon screen. When re-entered with
+    a communication area, it evaluates the user's key press (PF3, PF5, or Enter) to
+    determine the destination program, then transfers control to that program with
+    updated navigation context.; User account update and screen management; This program
+    manages a user account update transaction through a CICS screen interface. It
+    receives user input, validates required fields, retrieves the user record from
+    the security file, compares changes, and writes updated user data back to the
+    security file. The program displays status messages and screen data based on validation
+    results and file operation outcomes.
+  transaction_id: null
+  screens:
+  - COUSR02.bms
+  data_stores_read: &id005
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  calls:
+  - COADM01C
+  - COSGN00C
+  includes:
+  - COCOM01Y
+  - COTTL01Y
+  - COUSR02
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COUSR03C
+  type: COBOL
+  execution: online
+  description: Program navigation and screen transition control; This program manages
+    navigation between screens in a card demonstration application. It receives user
+    input via attention identifiers (function keys) and determines the destination
+    program based on the key pressed and the originating program context. The program
+    transfers control to the destination program via XCTL, passing navigation state
+    through a shared communication area.; User deletion screen management and security
+    file operations; This program manages a user deletion interface, allowing operators
+    to search for users by ID, display their information, and delete them from the
+    security file. The program displays a BMS screen (COUSR3A) with user details and
+    processes function key inputs to either retrieve user records, delete selected
+    users, or clear the screen. Successful deletions are confirmed with a green-colored
+    message; errors are reported with appropriate messages and the user ID field is
+    repositioned for correction.
+  transaction_id: null
+  screens:
+  - COUSR03.bms
+  data_stores_read: &id006
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  calls:
+  - COADM01C
+  - COSGN00C
+  includes:
+  - COCOM01Y
+  - COTTL01Y
+  - COUSR03
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSUSR01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COADM01C
+  type: COBOL
+  execution: subroutine
+  description: Administrator menu option selection and navigation; The program receives
+    the administrator menu screen input, validates the user's selected option number,
+    and transfers control to the corresponding administrator function program. The
+    validation ensures the option is numeric, within the valid range (1-6), and not
+    a placeholder entry. When validation succeeds and the selected program is not
+    a dummy entry, the program transfers control to that program via XCTL, passing
+    the communication area containing the originating transaction and program context.;
+    Signon screen navigation control; The program handles terminal input and navigation
+    logic for a card demonstration application. When the communication area is empty,
+    the program immediately transfers control to the signon screen. When the communication
+    area contains data and the user presses PF3, the program sets the destination
+    to the signon screen program and transfers control. If the destination program
+    name is not set or contains invalid values, the program defaults it to the signon
+    screen before transferring control.; Administration menu screen display; This
+    capability drives the CardDemo administration menu screen, presenting up to six
+    numbered menu options to the user along with header information (title, date,
+    time, transaction, and program identifiers). On first entry the menu is displayed
+    immediately; on re-entry the user's key press is evaluated — the Enter key triggers
+    option validation and navigation, PF3 exits, and any other key causes an invalid-key
+    error message to be shown. If a referenced option program is not installed, a
+    'not installed' message is displayed instead of navigating.
+  calls:
+  - COSGN00C
+  - Unresolved dynamic call to CDEMO-ADMIN-OPT-PGMNAME
+- name: COCRDSLC
+  type: COBOL
+  execution: subroutine
+  description: Credit card transaction routing and function key handling; The program
+    initializes the credit card work area and communication context, maps user keyboard
+    input (function keys and control keys) to internal action codes, validates the
+    input against allowed actions, and routes the transaction to the appropriate destination
+    program based on the user's selection. When the user presses PF3 (exit), the program
+    determines the target program and transaction from the communication area or defaults
+    to the menu, then transfers control to that destination with the updated context.;
+    Card inquiry and display screen; The program manages a card inquiry transaction
+    that displays cardholder information on a 3270 terminal screen. It initializes
+    the display with current date/time and application titles, populates card details
+    when available, applies visual attributes (colors, protection) based on validation
+    state, and sends the formatted screen to the user. The screen supports user input
+    for account and card number searches, with error messages displayed when validation
+    fails or records are not found.
+  data_stores_read: *id001
+  calls:
+  - COMEN01C
+- name: COCRDUPC
+  type: COBOL
+  execution: subroutine
+  description: Card update program navigation and control transfer; This program receives
+    card update requests through a communication area, validates user input via function
+    key mapping, and routes control to the appropriate destination program based on
+    the user's action and current processing state. The primary business outcome is
+    transferring control to either the originating program, the main menu, or a specialized
+    card-processing handler, with the communication area carrying account, card, and
+    navigation context across program boundaries.; Credit card update transaction
+    processing; This program manages the interactive update of credit card details
+    through a terminal screen interface. It receives user input for card information
+    changes, validates the input against business rules, retrieves the current card
+    record from the card data store, compares old and new values to detect changes,
+    and writes the updated card record back to the store when changes are confirmed.
+    The program displays the card update screen with appropriate field protections
+    and error messages based on the validation state and user actions.
+  data_stores_read: *id002
+  data_stores_write:
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  calls:
+  - COMEN01C
+- name: COMEN01C
+  type: COBOL
+  execution: subroutine
+  description: Menu option selection and program transfer; The program receives a
+    menu screen input from the user, validates the selected option against available
+    menu choices and user authorization, and transfers control to the corresponding
+    target program via XCTL. The validation ensures the option is numeric, within
+    the valid range, and authorized for the user type. When validation succeeds and
+    the target program is available, the program transfers control with the communication
+    area containing the originating transaction and program context.; Menu option
+    selection and program transfer; The program receives a menu screen input from
+    the user, validates the selected option against available menu choices and user
+    authorization, and transfers control to the corresponding target program via CICS
+    XCTL. The validation ensures the option is numeric, within the valid range, and
+    authorized for the user type; invalid selections trigger an error flag. The communication
+    area is populated with originating transaction and program context before the
+    transfer.; Card demonstration application navigation control; The program receives
+    a communication area from CICS, validates the reentry context, and routes user
+    navigation based on function key input. When the PF3 key is pressed, the program
+    sets the destination to the sign-on screen and transfers control. If no destination
+    is set or the destination is empty, the program defaults to the sign-on screen
+    before transferring control to the target program.; Menu screen display and option
+    selection; The program manages a CardDemo menu interface, displaying transaction
+    information, menu options, and error messages to the user. When the program is
+    first invoked, it displays the menu screen with header information and available
+    options. When the user re-enters after selecting an option, the program receives
+    the user's menu selection, validates it against business rules (numeric range,
+    user authorization), and either displays an error message or processes the selected
+    option. The final output is the menu screen sent to the terminal with all populated
+    fields.
+  shared_with:
+  - AuthorizationManagement
+  - Unclassified
+  note: '[SHARED-SUBROUTINE: COMEN01C — also called by AuthorizationManagement, Unclassified]'
+  calls:
+  - COSGN00C
+  - Unresolved dynamic call to CDEMO-MENU-OPT-PGMNAME
+- name: COSGN00C
+  type: COBOL
+  execution: subroutine
+  description: Signon screen display and user authentication; The program displays
+    a signon screen to collect user credentials, validates the entered user ID and
+    password against a security file, and redisplays the screen with appropriate error
+    messages when validation fails. The screen is populated with current date, time,
+    application identifiers, and transaction information on each display.; Sign-on
+    authentication and user session routing; The program implements a sign-on flow
+    that collects user credentials from a screen, validates them against a security
+    file, and routes authenticated users to either an administrator or general menu
+    based on their user type. The program receives input via the Enter key, validates
+    that both user ID and password are provided, retrieves the user's security record,
+    verifies the password, and transfers control to the appropriate downstream application
+    with the authenticated user's context.
+- name: COTRN00C
+  type: COBOL
+  execution: subroutine
+  description: Transaction selection and navigation handler; The program receives
+    a transaction list screen from the user, evaluates which transaction option was
+    selected, and transfers control to the appropriate destination program when a
+    valid selection is made. The program manages program re-entry state and passes
+    transaction context through a shared communication area.; Screen navigation and
+    program transfer; The program handles user navigation through function-key inputs
+    and manages transitions between screens. When the communication area is empty,
+    it defaults to the signon screen. When re-entering with a function key, it evaluates
+    the key pressed and routes to the appropriate destination program, populating
+    the communication area with navigation context before transferring control.; Transaction
+    list display and navigation; The program manages a paginated transaction list
+    display on a 3270 terminal screen. It handles user input (ENTER, PF7, PF8 keys)
+    to navigate forward and backward through transaction records, retrieves transaction
+    data from the transaction file, populates the screen with up to 10 transactions
+    per page, and sends the formatted display to the user. Error conditions during
+    file access or invalid user input are captured and displayed as error messages
+    on the screen.
+  data_stores_read: *id003
+  calls:
+  - COMEN01C
+  - COSGN00C
+  - COTRN01C
+- name: COTRN01C
+  type: COBOL
+  execution: subroutine
+  description: Transaction navigation and screen routing; The program handles user
+    navigation through a card demonstration application by evaluating function key
+    inputs and routing control to the appropriate destination program. When the communication
+    area is empty, it routes to the sign-on program. When re-entering with a valid
+    context, it evaluates the pressed function key (Enter, PF3, PF4, PF5) and routes
+    to the corresponding destination program (menu, previous program, or transaction
+    main). The destination program name is validated and defaulted to sign-on if missing,
+    then control is transferred with the communication area context.; Transaction
+    view screen display and input handling; The program manages a transaction inquiry
+    screen (COTRN1A) that displays transaction details and merchant information. It
+    initializes the screen on first entry, receives user input on subsequent entries,
+    validates the transaction ID, retrieves the matching transaction record, and displays
+    the results or error messages. The screen is sent to the user after populating
+    header information (current date, time, program name, and titles) and either transaction
+    details or validation error messages.
+  data_stores_read: *id004
+  calls:
+  - COMEN01C
+  - COSGN00C
+  - COTRN00C
+- name: COTRTUPC
+  type: COBOL
+  execution: subroutine
+  description: Transaction type update screen navigation; The program initializes
+    working storage and communication areas, captures the user's terminal input key,
+    and routes control to the appropriate destination program based on the key pressed
+    and application context. When the user presses PF3 (exit), the program prepares
+    the communication area with routing information and transfers control to the calling
+    program or administration menu.; Transaction type maintenance screen display;
+    The program prepares and displays a transaction type maintenance screen to the
+    user. It initializes screen fields with current date/time, transaction type details,
+    and informational messages based on the current processing state. The screen is
+    formatted with appropriate field protections, colors, and function key indicators
+    before being sent to the terminal.; Transaction type database update and insert;
+    The program initializes working storage and communication areas, maps terminal
+    attention keys to internal flags, and evaluates business conditions to determine
+    whether to update or insert transaction type records in the transaction type database.
+    When the user presses PFK05 while changes are pending confirmation, the program
+    updates the existing transaction type record; if no matching record exists (SQL
+    code +100), it inserts a new transaction type record instead.; Transaction type
+    deletion from database; The program initializes working storage and communication
+    areas, maps keyboard input to function keys, and evaluates user actions. When
+    the user presses PF4 while confirming a delete operation, the program retrieves
+    the original transaction type code and deletes the corresponding record from the
+    transaction type database store.
+  data_stores_write:
+  - CARDDEMO.TRANSACTION_TYPE
+  calls:
+  - COADM01C
+- name: COUSR02C
+  type: COBOL
+  execution: subroutine
+  description: Screen navigation and program transfer control; This program handles
+    user navigation through a card demonstration application. When invoked without
+    a communication area, it transfers to the signon screen. When re-entered with
+    a communication area, it evaluates the user's key press (PF3, PF5, or Enter) to
+    determine the destination program, then transfers control to that program with
+    updated navigation context.; User account update and screen management; This program
+    manages a user account update transaction through a CICS screen interface. It
+    receives user input, validates required fields, retrieves the user record from
+    the security file, compares changes, and writes updated user data back to the
+    security file. The program displays status messages and screen data based on validation
+    results and file operation outcomes.
+  data_stores_read: *id005
+  data_stores_write:
+  - AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS
+  calls:
+  - COADM01C
+  - COSGN00C
+- name: COUSR03C
+  type: COBOL
+  execution: subroutine
+  description: Program navigation and screen transition control; This program manages
+    navigation between screens in a card demonstration application. It receives user
+    input via attention identifiers (function keys) and determines the destination
+    program based on the key pressed and the originating program context. The program
+    transfers control to the destination program via XCTL, passing navigation state
+    through a shared communication area.; User deletion screen management and security
+    file operations; This program manages a user deletion interface, allowing operators
+    to search for users by ID, display their information, and delete them from the
+    security file. The program displays a BMS screen (COUSR3A) with user details and
+    processes function key inputs to either retrieve user records, delete selected
+    users, or clear the screen. Successful deletions are confirmed with a green-colored
+    message; errors are reported with appropriate messages and the user ID field is
+    repositioned for correction.
+  data_stores_read: *id006
+  calls:
+  - COADM01C
+  - COSGN00C
+- name: CSUTLDTC
+  type: COBOL
+  execution: subroutine
+  description: Date validation and Lillian conversion; The program accepts a date
+    string and format mask from the caller, delegates to the system date service to
+    convert the date to Lillian format and validate it, captures the validation result
+    and any error feedback, and returns a formatted message describing the outcome
+    to the caller.

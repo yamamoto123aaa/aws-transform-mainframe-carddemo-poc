@@ -1,0 +1,283 @@
+# Data Store Initialization and Lifecycle Management - Batch Job Discovery
+# Generated: 2026-08-08T04:24:51Z
+# Source: TransformKG (Python discovery)
+
+function: DataStoreInitializationandLifecycleManagement
+jobs:
+  migrate: []
+  interface: []
+  setup:
+  - id: BAT-001
+    name: ACCTFILE.jcl
+    description: Account data store initialization and population; This JCL job prepares
+      a keyed sequential data store for account records by first removing any existing
+      store, then defining a new indexed store with specific allocation parameters,
+      and finally populating it with account data from a sequential source file. The
+      three-step process ensures a clean, properly-configured account data repository
+      ready for production use.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-002
+    name: DALYREJS.jcl
+    description: Daily rejection dataset generation setup; This job step defines a
+      generation data group for the daily rejection master dataset, establishing a
+      versioning container that retains up to five generations of the dataset with
+      automatic scratch (deletion) of the oldest generation when the limit is exceeded.
+      The step uses the dataset definition utility to create the generation data group
+      structure, enabling the job to manage multiple historical versions of daily
+      rejection records.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-003
+    name: DEFCUST.jcl
+    description: Customer data store deletion; This job step removes an existing customer
+      data store if one is already present in the system. The step invokes a utility
+      to delete the customer data store cluster, enabling a clean re-initialization
+      of the customer master data. The deletion is unconditional and occurs as part
+      of a setup or reset procedure.; Customer data store initialization; This job
+      pack defines and initializes the customer master data store. It first attempts
+      to delete any existing customer data cluster to ensure a clean state, then creates
+      a new indexed sequential customer data store with specific allocation parameters
+      (1 primary cylinder, 5 secondary cylinders, 10-byte keys, 500-byte records)
+      and sharing options to support concurrent batch and online access.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-004
+    name: DEFGDGB.jcl
+    description: Generation data group definition for transaction backup; This job
+      defines a generation data group (GDG) base named AWS.M2.CARDDEMO.TRANSACT.BKUP
+      to support the card demonstration project. The GDG is configured to retain a
+      maximum of 5 generations and automatically scratch (delete) the oldest generation
+      when the limit is exceeded. This provides a rolling backup capability for transaction
+      data, ensuring that recent backup versions are preserved while older versions
+      are automatically cleaned up.; Generation data group base definition; The job
+      defines a generation data group (GDG) base for the card transaction daily dataset.
+      The GDG base is configured to retain a maximum of 5 generations, with older
+      generations automatically deleted when the limit is exceeded. This setup enables
+      the system to maintain a rolling history of daily transaction files while automatically
+      managing storage by removing obsolete generations.; Transaction report dataset
+      versioning setup; This job defines a generation data group (GDG) base for the
+      transaction report dataset, establishing a versioning container that automatically
+      manages up to five generations of report output. When the generation limit is
+      exceeded, the oldest generations are automatically deleted to maintain storage
+      efficiency. The GDG base enables the batch reporting process to create successive
+      versions of the transaction report without manual dataset management.; Generation
+      data group definition for backup dataset; The job defines a generation data
+      group (GDG) base named AWS.M2.CARDDEMO.TCATBALF.BKUP to manage versioned backup
+      datasets for the card demonstration project. The GDG is configured to retain
+      a maximum of 5 generations and automatically scratch (delete) the oldest generation
+      when the limit is exceeded, enabling rolling backup retention without manual
+      dataset cleanup.; Generation data group base definition; The job defines a generation
+      data group base for the card transaction system, establishing a versioned dataset
+      container that retains up to five generations of transaction data with automatic
+      cleanup of older versions. The definition uses inline control statements to
+      configure the generational dataset parameters, enabling the system to maintain
+      a rolling history of transaction records without manual dataset management.;
+      Generational dataset base creation for transaction records; The job defines
+      a generational dataset group (GDG) base to manage versioned copies of combined
+      transaction records. The GDG base retains up to 5 generations and automatically
+      deletes older generations when the limit is exceeded, ensuring controlled archival
+      and space management for the card-demo transaction processing pipeline.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-005
+    name: DEFGDGD.jcl
+    description: Generation data group definition for transaction reference backup;
+      This job defines a generation data group (GDG) to manage versioned backups of
+      transaction type reference data. The GDG is configured to retain up to 5 generations
+      and automatically scratch (delete) the oldest generation when the limit is exceeded.
+      The definition is submitted via the IDCAMS utility, which processes the inline
+      control statements to create the GDG structure in the catalog.; Generation data
+      group setup for transaction reference data; This batch job establishes generation
+      data group (GDG) infrastructure for transaction reference data by defining a
+      GDG base with a retention limit of 5 generations and automatic scratch-on-delete,
+      then populates the first generation by copying transaction type records from
+      the source dataset. The job ensures transaction reference data is versioned
+      and managed under GDG lifecycle rules.; Generational dataset initialization
+      for transaction reference data; This job establishes generational dataset groups
+      (GDGs) for transaction type and transaction category reference data, with a
+      retention limit of 5 generations. The job defines the GDG structures via IDCAMS
+      and populates the first generation of each GDG by copying source reference data
+      into the newly created backup datasets.; Generation data group lifecycle management;
+      The job defines a generation data group for the disclosure backup dataset with
+      a retention policy of five generations. When the limit is exceeded, non-current
+      generations are automatically deleted to maintain the configured capacity.;
+      Disclosure group generational backup; The job creates a generational backup
+      of the disclosure group dataset. STEP50 invokes a catalog utility to prepare
+      the environment. STEP60 copies the current disclosure group records to a new
+      generation of the backup store, executing only if the previous step succeeds.
+      The backup is allocated with fixed record format and cataloged for retention.
+    programs:
+    - IDCAMS
+    - IEBGENER
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-006
+    name: DISCGRP.jcl
+    description: Disclosure group VSAM dataset initialization; This job prepares a
+      disclosure group VSAM indexed-sequential dataset for use. It first removes any
+      existing dataset, then defines a new indexed-sequential cluster with a 16-byte
+      key and 50-byte records on a dedicated volume, and finally populates it by copying
+      records from a flat sequential file. The three-step sequence ensures a clean,
+      initialized dataset ready for production access.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-007
+    name: DUSRSECJ.jcl
+    description: User security file initialization and VSAM indexing; This job creates
+      and populates a user security file by first generating a sequential dataset
+      from embedded user records (administrators and standard users), then defining
+      a VSAM indexed cluster, and finally copying the sequential data into the indexed
+      store for efficient access by user ID. The job establishes the foundational
+      security data structure required for user authentication and authorization.
+    programs:
+    - IDCAMS
+    - IEBGENER
+    - IEFBR14
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-008
+    name: ESDSRRDS.jcl
+    description: User security file initialization and VSAM store setup; This job
+      creates and populates user security data stores for a card-management system.
+      It begins by generating a sequential file containing administrator and standard
+      user records with their credentials and access levels, then defines and populates
+      two VSAM data stores—one entry-sequenced (ESDS) and one relative-record (RRDS)—both
+      sourced from the sequential file. The job establishes the foundational security
+      infrastructure required for user authentication and authorization.
+    programs:
+    - IDCAMS
+    - IEBGENER
+    - IEFBR14
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-009
+    name: REPTFILE.jcl
+    description: Generation data group definition for transaction reports; This JCL
+      job defines a generation data group for transaction report datasets, configuring
+      it to retain a maximum of 10 generations. The job uses the dataset management
+      utility to create the generation data group structure, enabling automatic versioning
+      and retention of historical transaction reports.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-010
+    name: TCATBALF.jcl
+    description: Transaction category balance data store setup; This job prepares
+      a transaction category balance data store by first removing any existing instance,
+      then defining a new indexed-sequential data store with specific capacity and
+      sharing parameters, and finally populating it with transaction records from
+      a flat file. The three sequential steps ensure a clean, initialized data store
+      ready for production use.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-011
+    name: TRANBKP.jcl
+    description: Transaction master index cleanup; The job step removes the alternate
+      index for the transaction master file if it already exists in the system. This
+      cleanup operation ensures a fresh state before subsequent processing steps that
+      may recreate the index structure. The deletion is performed using the dataset
+      management utility, reading deletion instructions from the control input.; Transaction
+      master data store initialization; This job pack prepares a transaction master
+      data store for use by deleting any existing instance and then creating a new
+      indexed sequential dataset with specific storage and sharing parameters. The
+      deletion step executes unconditionally; the creation step executes only if the
+      deletion succeeds or is not needed (condition code less than 4). The final outcome
+      is a fresh, empty transaction master store ready for transaction processing.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-012
+    name: TRANCATG.jcl
+    description: Transaction category VSAM dataset initialization; This job prepares
+      a transaction category reference dataset by deleting any existing VSAM cluster,
+      defining a new indexed-sequential cluster with a 6-byte key and 60-byte records,
+      and populating it from a flat file source. The three-step sequence ensures a
+      clean, initialized dataset ready for transaction categorization lookups.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-013
+    name: TRANIDX.jcl
+    description: Transaction timestamp index creation; This job step creates an alternate
+      index on the transaction data store, keyed by processed timestamp to enable
+      efficient retrieval of transactions by their processing date. The alternate
+      index is defined as non-unique (multiple transactions may share the same timestamp)
+      with automatic upgrade capability, allocated on the specified volume with a
+      fixed record size and storage allocation.; Alternate index path definition;
+      The job defines a path that relates an alternate index to its base cluster,
+      enabling indexed access to transaction records. The path definition establishes
+      the logical connection between the alternate index (AWS.M2.CARDDEMO.TRANSACT.VSAM.AIX)
+      and its corresponding path name (AWS.M2.CARDDEMO.TRANSACT.VSAM.AIX.PATH), allowing
+      applications to query transactions through this alternate index structure.;
+      Transaction record indexing; The job builds an alternate index over the transaction
+      master store to enable efficient lookups by secondary key. The index is constructed
+      from the primary transaction dataset and written to a dedicated alternate-index
+      dataset, enabling queries that would otherwise require sequential scans.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-014
+    name: TRANTYPE.jcl
+    description: Transaction type dataset initialization; This job pack prepares a
+      transaction type reference dataset by removing any existing version, defining
+      a new indexed sequential dataset structure, and populating it with transaction
+      type records from a flat file source. The three-step sequence ensures a clean,
+      consistent dataset ready for application use.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-015
+    name: XREFFILE.jcl
+    description: Card reference index lifecycle management; This job manages the alternate
+      index for card account cross-reference data. It first removes any existing alternate
+      index to ensure a clean state, then creates a new alternate index keyed on account
+      ID (positions 11–25) with non-unique keys, upgrade capability, and specified
+      storage allocation on volume AWSHJ1. The index relates to the primary card reference
+      dataset and includes both data and index components.; Alternate index path definition;
+      This step defines a path that relates an alternate index to its base cluster
+      in the card reference data store. The path enables efficient access to the alternate
+      index by establishing the logical relationship between the alternate index and
+      the base cluster it indexes.; Card cross-reference VSAM file initialization;
+      This job pack prepares a card cross-reference data store by removing any existing
+      instance, defining a new indexed sequential structure with 16-byte keys and
+      50-byte records, and populating it from a flat sequential source file. The final
+      step builds an alternate index over the newly loaded data to enable secondary-key
+      lookups.
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  skip: []

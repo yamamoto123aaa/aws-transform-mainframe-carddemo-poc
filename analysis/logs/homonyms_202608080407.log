@@ -1,0 +1,6 @@
+2026-08-08 04:07:32,408 [main] INFO : Starting homonyms analysis
+2026-08-08 04:07:32,410 [main] INFO : Homonyms analysis started at: 04:07:32 (version 20260724160607)
+2026-08-08 04:07:32,461 [main] INFO : Analysis successful, finished at: 04:07:32
+2026-08-08 04:07:32,462 [main] INFO : 223 files processed
+2026-08-08 04:07:32,462 [main] INFO : Global duration: 0 sec
+2026-08-08 04:07:32,462 [main] INFO : Homonyms found: 1

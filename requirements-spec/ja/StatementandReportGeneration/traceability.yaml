@@ -1,0 +1,1551 @@
+function: StatementandReportGeneration
+generated_at: '2026-08-08T04:27:18Z'
+summary:
+  total_rules: 65
+  captured: 59
+  not_applicable: 6
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 65
+    written: 65
+    shortfall: 0
+rules:
+- rule_id: 7dec4675_312a_47db_a46c_0bccc9090782
+  program: CBSTM03A
+  disposition: captured
+  rule_name: 出力ファイルおよびトランザクションテーブルを初期化する
+  rule_text: THE 明細書生成プロセス SHALL 明細書出力ストア(`STMT-FILE`)およびHTML出力ストア(`HTML-FILE`)を書き込み用にオープンし、トランザクションテーブルとそのカウンタを空に初期化する
+  req_id: REQ-F-001
+  traceability_lines:
+  - 262
+  - 293
+  - 294
+  - 296
+- rule_id: 28f052b7_9b5b_4bd8_9b79_44028961dce2
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: カードごとの明細書生成ループを駆動する
+  rule_text: WHILE ファイル終端インジケータ(`END-OF-FILE`)が'Y'でない間、THE 明細書生成ループ SHALL 次のクロスリファレンスレコードを読み込み、有効なレコードが取得できた場合、顧客レコードおよびアカウントレコードを取得し、明細書ヘッダーを作成し、合計金額アキュムレータ(`WS-TOTAL-AMT`)をゼロにリセットし、トランザクションマッチングとフッター書き込みを実行して、カード1件につき1つの完全な明細書を生成する
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 316
+  - 317
+  - 318
+  - 319
+  - 320
+  - 321
+  - 322
+  - 323
+  - 325
+  - 326
+  - 327
+  - 328
+  - 329
+- rule_id: 6b11a38a_26d5_40bd_991a_57170461678e
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: アカウントファイルをオープンする
+  rule_text: WHEN アカウントファイルのオープン操作がディスパッチされたとき、THE アカウントファイルオープナー SHALL ファイルアクセスサービス(`CBSTM03B`)に委譲してアカウントファイル('ACCTFILE')をオープンする
+  req_id: REQ-F-045
+  traceability_lines:
+  - 801
+  - 802
+  - 803
+  - 804
+  - 805
+- rule_id: 6d9fad7a_b786_4c59_8564_61f280770c49
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: クロスリファレンスファイルをオープンし、顧客ファイルへ進む
+  rule_text: WHEN クロスリファレンスファイルのオープン操作がディスパッチされたとき、THE クロスリファレンスファイルオープナー SHALL ファイルアクセスサービス(`CBSTM03B`)に委譲してクロスリファレンスファイル('XREFFILE')をオープンし、その後データセット名(`WS-FL-DD`)を'CUSTFILE'に設定して次のイテレーションで顧客ファイルのオープンを発生させる
+  req_id: REQ-F-045
+  traceability_lines:
+  - 765
+  - 766
+  - 767
+  - 768
+  - 769
+  - 779
+- rule_id: 6e8a3d5e_45bf_4735_b51f_582fb4eb8360
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: ファイル操作を正しいオープンハンドラへルーティングする
+  rule_text: WHILE ファイル操作ディスパッチループが実行中である間、THE ファイル操作ルーター SHALL 現在のファイルデータセット名(`WS-FL-DD`)を評価し、'TRNXFILE'の場合はトランザクションファイルオープンハンドラへ、'XREFFILE'の場合はクロスリファレンスファイルオープンハンドラへ、'CUSTFILE'の場合は顧客ファイルオープンハンドラへ、'ACCTFILE'の場合はアカウントファイルオープンハンドラへ、'READTRNX'の場合はトランザクション読み込みルーチンへ制御を渡す
+  reason: '[LLM-classified] ファイル操作のルーティング/ディスパッチ機構 — REQ-F-004が捉える内容を超える独立した業務上の意味を持たない状態機械的な制御フロー'
+- rule_id: 71e1da90_c086_401a_bd3c_5ef2ec3a6956
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: トランザクションファイルをオープンし、最初のレコードをプライムする
+  rule_text: WHEN トランザクションファイルのオープン操作がディスパッチされたとき、THE トランザクションファイル初期化 SHALL ファイルアクセスサービス(`CBSTM03B`)に委譲してトランザクションファイル('TRNXFILE')をオープンし、最初のレコードを読み込み、最初のトランザクションレコード(`TRNX-RECORD`)をロードし、カード番号を参照カード(`WS-SAVE-CARD`)として保存し、クレジットレコードカウンタ(`CR-CNT`)を1に、トランザクションレコードカウンタ(`TR-CNT`)を0に設定し、データセット名(`WS-FL-DD`)を'READTRNX'へ進める
+  req_ids:
+  - REQ-F-002
+  - REQ-F-045
+  traceability_lines:
+  - 730
+  - 731
+  - 732
+  - 733
+  - 734
+  - 744
+  - 745
+  - 746
+  - 756
+  - 757
+  - 758
+  - 759
+  - 760
+- rule_id: 8c94e7d6_2588_4891_a5cb_0adb48b63efd
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: アカウント識別子によりアカウントレコードを取得する
+  rule_text: WHEN カードクロスリファレンスレコードの読み込みに成功し、アカウント識別子が利用可能であるとき、THE アカウントレコード取得 SHALL
+    ファイルアクセスサービス(`CBSTM03B`)に委譲して、アカウント識別子(`XREF-ACCT-ID`)をキーとしてアカウントファイルのキー付き読み込みを実行し、取得したデータでアカウントレコード(`ACCOUNT-RECORD`)を設定する
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 392
+  - 394
+  - 395
+  - 396
+  - 398
+  - 399
+  - 400
+  - 401
+  - 412
+- rule_id: 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: トランザクションをマッチングし、合計を積算し、明細書フッターを書き込む
+  rule_text: WHEN 明細書ヘッダーが書き込まれ、トランザクション合計アキュムレータがゼロにリセットされたとき、THE トランザクションマッチングおよび明細書フッター書き込み
+    SHALL トランザクションテーブルを走査して現在のカード番号(`XREF-CARD-NUM`)に一致するエントリを探し、一致した各トランザクション行を書き込み、合計金額(`WS-TOTAL-AMT`)を積算し、その後区切り線、積算合計を含むトランザクション合計行(`ST-TOTAL-TRAMT`)、および明細書フッター行を明細書出力ストア(`STMT-FILE`)に書き込む
+  req_ids:
+  - REQ-F-008
+  - REQ-F-010
+  - REQ-F-051
+  traceability_lines:
+  - 416
+  - 417
+  - 418
+  - 419
+  - 420
+  - 422
+  - 423
+  - 424
+  - 425
+  - 426
+  - 427
+  - 428
+  - 429
+  - 430
+  - 431
+  - 432
+  - 433
+  - 434
+  - 435
+  - 436
+  - 437
+- rule_id: 9457e3d9_d3b6_4831_bf70_a21a5f24c018
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 個々のトランザクション詳細行を書き込む
+  rule_text: WHEN 現在のカード番号に一致するトランザクションがトランザクションテーブル内で識別されたとき、THE トランザクション行ライター SHALL
+    現在のトランザクションレコードからトランザクション識別子(`ST-TRANID`)、説明(`ST-TRANDT`)、金額(`ST-TRANAMT`)の表示フィールドを設定し、トランザクション行を明細書出力ストア(`STMT-FILE`)に書き込む
+  req_ids:
+  - REQ-F-009
+  - REQ-F-052
+  traceability_lines:
+  - 675
+  - 676
+  - 677
+  - 678
+  - 679
+- rule_id: c128c7c5_943f_4dce_b9fc_0b77bce60445
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 顧客明細書ヘッダーを組み立てて書き込む
+  rule_text: WHEN 現在のカードクロスリファレンスレコードについて顧客レコードとアカウントレコードが取得されたとき、THE 明細書ヘッダー組み立て
+    SHALL 明細書行をクリアし、名(`CUST-FIRST-NAME`)、中間名(`CUST-MIDDLE-NAME`)、姓(`CUST-LAST-NAME`)の各フィールドから顧客名を組み立て、住所およびアカウント詳細フィールドを設定し、ヘッダー行、氏名行、住所行、区切り線、セクションヘッダー、アカウント識別子行、残高行、FICOスコア行、および列見出し行を明細書出力ストア(`STMT-FILE`)に書き込む
+  req_ids:
+  - REQ-F-007
+  - REQ-F-050
+  traceability_lines:
+  - 458
+  - 459
+  - 460
+  - 462
+  - 463
+  - 464
+  - 465
+  - 466
+  - 467
+  - 468
+  - 469
+  - 470
+  - 471
+  - 472
+  - 473
+  - 474
+  - 475
+  - 476
+  - 477
+  - 478
+  - 479
+  - 480
+  - 481
+  - 483
+  - 484
+  - 485
+  - 488
+  - 489
+  - 490
+  - 491
+  - 492
+  - 493
+  - 494
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+  - 500
+  - 501
+  - 502
+- rule_id: c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 次のクロスリファレンスレコードを順次読み込む
+  rule_text: WHEN 次のクロスリファレンスレコードが要求されたとき、THE クロスリファレンスレコードリーダー SHALL ファイルアクセスサービス(`CBSTM03B`)に委譲してクロスリファレンスファイルから次のレコードを読み込み、成功した場合は取得したデータでカードクロスリファレンスレコード(`CARD-XREF-RECORD`)を設定し、ファイル終端の場合はファイル終端インジケータ(`END-OF-FILE`)を'Y'に設定する
+  req_ids:
+  - REQ-F-006
+  - REQ-F-048
+  - REQ-F-049
+  traceability_lines:
+  - 345
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 353
+  - 356
+  - 357
+  - 362
+  - 364
+- rule_id: d54e6c5a_c7f3_4a29_8e46_5e2c718735ce
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: トランザクションレコードをメモリ内テーブルにロードする
+  rule_text: WHEN トランザクション読み込み操作('READTRNX')がディスパッチされたとき、THE トランザクションテーブルローダー SHALL
+    ファイルアクセスサービス(`CBSTM03B`)を介して各トランザクションレコードを順次読み込み、カード番号(`TRNX-CARD-NUM`)によりトランザクションをグループ化してトランザクションテーブル(`WS-TRNX-TABLE`)に格納し、同一カードのレコードについてはトランザクションレコードカウンタ(`TR-CNT`)をインクリメントし、新しいカードについてはクレジットレコードカウンタ(`CR-CNT`)を進め、トランザクション識別子(`TRNX-ID`)と詳細データ(`TRNX-REST`)を適切なテーブル位置に格納し、ファイル終端の場合は終了ルーチンを呼び出して最後のカードのトランザクション数を確定する
+  req_ids:
+  - REQ-F-003
+  - REQ-F-046
+  traceability_lines:
+  - 818
+  - 819
+  - 820
+  - 821
+  - 822
+  - 823
+  - 824
+  - 825
+  - 827
+  - 828
+  - 829
+  - 830
+  - 832
+  - 833
+  - 834
+  - 835
+  - 837
+  - 838
+  - 839
+  - 841
+  - 842
+  - 847
+- rule_id: d6ed14a5_86f1_4a72_905d_83636f6b07dd
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 特定のファイルオープン手続きへディスパッチする
+  rule_text: WHEN ルーティングステップによりファイルオープンターゲットが設定されたとき、THE ファイルオープンディスパッチャー SHALL ターゲットが8100-TRNXFILE-OPENの場合はトランザクションファイルオープン手続きを、8200-XREFFILE-OPENの場合はクロスリファレンスファイルオープン手続きを、8300-CUSTFILE-OPENの場合は顧客ファイルオープン手続きを、8400-ACCTFILE-OPENの場合はアカウントファイルオープン手続きを呼び出し、それ以外のターゲットの場合はデフォルトとしてトランザクションファイルオープン手続きを呼び出す
+  reason: '[LLM-classified] ファイルオープンディスパッチャー機構 — REQ-F-004で既に扱われているルーティングロジックの重複'
+- rule_id: d820cf3e_af77_4a51_a5f2_0b56e3d3c61f
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: ファイル終端時に最後のカードのトランザクション数を確定する
+  rule_text: WHEN テーブルロード中にトランザクションファイルの終端に到達したとき、THE トランザクションテーブル確定処理 SHALL 現在のトランザクションレコードカウンタ(`TR-CNT`)を最後のカードスロットのトランザクション数(`WS-TRCT`)として格納し、ファイルデータセット名(`WS-FL-DD`)を'XREFFILE'に設定してクロスリファレンスレコード読み込みを開始する
+  req_ids:
+  - REQ-F-004
+  - REQ-F-047
+  traceability_lines:
+  - 849
+  - 850
+  - 851
+- rule_id: e223e4eb_ac6f_4b31_86c6_9dae3a0a0055
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 顧客ファイルをオープンし、アカウントファイルへ進む
+  rule_text: WHEN 顧客ファイルのオープン操作がディスパッチされたとき、THE 顧客ファイルオープナー SHALL ファイルアクセスサービス(`CBSTM03B`)に委譲して顧客マスターファイル('CUSTFILE')をオープンし、その後データセット名(`WS-FL-DD`)を'ACCTFILE'に設定して次のイテレーションでアカウントファイルのオープンを発生させる
+  req_id: REQ-F-045
+  traceability_lines:
+  - 783
+  - 784
+  - 785
+  - 786
+  - 787
+  - 797
+- rule_id: f9e1d2bb_c822_48df_a23f_f9ea228e9edb
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 顧客識別子により顧客レコードを取得する
+  rule_text: WHEN カードクロスリファレンスレコードの読み込みに成功し、顧客識別子が利用可能であるとき、THE 顧客レコード取得 SHALL ファイルアクセスサービス(`CBSTM03B`)に委譲して、顧客識別子(`XREF-CUST-ID`)をキーとして顧客マスターファイルのキー付き読み込みを実行し、取得したデータで顧客レコード(`CUSTOMER-RECORD`)を設定する
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 368
+  - 370
+  - 371
+  - 372
+  - 374
+  - 375
+  - 376
+  - 377
+  - 388
+- rule_id: 004a8ad3_fb16_41b4_9c03_a7cf518946f7
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 顧客ファイルをクローズする
+  rule_text: WHEN プログラムが顧客ファイルをクローズする必要があるとき、THE 顧客ファイルクローズ SHALL ファイル処理サービス(`CBSTM03B`)に委譲して顧客ファイルをクローズする
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 889
+  - 890
+  - 891
+  - 892
+  - 893
+- rule_id: 0a264113_0f61_4743_b3ae_d444259aad8c
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 次のクロスリファレンスレコードを取得する
+  rule_text: WHEN プログラムが次のクロスリファレンスレコードを要求したとき、THE クロスリファレンスレコード取得 SHALL ファイル処理サービス(`CBSTM03B`)に委譲してクロスリファレンスファイルから次のレコードを読み込み、これ以上レコードが存在しない場合はファイル終端インジケータを'Y'に設定し、取得したデータをクロスリファレンスレコード構造体に移動する
+  req_ids:
+  - REQ-F-006
+  - REQ-F-048
+  - REQ-F-049
+  traceability_lines:
+  - 345
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 353
+  - 356
+  - 357
+  - 362
+  - 364
+  - 368
+  - 370
+  - 371
+  - 372
+  - 374
+- rule_id: 22534aa6_3d36_45b0_8981_f5a4d93d2105
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 特定のファイルオープン手続きへディスパッチする
+  rule_text: WHEN ルーティングステップによりファイルオープンターゲットが設定されたとき、THE ファイルオープンディスパッチャー SHALL ターゲットが8100-TRNXFILE-OPENの場合はトランザクションファイルオープン手続きを、8200-XREFFILE-OPENの場合はクロスリファレンスファイルオープン手続きを、8300-CUSTFILE-OPENの場合は顧客ファイルオープン手続きを、8400-ACCTFILE-OPENの場合はアカウントファイルオープン手続きを呼び出し、それ以外のターゲットの場合はデフォルトとしてトランザクションファイルオープン手続きを呼び出す
+  reason: '[LLM-classified] ファイルオープンディスパッチャの仕組み — REQ-F-004で既に扱われているルーティングロジックの重複'
+- rule_id: 22fe4e50_868f_4b7f_9a97_5a03a750e8e6
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: アカウントファイルを開く
+  rule_text: アカウントファイルのオープン操作がディスパッチされる時、アカウントファイルオープナーはファイルアクセスサービス（`CBSTM03B`）に委譲してアカウントファイル（'ACCTFILE'）を開くものとする（SHALL）
+  req_id: REQ-F-045
+  traceability_lines:
+  - 801
+  - 802
+  - 803
+  - 804
+  - 805
+- rule_id: 4ed1f883_9772_492a_b166_f616bc541a0c
+  program: CBSTM03A
+  disposition: not_applicable
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: データセット名によるファイル操作のルーティング
+  rule_text: プログラムがメイン制御ループにある間（WHILE）、ファイル操作ルーターはファイルデータセット名を評価し、対応するファイル操作ハンドラ（トランザクションファイルのオープン、クロスリファレンスファイルのオープン、顧客ファイルのオープン、アカウントファイルのオープン、またはトランザクションファイルの読み取り）へディスパッチするものとする（SHALL）
+  reason: '[LLM-classified] ファイル操作ルーティングの仕組み — REQ-F-004が捉えている内容を超える独立したビジネス上の結果を持たない制御ループディスパッチ'
+- rule_id: 63cbf0e1_9a35_40aa_87c5_204b80b40005
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: クロスリファレンスファイルを閉じる
+  rule_text: プログラムがクロスリファレンスファイルを閉じる必要がある時、クロスリファレンスファイルクローズはファイル処理サービス（`CBSTM03B`）に委譲してクロスリファレンスファイルを閉じるものとする（SHALL）
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 873
+  - 874
+  - 875
+  - 876
+  - 877
+- rule_id: 8795f508_c730_4093_917e_beaab3d365f6
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: アカウントIDによるアカウントレコードの取得
+  rule_text: プログラムがクロスリファレンスレコード内のアカウントIDに対応するアカウントレコードを取得する必要がある時、アカウントレコード検索はファイル処理サービス（`CBSTM03B`）に委譲し、アカウントIDを検索キーとしてアカウントレコードを取得するものとする（SHALL）
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 392
+  - 394
+  - 395
+  - 396
+  - 398
+  - 399
+  - 400
+  - 401
+- rule_id: 9f5dab18_a702_4fd1_808d_effe3f2d81c0
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 顧客IDによる顧客レコードの取得
+  rule_text: プログラムがクロスリファレンスレコード内の顧客IDに対応する顧客レコードを取得する必要がある時、顧客レコード検索はファイル処理サービス（`CBSTM03B`）に委譲し、顧客IDを検索キーとして顧客レコードを取得するものとする（SHALL）
+  req_ids:
+  - REQ-F-005
+  - REQ-F-048
+  traceability_lines:
+  - 368
+  - 370
+  - 371
+  - 372
+  - 374
+  - 375
+  - 376
+  - 377
+- rule_id: 9fe41d37_c47e_449d_96b0_b47651501b80
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: トランザクションファイル読み取りループの終了
+  rule_text: トランザクションファイル読み取りループがファイル終端に達した時、トランザクションファイル読み取り終了は読み取りループを終了し、次の操作を示すためにファイルデータセット名を'XREFFILE'に設定するものとする（SHALL）
+  req_ids:
+  - REQ-F-004
+  - REQ-F-047
+  traceability_lines:
+  - 849
+  - 851
+- rule_id: a0e40d9a_fd18_41de_86b3_4709b5e9fd00
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: トランザクションファイルを閉じる
+  rule_text: プログラムがトランザクションファイルを閉じる必要がある時、トランザクションファイルクローズはファイル処理サービス（`CBSTM03B`）に委譲してトランザクションファイルを閉じるものとする（SHALL）
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 856
+  - 857
+  - 858
+  - 859
+  - 860
+- rule_id: a5b1b9a3_544f_4d7b_ab15_2bb0d17b2224
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: 顧客ファイルを開き、アカウントファイルへ進む
+  rule_text: 顧客ファイルのオープン操作がディスパッチされる時、顧客ファイルオープナーはファイルアクセスサービス（`CBSTM03B`）に委譲して顧客マスタファイル（'CUSTFILE'）を開き、その後データセット名（`WS-FL-DD`）を'ACCTFILE'に設定して次の反復でアカウントファイルのオープンをトリガーするものとする（SHALL）
+  req_id: REQ-F-045
+  traceability_lines:
+  - 783
+  - 784
+  - 785
+  - 786
+  - 787
+  - 797
+- rule_id: a7cecece_5f9b_4f5c_a18f_c27a1ec6cad5
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: ファイル終端までトランザクションファイルを読み取る
+  rule_text: トランザクションファイル読み取りループが有効である間（WHILE）、トランザクションファイル読み取りループはファイル処理サービス（`CBSTM03B`）に委譲してトランザクションファイルからレコードを読み取り、ファイル終端に達した時にループを終了するものとする（SHALL）
+  req_ids:
+  - REQ-F-003
+  - REQ-F-046
+  traceability_lines:
+  - 818
+  - 832
+  - 833
+  - 834
+  - 835
+  - 837
+  - 841
+  - 842
+  - 847
+- rule_id: acba4e2c_5b7f_41bd_83ac_28893180c4b2
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: アカウントファイルを閉じる
+  rule_text: プログラムがアカウントファイルを閉じる必要がある時、アカウントファイルクローズはファイル処理サービス（`CBSTM03B`）に委譲してアカウントファイルを閉じるものとする（SHALL）
+  req_ids:
+  - REQ-F-011
+  - REQ-F-053
+  traceability_lines:
+  - 905
+  - 906
+  - 907
+  - 908
+  - 909
+- rule_id: dcd62c6c_13dd_4b84_9a73_84b0ac965f6e
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: トランザクションファイルを開く
+  rule_text: プログラムがトランザクションファイルを開く必要がある時、トランザクションファイルオープンはファイル処理サービス（`CBSTM03B`）に委譲してトランザクションファイルを開き、その後操作種別を読み取りに設定し、ファイルデータバッファをクリアして読み取りに備えるものとする（SHALL）
+  req_ids:
+  - REQ-F-002
+  - REQ-F-045
+  traceability_lines:
+  - 730
+  - 731
+  - 732
+  - 733
+  - 734
+  - 744
+  - 745
+  - 746
+  - 760
+- rule_id: e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: ファイル終端までレコードを処理する
+  rule_text: クロスリファレンスファイルにレコードが残っている間（WHILE）、レコード処理ループは次のクロスリファレンスレコードを取得し、成功した場合は対応する顧客レコードおよびアカウントレコードを取得するものとする（SHALL）。全レコードの処理後、4つのファイルすべてを閉じる
+  req_ids:
+  - REQ-F-005
+  - REQ-F-011
+  - REQ-F-048
+  - REQ-F-053
+  traceability_lines:
+  - 316
+  - 317
+  - 318
+  - 319
+  - 320
+  - 321
+  - 322
+  - 327
+  - 328
+  - 329
+  - 331
+  - 333
+  - 335
+  - 337
+- rule_id: fb9acdcd_7b96_4f4f_960e_ff50f395ac26
+  program: CBSTM03A
+  disposition: captured
+  program_path: demo/cbl/CBSTM03A.CBL
+  rule_name: クロスリファレンスファイルを開き、顧客ファイルへ進む
+  rule_text: クロスリファレンスファイルのオープン操作がディスパッチされる時、クロスリファレンスファイルオープナーはファイルアクセスサービス（`CBSTM03B`）に委譲してクロスリファレンスファイル（'XREFFILE'）を開き、その後データセット名（`WS-FL-DD`）を'CUSTFILE'に設定して次の反復で顧客ファイルのオープンをトリガーするものとする（SHALL）
+  req_id: REQ-F-045
+  traceability_lines:
+  - 765
+  - 766
+  - 767
+  - 768
+  - 769
+  - 779
+- rule_id: 4be5eb7c_6c29_41ba_bf78_e58ddb9f6dd5
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: キー付きアクセスによる顧客ファイル操作の処理
+  rule_text: M03Bリンケージエリアを介して顧客ファイル操作が要求される時、顧客ファイルハンドラは要求された操作（オープン、キー付き読み取り、またはクローズ）を顧客ファイルストア（`CUST-FILE`）に対して実行し、ファイルステータスコードを返すものとする（SHALL）。
+  req_id: REQ-F-017
+  traceability_lines:
+  - 181
+  - 183
+  - 184
+  - 185
+  - 186
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 195
+  - 196
+  - 197
+  - 198
+  - 200
+  - 201
+- rule_id: 74e3e04f_883b_4d88_9a3c_542dbbf4cc5f
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: クロスリファレンスファイル操作の処理
+  rule_text: M03Bリンケージエリアを介してクロスリファレンスファイル操作が要求される時、クロスリファレンスファイルハンドラは要求された操作（オープン、読み取り、またはクローズ）をクロスリファレンスファイルストア（`XREF-FILE`）に対して実行し、ファイルステータスコードを返すものとする（SHALL）。
+  req_id: REQ-F-015
+  traceability_lines:
+  - 157
+  - 159
+  - 160
+  - 161
+  - 162
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  - 170
+  - 171
+  - 172
+  - 173
+  - 175
+  - 176
+- rule_id: 76a7be20_fe5d_4da0_9583_a0fe755369c4
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: トランザクションファイル操作の処理
+  rule_text: M03Bリンケージエリアを介してトランザクションファイル操作が要求される時、トランザクションファイルハンドラは要求された操作（オープン、読み取り、またはクローズ）をトランザクションファイルストア（`TRNX-FILE`）に対して実行し、ファイルステータスコードを返すものとする（SHALL）。
+  req_id: REQ-F-014
+  traceability_lines:
+  - 133
+  - 135
+  - 136
+  - 137
+  - 138
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 146
+  - 147
+  - 148
+  - 149
+  - 151
+  - 152
+- rule_id: 7ea2d7ad_38b2_4683_9aca_8c06014a8406
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: キー付きアクセスによるアカウントファイル操作の処理
+  rule_text: M03Bリンケージエリアを介してアカウントファイル操作が要求される時、アカウントファイルハンドラは要求された操作（オープン、キー付き読み取り、またはクローズ）をアカウントファイルストア（`ACCT-FILE`）に対して実行し、ファイルステータスコードを返すものとする（SHALL）。
+  req_id: REQ-F-019
+  traceability_lines:
+  - 206
+  - 208
+  - 209
+  - 210
+  - 211
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 220
+  - 221
+  - 222
+  - 223
+  - 225
+  - 226
+- rule_id: 8e9418f3_be85_4020_a51a_8af18513821d
+  program: CBSTM03B
+  disposition: captured
+  program_path: demo/cbl/CBSTM03B.CBL
+  rule_name: データ定義識別子によるファイル操作のディスパッチ
+  rule_text: ファイル操作ディスパッチャはデータ定義識別子を評価し、対応するファイル処理プロシージャへルーティングするものとする（SHALL）。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-013
+  traceability_lines:
+  - 116
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+- rule_id: 081e8258_3810_406c_9bfd_ae1e8504ee44
+  program: CBTRN03C
+  disposition: captured
+  rule_name: 次のトランザクションレコードの読み取り
+  rule_text: 'トランザクションファイルから次のトランザクションレコードが読み取られる時、トランザクションレコード取得は読み取りが成功した場合にアプリケーション結果コードを0に設定し、ファイル終端に達した場合はそれを16に設定し、ファイル終端フラグを''Y''に設定し、ファイルエラーが発生した場合は12に設定するものとする（SHALL）。（物理ストア:
+    `TRANSACT-FILE`）'
+  req_ids:
+  - REQ-F-025
+  - REQ-F-026
+  - REQ-F-027
+  traceability_lines:
+  - 246
+  - 248
+  - 249
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 256
+  - 257
+  - 258
+  - 260
+  - 262
+  - 263
+  - 264
+  - 270
+  - 271
+- rule_id: 0bcdeec4_7311_4a2d_a8ef_fd9b24b687b7
+  program: CBTRN03C
+  disposition: captured
+  rule_name: 取引詳細行をレポートに書き込む
+  rule_text: 取引詳細レポート・ライターは、取引詳細レポート・レコードを初期化し、取引ID、口座ID、取引タイプコードおよび説明、取引カテゴリコードおよび説明、取引ソース、取引金額をこれに設定し、組み立てたレコードをレポートファイル・バッファに移し、レコードをレポートファイルに書き込み、行カウンタを1つ増加させるものとする。
+  req_id: REQ-F-032
+  traceability_lines:
+  - 361
+  - 362
+  - 363
+  - 364
+  - 365
+  - 366
+  - 367
+  - 368
+  - 369
+  - 370
+  - 371
+  - 372
+  - 373
+- rule_id: ffef1b61_3167_40bb_b000_fb98cfe97717
+  program: CBTRN03C
+  disposition: captured
+  rule_name: レポート期間の日付パラメータを読み込む
+  rule_text: '日付パラメータファイルが読み込まれるとき、日付パラメータ取得は、読み込みが成功した場合はアプリケーション結果コードを0に設定し、ファイル終端に達した場合はこれを16に設定するとともにファイル終端フラグを''Y''に設定し、ファイルエラーが発生した場合はこれを12に設定するものとする。(物理ストア:
+    `DATE-PARMS-FILE`)'
+  req_ids:
+  - REQ-F-021
+  - REQ-F-039
+  - REQ-F-040
+  - REQ-F-041
+  traceability_lines:
+  - 219
+  - 220
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+  - 231
+  - 234
+  - 235
+  - 236
+  - 242
+- rule_id: 06b75365_3122_4f0a_b7b9_e3123633e53c
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: ページ合計と区切り線を書き込む
+  rule_text: ページ合計レポート・ライターは、ページ合計金額をページ合計レポート・レコードに移し、レコードをレポートファイルに書き込み、ページ合計を総合計に加算し、ページ合計をゼロにリセットし、区切り線をレポートに書き込み、行カウンタを2つ増加させるものとする。
+  req_ids:
+  - REQ-F-035
+  - REQ-F-069
+  traceability_lines:
+  - 293
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+- rule_id: 076b1bb7_ee4f_4f6c_ab06_76508583f0a4
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: ページ区切り条件の確認と処理
+  rule_text: 行カウンタがページサイズ(20行)の倍数に達したとき、ページ区切り処理は、ページ合計を書き込み、ページ合計をゼロにリセットし、新しいページのレポートヘッダー行を書き込むものとする。
+  req_ids:
+  - REQ-F-034
+  - REQ-F-068
+  traceability_lines:
+  - 282
+  - 283
+  - 284
+  - 285
+- rule_id: 23ca3bf2_85fc_45e4_bbee_a2955030608e
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 取引カテゴリの説明を取得する
+  rule_text: 取引カテゴリの参照が必要なとき、取引カテゴリ参照は、取引タイプコードと取引カテゴリコードを複合キーとして取引カテゴリファイル(`TRANCATG-FILE`)を読み込み、関連する取引カテゴリの説明を取得するものとする。
+  req_ids:
+  - REQ-F-031
+  - REQ-F-064
+  traceability_lines:
+  - 504
+  - 505
+- rule_id: 405c71df_b782_405b_85a1_c50da36a7859
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: レポートヘッダー行を書き込む
+  rule_text: レポートヘッダー・ライターは、開始日と終了日を付したレポート名ヘッダーを書き込み、空白行を書き込み、取引列ヘッダー行を書き込み、区切り線を書き込み、行カウンタを4つ増加させるものとする。
+  req_ids:
+  - REQ-F-023
+  - REQ-F-061
+  traceability_lines:
+  - 324
+  - 325
+  - 326
+  - 327
+  - 329
+  - 330
+  - 331
+  - 333
+  - 334
+  - 335
+  - 337
+  - 338
+  - 339
+- rule_id: 43ceca2d_c1b6_4c66_a551_e6707a404964
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: レポート・レコードをファイルに書き込む
+  rule_text: 'レポートファイル・ライターは、レポート・レコードをレポートファイルに書き込むものとする。(物理ストア: `REPORT-FILE`)'
+  req_ids:
+  - REQ-F-032
+  - REQ-F-066
+  traceability_lines:
+  - 343
+  - 345
+- rule_id: 51c70a8f_c8ba_464b_bd01_1aad141e6c54
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 取引金額をページ合計および口座合計に累算する
+  rule_text: 取引金額累算処理は、取引金額をページ合計累算器および口座合計累算器に加算するものとする。
+  req_ids:
+  - REQ-F-033
+  - REQ-F-067
+  traceability_lines:
+  - 287
+  - 288
+  - 289
+- rule_id: 774eee9f_7531_4c05_ad42_a03b1fb69d11
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: カード相互参照口座IDを取得する
+  rule_text: カード番号の参照が必要なとき、カード相互参照検索は、カード番号をキーとしてカード相互参照ファイル(`XREF-FILE`)を読み込み、関連する口座IDを取得するものとする。
+  req_ids:
+  - REQ-F-029
+  - REQ-F-062
+  traceability_lines:
+  - 484
+  - 485
+- rule_id: 9605811b_ed6d_48b1_bc7a_050682ebcf73
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 最初の取引でレポート処理を初期化する
+  rule_text: 最初の取引が処理されるとき、レポート初期化は、初回フラグを'N'に設定し、レポートの開始日と終了日をレポートヘッダーに移し、レポートヘッダー行を書き込むものとする。
+  req_ids:
+  - REQ-F-022
+  - REQ-F-060
+  traceability_lines:
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  - 279
+  - 280
+- rule_id: 983f5310_4e93_4448_a995_e774d7602700
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 取引タイプの説明を取得する
+  rule_text: 取引タイプの参照が必要なとき、取引タイプ参照は、取引タイプコードをキーとして取引タイプファイル(`TRANTYPE-FILE`)を読み込み、関連する取引タイプの説明を取得するものとする。
+  req_ids:
+  - REQ-F-030
+  - REQ-F-035
+  - REQ-F-063
+  traceability_lines:
+  - 494
+  - 495
+- rule_id: 9d9a01ad_ce91_4b27_b4a3_89da27d4afe5
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 取引入力ファイルおよび参照ファイルを開く
+  rule_text: 'ファイル初期化は、取引ファイル、カード相互参照ファイル、取引タイプファイル、取引カテゴリファイル、日付パラメータファイルを入力用に、レポートファイルを出力用に開くものとする。(物理ストア:
+    `DATE-PARMS-FILE`、`REPORT-FILE`、`TRANCATG-FILE`、`TRANSACT-FILE`、`TRANTYPE-FILE`、`XREF-FILE`)'
+  req_ids:
+  - REQ-F-020
+  - REQ-F-059
+  traceability_lines:
+  - 159
+  - 161
+  - 162
+  - 163
+  - 164
+  - 165
+  - 166
+  - 376
+  - 378
+  - 394
+  - 396
+  - 412
+  - 414
+  - 430
+  - 432
+  - 448
+  - 450
+  - 466
+  - 468
+- rule_id: b4599545_61f1_48de_8fbf_50655bc03557
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 総合計をレポートに書き込む
+  rule_text: 総合計レポート・ライターは、総合計金額を総合計レポート・レコードに移し、レコードをレポートファイルに書き込むものとする。
+  req_ids:
+  - REQ-F-038
+  - REQ-F-072
+  traceability_lines:
+  - 318
+  - 319
+  - 320
+  - 321
+- rule_id: b8a4f85a_0ff1_4c7c_a123_2ab57dc3771b
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: カード番号の変更を検知し口座合計を書き込む
+  rule_text: カード番号が直前に処理されたカードから変更されたとき、カード番号変更処理は、最初の取引でない場合は前のカードの口座合計を書き込み、現在のカード番号を新しいカード番号に更新し、口座ID、取引タイプの説明、取引カテゴリの説明の参照を実行するものとする。
+  req_ids:
+  - REQ-F-028
+  - REQ-F-065
+  traceability_lines:
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+- rule_id: d4f8a547_f885_4032_b151_719d8bd8e1ca
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: 口座合計と区切り線を書き込む
+  rule_text: 口座合計レポート・ライターは、口座合計金額を口座合計レポート・レコードに移し、レコードをレポートファイルに書き込み、口座合計をゼロにリセットし、区切り線をレポートに書き込み、行カウンタを2つ増加させるものとする。
+  req_ids:
+  - REQ-F-036
+  - REQ-F-070
+  traceability_lines:
+  - 306
+  - 307
+  - 308
+  - 309
+  - 310
+  - 311
+  - 312
+  - 313
+  - 314
+- rule_id: f0aa6175_f308_4ec9_a8bf_c8a86b0c31a0
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: ファイル終端に達したとき取引金額を累算する
+  rule_text: 取引ファイルでファイル終端に達したとき、最終取引累算処理は、最終取引金額をページ合計累算器および口座合計累算器に加算し、ページ合計を書き込み、総合計を書き込むものとする。
+  req_ids:
+  - REQ-F-037
+  - REQ-F-071
+  traceability_lines:
+  - 197
+  - 200
+  - 201
+  - 202
+  - 203
+  - 204
+- rule_id: f8419a41_62f9_4211_83f6_4b79cd17ca64
+  program: CBTRN03C
+  disposition: captured
+  program_path: demo/cbl/CBTRN03C.cbl
+  rule_name: ファイル終端まで取引バッチを処理する
+  rule_text: ファイル終端フラグが'N'である間、取引バッチ処理は、次の取引レコードを読み込むものとする。新しいカード番号が検出され、かつ最初の取引でない場合は前のカードの口座合計を書き込み、現在のカード番号を更新して口座ID、取引タイプの説明、取引カテゴリの説明の参照を実行し、取引詳細行を書き込み、ファイル終端に達した場合はページ合計と総合計を書き込むものとする。
+  req_ids:
+  - REQ-F-024
+  - REQ-F-028
+  - REQ-F-073
+  traceability_lines:
+  - 168
+  - 170
+  - 171
+  - 172
+  - 179
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 195
+  - 196
+  - 197
+  - 200
+  - 201
+  - 202
+  - 203
+  - 204
+  - 205
+  - 206
+- rule_id: ee82ed1b_ff89_44ab_905d_644f2b989938
+  program: CREASTMT
+  disposition: not_applicable
+  reason: '[Pattern-classified] ソート/マージ動詞の仕組み'
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: ソート済みレコードをVSAM取引クラスタにコピーする
+  rule_text: 'ソートステップが正常に完了したとき、データセット・コピーは、順編成の取引ファイルからすべてのレコードをVSAM取引クラスタにコピーし、クラスタの32バイトキーを用いて各レコードをインデックス化するものとする。(物理ストア:
+    `INFILE`、`OUTFILE`、`SYSIN`)'
+- rule_id: 74008c3c_fbb2_4417_a262_cda55d031e45
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: 取引ファイル・クラスタを削除し再作成する
+  rule_text: 'データセット管理は、順編成の取引ファイルおよび既存のVSAM取引クラスタを削除し、その後、32バイトキー、350バイト固定長レコード、同時読み取り/排他書き込み共有、プライマリ1シリンダおよびセカンダリ5シリンダの記憶域を持つAWS.M2.CARDDEMO.TRXFL.VSAM.KSDSという名前の新しいインデックス付きVSAMクラスタを定義するものとする。(物理ストア:
+    `SYSIN`)'
+  req_id: REQ-F-042
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+- rule_id: 895606c9_09f0_474c_8a1e_0f1fa4195fff
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: カードおよび取引IDで取引レコードをソートする
+  rule_text: 'THE Transaction Sort は、ソース取引ファイルの取引レコードを、カード番号(オフセット263、16バイト、昇順)を主キー、取引ID(オフセット1、16バイト、昇順)を副キーとしてソートし、その後、各出力レコードを、カード番号を1〜16バイト目、取引IDを17〜278バイト目、オフセット279からの50バイトのセグメントで再構成し、ソートされたレコードをシーケンシャル取引ファイルに書き込むSHALL。(物理ストア:
+    `SORTIN`, `SORTOUT`, `SYSIN`)'
+  req_id: REQ-F-043
+  traceability_lines:
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+- rule_id: c3540919_243a_487d_875a_6eeb676372f4
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: 以前のステートメントレポートファイルを削除する
+  rule_text: 'コピーステップが正常に完了したWHEN、THE Report Cleanup は、前回実行分のHTMLステートメントファイル(AWS.M2.CARDDEMO.STATEMNT.HTML)とテキストステートメントファイル(AWS.M2.CARDDEMO.STATEMNT.PS)を削除するSHALL。(物理ストア:
+    `HTMLFILE`, `STMTFILE`)'
+  req_id: REQ-F-044
+  traceability_lines:
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 75
+- rule_id: de586a0c_f2a7_4f0b_bc6e_c27e13cba4db
+  program: CREASTMT
+  disposition: captured
+  program_path: demo/jcl/CREASTMT.JCL
+  rule_name: カード取引ステートメントを生成する
+  rule_text: 'クリーンアップステップが正常に完了したWHEN、THE Statement Generation は、ステートメント生成プログラムを呼び出し、取引ファイルから取引レコード、カード参照ファイルからカード参照データ、口座データファイルから口座詳細、顧客データファイルから顧客情報を読み取り、その後テキストおよびHTML形式のステートメントレポートをステートメント出力ファイルに生成するSHALL。(物理ストア:
+    `ACCTFILE`, `CUSTFILE`, `HTMLFILE`, `STEPLIB`, `STMTFILE`, `TRNXFILE`, `XREFFILE`)'
+  req_id: REQ-F-045
+  traceability_lines:
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: 308e34ce_95e2_42fd_8dde_59887e2cb4e2
+  program: PRTCATBL
+  disposition: captured
+  program_path: demo/jcl/PRTCATBL.jcl
+  rule_name: 取引カテゴリ残高レコードをバックアップにコピーする
+  rule_text: 'THE Data Copy Handler は、ソースストアから取引カテゴリ残高レコードを取得し、バックアップデータセットに書き込むSHALL。(物理ストア:
+    `FILEIN`, `FILEOUT`, `SYSIN`)'
+  req_id: REQ-F-054
+  traceability_lines:
+  - file: demo/jcl/PRTCATBL.jcl
+    lines:
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    - 35
+    - 36
+    - 37
+    - 38
+    - 39
+  - file: demo/proc/REPROC.prc
+    lines:
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+- rule_id: d7b56d4e_408f_469c_970a_1a81de77ad38
+  program: PRTCATBL
+  disposition: captured
+  program_path: demo/jcl/PRTCATBL.jcl
+  rule_name: 取引カテゴリ残高レポートをソートしフォーマットする
+  rule_text: 'THE Sort and Report Formatter は、取引カテゴリ残高レコードを口座識別子、取引タイプ、カテゴリコードの順に昇順でソートし、各レコードを口座、タイプ、カテゴリ、フォーマット済み残高の各フィールドをスペースで区切った形式に再フォーマットし、ソートおよびフォーマット済みのレコードをレポートデータセットに書き込むSHALL。(物理ストア:
+    `SORTIN`, `SORTOUT`, `SYMNAMES`, `SYSIN`)'
+  req_ids:
+  - REQ-F-055
+  - REQ-F-056
+  traceability_lines:
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+- rule_id: 84f459db_17a1_4943_b355_5184e4d8f300
+  program: TRANREPT
+  disposition: not_applicable
+  program_path: demo/jcl/TRANREPT.jcl
+  rule_name: 参照データを含む整形済み取引レポートを生成する
+  rule_text: 'THE Transaction Report Formatter は、レポートフォーマッタ(`CBTRN03C`)に処理を委譲し、デイリーストアからソート済み取引を読み取り、各レコードにカード相互参照、取引タイプ、取引カテゴリのデータを付加し、日付パラメータを適用し、フォーマットされた133バイトのレポートレコードを取引レポート出力ストアに書き込むSHALL。(物理ストア:
+    `CARDXREF`, `DATEPARM`, `STEPLIB`, `TRANCATG`, `TRANFILE`, `TRANREPT`, `TRANTYPE`)'
+  reason: '[LLM-classified] REQ-F-003からREQ-F-017までによって全体的にカバーされる。このルールは、レポートフォーマッタへの全体的な委譲を記述しており、それは上記の個別の業務要件に分解されている。'
+- rule_id: 8a392794_74f1_4932_bbed_1fb7b3ce09e7
+  program: TRANREPT
+  disposition: captured
+  program_path: demo/jcl/TRANREPT.jcl
+  rule_name: 日付とカード番号による取引のフィルタリングとソート
+  rule_text: 'THE Transaction Filter and Sort は、処理日が2022-01-01から2022-07-06まで(両端含む)の取引をフィルタリングし、フィルタリングされたレコードをカード番号の昇順でソートし、ソート済みの出力をデイリー取引ストアに書き込むSHALL。(物理ストア:
+    `SORTIN`, `SORTOUT`, `SYMNAMES`, `SYSIN`)'
+  req_id: REQ-F-058
+  traceability_lines:
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+- rule_id: fb0bc5d8_223b_4d38_a8ff_8c94abcfbd72
+  program: TRANREPT
+  disposition: captured
+  program_path: demo/jcl/TRANREPT.jcl
+  rule_name: 取引レコードをバックアップストレージにコピーする
+  rule_text: 'THE Transaction Backup Handler は、ソースストアから取引レコードをバックアップデータセットにコピーし、元のデータ構造とフォーマットを保持するSHALL。(物理ストア:
+    `FILEIN`, `FILEOUT`, `SYSIN`)'
+  req_id: REQ-F-057
+  traceability_lines:
+  - file: demo/jcl/TRANREPT.jcl
+    lines:
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+  - file: demo/proc/REPROC.prc
+    lines:
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 7dec4675_312a_47db_a46c_0bccc9090782
+- req_id: REQ-F-002
+  rule_ids:
+  - 71e1da90_c086_401a_bd3c_5ef2ec3a6956
+  - dcd62c6c_13dd_4b84_9a73_84b0ac965f6e
+- req_id: REQ-F-003
+  rule_ids:
+  - d54e6c5a_c7f3_4a29_8e46_5e2c718735ce
+  - a7cecece_5f9b_4f5c_a18f_c27a1ec6cad5
+- req_id: REQ-F-004
+  rule_ids:
+  - d820cf3e_af77_4a51_a5f2_0b56e3d3c61f
+  - 9fe41d37_c47e_449d_96b0_b47651501b80
+- req_id: REQ-F-005
+  rule_ids:
+  - 28f052b7_9b5b_4bd8_9b79_44028961dce2
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  - f9e1d2bb_c822_48df_a23f_f9ea228e9edb
+  - 8c94e7d6_2588_4891_a5cb_0adb48b63efd
+  - 9f5dab18_a702_4fd1_808d_effe3f2d81c0
+  - 8795f508_c730_4093_917e_beaab3d365f6
+- req_id: REQ-F-006
+  rule_ids:
+  - c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  - 0a264113_0f61_4743_b3ae_d444259aad8c
+- req_id: REQ-F-007
+  rule_ids:
+  - c128c7c5_943f_4dce_b9fc_0b77bce60445
+- req_id: REQ-F-008
+  rule_ids:
+  - 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+- req_id: REQ-F-009
+  rule_ids:
+  - 9457e3d9_d3b6_4831_bf70_a21a5f24c018
+- req_id: REQ-F-010
+  rule_ids:
+  - 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+- req_id: REQ-F-011
+  rule_ids:
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  - a0e40d9a_fd18_41de_86b3_4709b5e9fd00
+  - 63cbf0e1_9a35_40aa_87c5_204b80b40005
+  - 004a8ad3_fb16_41b4_9c03_a7cf518946f7
+  - acba4e2c_5b7f_41bd_83ac_28893180c4b2
+- req_id: REQ-F-012
+  rule_ids:
+  - 8e9418f3_be85_4020_a51a_8af18513821d
+- req_id: REQ-F-013
+  rule_ids:
+  - 8e9418f3_be85_4020_a51a_8af18513821d
+- req_id: REQ-F-014
+  rule_ids:
+  - 76a7be20_fe5d_4da0_9583_a0fe755369c4
+- req_id: REQ-F-015
+  rule_ids:
+  - 74e3e04f_883b_4d88_9a3c_542dbbf4cc5f
+- req_id: REQ-F-017
+  rule_ids:
+  - 4be5eb7c_6c29_41ba_bf78_e58ddb9f6dd5
+- req_id: REQ-F-019
+  rule_ids:
+  - 7ea2d7ad_38b2_4683_9aca_8c06014a8406
+- req_id: REQ-F-020
+  rule_ids:
+  - 9d9a01ad_ce91_4b27_b4a3_89da27d4afe5
+- req_id: REQ-F-021
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-022
+  rule_ids:
+  - 9605811b_ed6d_48b1_bc7a_050682ebcf73
+- req_id: REQ-F-023
+  rule_ids:
+  - 405c71df_b782_405b_85a1_c50da36a7859
+- req_id: REQ-F-024
+  rule_ids:
+  - f8419a41_62f9_4211_83f6_4b79cd17ca64
+- req_id: REQ-F-025
+  rule_ids:
+  - 081e8258_3810_406c_9bfd_ae1e8504ee44
+- req_id: REQ-F-026
+  rule_ids:
+  - 081e8258_3810_406c_9bfd_ae1e8504ee44
+- req_id: REQ-F-027
+  rule_ids:
+  - 081e8258_3810_406c_9bfd_ae1e8504ee44
+- req_id: REQ-F-028
+  rule_ids:
+  - b8a4f85a_0ff1_4c7c_a123_2ab57dc3771b
+  - f8419a41_62f9_4211_83f6_4b79cd17ca64
+- req_id: REQ-F-029
+  rule_ids:
+  - 774eee9f_7531_4c05_ad42_a03b1fb69d11
+- req_id: REQ-F-030
+  rule_ids:
+  - 983f5310_4e93_4448_a995_e774d7602700
+- req_id: REQ-F-031
+  rule_ids:
+  - 23ca3bf2_85fc_45e4_bbee_a2955030608e
+- req_id: REQ-F-032
+  rule_ids:
+  - 0bcdeec4_7311_4a2d_a8ef_fd9b24b687b7
+  - 43ceca2d_c1b6_4c66_a551_e6707a404964
+- req_id: REQ-F-033
+  rule_ids:
+  - 51c70a8f_c8ba_464b_bd01_1aad141e6c54
+- req_id: REQ-F-034
+  rule_ids:
+  - 076b1bb7_ee4f_4f6c_ab06_76508583f0a4
+- req_id: REQ-F-035
+  rule_ids:
+  - 06b75365_3122_4f0a_b7b9_e3123633e53c
+  - 983f5310_4e93_4448_a995_e774d7602700
+- req_id: REQ-F-036
+  rule_ids:
+  - d4f8a547_f885_4032_b151_719d8bd8e1ca
+- req_id: REQ-F-037
+  rule_ids:
+  - f0aa6175_f308_4ec9_a8bf_c8a86b0c31a0
+- req_id: REQ-F-038
+  rule_ids:
+  - b4599545_61f1_48de_8fbf_50655bc03557
+- req_id: REQ-F-039
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-040
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-041
+  rule_ids:
+  - ffef1b61_3167_40bb_b000_fb98cfe97717
+- req_id: REQ-F-042
+  rule_ids:
+  - 74008c3c_fbb2_4417_a262_cda55d031e45
+- req_id: REQ-F-043
+  rule_ids:
+  - 895606c9_09f0_474c_8a1e_0f1fa4195fff
+- req_id: REQ-F-044
+  rule_ids:
+  - c3540919_243a_487d_875a_6eeb676372f4
+- req_id: REQ-F-045
+  rule_ids:
+  - de586a0c_f2a7_4f0b_bc6e_c27e13cba4db
+  - 71e1da90_c086_401a_bd3c_5ef2ec3a6956
+  - 6d9fad7a_b786_4c59_8564_61f280770c49
+  - e223e4eb_ac6f_4b31_86c6_9dae3a0a0055
+  - 6b11a38a_26d5_40bd_991a_57170461678e
+  - dcd62c6c_13dd_4b84_9a73_84b0ac965f6e
+  - fb9acdcd_7b96_4f4f_960e_ff50f395ac26
+  - a5b1b9a3_544f_4d7b_ab15_2bb0d17b2224
+  - 22fe4e50_868f_4b7f_9a97_5a03a750e8e6
+- req_id: REQ-F-046
+  rule_ids:
+  - d54e6c5a_c7f3_4a29_8e46_5e2c718735ce
+  - a7cecece_5f9b_4f5c_a18f_c27a1ec6cad5
+- req_id: REQ-F-047
+  rule_ids:
+  - d820cf3e_af77_4a51_a5f2_0b56e3d3c61f
+  - 9fe41d37_c47e_449d_96b0_b47651501b80
+- req_id: REQ-F-048
+  rule_ids:
+  - 28f052b7_9b5b_4bd8_9b79_44028961dce2
+  - c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  - 0a264113_0f61_4743_b3ae_d444259aad8c
+  - f9e1d2bb_c822_48df_a23f_f9ea228e9edb
+  - 9f5dab18_a702_4fd1_808d_effe3f2d81c0
+  - 8c94e7d6_2588_4891_a5cb_0adb48b63efd
+  - 8795f508_c730_4093_917e_beaab3d365f6
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+- req_id: REQ-F-049
+  rule_ids:
+  - c9c5124d_7920_4d8f_aa57_94f6f6d94d5c
+  - 0a264113_0f61_4743_b3ae_d444259aad8c
+- req_id: REQ-F-050
+  rule_ids:
+  - c128c7c5_943f_4dce_b9fc_0b77bce60445
+- req_id: REQ-F-051
+  rule_ids:
+  - 8df7b97f_ec55_41b4_b8d2_e3eac9b75b1e
+- req_id: REQ-F-052
+  rule_ids:
+  - 9457e3d9_d3b6_4831_bf70_a21a5f24c018
+- req_id: REQ-F-053
+  rule_ids:
+  - e3e0bf2c_0346_4d89_a623_d1c6d926c15a
+  - a0e40d9a_fd18_41de_86b3_4709b5e9fd00
+  - 63cbf0e1_9a35_40aa_87c5_204b80b40005
+  - 004a8ad3_fb16_41b4_9c03_a7cf518946f7
+  - acba4e2c_5b7f_41bd_83ac_28893180c4b2
+- req_id: REQ-F-054
+  rule_ids:
+  - 308e34ce_95e2_42fd_8dde_59887e2cb4e2
+- req_id: REQ-F-055
+  rule_ids:
+  - d7b56d4e_408f_469c_970a_1a81de77ad38
+- req_id: REQ-F-056
+  rule_ids:
+  - d7b56d4e_408f_469c_970a_1a81de77ad38
+- req_id: REQ-F-057
+  rule_ids:
+  - fb0bc5d8_223b_4d38_a8ff_8c94abcfbd72
+- req_id: REQ-F-058
+  rule_ids:
+  - 8a392794_74f1_4932_bbed_1fb7b3ce09e7
+- req_id: REQ-F-059
+  rule_ids:
+  - 9d9a01ad_ce91_4b27_b4a3_89da27d4afe5
+- req_id: REQ-F-060
+  rule_ids:
+  - 9605811b_ed6d_48b1_bc7a_050682ebcf73
+- req_id: REQ-F-061
+  rule_ids:
+  - 405c71df_b782_405b_85a1_c50da36a7859
+- req_id: REQ-F-062
+  rule_ids:
+  - 774eee9f_7531_4c05_ad42_a03b1fb69d11
+- req_id: REQ-F-063
+  rule_ids:
+  - 983f5310_4e93_4448_a995_e774d7602700
+- req_id: REQ-F-064
+  rule_ids:
+  - 23ca3bf2_85fc_45e4_bbee_a2955030608e
+- req_id: REQ-F-065
+  rule_ids:
+  - b8a4f85a_0ff1_4c7c_a123_2ab57dc3771b
+- req_id: REQ-F-066
+  rule_ids:
+  - 43ceca2d_c1b6_4c66_a551_e6707a404964
+- req_id: REQ-F-067
+  rule_ids:
+  - 51c70a8f_c8ba_464b_bd01_1aad141e6c54
+- req_id: REQ-F-068
+  rule_ids:
+  - 076b1bb7_ee4f_4f6c_ab06_76508583f0a4
+- req_id: REQ-F-069
+  rule_ids:
+  - 06b75365_3122_4f0a_b7b9_e3123633e53c
+- req_id: REQ-F-070
+  rule_ids:
+  - d4f8a547_f885_4032_b151_719d8bd8e1ca
+- req_id: REQ-F-071
+  rule_ids:
+  - f0aa6175_f308_4ec9_a8bf_c8a86b0c31a0
+- req_id: REQ-F-072
+  rule_ids:
+  - b4599545_61f1_48de_8fbf_50655bc03557
+- req_id: REQ-F-073
+  rule_ids:
+  - f8419a41_62f9_4211_83f6_4b79cd17ca64

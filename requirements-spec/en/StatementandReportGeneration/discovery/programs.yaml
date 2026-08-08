@@ -1,0 +1,177 @@
+# Statement and Report Generation - Program Discovery
+# Generated: 2026-08-08T04:25:27Z
+# Source: TransformKG (Python discovery)
+
+function: StatementandReportGeneration
+programs:
+- name: CBSTM03A
+  type: COBOL
+  execution: batch
+  description: Customer account statement generation; This capability reads card cross-reference,
+    customer, account, and transaction data to produce formatted customer account
+    statements. For each card cross-reference record, it retrieves the associated
+    customer and account details, assembles a multi-section statement header, matches
+    transactions from an in-memory table, and writes each transaction line followed
+    by a total and footer. The output is a structured statement file containing customer
+    identity, account balance, FICO score, itemized transactions, and a running total.;
+    File lifecycle and record retrieval orchestration; This program orchestrates the
+    opening, reading, and closing of four data files (transaction, cross-reference,
+    customer, and account) through a state-machine dispatcher. It retrieves cross-reference
+    records sequentially, uses the customer and account IDs from each cross-reference
+    to perform keyed lookups in the customer and account files, and closes all files
+    at the end of processing. All file operations delegate to a file-handling service
+    (`CBSTM03B`).
+  transaction_id: null
+  data_stores_write:
+  - AWS.M2.CARDDEMO.STATEMNT.HTML
+  - AWS.M2.CARDDEMO.STATEMNT.PS
+  calls:
+  - CBSTM03B
+  - CEE3ABD
+  includes:
+  - COSTM01
+  - CUSTREC
+  - CVACT01Y
+  - CVACT03Y
+- name: CBSTM03B
+  type: COBOL
+  execution: batch
+  description: Multi-file record retrieval dispatcher; The program dispatches file
+    access requests based on a data definition identifier in the M03B linkage area
+    control group. For each of four supported files (transaction, cross-reference,
+    customer, and account), the program performs the requested operation (open, read,
+    or close) and returns the file status code to the caller. Keyed reads for customer
+    and account files extract the access key from the linkage area before retrieving
+    the record.
+  transaction_id: null
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRXFL.VSAM.KSDS
+- name: CBTRN03C
+  type: COBOL
+  execution: batch
+  description: Transaction report generation with multi-level totals; The program
+    reads transaction records from the transaction file, enriches each transaction
+    with cross-reference account data and transaction type/category descriptions from
+    lookup files, and writes formatted transaction detail lines and periodic totals
+    (page, account, and grand totals) to a report file. The report is organized by
+    card number with page breaks every 20 lines, and processing is controlled by date
+    parameters read from a date-parameters file.
+  transaction_id: null
+  data_stores_read: &id002
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.DATEPARM
+  - AWS.M2.CARDDEMO.TRANCATG.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRANSACT.DALY
+  - AWS.M2.CARDDEMO.TRANTYPE.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.TRANREPT
+  calls:
+  - CEE3ABD
+  includes:
+  - CVACT03Y
+  - CVTRA03Y
+  - CVTRA04Y
+  - CVTRA05Y
+  - CVTRA07Y
+- name: CREASTMT
+  type: JCL
+  execution: batch
+  description: Card transaction statement generation pipeline; This batch job orchestrates
+    the creation of card transaction statements by first deleting and recreating a
+    keyed transaction file, then sorting transaction records by card number and transaction
+    ID, copying the sorted records into a VSAM cluster, deleting previous statement
+    reports, and finally invoking a statement generation program that reads transaction,
+    card reference, account, and customer data to produce text and HTML statement
+    reports.
+  transaction_id: null
+  calls:
+  - CBSTM03A
+  - IDCAMS
+  - IEFBR14
+  - SORT
+  invokes: CBSTM03A, IDCAMS, IEFBR14, SORT
+- name: PRTCATBL
+  type: JCL
+  execution: batch
+  description: 'Transaction category balance report generation; This job unloads processed
+    transaction category balance records from a data store, filters and sorts them
+    by account identifier, transaction type, and category code, and produces a formatted
+    report output. The job executes two sequential steps: first, a data copy operation
+    retrieves the transaction category balance records; second, a sort operation reorganizes
+    the records in ascending order by account, type, and category, reformats each
+    record to include space-separated fields and a formatted balance amount, and writes
+    the sorted result to the report dataset.'
+  transaction_id: null
+  calls:
+  - IEFBR14
+  - REPROC.prc
+  - SORT
+  invokes: IEFBR14, SORT
+- name: TRANREPT
+  type: JCL
+  execution: batch
+  description: Transaction report generation and filtering; This job pack unloads
+    processed transactions from a VSAM store, filters them by date range, sorts them
+    by card number, and produces a formatted transaction report. The flow involves
+    copying transactions to a backup dataset, filtering and sorting by transaction
+    date and card identifier, then delegating to a report formatter that enriches
+    the sorted transactions with reference data (card cross-reference, transaction
+    type, transaction category, and date parameters) to produce the final report output.
+  transaction_id: null
+  calls:
+  - CBTRN03C
+  - REPROC.prc
+  - SORT
+  invokes: CBTRN03C, SORT
+- name: CBSTM03A
+  type: COBOL
+  execution: subroutine
+  description: Customer account statement generation; This capability reads card cross-reference,
+    customer, account, and transaction data to produce formatted customer account
+    statements. For each card cross-reference record, it retrieves the associated
+    customer and account details, assembles a multi-section statement header, matches
+    transactions from an in-memory table, and writes each transaction line followed
+    by a total and footer. The output is a structured statement file containing customer
+    identity, account balance, FICO score, itemized transactions, and a running total.;
+    File lifecycle and record retrieval orchestration; This program orchestrates the
+    opening, reading, and closing of four data files (transaction, cross-reference,
+    customer, and account) through a state-machine dispatcher. It retrieves cross-reference
+    records sequentially, uses the customer and account IDs from each cross-reference
+    to perform keyed lookups in the customer and account files, and closes all files
+    at the end of processing. All file operations delegate to a file-handling service
+    (`CBSTM03B`).
+  data_stores_write:
+  - AWS.M2.CARDDEMO.STATEMNT.HTML
+  - AWS.M2.CARDDEMO.STATEMNT.PS
+  calls:
+  - CBSTM03B
+  - CEE3ABD
+- name: CBSTM03B
+  type: COBOL
+  execution: subroutine
+  description: Multi-file record retrieval dispatcher; The program dispatches file
+    access requests based on a data definition identifier in the M03B linkage area
+    control group. For each of four supported files (transaction, cross-reference,
+    customer, and account), the program performs the requested operation (open, read,
+    or close) and returns the file status code to the caller. Keyed reads for customer
+    and account files extract the access key from the linkage area before retrieving
+    the record.
+  data_stores_read: *id001
+- name: CBTRN03C
+  type: COBOL
+  execution: subroutine
+  description: Transaction report generation with multi-level totals; The program
+    reads transaction records from the transaction file, enriches each transaction
+    with cross-reference account data and transaction type/category descriptions from
+    lookup files, and writes formatted transaction detail lines and periodic totals
+    (page, account, and grand totals) to a report file. The report is organized by
+    card number with page breaks every 20 lines, and processing is controlled by date
+    parameters read from a date-parameters file.
+  data_stores_read: *id002
+  data_stores_write:
+  - AWS.M2.CARDDEMO.TRANREPT
+  calls:
+  - CEE3ABD

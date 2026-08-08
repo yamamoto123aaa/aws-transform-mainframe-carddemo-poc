@@ -1,0 +1,4682 @@
+function: AuthorizationManagement
+generated_at: '2026-08-08T04:28:27Z'
+summary:
+  total_rules: 193
+  captured: 131
+  not_applicable: 16
+  unreachable: 0
+  delegated: 46
+  not_accounted_for: 0
+  reconciliation:
+    expected: 193
+    written: 193
+    shortfall: 0
+rules:
+- rule_id: 39fb2f62_e0ba_4a97_8887_c04818e60e12
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Delete expired authorization detail record
+  rule_text: 'WHEN an authorization record qualifies for deletion based on expiry
+    evaluation, THE Authorization Detail Deletion SHALL delete the expired authorization
+    detail record from the database. (physical store: `DLI:DLET`)'
+  req_ids:
+  - REQ-F-157
+  - REQ-F-167
+  traceability_lines:
+  - 303
+  - 310
+  - 311
+  - 312
+  - 313
+- rule_id: 77fdbe9f_6750_45b6_ac2a_02b5a84b46d9
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Initialize program with current date and expiry threshold
+  rule_text: THE Authorization Cleanup Initialization SHALL accept the current date
+    in YYDDD format, read the expiry threshold parameter, and set the expiry days
+    to the parameter value if numeric or to 5 days if non-numeric.
+  req_ids:
+  - REQ-F-153
+  - REQ-F-160
+  traceability_lines:
+  - 136
+  - 138
+  - 140
+  - 142
+  - 144
+  - 146
+  - 147
+  - 149
+  - 150
+  - 151
+  - 153
+  - 154
+  - 165
+  - 167
+  - 183
+  - 187
+  - 189
+  - 196
+  - 197
+  - 198
+  - 199
+  - 200
+- rule_id: 859fb3e6_a05d_4666_a336_c8ed5c859a7b
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Evaluate authorization expiry and update summary totals
+  rule_text: WHEN an authorization detail record is retrieved and ready for expiry
+    evaluation, THE Authorization Expiry Evaluation SHALL calculate the authorization
+    age by inverting the stored date and comparing it to the current date; when the
+    age exceeds the expiry threshold and the response code is '00', decrement the
+    approved count and approved amount; when the age exceeds the threshold and the
+    response code is not '00', decrement the declined count and declined amount; when
+    the age does not exceed the threshold, mark the authorization as not qualified
+    for deletion.
+  req_ids:
+  - REQ-F-156
+  - REQ-F-164
+  - REQ-F-165
+  - REQ-F-166
+  traceability_lines:
+  - 277
+  - 280
+  - 282
+  - 284
+  - 285
+  - 287
+  - 288
+  - 289
+  - 290
+  - 291
+  - 292
+  - 293
+  - 294
+  - 295
+  - 296
+- rule_id: c59906af_864c_4207_83c0_f0542b120fbf
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Retrieve next authorization detail record
+  rule_text: 'WHEN the program enters the detail-retrieval phase or advances to the
+    next detail record, THE Authorization Detail Retrieval SHALL retrieve the next
+    authorization detail record under the current summary; when successful, set the
+    more-authorizations flag; when the segment or database is exhausted, clear the
+    more-authorizations flag. (physical store: `DLI:GNP`)'
+  req_ids:
+  - REQ-F-155
+  - REQ-F-163
+  traceability_lines:
+  - 248
+  - 255
+  - 256
+  - 257
+  - 258
+  - 259
+  - 260
+  - 261
+  - 263
+  - 264
+  - 265
+  - 271
+- rule_id: fd46bed6_0525_4d69_a4b7_c6cde8d525f5
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Retrieve next authorization summary record
+  rule_text: 'WHEN the program enters the summary-retrieval phase or advances to the
+    next summary record, THE Authorization Summary Retrieval SHALL retrieve the next
+    authorization summary record from the database; when successful, clear the end-of-database
+    flag; when the database segment is exhausted, set the end-of-database flag. (physical
+    store: `DLI:GN`)'
+  req_ids:
+  - REQ-F-154
+  - REQ-F-162
+  traceability_lines:
+  - 216
+  - 223
+  - 224
+  - 225
+  - 226
+  - 228
+  - 229
+  - 230
+  - 234
+  - 235
+  - 241
+- rule_id: 034d0ba5_8300_47b6_93ab_e72ae10fa6d6
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Delete authorization summary record from database
+  rule_text: 'THE Authorization Summary Deletion SHALL delete the pending authorization
+    summary record from the database using the DLI delete operation. (physical store:
+    `DLI:DLET`)'
+  req_ids:
+  - REQ-F-158
+  - REQ-F-168
+  traceability_lines:
+  - 328
+  - 335
+  - 336
+  - 337
+  - 338
+- rule_id: 037427ae_454b_4abc_9b37_d0e66a42d969
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Process authorization summaries and details until completion
+  rule_text: WHILE authorization records remain to be processed and no error has occurred,
+    THE Authorization Processing Loop SHALL retrieve each pending authorization summary
+    and process all associated detail records; for each detail, check expiry and adjust
+    summary counts; delete the summary when all authorizations have expired; continue
+    until all summaries are processed or an error occurs.
+  req_ids:
+  - REQ-F-159
+  - REQ-F-161
+  traceability_lines:
+  - 138
+  - 140
+  - 142
+  - 144
+  - 146
+  - 147
+  - 153
+  - 154
+  - 156
+  - 157
+  - 158
+  - 165
+  - 167
+- rule_id: 052ccce3_29e8_407a_95f3_b05cc37f9093
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Initialize program with current date and expiry threshold
+  rule_text: THE Authorization Expiry Processor SHALL accept the current date in YYDDD
+    format and the expiry threshold parameter; if the parameter is numeric, use it
+    as the expiry days threshold, otherwise default to 5 days.
+  req_ids:
+  - REQ-F-153
+  - REQ-F-160
+  traceability_lines:
+  - 136
+  - 138
+  - 140
+  - 142
+  - 144
+  - 146
+  - 147
+  - 153
+  - 154
+  - 156
+  - 157
+  - 158
+  - 165
+  - 167
+  - 183
+  - 187
+  - 189
+  - 196
+  - 197
+  - 198
+  - 199
+  - 200
+- rule_id: 23d96016_f932_4828_92ea_8484560dc05a
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Retrieve next authorization detail record
+  rule_text: 'WHEN the program enters the detail-retrieval phase or advances to the
+    next detail record, THE Authorization Detail Retrieval SHALL retrieve the next
+    authorization detail record under the current summary; when successful, set the
+    more-authorizations flag; when the segment or database is exhausted, clear the
+    more-authorizations flag. (physical store: `DLI:GNP`)'
+  req_ids:
+  - REQ-F-155
+  - REQ-F-163
+  traceability_lines:
+  - 248
+  - 255
+  - 256
+  - 257
+  - 258
+  - 259
+  - 260
+  - 261
+  - 263
+  - 264
+  - 265
+  - 271
+- rule_id: 4800ddd9_e5e2_4510_8487_c9b17b2c383a
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Check authorization expiry and adjust summary counts
+  rule_text: WHEN an authorization detail record is evaluated for expiry, THE Authorization
+    Expiry Validator SHALL compute the authorization age and day difference; when
+    the authorization has expired, decrement the appropriate count and subtract the
+    amount from the summary total based on the authorization response code; when approved
+    (code '00'), adjust approved counts and amounts; when declined, adjust declined
+    counts and amounts.
+  req_ids:
+  - REQ-F-156
+  - REQ-F-164
+  - REQ-F-165
+  - REQ-F-166
+  traceability_lines:
+  - 277
+  - 280
+  - 282
+  - 284
+  - 287
+  - 288
+  - 289
+  - 290
+  - 291
+  - 292
+  - 293
+  - 296
+- rule_id: 644c342f_7276_4722_8c29_bf37966db80f
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Retrieve next authorization summary record
+  rule_text: 'WHEN the program enters the summary-retrieval phase or advances to the
+    next summary record, THE Authorization Summary Retrieval SHALL retrieve the next
+    authorization summary record from the database; when successful, clear the end-of-database
+    flag; when the database segment is exhausted, set the end-of-database flag. (physical
+    store: `DLI:GN`)'
+  req_ids:
+  - REQ-F-154
+  - REQ-F-162
+  traceability_lines:
+  - 216
+  - 223
+  - 224
+  - 225
+  - 226
+  - 228
+  - 229
+  - 230
+  - 234
+  - 235
+  - 241
+- rule_id: d8b92966_cf86_44e6_b44b_a6fac0f8da0d
+  program: CBPAUP0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl
+  rule_name: Delete empty pending authorization summary record
+  rule_text: WHEN all authorizations in a summary have expired and been removed, THE
+    Authorization Summary Cleanup SHALL delete the pending authorization summary record
+    from the database when both approved and declined authorization counts are zero
+    or less.
+  req_ids:
+  - REQ-F-158
+  - REQ-F-168
+  traceability_lines:
+  - 156
+  - 157
+  - 158
+- rule_id: a456ff99_939d_4a1c_8f7a_8b77591fed9b
+  program: CBPAUP0J
+  disposition: not_applicable
+  program_path: demo/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl
+  rule_name: Execute authorization expiration cleanup in IMS batch environment
+  rule_text: 'THE Authorization Expiration Cleanup SHALL invoke the authorization-update
+    program (`CBPAUP0C`) under the IMS batch environment with the PSB (PSBPAUTB) to
+    delete expired authorization records, routing all execution output and diagnostics
+    to job output datasets. (physical stores: `DFSRESLB`, `DFSSEL`, `PROCLIB`, `STEPLIB`,
+    `SYSIN`)'
+  reason: '[LLM-classified] IMS batch environment invocation mechanics — specifies
+    JCL/IMS runtime configuration parameters (BMP mode, PSB name, load library routing)
+    with no independent business rule beyond what is captured in the subroutine requirements
+    above'
+- rule_id: 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 70ab086e_2212_473a_bc77_cd3016f78121
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 5f76bee2_856a_43ff_be78_5c24ea5326af
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 71687c5e_8523_4f47_aecd_c64b2739609c
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: b420427b_0cd3_47fd_8d7d_c82c652797f3
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fa56a870_d434_44fb_a576_861f909c096b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 2cba932a_cf83_44e3_8483_4843f60b2a6b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 2f50812f_0664_48df_b149_f764e235cd68
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 74cb64d4_f373_4143_b92a_ee12650ec1dd
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 88d333fc_515a_4c71_a41a_f0098fb53395
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: a9d3084b_128c_48bc_87dd_afc97a486276
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: ba1d0480_6267_48ae_9643_f40a1036f289
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c2f02404_628c_43ff_96c6_27418e4c156d
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c7560c00_bdf1_4adb_8217_81eec0adb873
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c7b30dcd_37c3_4227_9e11_908ae2944698
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c7c03249_5948_4907_94cd_07387b82224b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: ed0cfee9_753c_40b1_978a_d251390edc18
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: f1f88f40_e483_49f7_9046_d957614d2ef3
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fa01f60e_aed1_4dbc_9f0e_77dd073aa23f
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 1bae53bd_498d_460c_beb7_dc8cd8228047
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 07753d23_0910_426c_bd5c_24d5948558fd
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 04a5424a_8c20_47c1_b623_2ea2553ff505
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 6aecc870_6740_4eaa_8783_1623b9b54d3b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: ec426b03_2e20_49e5_8320_abcf89151462
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: efe6eeb4_00e1_48ec_96b2_acb84a3f1005
+  program: COPAUA0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] String manipulation mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Extract and parse incoming authorization request
+  rule_text: THE Request Message Parser SHALL unstring the incoming message buffer
+    delimited by commas into the authorization request fields; convert the transaction
+    amount from alphanumeric to numeric format using NUMVAL; store the numeric transaction
+    amount for authorization decision processing
+- rule_id: e7e9f160_bb4c_498f_b18b_d95eeda54027
+  program: COPAUA0C
+  disposition: captured
+  rule_name: Initialize new pending authorization summary when not found
+  rule_text: WHEN the pending authorization summary segment is not found in the IMS
+    database, THE Pending Authorization Summary Handler SHALL initialize the summary
+    record with zero values and populate the account and customer identifiers from
+    the card cross-reference data
+  req_id: REQ-F-178
+  traceability_lines:
+  - 798
+  - 801
+  - 802
+  - 803
+  - 805
+  - 806
+  - 808
+- rule_id: 0c710e42_a953_416e_8c4e_5b71af95afd7
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Terminate program and invoke recovery handler
+  rule_text: WHEN a critical error has been logged and the program must terminate,
+    THE Program Terminator SHALL invoke the end-routine handler to terminate the program
+    and initiate recovery procedures
+  req_id: REQ-F-193
+  traceability_lines:
+  - 940
+  - 947
+  - 948
+  - 1016
+  - 1019
+- rule_id: 0ec91d2c_fe3a_4c3e_b7b3_fe86af6a3f4f
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Read account master record
+  rule_text: WHEN the account ID from the cross-reference record is looked up in the
+    account master file, THE Account Master Lookup SHALL read the account master record
+    from the account file (`WS-ACCTFILENAME`) using the account ID as key; if found,
+    set the account-found flag (`WS-ACCT-MASTER-READ-FLG`); if not found, set account-not-found
+    flag, log a warning with location 'A002'; if other error occurs, log a critical
+    error with location 'C002' and delegate to the error handler
+  req_id: REQ-F-175
+  traceability_lines:
+  - 520
+  - 523
+  - 525
+  - 526
+  - 527
+  - 528
+  - 529
+  - 530
+  - 531
+  - 532
+  - 533
+  - 535
+  - 536
+  - 537
+  - 538
+  - 539
+  - 541
+  - 542
+  - 543
+  - 544
+  - 545
+  - 546
+  - 547
+  - 549
+  - 550
+  - 551
+  - 552
+  - 553
+  - 554
+  - 555
+  - 556
+  - 557
+  - 558
+  - 559
+  - 560
+  - 561
+- rule_id: 145097e4_d251_41a6_b303_67980b4b2ddc
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Initialize program and retrieve trigger data
+  rule_text: THE Authorization Processing System SHALL retrieve trigger event data,
+    extract the request queue name (`MQTM-QNAME`), set the message wait interval (`WS-WAIT-INTERVAL`)
+    to 5000 milliseconds, and prepare for queue operations
+  req_id: REQ-F-169
+  traceability_lines:
+  - 220
+  - 222
+  - 223
+  - 224
+  - 230
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 240
+  - 242
+  - 244
+  - 246
+  - 247
+- rule_id: 2f19b7fe_5dfd_4726_9233_a95cfb8967d2
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Replace existing pending authorization summary in IMS
+  rule_text: 'THE Pending Authorization Summary Handler SHALL replace the existing
+    pending authorization summary segment in IMS if found, or insert a new segment
+    if not found (physical stores: `DLI:ISRT`, `DLI:REPL`)'
+  req_id: REQ-F-188
+  traceability_lines:
+  - 786
+  - 790
+  - 791
+  - 792
+  - 824
+  - 825
+  - 826
+  - 827
+  - 828
+  - 829
+  - 830
+  - 831
+  - 832
+  - 833
+  - 834
+- rule_id: 46381e5d_4c4a_4344_8382_8e2d475a3b71
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Schedule IMS PSB for authorization processing
+  rule_text: WHEN IMS PSB scheduling is required for database operations, THE IMS
+    PSB Scheduler SHALL check the IMS database status indicator (`DIBSTAT`); if status
+    is OK, set the PSB-scheduled flag (`WS-IMS-PSB-SCHD-FLG`) to 'Y'; if status indicates
+    PSB-scheduled-more-than-once, re-read the status; if final status is not OK, log
+    a critical error with location 'I001' and delegate to the error handler
+  req_id: REQ-F-173
+  traceability_lines:
+  - 290
+  - 292
+  - 297
+  - 298
+  - 306
+  - 307
+  - 308
+  - 309
+  - 310
+  - 311
+  - 312
+  - 313
+  - 314
+  - 315
+  - 316
+  - 317
+- rule_id: 5175839b_91e1_4004_8a92_d178d2e95a83
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Set authorization response code based on approval or decline
+  rule_text: WHEN the decline flag indicates whether the authorization should be approved
+    or declined, THE Authorization Response Code Mapper SHALL set the authorization
+    response code (`PA-RL-AUTH-RESP-CODE`) to '05' and the approved amount to zero
+    when the authorization is declined; set the authorization response code to '00'
+    and the approved amount to the transaction amount when the authorization is approved.
+  req_id: REQ-F-182
+  traceability_lines:
+  - 685
+  - 686
+  - 688
+  - 689
+  - 690
+  - 691
+  - 692
+  - 693
+  - 694
+  - 695
+  - 696
+- rule_id: 59494dba_1a9e_4b24_aaa6_adf83dc8e456
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Open the request message queue
+  rule_text: 'WHEN the request queue open operation is initiated, THE Request Queue
+    Handler SHALL open the request queue (`WS-REQUEST-QNAME`) for input-shared access;
+    if successful, set the request-queue-open flag (`WS-REQUEST-MQ-FLG`); if unsuccessful,
+    log a critical error with location ''M001'' and delegate to the error handler
+    (`9500-LOG-ERROR`) (physical store: `MQ:OPEN`)'
+  req_id: REQ-F-170
+  traceability_lines:
+  - 253
+  - 255
+  - 257
+  - 258
+  - 260
+  - 262
+  - 263
+  - 264
+  - 265
+  - 266
+  - 267
+  - 268
+  - 270
+  - 271
+  - 272
+  - 273
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  - 279
+  - 280
+  - 281
+  - 282
+  - 283
+- rule_id: 68d45012_f022_4bcb_9b32_1c4fe505ba81
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Assemble authorization response message for transmission
+  rule_text: THE Response Message Assembler SHALL format the approved amount for display
+    and construct the authorization response message by concatenating the card number,
+    transaction identifier, authorization ID code, response code, reason code, and
+    formatted approved amount into the reply buffer.
+  req_id: REQ-F-184
+  traceability_lines:
+  - 720
+  - 722
+  - 723
+  - 724
+  - 725
+  - 726
+  - 727
+  - 728
+  - 729
+  - 730
+  - 731
+  - 732
+- rule_id: 8759b7b8_a9aa_402a_ace1_5baef942da84
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Read the next authorization request from queue
+  rule_text: 'WHEN the next authorization request message is requested from the queue,
+    THE Message Queue Reader SHALL retrieve the next message from the request queue
+    using MQGET with no-syncpoint, wait, convert, and fail-if-quiescing options; if
+    successful, extract the correlation ID and reply-to queue name for response routing;
+    if no messages available, set the no-more-messages flag; if other failure occurs,
+    log a critical error with location ''M003'' and delegate to the error handler
+    (physical store: `MQ:GET`)'
+  req_id: REQ-F-172
+  traceability_lines:
+  - 386
+  - 389
+  - 390
+  - 391
+  - 393
+  - 395
+  - 396
+  - 397
+  - 398
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 406
+  - 407
+  - 408
+  - 409
+  - 410
+  - 411
+  - 412
+  - 413
+  - 414
+  - 415
+  - 416
+  - 417
+  - 418
+  - 419
+  - 420
+  - 421
+  - 422
+  - 423
+  - 424
+  - 425
+  - 426
+  - 427
+  - 428
+  - 429
+  - 430
+  - 431
+- rule_id: 8dadc650_24a9_4759_99ae_94e9d59e3e97
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Log error event to audit queue
+  rule_text: WHEN an error condition is detected and must be logged for audit and
+    recovery purposes, THE Error Event Logger SHALL retrieve current system time and
+    format as YYMMDD and HHMMSS; populate error log record with transaction ID, program
+    code, date, time, and error details; write error log record to the audit queue
+    (CSSL); if error is critical, delegate to end-routine handler to terminate the
+    program
+  req_id: REQ-F-192
+  traceability_lines:
+  - 983
+  - 986
+  - 987
+  - 988
+  - 990
+  - 991
+  - 992
+  - 993
+  - 994
+  - 996
+  - 997
+  - 998
+  - 999
+  - 1001
+  - 1002
+  - 1003
+  - 1004
+  - 1005
+  - 1006
+  - 1008
+  - 1009
+  - 1010
+- rule_id: 9939b50b_1f5d_474e_9ce7_cea32a79c567
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Insert pending authorization detail record in IMS
+  rule_text: 'WHEN the authorization detail must be recorded in the IMS database for
+    audit and reconciliation, THE Pending Authorization Detail Recorder SHALL retrieve
+    current system time and convert to compressed numeric format (99999 minus year-day-of-year
+    for date key, 999999999 minus time-with-milliseconds for time key); populate authorization
+    detail record with request fields, response fields, and match status (pending
+    if approved, declined if declined); insert detail segment as child of pending
+    authorization summary using account ID as parent key; if insert fails, log critical
+    error with location ''I004'' and delegate to error handler (physical store: `DLI:ISRT`)'
+  req_id: REQ-F-191
+  traceability_lines:
+  - 854
+  - 857
+  - 858
+  - 859
+  - 861
+  - 862
+  - 863
+  - 864
+  - 865
+  - 866
+  - 868
+  - 869
+  - 871
+  - 872
+  - 874
+  - 875
+  - 877
+  - 878
+  - 879
+  - 880
+  - 881
+  - 882
+  - 883
+  - 884
+  - 885
+  - 886
+  - 887
+  - 888
+  - 889
+  - 890
+  - 891
+  - 892
+  - 893
+  - 894
+  - 895
+  - 897
+  - 898
+  - 899
+  - 900
+  - 902
+  - 903
+  - 904
+  - 905
+  - 906
+  - 908
+  - 909
+  - 911
+  - 913
+  - 914
+  - 915
+  - 916
+  - 917
+  - 918
+  - 919
+  - 920
+  - 922
+  - 924
+  - 925
+  - 926
+  - 927
+  - 928
+  - 929
+  - 930
+  - 931
+  - 932
+- rule_id: 9f404909_fed0_4c12_a715_1d8c9f439a79
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Update authorization counts and balances when approved
+  rule_text: WHEN the authorization response is approved, THE Pending Authorization
+    Summary Handler SHALL increment the approved authorization count, add the approved
+    amount to the approved authorization total and credit balance, and reset the cash
+    balance to zero
+  req_id: REQ-F-186
+  traceability_lines:
+  - 813
+  - 814
+  - 815
+  - 817
+  - 818
+- rule_id: ac0584fb_1f9d_481a_9a94_ba74de1f5daf
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Process authorization requests in batch loop
+  rule_text: WHILE messages remain available in the request queue and the message-processed
+    count has not exceeded the limit, THE Authorization Request Processor SHALL extract
+    and parse the incoming authorization request, process the authorization decision,
+    increment the message-processed counter (`WS-MSG-PROCESSED`), commit the transaction,
+    reset the PSB-scheduled flag to 'N', check if message-processed count exceeds
+    the request-process limit (500); if limit exceeded, set loop-end flag; otherwise,
+    read the next message
+  req_ids:
+  - REQ-F-171
+  - REQ-N-001
+  traceability_lines:
+  - 323
+  - 326
+  - 328
+  - 330
+  - 332
+  - 334
+  - 335
+  - 336
+  - 337
+  - 339
+  - 340
+  - 341
+  - 342
+  - 343
+  - 344
+  - 438
+  - 441
+  - 443
+  - 448
+  - 450
+  - 451
+  - 452
+  - 454
+  - 457
+  - 459
+  - 461
+  - 463
+  - 464
+  - 465
+- rule_id: af68750a_566a_4772_ba3e_6cfcd905dce0
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Log IMS database operation failure
+  rule_text: IF the IMS database operation fails, THEN THE Pending Authorization Summary
+    Handler SHALL populate the error log record with location code 'I003', critical
+    level, IMS subsystem code, the IMS return code, failure message, and card number,
+    then delegate to the error-logging routine
+  req_id: REQ-F-189
+  traceability_lines:
+  - 839
+  - 840
+  - 841
+  - 842
+  - 843
+  - 844
+  - 845
+  - 846
+  - 847
+- rule_id: b146efe1_af9a_4a5e_8dcc_f1937be7a1c7
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Handle IMS database operation success
+  rule_text: WHEN the IMS database operation completes successfully, THE Pending Authorization
+    Summary Handler SHALL capture the IMS return status code and continue processing
+  req_id: REQ-F-190
+  traceability_lines:
+  - 835
+  - 837
+- rule_id: b707fe35_66fd_4566_86fd_53ae282dbb40
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Read pending authorization summary from IMS
+  rule_text: 'WHEN the pending authorization summary segment is retrieved from the
+    IMS database for the account, THE Pending Authorization Summary Retrieval SHALL
+    retrieve the pending authorization summary segment (PAUTSUM0) from the IMS database
+    using account ID as search criterion; if found, set the summary-found flag (`WS-PAUT-SMRY-SEG-FLG`);
+    if segment not found, set summary-not-found flag; if other error occurs, log a
+    critical error with location ''I002'' and delegate to the error handler (physical
+    store: `DLI:GU`)'
+  req_id: REQ-F-177
+  traceability_lines:
+  - 616
+  - 619
+  - 620
+  - 621
+  - 622
+  - 623
+  - 624
+  - 626
+  - 627
+  - 628
+  - 629
+  - 630
+  - 631
+  - 632
+  - 633
+  - 634
+  - 635
+  - 636
+  - 637
+  - 638
+  - 639
+  - 640
+- rule_id: bc16c83f_d5f7_47b7_98dc_2a40f0bc8989
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Read card cross-reference record
+  rule_text: WHEN the card number from the authorization request is looked up in the
+    cross-reference file, THE Card Cross-Reference Lookup SHALL read the card cross-reference
+    record from the credit card cross-reference file (`WS-CCXREF-FILE`) using the
+    card number as key; if found, set the card-found flag (`WS-XREF-READ-FLG`); if
+    not found, set card-not-found and account-not-found flags, log a warning with
+    location 'A001'; if other error occurs, log a critical error with location 'C001'
+    and delegate to the error handler
+  req_id: REQ-F-174
+  traceability_lines:
+  - 472
+  - 475
+  - 477
+  - 478
+  - 479
+  - 480
+  - 481
+  - 482
+  - 483
+  - 484
+  - 485
+  - 487
+  - 488
+  - 489
+  - 490
+  - 491
+  - 492
+  - 494
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  - 508
+  - 509
+  - 510
+  - 511
+  - 512
+  - 513
+- rule_id: c40e1cb9_a4de_441d_86dc_271cf0c5fb5b
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Prepare authorization response header fields
+  rule_text: THE Authorization Response Handler SHALL populate the response header
+    with the card number, transaction identifier, and authorization time from the
+    incoming request.
+  req_id: REQ-F-183
+  traceability_lines:
+  - 657
+  - 660
+  - 661
+  - 662
+- rule_id: dab2d2a9_78ec_4746_824b_930fc1527a92
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Close the request message queue
+  rule_text: 'WHEN program termination requires closing the request queue, THE Request
+    Queue Closer SHALL close the request queue if the request-queue-open flag is set;
+    if close fails, log a warning error with location ''M005'' and delegate to the
+    error handler (physical store: `MQ:CLOSE`)'
+  req_id: REQ-F-194
+  traceability_lines:
+  - 953
+  - 955
+  - 956
+  - 957
+  - 958
+  - 959
+  - 960
+  - 961
+  - 963
+  - 965
+  - 966
+  - 967
+  - 968
+  - 969
+  - 970
+  - 971
+  - 972
+  - 973
+  - 974
+  - 975
+  - 976
+  - 977
+- rule_id: e4508e4b_182e_44ac_8432_7ad7db88a4af
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Update authorization counts and amounts when declined
+  rule_text: WHEN the authorization response is declined, THE Pending Authorization
+    Summary Handler SHALL increment the declined authorization count and add the transaction
+    amount to the declined authorization total
+  req_id: REQ-F-187
+  traceability_lines:
+  - 819
+  - 820
+  - 821
+  - 822
+- rule_id: e4f0f8f5_d1a1_479f_a2fa_4253f22b6d56
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Evaluate available credit against transaction amount
+  rule_text: WHILE authorization data is available from either the pending authorization
+    summary or the account master record, WHEN the transaction amount is compared
+    against available credit, THE Credit Limit Validator SHALL calculate available
+    credit from the pending authorization summary (credit limit minus credit balance)
+    or from the account master record (credit limit minus current balance); decline
+    the authorization and set the insufficient-funds indicator when the transaction
+    amount exceeds available credit; decline the authorization without a specific
+    reason when neither the summary nor the account master record is found.
+  req_id: REQ-F-180
+  traceability_lines:
+  - 664
+  - 665
+  - 666
+  - 667
+  - 668
+  - 669
+  - 670
+  - 671
+  - 672
+  - 673
+  - 674
+  - 675
+  - 676
+  - 677
+  - 678
+  - 679
+  - 680
+  - 681
+  - 682
+  - 683
+- rule_id: e8bd5a00_a9b4_4ff2_89d0_29835cf6373e
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Send authorization response to reply queue
+  rule_text: WHEN the authorization response is ready to be sent to the reply queue,
+    THE Authorization Response Sender SHALL construct the authorization response message
+    with card number, transaction ID, authorization ID code, response code, response
+    reason, and approved amount; send the response to the reply queue (`MQ:PUT1`)
+    using MQPUT1 with correlation ID for tracking; if send fails, log a critical error
+    with location 'M004' and delegate to the error handler
+  req_id: REQ-F-185
+  traceability_lines:
+  - 738
+  - 741
+  - 742
+  - 744
+  - 745
+  - 746
+  - 747
+  - 748
+  - 749
+  - 750
+  - 751
+  - 753
+  - 754
+  - 756
+  - 758
+  - 759
+  - 760
+  - 761
+  - 762
+  - 763
+  - 764
+  - 765
+  - 766
+  - 767
+  - 768
+  - 769
+  - 770
+  - 771
+  - 772
+  - 773
+  - 774
+  - 775
+  - 776
+  - 777
+  - 778
+  - 779
+- rule_id: ea71a5f7_ebc5_497e_98d7_9ba25a2e88b1
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Populate account credit limits in authorization summary
+  rule_text: THE Pending Authorization Summary Handler SHALL populate the credit limit
+    and cash limit in the summary from the account record
+  req_id: REQ-F-179
+  traceability_lines:
+  - 810
+  - 811
+- rule_id: ee3c3b14_bc51_4fde_9c0e_6868350d1aa0
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Read customer master record
+  rule_text: WHEN the customer ID from the cross-reference record is looked up in
+    the customer master file, THE Customer Master Lookup SHALL read the customer master
+    record from the customer file (`WS-CUSTFILENAME`) using the customer ID as key;
+    if found, set the customer-found flag (`WS-CUST-MASTER-READ-FLG`); if not found,
+    set customer-not-found flag, log a warning with location 'A003'; if other error
+    occurs, log a critical error with location 'C003' and delegate to the error handler
+  req_id: REQ-F-176
+  traceability_lines:
+  - 568
+  - 571
+  - 573
+  - 574
+  - 575
+  - 576
+  - 577
+  - 578
+  - 579
+  - 580
+  - 581
+  - 583
+  - 584
+  - 585
+  - 586
+  - 587
+  - 589
+  - 590
+  - 591
+  - 592
+  - 593
+  - 594
+  - 595
+  - 597
+  - 598
+  - 599
+  - 600
+  - 601
+  - 602
+  - 603
+  - 604
+  - 605
+  - 606
+  - 607
+  - 608
+  - 609
+- rule_id: fa505c05_7923_441f_966f_1021d7df5f21
+  program: COPAUA0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl
+  rule_name: Map decline reason to authorization response reason code
+  rule_text: WHEN the authorization is declined and a specific decline reason must
+    be mapped to a response reason code, THE Decline Reason Mapper SHALL set the authorization
+    response reason code to '3100' when the card or account is not found; set it to
+    '4100' when funds are insufficient; set it to '4200' when the card is not active;
+    set it to '4300' when the account is closed; set it to '5100' when card fraud
+    is detected; set it to '5200' when merchant fraud is detected; set it to '9000'
+    for any other decline reason; leave it as '0000' when the authorization is approved.
+  req_id: REQ-F-181
+  traceability_lines:
+  - 698
+  - 699
+  - 700
+  - 701
+  - 702
+  - 703
+  - 704
+  - 705
+  - 706
+  - 707
+  - 708
+  - 709
+  - 710
+  - 711
+  - 712
+  - 713
+  - 714
+  - 715
+  - 716
+  - 717
+  - 718
+- rule_id: 6799c689_58cb_4a96_847d_7d595a449edd
+  program: COPAUS0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Prepare navigation context and transfer control to destination
+  rule_text: THE Authorization Screen Handler SHALL validate the destination program
+    (defaulting to the signon screen if unset), populate the originating transaction
+    and program identifiers, reset the program context to initial state, and transfer
+    control to the destination program via CICS XCTL
+- rule_id: 00455550_a5fd_446f_a0f3_54ad03294723
+  program: COPAUS0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Process PF7 key for previous page navigation
+  rule_text: WHEN the user presses the PF7 key to navigate to the previous page, THE
+    Previous Page Navigator SHALL check if the current page number (`CDEMO-CPVS-PAGE-NUM`)
+    is greater than 1; if yes, decrement the page number, retrieve the saved authorization
+    key for the previous page from the communication area (`CDEMO-CPVS-PAUKEY-PREV-PG`),
+    call the authorization summary retrieval routine to fetch the authorization summary
+    starting from that key, set the screen erase flag (`WS-SEND-ERASE-FLG`) to 'N',
+    initialize the authorization list display fields, and populate the authorization
+    list with the previous page of records; if no (already at page 1), display error
+    message 'You are already at the top of the page...' and set the screen erase flag
+    to 'N'.
+- rule_id: 29ac8b77_84e1_412d_aac0_cc747349f023
+  program: COPAUS0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Display authorization list screen
+  rule_text: WHEN the authorization list screen needs to be displayed to the user,
+    THE Screen Display Handler SHALL call the header information population routine
+    to populate the screen header fields; move the message text to the error message
+    output field; check the screen erase flag (`WS-SEND-ERASE-FLG`); if the flag is
+    set to 'Y', send the screen with the ERASE option to clear the screen before displaying;
+    if the flag is set to 'N', send the screen without the ERASE option to preserve
+    existing screen content.
+- rule_id: 64ec20d9_9410_4e9c_a08e_51efdd150756
+  program: COPAUS0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Process PF8 key for next page navigation
+  rule_text: WHEN the user presses the PF8 key to navigate to the next page, THE Next
+    Page Navigator SHALL check if a last authorization key (`CDEMO-CPVS-PAUKEY-LAST`)
+    is present in the communication area; if yes, store that key as the starting point,
+    call the authorization summary retrieval routine to fetch the authorization summary
+    starting from that key, and call the authorization repositioning routine to position
+    the cursor at that key; set the account ID input field length to -1 and the screen
+    erase flag (`WS-SEND-ERASE-FLG`) to 'N'; check if the next page flag (`CDEMO-CPVS-NEXT-PAGE-FLG`)
+    is set to 'Y'; if yes, initialize the authorization list display fields and populate
+    the authorization list with the next page of records; if no (already at the bottom),
+    display error message 'You are already at the bottom of the page...'.
+- rule_id: bfcaadd0_6034_44a5_a822_be977e0d214d
+  program: COPAUS0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize program state and display initial screen
+  rule_text: THE Authorization List Display SHALL initialize error flag (`WS-ERR-FLG`),
+    authorization end-of-file flag (`WS-AUTHS-EOF`), and screen erase flag (`WS-SEND-ERASE-FLG`)
+    to their default states; clear the output screen buffer; set the account ID input
+    field length to -1; and display the initial authorization list screen.
+- rule_id: c711f514_081e_44bf_8e84_db3503278192
+  program: COPAUS0C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Gather account details on first program entry
+  rule_text: WHEN the program is entered for the first time (program reentry context
+    is not set), THE Account Details Retrieval SHALL clear the output screen buffer;
+    call the account details gathering routine to retrieve customer name, address,
+    phone, account limits, and authorization summaries; set the screen erase flag
+    (`WS-SEND-ERASE-FLG`) to 'Y'; and display the populated authorization list screen.
+- rule_id: 12d11e9c_ae4a_4f4b_b39b_734578bc1434
+  program: COPAUS0C
+  disposition: captured
+  rule_name: Populate authorization list on screen
+  rule_text: WHILE no error flag is set and authorization records are available, THE
+    Authorization List Populator SHALL initialize the index counter (`WS-IDX`) to
+    1; enter a loop that continues until the index counter exceeds 5, the end-of-file
+    flag (`WS-AUTHS-EOF`) is set, or an error flag (`WS-ERR-FLG`) is set; for each
+    iteration, check if the PF7 key was pressed and the index counter is 1; if yes,
+    call the authorization repositioning routine to position the cursor at the saved
+    authorization key; otherwise, call the authorization retrieval routine to fetch
+    the next authorization record; if an authorization record is successfully retrieved
+    and no error flag is set, call the authorization list population routine to populate
+    the screen fields for that authorization and increment the index counter; after
+    the loop completes, if more authorizations are available and no error flag is
+    set, call the authorization retrieval routine one more time to check whether a
+    next page exists.
+  req_id: REQ-F-043
+  traceability_lines:
+  - 415
+  - 418
+  - 420
+  - 424
+  - 425
+  - 426
+  - 427
+  - 428
+  - 429
+  - 430
+  - 431
+  - 432
+  - 442
+  - 443
+  - 445
+  - 446
+  - 452
+  - 454
+- rule_id: 8921cbca_a7c9_433f_b4e2_d53b244ce60b
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Receive and validate incoming communication area
+  rule_text: WHEN the program is invoked with a communication area, THE Authorization
+    Screen Handler SHALL receive the communication area from the CICS interface block
+    and load it into the local record structure
+  req_id: REQ-F-001
+  traceability_lines:
+  - 178
+  - 190
+  - 199
+  - 200
+  - 202
+- rule_id: a21e330f_7ee2_4092_b5e1_76408bf98ffc
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Route based on PF3 key press to menu program
+  rule_text: WHEN the program is re-entering and the user presses PF3, THE Authorization
+    Screen Handler SHALL set the destination program to the menu program (`COMEN01C`)
+  req_ids:
+  - REQ-F-002
+  - REQ-F-114
+  traceability_lines:
+  - 202
+  - 221
+  - 224
+  - 235
+  - 236
+  - 237
+  - 250
+  - 251
+  - 252
+- rule_id: 1dfa3f2f_d8f1_4f3e_b124_0f69a05a7948
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Receive authorization selection screen input
+  rule_text: THE Screen Input Receiver SHALL retrieve the user's input from the authorization
+    selection screen, including the account identifier and the five authorization
+    selection flags
+  req_ids:
+  - REQ-F-005
+  - REQ-F-115
+  traceability_lines:
+  - 222
+- rule_id: 257ddbec_8159_4d7a_9e7b_764b2e938557
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Transfer control to authorization details program
+  rule_text: WHEN the authorization summary selection is confirmed, THE Program Navigation
+    Controller SHALL populate the communication area with the destination program
+    name, originating transaction identifier, originating program name, and program
+    context indicator, then transfer control to the authorization details program
+  req_ids:
+  - REQ-F-016
+  - REQ-F-128
+  traceability_lines:
+  - 314
+  - 315
+  - 316
+  - 317
+  - 318
+  - 319
+  - 320
+  - 322
+  - 323
+  - 324
+  - 325
+- rule_id: 34ae3396_a17f_4513_b45b_19c9e98435a1
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Validate authorization selection is complete
+  rule_text: THE Authorization Selection Evaluator SHALL evaluate the five authorization
+    selection options and extract the selected authorization key; if option 1 is selected,
+    retrieve key 1; if option 2 is selected, retrieve key 2; if option 3 is selected,
+    retrieve key 3; if option 4 is selected, retrieve key 4; if option 5 is selected,
+    retrieve key 5; if no option is selected, clear both the selection flag and the
+    selected value
+  req_ids:
+  - REQ-F-008
+  - REQ-F-123
+  traceability_lines:
+  - 285
+  - 286
+  - 287
+  - 288
+  - 289
+  - 290
+  - 291
+  - 292
+  - 293
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+  - 303
+  - 304
+  - 305
+  - 306
+  - 307
+  - 308
+  - 309
+- rule_id: 4a3f72cf_81b9_4ebc_b9b0_f8d006ca5336
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize communication area from CICS session
+  rule_text: WHEN the program receives control from CICS with a communication area,
+    THE Communication Area Handler SHALL copy the incoming communication area from
+    the CICS interface block into the working communication area when the length is
+    non-zero, or execute first-time initialization when the length is zero
+  req_ids:
+  - REQ-F-018
+  - REQ-F-112
+  traceability_lines:
+  - 178
+  - 190
+  - 199
+  - 200
+  - 202
+  - 221
+- rule_id: 52a06e0e_5945_4e4b_a4f0_ea5978e6b3a7
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Dispatch on Enter key press
+  rule_text: WHEN the user presses a function key on the authorization selection screen,
+    THE Screen Input Dispatcher SHALL evaluate the key pressed and route to the Enter-key
+    handler when Enter is pressed, or route to alternative handlers for PF3, PF7,
+    PF8, or other keys
+  req_ids:
+  - REQ-F-020
+  - REQ-F-117
+  traceability_lines:
+  - 224
+  - 225
+  - 226
+  - 250
+- rule_id: 64703e6d_f05a_4c51_82c3_5c6ba80f26ad
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Handle no authorization selection
+  rule_text: WHEN no authorization option is selected, THE Authorization Selection
+    Handler SHALL clear the selection flag and selected-value field to indicate no
+    selection
+  req_ids:
+  - REQ-F-014
+  - REQ-F-124
+  traceability_lines:
+  - 306
+  - 307
+  - 308
+- rule_id: 68eda926_9720_4330_8442_8ca4a280d3c7
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Evaluate authorization selection option 2
+  rule_text: WHEN the user selects authorization option 2, THE Authorization Selection
+    Handler SHALL record the selection flag and retrieve the authorization key for
+    option 2
+  req_ids:
+  - REQ-F-010
+  - REQ-F-149
+  traceability_lines:
+  - 290
+  - 291
+  - 292
+  - 293
+- rule_id: 819be69b_d1bc_4b32_976b_a7db0eda74bb
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Extract and store account identifier
+  rule_text: THE Account Identifier Extractor SHALL copy the validated account identifier
+    from the screen input into the working storage variable and the communication
+    area
+  req_ids:
+  - REQ-F-017
+  - REQ-F-129
+  traceability_lines:
+  - 283
+  - 284
+- rule_id: 98f5c4be_1d40_4220_860e_6ac72bdff7b8
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Evaluate authorization selection option 1
+  rule_text: WHEN the user selects authorization option 1, THE Authorization Selection
+    Handler SHALL record the selection flag and retrieve the authorization key for
+    option 1
+  req_ids:
+  - REQ-F-009
+  - REQ-F-148
+  traceability_lines:
+  - 286
+  - 287
+  - 288
+  - 289
+- rule_id: 9b4732e9_198b_438c_aefa_fdef8d225639
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Validate account identifier is not empty
+  rule_text: WHEN the user submits the authorization selection form, THE Account Identifier
+    Validator SHALL verify that the account identifier is not empty; if empty, execute
+    the error handler; if not empty, proceed to numeric validation
+  req_ids:
+  - REQ-F-006
+  - REQ-F-119
+  traceability_lines:
+  - 264
+- rule_id: a3966c14_eae5_488c_8a15_484f700a52d1
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Evaluate authorization selection option 3
+  rule_text: WHEN the user selects authorization option 3, THE Authorization Selection
+    Handler SHALL record the selection flag and retrieve the authorization key for
+    option 3
+  req_ids:
+  - REQ-F-011
+  - REQ-F-150
+  traceability_lines:
+  - 294
+  - 295
+  - 296
+  - 297
+- rule_id: a93d3022_500e_4176_8825_8d1062af9c01
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Evaluate authorization selection option 4
+  rule_text: WHEN the user selects authorization option 4, THE Authorization Selection
+    Handler SHALL record the selection flag and retrieve the authorization key for
+    option 4
+  req_ids:
+  - REQ-F-012
+  - REQ-F-151
+  traceability_lines:
+  - 298
+  - 299
+  - 300
+  - 301
+- rule_id: ae05cec6_7096_43c0_b3d4_16f0fb8c740e
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Receive screen input from authorization selection map
+  rule_text: THE Screen Input Receiver SHALL retrieve user input from the authorization
+    selection screen map, store the input in the screen buffer, and capture the CICS
+    response and reason codes
+  req_ids:
+  - REQ-F-005
+  - REQ-F-116
+  traceability_lines:
+  - 712
+  - 715
+  - 716
+  - 717
+  - 718
+  - 719
+  - 720
+  - 721
+  - 722
+- rule_id: b86f9cde_1881_4687_88c7_0afb759a9ccc
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Evaluate authorization selection option 5
+  rule_text: WHEN the user selects authorization option 5, THE Authorization Selection
+    Handler SHALL record the selection flag and retrieve the authorization key for
+    option 5
+  req_ids:
+  - REQ-F-013
+  - REQ-F-152
+  traceability_lines:
+  - 302
+  - 303
+  - 304
+  - 305
+- rule_id: bb1a1d1a_91f5_4b35_a997_e977af987e9e
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Validate account identifier is numeric
+  rule_text: WHEN the account identifier has been confirmed as non-empty, THE Account
+    Identifier Format Validator SHALL verify that the account identifier contains
+    only numeric characters; if non-numeric, execute the error handler; if numeric,
+    proceed to selection processing
+  req_ids:
+  - REQ-F-007
+  - REQ-F-120
+  traceability_lines:
+  - 273
+- rule_id: bff4c95d_5bdd_4b71_8f9b_18a4c21f1eaa
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Validate selection is not empty before navigation
+  rule_text: WHEN the authorization selection evaluation is complete, THE Selection
+    Completeness Validator SHALL verify that both the selection flag and the selected-value
+    field are non-empty; if both are populated, proceed to program navigation; if
+    either is empty, skip navigation
+  req_ids:
+  - REQ-F-015
+  - REQ-F-126
+  traceability_lines:
+  - 310
+  - 311
+  - 312
+- rule_id: fc2eab01_fc70_43ae_881e_056fbca7effa
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Route to authorization details program
+  rule_text: WHEN the selection flag is 'S' or 's', THE Program Navigation Handler
+    SHALL set the destination program to the authorization details screen program,
+    set the originating transaction identifier to CPVS, set the originating program
+    name to the authorization summary screen program, set the program context indicator
+    to initial entry, and transfer control to the destination program with the communication
+    area
+  req_ids:
+  - REQ-F-016
+  - REQ-F-127
+  traceability_lines:
+  - 313
+  - 314
+  - 315
+  - 316
+  - 317
+  - 318
+  - 319
+  - 320
+  - 322
+  - 323
+  - 324
+  - 325
+  - 331
+- rule_id: 07f54230_d276_4a5b_a33c_7c6afe9b92ab
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Populate authorization row 2 on screen
+  rule_text: WHEN the index counter is 2, THE Screen Row Populator SHALL populate
+    the second authorization row on the screen with transaction ID, date, time, type,
+    approval status, match status, and amount, and set the selection field to unprotected
+    for user interaction.
+  req_ids:
+  - REQ-F-035
+  - REQ-F-142
+  traceability_lines:
+  - 555
+  - 559
+  - 560
+  - 561
+  - 562
+  - 563
+  - 564
+  - 565
+  - 566
+- rule_id: 27c528de_e73e_45d5_898b_6babf967fcf4
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Retrieve next authorization record from database
+  rule_text: 'WHEN the next authorization record needs to be retrieved from the database,
+    THE Authorization Record Retriever SHALL execute a GNP operation to retrieve the
+    next authorization record from the pending authorization details database; check
+    the IMS return code; if the return code indicates success (status OK), set the
+    end-of-file flag (`WS-AUTHS-EOF`) to ''N''; if the return code indicates segment
+    not found or end of database, set the end-of-file flag to ''Y''; if the return
+    code indicates any other error, set the error flag (`WS-ERR-FLG`) to ''Y'', construct
+    an error message describing the system error and the error code, set the account
+    ID input field length to -1, and display the screen with the error message. (physical
+    store: `DLI:GNP`)'
+  req_ids:
+  - REQ-F-029
+  - REQ-F-136
+  traceability_lines:
+  - 458
+  - 461
+  - 462
+  - 463
+  - 464
+  - 466
+  - 467
+  - 468
+  - 469
+  - 470
+  - 471
+  - 472
+  - 473
+  - 474
+  - 476
+  - 477
+  - 478
+  - 479
+  - 480
+  - 481
+  - 482
+  - 483
+  - 484
+- rule_id: 2e66f056_abc1_4cbc_b0f2_b6c92afc410f
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Populate authorization row 4 on screen
+  rule_text: WHEN the index counter is 4, THE Screen Row Populator SHALL populate
+    the fourth authorization row on the screen with transaction ID, date, time, type,
+    approval status, match status, and amount, and set the selection field to unprotected
+    for user interaction.
+  req_ids:
+  - REQ-F-037
+  - REQ-F-144
+  traceability_lines:
+  - 579
+  - 583
+  - 584
+  - 585
+  - 586
+  - 587
+  - 588
+  - 589
+  - 590
+- rule_id: 4e9d7fce_59e0_449b_a7f8_67efff1fd31a
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Populate authorization row 5 on screen
+  rule_text: WHEN the index counter is 5 or any other value, THE Screen Row Populator
+    SHALL populate the fifth authorization row on the screen with transaction ID,
+    date, time, type, approval status, match status, and amount, and set the selection
+    field to unprotected for user interaction; take no action when the index counter
+    is outside the range 1-5.
+  req_ids:
+  - REQ-F-038
+  - REQ-F-145
+  traceability_lines:
+  - 591
+  - 595
+  - 596
+  - 597
+  - 598
+  - 599
+  - 600
+  - 601
+  - 602
+  - 605
+- rule_id: 4f87fab4_37a2_4096_a701_61b34f4637b7
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Retrieve card cross-reference record by account
+  rule_text: WHEN the card cross-reference record needs to be retrieved by account
+    ID, THE Card Cross-Reference Retriever SHALL move the account ID (`WS-ACCT-ID`)
+    to the card record identifier field; execute a CICS READ command to retrieve the
+    card cross-reference record from the card cross-reference store (`WS-CARDXREFNAME-ACCT-PATH`)
+    using the account ID as the key; evaluate the CICS response code; if the response
+    code indicates success (NORMAL), the card cross-reference record is successfully
+    retrieved; if the response code indicates not found (NOTFND), construct an error
+    message indicating that the account was not found in the cross-reference store,
+    set the account ID input field length to -1, and display the screen with the error
+    message; if the response code indicates any other error, construct an error message
+    describing the system error and the response and reason codes, set the account
+    ID input field length to -1, and display the screen with the error message.
+  req_ids:
+  - REQ-F-021
+  - REQ-F-132
+  traceability_lines:
+  - 812
+  - 815
+  - 817
+  - 818
+  - 819
+  - 820
+  - 821
+  - 822
+  - 823
+  - 824
+  - 825
+  - 826
+  - 828
+  - 832
+  - 833
+  - 834
+  - 836
+  - 837
+  - 838
+  - 839
+  - 840
+  - 841
+  - 842
+  - 843
+  - 844
+  - 845
+  - 846
+  - 848
+  - 849
+  - 851
+  - 852
+  - 853
+  - 854
+  - 855
+  - 856
+  - 857
+  - 858
+  - 859
+  - 860
+  - 861
+- rule_id: 54815fb6_8fd6_4927_bbf4_5c89b891e145
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Retrieve account record by account ID
+  rule_text: WHEN the account record needs to be retrieved by account ID, THE Account
+    Record Retriever SHALL move the account ID from the card cross-reference record
+    to the card record identifier field; execute a CICS READ command to retrieve the
+    account record from the account store (`WS-ACCTFILENAME`) using the account ID
+    as the key; evaluate the CICS response code; if the response code indicates success
+    (NORMAL), the account record is successfully retrieved; if the response code indicates
+    not found (NOTFND), construct an error message indicating that the account was
+    not found in the account store, set the account ID input field length to -1, and
+    display the screen with the error message; if the response code indicates any
+    other error, construct an error message describing the system error and the response
+    and reason codes, set the account ID input field length to -1, and display the
+    screen with the error message.
+  req_id: REQ-F-133
+  traceability_lines:
+  - 865
+  - 868
+  - 869
+  - 870
+  - 871
+  - 872
+  - 873
+  - 874
+  - 875
+  - 876
+  - 877
+  - 879
+  - 882
+  - 883
+  - 884
+  - 886
+  - 887
+  - 888
+  - 889
+  - 890
+  - 891
+  - 892
+  - 893
+  - 894
+  - 895
+  - 896
+  - 898
+  - 899
+  - 901
+  - 902
+  - 903
+  - 904
+  - 905
+  - 906
+  - 907
+  - 908
+  - 909
+  - 910
+  - 911
+- rule_id: 5aa415c0_9434_443b_9a2b_06ead1cd62ae
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Reject empty or missing account ID
+  rule_text: WHEN the user presses ENTER with an empty account ID field, THE Account
+    ID Validation SHALL clear the account ID field and display the message 'Please
+    enter Acct Id...'
+  req_ids:
+  - REQ-F-006
+  - REQ-F-121
+  traceability_lines:
+  - 261
+  - 264
+  - 265
+  - 268
+  - 269
+- rule_id: 5be03b1c_3c24_4eed_b095_7a2ea2d688ac
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize authorization row 1 display fields
+  rule_text: THE Authorization List Display Initialization SHALL clear the first authorization
+    row by setting the selection field to protected and blanking all transaction,
+    date, time, type, approval, status, and amount fields.
+  req_ids:
+  - REQ-F-033
+  - REQ-F-140
+  traceability_lines:
+  - 608
+  - 611
+  - 612
+  - 613
+  - 614
+  - 615
+  - 616
+  - 617
+  - 618
+  - 619
+  - 620
+  - 621
+- rule_id: 64bae2f4_9610_40c4_b4c4_4659ed04ea94
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Populate authorization row 1 on screen
+  rule_text: WHEN the index counter is 1, THE Screen Row Populator SHALL populate
+    the first authorization row on the screen with transaction ID, date, time, type,
+    approval status, match status, and amount, and set the selection field to unprotected
+    for user interaction.
+  req_ids:
+  - REQ-F-034
+  - REQ-F-141
+  traceability_lines:
+  - 542
+  - 543
+  - 547
+  - 548
+  - 549
+  - 550
+  - 551
+  - 552
+  - 553
+  - 554
+- rule_id: 6c6a6602_f1d8_4904_b1ff_ff3e4ef079a6
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize authorization row 2 display fields
+  rule_text: THE Authorization List Display Initialization SHALL clear the second
+    authorization row by setting the selection field to protected and blanking all
+    transaction, date, time, type, approval, status, and amount fields.
+  req_ids:
+  - REQ-F-033
+  - REQ-F-140
+  traceability_lines:
+  - 622
+  - 623
+  - 624
+  - 625
+  - 626
+  - 627
+  - 628
+  - 629
+  - 630
+- rule_id: 6da3e9fe_189e_4cc3_9461_3dadf04da3f9
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Process communication area and determine program reentry context
+  rule_text: WHEN a communication area is received from the caller, THE Communication
+    Area Handler SHALL extract the account ID (`CDEMO-ACCT-ID`) from the communication
+    area; validate that it is numeric; if numeric, store it in the account ID field
+    (`WS-ACCT-ID`) and display it on the screen; if non-numeric, clear the account
+    ID field and display a space; then check the program reentry context flag (`CDEMO-PGM-CONTEXT`)
+    to determine whether to gather account details on first entry or receive user
+    input on reentry.
+  req_ids:
+  - REQ-F-019
+  - REQ-F-113
+  traceability_lines:
+  - 199
+  - 200
+  - 202
+  - 205
+  - 207
+  - 208
+  - 209
+  - 210
+  - 211
+  - 212
+  - 213
+  - 215
+  - 217
+  - 219
+  - 221
+- rule_id: 7516a3bd_c9f4_40db_af4e_811121b68aeb
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize authorization row 3 display fields
+  rule_text: THE Authorization List Display Initialization SHALL clear the third authorization
+    row by setting the selection field to protected and blanking all transaction,
+    date, time, type, approval, status, and amount fields.
+  req_ids:
+  - REQ-F-033
+  - REQ-F-140
+  traceability_lines:
+  - 631
+  - 632
+  - 633
+  - 634
+  - 635
+  - 636
+  - 637
+  - 638
+  - 639
+- rule_id: 77ffdb53_80c6_4963_849c_f1139fe5fc43
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Gather account and customer details
+  rule_text: WHEN account and customer details need to be gathered and displayed,
+    THE Account and Customer Details Gatherer SHALL retrieve the card cross-reference
+    record from the card cross-reference store (`WS-CARDXREFNAME-ACCT-PATH`) to obtain
+    the customer ID; retrieve the account record from the account store (`WS-ACCTFILENAME`)
+    to obtain the credit limits; retrieve the customer record from the customer store
+    (`WS-CUSTFILENAME`) to obtain the customer name and address information; format
+    and display the customer name by concatenating the first name, middle initial,
+    and last name; format and display the customer address by concatenating address
+    lines and state code; display the customer phone number; format and display the
+    account credit limit and cash credit limit; retrieve the authorization summary
+    from the pending authorization summary database to obtain counts and amounts of
+    pending authorizations; if the authorization summary is found, display the approved
+    authorization count, declined authorization count, credit balance, cash balance,
+    approved authorization amount, and declined authorization amount; if the authorization
+    summary is not found, display zeros for all authorization summary fields.
+  req_ids:
+  - REQ-F-021
+  - REQ-F-024
+  - REQ-F-026
+  - REQ-F-130
+  traceability_lines:
+  - 750
+  - 753
+  - 754
+  - 755
+  - 757
+  - 758
+  - 759
+  - 760
+  - 761
+  - 762
+  - 763
+  - 764
+  - 766
+  - 767
+  - 768
+  - 769
+  - 770
+  - 771
+  - 772
+  - 773
+  - 774
+  - 775
+  - 776
+  - 777
+  - 779
+  - 780
+  - 781
+  - 782
+  - 783
+  - 785
+  - 787
+  - 788
+  - 789
+  - 790
+  - 791
+  - 792
+  - 793
+  - 794
+  - 795
+  - 796
+  - 797
+  - 798
+  - 799
+  - 800
+  - 801
+  - 802
+  - 803
+  - 804
+  - 805
+  - 806
+  - 807
+- rule_id: 81f603f0_1c05_4d46_8b14_e9f172c8bee3
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Determine authorization approval status from response code
+  rule_text: WHEN the authorization response code is evaluated, THE Authorization
+    Status Mapper SHALL set the authorization approval status to 'A' (approved) when
+    the response code is '00', or set it to 'D' (declined) for any other response
+    code value.
+  req_ids:
+  - REQ-F-032
+  - REQ-F-098
+  traceability_lines:
+  - 536
+  - 537
+  - 538
+  - 539
+  - 540
+- rule_id: 8d8bc010_15dd_4009_be5e_987837740f14
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Receive user input and process function key
+  rule_text: WHEN the user presses a function key on the authorization list screen,
+    THE Function Key Handler SHALL receive the user's input from the screen; evaluate
+    the attention ID (`EIBAID`) to determine which function key was pressed; if ENTER
+    key is pressed, process the account ID and authorization selection; if PF3 is
+    pressed, redisplay the screen; if PF7 is pressed, navigate to the previous page
+    of authorizations; if PF8 is pressed, navigate to the next page of authorizations;
+    if any other key is pressed, display an error message indicating an invalid key
+    was pressed and redisplay the screen.
+  req_ids:
+  - REQ-F-041
+  - REQ-F-146
+  traceability_lines:
+  - 222
+  - 224
+  - 225
+  - 226
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 234
+  - 235
+  - 238
+  - 239
+  - 240
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 247
+  - 248
+  - 249
+  - 250
+- rule_id: a175214b_9fcf_4082_ac3b_0c818cf90235
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Gather account details and authorization summary
+  rule_text: WHEN account details need to be gathered and displayed, THE Account Details
+    Gatherer SHALL set the account ID input field length to -1; if the account ID
+    (`WS-ACCT-ID`) is not low-values, retrieve the card cross-reference record from
+    the card cross-reference store (`WS-CARDXREFNAME-ACCT-PATH`), retrieve the account
+    record from the account store (`WS-ACCTFILENAME`), retrieve the customer record
+    from the customer store (`WS-CUSTFILENAME`), retrieve the authorization summary
+    from the pending authorization summary database, and if the authorization summary
+    is found, populate the authorization list on the screen; if the account ID is
+    low-values, skip all data retrieval.
+  req_ids:
+  - REQ-F-027
+  - REQ-F-131
+  traceability_lines:
+  - 342
+  - 345
+  - 349
+  - 350
+  - 352
+  - 354
+  - 355
+  - 356
+  - 357
+- rule_id: ab945348_a492_4576_b9d1_b647125a1096
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Receive screen input from authorization selection map
+  rule_text: THE Screen Input Receiver SHALL retrieve user input from the authorization
+    selection screen map, store the input in the screen buffer, and capture the CICS
+    response and reason codes
+  req_ids:
+  - REQ-F-005
+  - REQ-F-116
+  traceability_lines:
+  - 712
+  - 715
+  - 716
+  - 717
+  - 718
+  - 719
+  - 720
+  - 721
+  - 722
+- rule_id: bb24ae00_2571_4e92_aca2_7e04d8d154af
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Capture account ID and evaluate authorization row selection
+  rule_text: WHEN the user presses ENTER on the pending authorization screen, THE
+    Authorization Selection Processor SHALL extract the account ID and store it in
+    the shared context; evaluate each of the five authorization rows to identify which
+    row (if any) the user selected; when a row is selected, record the user's selection
+    marker and store the corresponding authorization key; when no row is selected,
+    clear both the selection marker and the authorization key to spaces
+  req_ids:
+  - REQ-F-039
+  - REQ-F-118
+  traceability_lines:
+  - 282
+  - 283
+  - 284
+  - 285
+  - 286
+  - 287
+  - 288
+  - 289
+  - 290
+  - 291
+  - 292
+  - 293
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+  - 303
+  - 304
+  - 305
+  - 306
+  - 307
+  - 308
+  - 309
+- rule_id: bc60fed6_d6a8_42e7_b922_cc7295e7d7a8
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Validate authorization selection marker value
+  rule_text: WHEN a valid authorization row selection is present (both selection marker
+    and authorization key are non-blank and non-low-value), THE Authorization Selection
+    Validator SHALL validate that the selection marker is either 'S' or 's'; when
+    the marker is 'S' or 's', accept the selection; when the marker is any other value,
+    record an error message stating 'Invalid selection. Valid value is S'
+  req_ids:
+  - REQ-F-040
+  - REQ-F-125
+  traceability_lines:
+  - 310
+  - 311
+  - 312
+  - 313
+  - 326
+  - 327
+  - 328
+  - 329
+  - 331
+  - 332
+  - 334
+  - 335
+  - 337
+  - 338
+- rule_id: bddddc2e_9e80_421e_9a1a_a0c5e6b1f3f1
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize authorization row 5 display fields
+  rule_text: THE Authorization List Display Initialization SHALL clear the fifth authorization
+    row by setting the selection field to protected and blanking all transaction,
+    date, time, type, approval, status, and amount fields; no action is taken for
+    any index value outside the range 1–5.
+  req_ids:
+  - REQ-F-033
+  - REQ-F-140
+  traceability_lines:
+  - 649
+  - 650
+  - 651
+  - 652
+  - 653
+  - 654
+  - 655
+  - 656
+  - 657
+  - 660
+- rule_id: c1ecfdf4_d542_4ee3_ba76_a00dc46a9d3b
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Retrieve authorization summary from database
+  rule_text: 'WHEN the authorization summary needs to be retrieved from the database,
+    THE Authorization Summary Retriever SHALL call the PSB scheduling routine to ensure
+    the IMS program control block is properly scheduled; move the account ID from
+    the communication area to the pending authorization summary record; execute a
+    DLI GU operation to retrieve the authorization summary record from the pending
+    authorization summary database using the account ID as the search key; check the
+    IMS return code; if the return code indicates success (STATUS-OK), set the pending
+    authorization summary segment found flag (`WS-PAUT-SMRY-SEG-FLG`) to ''Y''; if
+    the return code indicates segment not found (SEGMENT-NOT-FOUND), set the pending
+    authorization summary segment found flag to ''N''; if the return code indicates
+    any other error, set the error flag (`WS-ERR-FLG`) to ''Y'', construct an error
+    message describing the system error and the error code, set the account ID input
+    field length to -1, and display the screen with the error message. (physical store:
+    `DLI:GU`)'
+  req_ids:
+  - REQ-F-025
+  - REQ-F-135
+  traceability_lines:
+  - 966
+  - 969
+  - 971
+  - 972
+  - 973
+  - 974
+  - 975
+  - 976
+  - 977
+  - 979
+  - 980
+  - 981
+  - 982
+  - 983
+  - 984
+  - 985
+  - 986
+  - 988
+  - 989
+  - 990
+  - 991
+  - 992
+  - 993
+  - 994
+  - 995
+  - 996
+- rule_id: c271f33f_5d40_441f_8f91_c920ce79cf8f
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Reject non-numeric account ID
+  rule_text: WHEN the user enters a non-numeric account ID, THE Account ID Validation
+    SHALL clear the account ID field and display the message 'Acct Id must be Numeric
+    ...'
+  req_ids:
+  - REQ-F-007
+  - REQ-F-122
+  traceability_lines:
+  - 272
+  - 273
+  - 274
+  - 277
+  - 278
+- rule_id: c6a3975e_d192_4a8f_9354_db74126c7d10
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Extract and format authorization date and time
+  rule_text: THE Authorization Record Formatter SHALL extract the authorization amount,
+    reformat the authorization original time from HHMMSS to HH:MM:SS format, reformat
+    the authorization original date from YYMMDD to MM/DD/YY format, and store both
+    in working variables for subsequent screen population.
+  req_ids:
+  - REQ-F-031
+  - REQ-F-139
+  traceability_lines:
+  - 522
+  - 525
+  - 527
+  - 528
+  - 529
+  - 531
+  - 532
+  - 533
+  - 534
+- rule_id: cd4855e2_f4be_41f9_a843_99b1628580dc
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Initialize authorization row 4 display fields
+  rule_text: THE Authorization List Display Initialization SHALL clear the fourth
+    authorization row by setting the selection field to protected and blanking all
+    transaction, date, time, type, approval, status, and amount fields.
+  req_ids:
+  - REQ-F-033
+  - REQ-F-140
+  traceability_lines:
+  - 640
+  - 641
+  - 642
+  - 643
+  - 644
+  - 645
+  - 646
+  - 647
+  - 648
+- rule_id: d5562e7d_520f_4506_8270_0dab8bd0a61c
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Reposition authorization cursor to saved key
+  rule_text: 'WHEN the authorization cursor needs to be repositioned to a saved authorization
+    key, THE Authorization Cursor Repositioner SHALL move the saved authorization
+    key (`WS-AUTH-KEY-SAVE`) to the authorization key field in the pending authorization
+    details record; execute a GNP operation with a WHERE clause to retrieve the authorization
+    record matching that key; check the IMS return code; if the return code indicates
+    success (status OK), set the end-of-file flag (`WS-AUTHS-EOF`) to ''N''; if the
+    return code indicates segment not found or end of database, set the end-of-file
+    flag to ''Y''; if the return code indicates any other error, set the error flag
+    (`WS-ERR-FLG`) to ''Y'', construct an error message describing the system error
+    and the error code, set the account ID input field length to -1, and display the
+    screen with the error message. (physical store: `DLI:GNP`)'
+  req_ids:
+  - REQ-F-030
+  - REQ-F-138
+  traceability_lines:
+  - 488
+  - 491
+  - 493
+  - 494
+  - 495
+  - 496
+  - 497
+  - 499
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  - 509
+  - 510
+  - 511
+  - 512
+  - 513
+  - 514
+  - 515
+  - 516
+  - 517
+- rule_id: e9c0ab04_61d8_4dc1_9f6c_e617b1907762
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Populate authorization row 3 on screen
+  rule_text: WHEN the index counter is 3, THE Screen Row Populator SHALL populate
+    the third authorization row on the screen with transaction ID, date, time, type,
+    approval status, match status, and amount, and set the selection field to unprotected
+    for user interaction.
+  req_ids:
+  - REQ-F-036
+  - REQ-F-143
+  traceability_lines:
+  - 567
+  - 571
+  - 572
+  - 573
+  - 574
+  - 575
+  - 576
+  - 577
+  - 578
+- rule_id: ef9a89cb_a71d_4ecc_8e23_47b6aef8cab6
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Schedule IMS program control block
+  rule_text: WHEN the IMS program control block needs to be scheduled for database
+    access, THE PSB Scheduler SHALL retrieve the DIB status from the IMS environment
+    and move it to the IMS return code field; check if the IMS return code indicates
+    that the PSB has been scheduled more than once (PSB-SCHEDULED-MORE-THAN-ONCE);
+    if yes, retrieve the DIB status again and move it to the IMS return code field
+    to refresh the status; check if the IMS return code indicates success (STATUS-OK);
+    if yes, the PSB is properly scheduled; if no, set the error flag (`WS-ERR-FLG`)
+    to 'Y', construct an error message describing the system error and the error code,
+    set the account ID input field length to -1, and display the screen with the error
+    message.
+  req_ids:
+  - REQ-F-028
+  - REQ-F-137
+  traceability_lines:
+  - 999
+  - 1001
+  - 1006
+  - 1007
+  - 1015
+  - 1016
+  - 1017
+  - 1019
+  - 1020
+  - 1022
+  - 1023
+  - 1024
+  - 1025
+  - 1026
+  - 1027
+  - 1028
+  - 1029
+  - 1030
+- rule_id: f61e82fc_da5b_4481_87a1_b8276b02675e
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Retrieve customer record by customer ID
+  rule_text: WHEN the customer record needs to be retrieved by customer ID, THE Customer
+    Record Retriever SHALL move the customer ID from the card cross-reference record
+    to the card record identifier field; execute a CICS READ command to retrieve the
+    customer record from the customer store (`WS-CUSTFILENAME`) using the customer
+    ID as the key; evaluate the CICS response code; if the response code indicates
+    success (NORMAL), the customer record is successfully retrieved; if the response
+    code indicates not found (NOTFND), construct an error message indicating that
+    the customer was not found in the customer store, set the account ID input field
+    length to -1, and display the screen with the error message; if the response code
+    indicates any other error, construct an error message describing the system error
+    and the response and reason codes, set the account ID input field length to -1,
+    and display the screen with the error message.
+  req_id: REQ-F-134
+  traceability_lines:
+  - 915
+  - 918
+  - 920
+  - 921
+  - 922
+  - 923
+  - 924
+  - 925
+  - 926
+  - 927
+  - 928
+  - 930
+  - 933
+  - 934
+  - 935
+  - 937
+  - 938
+  - 939
+  - 940
+  - 941
+  - 942
+  - 943
+  - 944
+  - 945
+  - 946
+  - 947
+  - 949
+  - 950
+  - 952
+  - 953
+  - 954
+  - 955
+  - 956
+  - 957
+  - 958
+  - 959
+  - 960
+  - 961
+  - 962
+- rule_id: ffc89b32_9546_411b_b8cf_595010e418ac
+  program: COPAUS0C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl
+  rule_name: Populate screen header information
+  rule_text: THE Screen Header Populator SHALL retrieve the current date and time
+    using the COBOL CURRENT-DATE function; extract the month, day, and year components
+    and reformat them into MM/DD/YY format; extract the hours, minutes, and seconds
+    components and reformat them into HH:MM:SS format; move the predefined screen
+    titles to the title output fields; move the CICS transaction ID (`WS-CICS-TRANID`)
+    to the transaction name output field; move the program name (`WS-PGM-AUTH-SMRY`)
+    to the program name output field; move the formatted date to the current date
+    output field; move the formatted time to the current time output field.
+  req_ids:
+  - REQ-F-042
+  - REQ-F-147
+  traceability_lines:
+  - 726
+  - 729
+  - 731
+  - 732
+  - 733
+  - 734
+  - 736
+  - 737
+  - 738
+  - 740
+  - 742
+  - 743
+  - 744
+  - 746
+  - 747
+- rule_id: 73e4573c_7658_4327_a2ba_0c6c3f0742ff
+  program: COPAUS1C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Navigate to next authorization record
+  rule_text: WHEN the PF8 key is pressed, THE Authorization Record Navigator SHALL
+    retrieve the current authorization record, attempt to retrieve the next authorization
+    record, and if no more records are available, set the screen-erase flag to no
+    and display an end-of-records message; if more records are available, populate
+    the authorization details for display.
+- rule_id: 824244b5_cdac_47b3_b744_c1dff07db35d
+  program: COPAUS1C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Send authorization screen to terminal
+  rule_text: THE Authorization Screen Sender SHALL populate the screen header information,
+    move the error message to the screen error-message field, set the cursor position
+    to the card-number field, and send the authorization screen to the terminal with
+    or without the erase attribute based on the screen-erase flag.
+- rule_id: c8706a0e_2b6a_45d4_994c_d5b194aa0c00
+  program: COPAUS1C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Initialize authorization view and prepare for first display
+  rule_text: WHEN the program is invoked for the first time with no prior session
+    context, THE Authorization View Handler SHALL initialize the screen state by enabling
+    screen erase, clearing message buffers, process the initial authorization lookup,
+    and display the authorization view screen
+- rule_id: 125ca022_9bd9_48f3_b6cd_3f288f21440c
+  program: COPAUS1C
+  disposition: captured
+  rule_name: Initialize authorization context on first entry
+  rule_text: WHEN the program is invoked with an empty communication area, THE Authorization
+    Detail Handler SHALL initialize the communication area, set the destination program
+    to the authorization summary module, and transfer control to that program
+  req_id: REQ-F-086
+  traceability_lines:
+  - 157
+  - 165
+  - 166
+  - 168
+  - 169
+- rule_id: dc29df35_d3d9_4e5b_9120_f11f50afcdd9
+  program: COPAUS1C
+  disposition: not_applicable
+  reason: '[Pattern-classified] Screen rendering mechanics'
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Map authorization response code to approval status
+  rule_text: WHEN the authorization response code is evaluated, THE Authorization
+    Response Mapper SHALL when the authorization response code equals '00', display
+    'A' (Approved) with green color; otherwise display 'D' (Declined) with red color.
+- rule_id: 477ed0fa_7f3f_42fe_86e3_68b1df9aa088
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Process authorization detail screen on re-entry
+  rule_text: WHEN the program is re-invoked with an existing communication area and
+    the program context indicates re-entry, THE Authorization Detail Handler SHALL
+    extract the communication area, clear the fraud data, evaluate the terminal key
+    pressed, and when PF3 is pressed, set the destination program to the authorization
+    summary module and transfer control to that program
+  req_ids:
+  - REQ-F-044
+  - REQ-F-087
+  traceability_lines:
+  - 170
+  - 171
+  - 172
+  - 173
+  - 178
+  - 180
+  - 184
+  - 185
+  - 186
+  - 198
+  - 199
+  - 200
+- rule_id: c32da6e1_1b8e_49ba_a8a6_26d19183ad55
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Transfer control to destination program
+  rule_text: THE Authorization Detail Handler SHALL set the originating transaction
+    identifier to CPVD, set the originating program to the authorization detail module,
+    set the program context to entry status, and transfer control to the destination
+    program with the communication area
+  req_ids:
+  - REQ-F-045
+  - REQ-F-088
+  traceability_lines:
+  - 360
+  - 362
+  - 363
+  - 364
+  - 365
+  - 367
+  - 368
+  - 369
+  - 370
+- rule_id: 1cd03b14_7baf_44a3_b6e5_f1690c4c45b4
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Update authorization record with new fraud status
+  rule_text: 'THE Authorization Record Updater SHALL move the fraud-authorization-record
+    into the pending-authorization-details buffer and execute a DLI REPL operation
+    to update the authorization detail segment in the database (physical store: `DLI:REPL`)'
+  req_ids:
+  - REQ-F-066
+  - REQ-F-110
+  traceability_lines:
+  - 520
+  - 522
+  - 525
+  - 526
+  - 527
+  - 528
+- rule_id: 7b0397c0_6e8e_473a_86e0_ee81711cee35
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Receive and validate transaction context
+  rule_text: WHEN a CICS transaction arrives with a communication area and the user
+    presses PF5 on a reentry transaction, THE Transaction Context Handler SHALL extract
+    the communication area into the card-demo context record and dispatch to the fraud-marking
+    handler when PF5 is pressed
+  req_ids:
+  - REQ-F-064
+  - REQ-F-106
+  traceability_lines:
+  - 157
+  - 165
+  - 170
+  - 171
+  - 173
+  - 178
+  - 180
+  - 187
+  - 188
+  - 198
+  - 199
+  - 200
+- rule_id: 821bedc0_3f5a_4dba_b01a_9bfc0daaf683
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Mark authorization fraud status and prepare update
+  rule_text: WHEN the fraud-marking handler is invoked after PF5 is pressed, THE Fraud
+    Status Processor SHALL retrieve the pending authorization record, toggle the fraud
+    status (confirmed to removed, or removed to confirmed), delegate to the fraud-processing
+    service (`COPAUS2C`) to validate the change, and invoke the update handler when
+    the service succeeds
+  req_ids:
+  - REQ-F-065
+  - REQ-F-108
+  traceability_lines:
+  - 230
+  - 231
+  - 232
+  - 234
+  - 236
+  - 237
+  - 238
+  - 239
+  - 240
+  - 241
+  - 242
+  - 244
+  - 245
+  - 246
+  - 248
+  - 249
+  - 250
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 259
+  - 262
+- rule_id: db5a9670_a0ed_428e_aacd_192f76fdf99f
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Retrieve pending authorization record
+  rule_text: 'WHEN the read-authorization-record handler is invoked to retrieve the
+    pending authorization record, THE Authorization Record Retrieval SHALL execute
+    a GU operation to retrieve the pending authorization summary by account identifier,
+    evaluate the return code (success sets not-end-of-file, not-found or end-of-database
+    sets end-of-file), and when not-end-of-file is set, execute a GNP operation to
+    retrieve the pending authorization detail by authorization key (physical stores:
+    `DLI:GNP`, `DLI:GU`)'
+  req_ids:
+  - REQ-F-068
+  - REQ-F-109
+  traceability_lines:
+  - 431
+  - 436
+  - 437
+  - 439
+  - 440
+  - 441
+  - 442
+  - 443
+  - 445
+  - 446
+  - 447
+  - 448
+  - 449
+  - 450
+  - 451
+  - 462
+  - 464
+  - 465
+  - 466
+  - 467
+  - 468
+  - 469
+  - 489
+- rule_id: 04b8f7f6_96be_402d_9cf5_7fa0cb106f04
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Restore session context from communication area
+  rule_text: WHEN the program receives a non-empty communication area from the caller,
+    THE Authorization View Handler SHALL restore the session context from the communication
+    area and route to either initial display or input processing based on the program
+    context flag
+  req_ids:
+  - REQ-F-047
+  - REQ-F-089
+  traceability_lines:
+  - 178
+- rule_id: 0b5236a4_5b06_444d_a2d9_df2d814f27cd
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Retrieve authorization summary from database
+  rule_text: 'WHEN the program initiates a database query for the authorization summary,
+    THE Authorization Record Retrieval SHALL retrieve the authorization summary by
+    account identifier; when successful, clear the end-of-file flag; when the segment
+    is not found or end-of-database is reached, set the end-of-file flag; when a system
+    error occurs, set the error flag, construct an error message with the return code,
+    and display the authorization view screen. (physical store: `DLI:GU`)'
+  req_ids:
+  - REQ-F-055
+  - REQ-F-092
+  traceability_lines:
+  - 439
+  - 440
+  - 441
+  - 442
+  - 443
+  - 445
+  - 446
+  - 447
+  - 448
+  - 449
+  - 450
+  - 451
+  - 452
+  - 453
+  - 455
+  - 456
+  - 457
+  - 458
+  - 459
+  - 460
+  - 461
+  - 462
+- rule_id: 138f4e42_f26c_409d_aae3_642e8eb6f982
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Populate card and authorization date/time details
+  rule_text: WHEN the error flag (`WS-ERR-FLG`) is clear, THE Authorization Details
+    Formatter SHALL extract the card number, authorization date, authorization time,
+    and approved amount from the pending authorization record; reformat the date into
+    MM/DD/YY format and the time into HH:MM:SS format; display all values on the authorization
+    view screen.
+  req_ids:
+  - REQ-F-058
+  - REQ-F-095
+  traceability_lines:
+  - 291
+  - 294
+  - 295
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 303
+  - 304
+  - 305
+  - 306
+  - 308
+  - 309
+- rule_id: 2558167b_b8a4_4325_a548_999740cfe81a
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Process ENTER key and validate authorization lookup parameters
+  rule_text: WHEN the ENTER key is pressed or an invalid key is pressed, THE Authorization
+    Lookup Validator SHALL validate that the account identifier is numeric and the
+    selected authorization key is not empty or low-values; if valid, extract the account
+    identifier and authorization key and retrieve the authorization record; if invalid,
+    set the error flag to indicate an error condition.
+  req_ids:
+  - REQ-F-049
+  - REQ-F-102
+  traceability_lines:
+  - 208
+  - 210
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 223
+  - 224
+  - 225
+  - 227
+  - 228
+- rule_id: 41aa351d_8f2d_45d2_9795_edbd7afa789a
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Navigate to next authorization record
+  rule_text: WHEN the user presses the PF8 key on the authorization view screen, THE
+    Authorization View Handler SHALL process the PF8 key action to retrieve the next
+    authorization record and refresh the screen display
+  req_ids:
+  - REQ-F-051
+  - REQ-F-104
+  traceability_lines:
+  - 190
+  - 191
+  - 192
+- rule_id: 463df91e_3a76_43e4_9698_a3d95841e1aa
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Process ENTER key to retrieve authorization details
+  rule_text: WHEN the user presses the ENTER key on the authorization view screen,
+    THE Authorization View Handler SHALL process the ENTER key action to retrieve
+    authorization details and refresh the screen display
+  req_ids:
+  - REQ-F-050
+  - REQ-F-103
+  traceability_lines:
+  - 180
+  - 181
+  - 182
+  - 183
+- rule_id: 631447df_f48e_4233_a8ac_47270c64ca8b
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Retrieve next authorization record from database
+  rule_text: 'THE Next Authorization Record Retriever SHALL retrieve the next authorization
+    details record from the database in sequence; set the end-of-file flag based on
+    the retrieval outcome (no if found, yes if not found or end-of-database); if an
+    error occurs, set the error flag and display an error message. (physical store:
+    `DLI:GNP`)'
+  req_ids:
+  - REQ-F-057
+  - REQ-F-094
+  traceability_lines:
+  - 493
+  - 495
+  - 496
+  - 497
+  - 498
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  - 508
+  - 510
+  - 511
+  - 512
+  - 513
+  - 514
+  - 515
+  - 516
+  - 517
+- rule_id: 68c9350b_bacf_4eb4_a97f_e21466e66c37
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Mark authorization as fraudulent or remove fraud flag
+  rule_text: WHEN the PF5 key is pressed, THE Fraud Status Manager SHALL retrieve
+    the authorization record, check whether the fraud flag is set, toggle the fraud
+    flag (set if not set, clear if set), assemble the fraud-action parameters, delegate
+    to the fraud-processing service (`COPAUS2C`) to update the fraud status, and if
+    the update succeeds, update the authorization details in the database; if the
+    update fails, display the error message.
+  req_ids:
+  - REQ-F-063
+  - REQ-F-107
+  traceability_lines:
+  - 230
+  - 231
+  - 232
+  - 234
+  - 236
+  - 237
+  - 238
+  - 239
+  - 240
+  - 241
+  - 242
+  - 244
+  - 245
+  - 246
+  - 248
+  - 249
+  - 250
+  - 251
+  - 252
+  - 253
+  - 254
+  - 255
+  - 256
+  - 257
+  - 259
+  - 262
+  - 265
+  - 266
+- rule_id: 8151ae9c_f54b_4e2f_b572_0be78bf5b58f
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Populate transaction and merchant details
+  rule_text: THE Transaction and Merchant Details Formatter SHALL extract processing
+    code, POS entry mode, authorization source, and merchant category code; reformat
+    card expiry date into MM/YY format; extract authorization type, transaction ID,
+    and match status; extract and display merchant name, ID, city, state, and ZIP
+    code on the authorization view screen.
+  req_ids:
+  - REQ-F-059
+  - REQ-F-096
+  traceability_lines:
+  - 331
+  - 332
+  - 333
+  - 334
+  - 336
+  - 337
+  - 338
+  - 340
+  - 341
+  - 342
+  - 344
+  - 345
+  - 346
+  - 347
+  - 348
+  - 349
+  - 350
+  - 352
+  - 353
+  - 354
+  - 355
+  - 356
+- rule_id: 825d493f_cdd3_432f_9a3b_d41cdf2bbcd5
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Receive and evaluate user input from authorization view screen
+  rule_text: WHILE the program is re-entering with user input from the authorization
+    view screen, THE Authorization View Handler SHALL receive the user input, evaluate
+    the function key pressed, route to the corresponding action handler (ENTER, PF5,
+    PF8, or invalid key), and refresh the screen display
+  req_ids:
+  - REQ-F-048
+  - REQ-F-101
+  traceability_lines:
+  - 179
+  - 187
+  - 188
+  - 189
+  - 198
+- rule_id: 8c3885a9_eafd_476c_b8ae_5897bd461c36
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Handle invalid key press
+  rule_text: IF the user presses an unrecognized key on the authorization view screen,
+    THEN THE Authorization View Handler SHALL process the ENTER key action as fallback,
+    display the invalid key error message, and refresh the screen display
+  req_ids:
+  - REQ-F-052
+  - REQ-F-105
+  traceability_lines:
+  - 193
+  - 194
+  - 196
+  - 197
+- rule_id: 9c1c9b5d_929e_4a17_989e_9649bb00e5d2
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Schedule PSB for database access
+  rule_text: THE PSB Scheduler SHALL check whether the PSB has been scheduled more
+    than once and refresh the status code if needed, then verify that the PSB scheduling
+    was successful; if scheduling fails, set the error flag and display an error message.
+  req_ids:
+  - REQ-F-054
+  - REQ-F-090
+  traceability_lines:
+  - 572
+  - 574
+  - 579
+  - 580
+  - 588
+  - 589
+  - 590
+  - 592
+  - 593
+  - 595
+  - 596
+  - 597
+  - 598
+  - 599
+  - 600
+  - 601
+  - 602
+- rule_id: bbf4548b_34f9_46aa_81d1_400af343d832
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Lookup and display decline reason description
+  rule_text: WHEN the decline reason table is searched for a matching code, THE Decline
+    Reason Lookup SHALL search the decline reason table for a matching decline code;
+    when found, display the reason code and description formatted as 'code-description';
+    when not found, display '9999-ERROR'.
+  req_ids:
+  - REQ-F-060
+  - REQ-F-097
+  traceability_lines:
+  - 319
+  - 320
+  - 321
+  - 322
+  - 323
+  - 324
+  - 325
+  - 326
+  - 327
+  - 328
+- rule_id: bd83d953_3557_4c25_a270_7061e35defe4
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Schedule PSB for database access
+  rule_text: THE Authorization Record Retrieval SHALL schedule the PSB for database
+    access.
+  req_ids:
+  - REQ-F-054
+  - REQ-F-090
+  traceability_lines:
+  - 431
+  - 433
+- rule_id: c666d893_ee6e_4aa6_80b8_a4877b460726
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Receive authorization screen input from terminal
+  rule_text: THE Authorization Screen Receiver SHALL receive the authorization screen
+    input from the terminal into the screen input buffer.
+  req_id: REQ-F-100
+  traceability_lines:
+  - 398
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 406
+- rule_id: cc347085_ef7b_42f7_97e3_9a49273228e7
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Populate screen header information
+  rule_text: THE Screen Header Populator SHALL retrieve the current system date and
+    time, format the date into MM/DD/YY format and the time into HH:MM:SS format,
+    and populate the screen header fields with the titles, transaction identifier,
+    program name, formatted date, and formatted time.
+  req_ids:
+  - REQ-F-062
+  - REQ-F-099
+  traceability_lines:
+  - 409
+  - 411
+  - 413
+  - 414
+  - 415
+  - 416
+  - 418
+  - 419
+  - 420
+  - 422
+  - 424
+  - 425
+  - 426
+  - 428
+  - 429
+- rule_id: e48634bd_de82_4e49_be16_4d8a648c10c8
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Prepare authorization lookup parameters
+  rule_text: THE Authorization Record Retrieval SHALL prepare the account identifier
+    and authorization key as lookup parameters.
+  req_ids:
+  - REQ-F-053
+  - REQ-F-091
+  traceability_lines:
+  - 436
+  - 437
+- rule_id: ef932c76_e945_4d16_97dd_17e24d8d101e
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Retrieve authorization details from database
+  rule_text: 'WHEN the authorization summary retrieval succeeds and the program initiates
+    a database query for the authorization details, THE Authorization Record Retrieval
+    SHALL retrieve the authorization details by authorization key; when successful,
+    clear the end-of-file flag; when the segment is not found or end-of-database is
+    reached, set the end-of-file flag; when a system error occurs, set the error flag,
+    construct an error message with the return code, and display the authorization
+    view screen. (physical store: `DLI:GNP`)'
+  req_ids:
+  - REQ-F-056
+  - REQ-F-093
+  traceability_lines:
+  - 464
+  - 465
+  - 466
+  - 467
+  - 468
+  - 469
+  - 471
+  - 472
+  - 473
+  - 474
+  - 475
+  - 476
+  - 477
+  - 478
+  - 479
+  - 481
+  - 482
+  - 483
+  - 484
+  - 485
+  - 486
+  - 487
+  - 488
+  - 489
+- rule_id: fb4cc0fe_4d79_4b6e_afd5_8c45b28f6aa4
+  program: COPAUS1C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: Update authorization record with fraud status change
+  rule_text: THE Authorization Fraud Status Updater SHALL move the fraud authorization
+    record to the authorization details record, update the authorization record in
+    the database, and if successful, set a message indicating the fraud status change;
+    if an error occurs, set the error flag and display an error message with rollback
+    notification.
+  req_ids:
+  - REQ-F-067
+  - REQ-F-111
+  traceability_lines:
+  - 520
+  - 522
+  - 530
+  - 531
+  - 532
+  - 534
+  - 535
+  - 536
+  - 537
+  - 538
+  - 539
+  - 542
+  - 544
+  - 545
+  - 546
+  - 547
+  - 548
+  - 549
+  - 550
+  - 551
+- rule_id: fe326c7e_c7b9_4d01_b4f8_1b94206ba420
+  program: COPAUS1C
+  disposition: not_applicable
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl
+  rule_name: End authorization details population
+  rule_text: THE Authorization Details Population SHALL complete the authorization
+    details population process.
+  reason: '[LLM-classified] Structural paragraph termination with no observable business
+    action'
+- rule_id: 270230c9_91ce_4078_9af3_2d575cdfa54e
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Dispatch fraud update on duplicate-key conflict
+  rule_text: WHEN a duplicate-key conflict is detected (SQL return code (`SQLCODE`)
+    equals -803), THE Authorization Fraud Conflict Handler SHALL invoke the fraud
+    record update to overwrite the existing entry in the authorization fraud store
+  req_id: REQ-F-076
+  traceability_lines:
+  - 199
+  - 202
+  - 203
+  - 204
+  - 215
+  - 216
+- rule_id: 4fe32fc4_c4e3_4cb5_b4cb_e4e6ab96e2a3
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Update fraud indicator and report date for existing record
+  rule_text: WHEN a duplicate-key conflict is confirmed and the fraud record update
+    is invoked, THE Authorization Fraud Record Updater SHALL update the fraud indicator
+    and set the fraud report date to the current date in the authorization fraud store
+    (`CARDDEMO.AUTHFRDS`) for the row matching the card number and authorization timestamp
+  req_ids:
+  - REQ-F-077
+  - REQ-F-203
+  traceability_lines:
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+- rule_id: 5c631188_cd9d_430c_b609_15466e2f7b95
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Reconstruct authorization timestamp from input components
+  rule_text: THE Authorization Timestamp Assembly SHALL extract the year, month, and
+    day from the original authorization date; compute the time-of-day by subtracting
+    the input authorization time numeric from 999999999 and decompose it into hour,
+    minute, second, and millisecond components; then populate the fraud record with
+    the card number, the assembled timestamp, and the fraud action code
+  req_ids:
+  - REQ-F-078
+  - REQ-F-202
+  traceability_lines:
+  - 89
+  - 103
+  - 104
+  - 105
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 113
+  - 114
+  - 137
+- rule_id: 2cd93aa7_a94d_4a38_926a_c9234e6486ea
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Derive authorization timestamp from input components
+  rule_text: WHEN a fraud authorization record is submitted for recording, THE Authorization
+    Timestamp Derivation SHALL extract the year, month, and day from the original
+    authorization date (`PA-AUTH-ORIG-DATE`); compute the authorization time by subtracting
+    the input authorization time numeric (`PA-AUTH-TIME-9C`) from 999999999; and decompose
+    the result into hour, minute, second, and millisecond components to form the formatted
+    authorization timestamp (`WS-AUTH-TS`)
+  req_ids:
+  - REQ-F-069
+  - REQ-F-196
+  traceability_lines:
+  - 89
+  - 103
+  - 104
+  - 105
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+- rule_id: 6a8b21be_6914_4912_99ce_7ee1d4aa1587
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Assemble fraud authorization record fields from input
+  rule_text: WHEN the authorization timestamp has been derived and the fraud authorization
+    record assembly begins, THE Fraud Authorization Record Assembler SHALL populate
+    all fields of the fraud authorization record from the input parameters, including
+    card number (`CARD-NUM`), authorization timestamp (`AUTH-TS`), authorization type
+    (`AUTH-TYPE`), card expiry date (`CARD-EXPIRY-DATE`), message type (`MESSAGE-TYPE`),
+    message source (`MESSAGE-SOURCE`), authorization ID code (`AUTH-ID-CODE`), authorization
+    response code (`AUTH-RESP-CODE`), authorization response reason (`AUTH-RESP-REASON`),
+    processing code (`PROCESSING-CODE`), transaction amount (`TRANSACTION-AMT`), approved
+    amount (`APPROVED-AMT`), merchant details, transaction identifier (`TRANSACTION-ID`),
+    match status (`MATCH-STATUS`), fraud indicator (`AUTH-FRAUD`), account identifier
+    (`ACCT-ID`), and customer identifier (`CUST-ID`)
+  req_ids:
+  - REQ-F-070
+  - REQ-F-197
+  traceability_lines:
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 139
+- rule_id: 9fc85ad6_e403_4ce7_91aa_ef012d75a03a
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Insert fraud authorization record into store
+  rule_text: WHEN the fraud authorization record is fully assembled, THE Fraud Authorization
+    Store SHALL insert the complete fraud authorization record into the fraud authorization
+    store (`CARDDEMO.AUTHFRDS`), recording all transaction, card, merchant, and fraud
+    classification details along with the current date as the fraud report date
+  req_ids:
+  - REQ-F-071
+  - REQ-F-198
+  traceability_lines:
+  - 141
+  - 142
+  - 143
+  - 144
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+  - 159
+  - 160
+  - 161
+  - 162
+  - 163
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  - 169
+  - 170
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+  - 176
+  - 177
+  - 178
+  - 179
+  - 180
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 195
+  - 196
+  - 197
+  - 198
+- rule_id: 12b4dbfb_8f4c_4421_af32_5b8c49bd41a9
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Capture current date for fraud report
+  rule_text: THE Fraud Report Date Capture SHALL retrieve the current system time,
+    format it as an 8-character date, and record it as the fraud report date (`PA-FRAUD-RPT-DATE`)
+    on the fraud authorization record
+  req_ids:
+  - REQ-F-072
+  - REQ-F-195
+  traceability_lines:
+  - 89
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 100
+  - 101
+- rule_id: 2799469c_ed19_420e_8ae0_2c4be4ad65f4
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Record fraud update success or failure outcome
+  rule_text: WHEN the fraud record update operation completes, THE Fraud Update Result
+    Handler SHALL set the fraud update status (`WS-FRD-UPDATE-STATUS`) to succeeded
+    and record 'UPDT SUCCESS' in the fraud action message (`WS-FRD-ACT-MSG`) when
+    the update succeeds; or set the status to failed, capture the sql return code
+    (`WS-SQLCODE`) and sql state code (`WS-SQLSTATE`), and compose an update error
+    message in the fraud action message when the update fails
+  req_ids:
+  - REQ-F-079
+  - REQ-F-204
+  - REQ-F-205
+  traceability_lines:
+  - 221
+  - 230
+  - 231
+  - 232
+  - 233
+  - 234
+  - 236
+  - 237
+  - 239
+  - 240
+  - 241
+  - 242
+  - 243
+- rule_id: 688f279c_acaa_4b7a_afa2_f9776ca2df11
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Record fraud insert system error
+  rule_text: IF the fraud record insert fails with an unexpected database error (not
+    a duplicate key), THEN THE Fraud Insert Error Handler SHALL set the fraud update
+    status (`WS-FRD-UPDATE-STATUS`) to failed, capture the sql return code (`WS-SQLCODE`)
+    and sql state code (`WS-SQLSTATE`), and compose a system error message in the
+    fraud action message (`WS-FRD-ACT-MSG`)
+  req_ids:
+  - REQ-F-075
+  - REQ-F-201
+  traceability_lines:
+  - 206
+  - 208
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+- rule_id: a4642248_003d_439e_b207_ad06ef6e437e
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Record fraud insert success outcome
+  rule_text: WHEN the fraud record insert operation completes successfully, THE Fraud
+    Insert Result Handler SHALL set the fraud update status (`WS-FRD-UPDATE-STATUS`)
+    to succeeded and record the fraud action message (`WS-FRD-ACT-MSG`) as 'ADD SUCCESS'
+  req_ids:
+  - REQ-F-073
+  - REQ-F-199
+  traceability_lines:
+  - 199
+  - 200
+  - 201
+- rule_id: cb291351_46a2_4f92_8099_2e920049c0e1
+  program: COPAUS2C
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl
+  rule_name: Escalate duplicate insert to fraud update
+  rule_text: WHEN the fraud record insert fails with a duplicate key error (SQL return
+    code -803), THE Fraud Duplicate Key Handler SHALL delegate processing to the fraud
+    update routine to attempt an update of the existing fraud record
+  req_ids:
+  - REQ-F-074
+  - REQ-F-200
+  traceability_lines:
+  - 202
+  - 203
+  - 204
+  - 205
+- rule_id: 73c3bf1c_0743_4eb0_bd12_a7622009459e
+  program: COSGN00C
+  disposition: not_applicable
+  reason: '[Pattern-classified] Working storage initialization'
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Initialize program and prepare for signon
+  rule_text: THE Signon Screen Handler SHALL initialize the error flag to OFF, clear
+    the message buffer, and display the signon screen with cursor positioned on the
+    user ID field.
+- rule_id: 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Authenticate user against security file
+  rule_text: WHEN the user ID and password have been collected and validated as non-empty,
+    THE User authentication and session routing SHALL read the user security file
+    (`WS-USRSEC-FILE`) using the user ID as key; if the read succeeds and the retrieved
+    password matches the entered password, populate the communication area with the
+    user's transaction ID, program name, user ID, and user type, and transfer control
+    to the administrator menu program if the user type is administrator, or to the
+    general menu program otherwise; if the read fails with not-found or any other
+    error, invoke the appropriate error-handling branch.
+  req_id: REQ-F-081
+  traceability_lines:
+  - 207
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 230
+  - 231
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 239
+  - 240
+  - 246
+  - 257
+- rule_id: 7ae92f73_f167_411a_be40_590a8c9dd72e
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Collect and validate signon credentials
+  rule_text: WHEN the user submits the signon form by pressing ENTER, THE Signon Credential
+    Validator SHALL receive the input map, validate that user ID and password are
+    both non-empty, display an error message and redisplay the screen if either field
+    is empty, convert both fields to uppercase and store them for verification if
+    both are populated, and proceed to security file lookup when validation succeeds.
+  req_id: REQ-F-080
+  traceability_lines:
+  - 106
+  - 108
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 130
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 138
+  - 139
+  - 140
+- rule_id: a2464762_743b_44d3_815e_b709f48b99bc
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Route on Enter key or alternative input
+  rule_text: WHEN the Enter key is pressed on the sign-on screen, THE Sign-on input
+    dispatcher SHALL invoke the enter-key processing logic to collect and validate
+    credentials.
+  req_id: REQ-F-083
+  traceability_lines:
+  - 80
+  - 84
+  - 85
+  - 86
+  - 87
+  - 95
+  - 96
+- rule_id: b8075fba_4718_438c_9ec7_456168813b1a
+  program: COSGN00C
+  disposition: not_applicable
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Populate signon screen header and system information
+  rule_text: THE Signon Screen Display SHALL populate the screen header with current
+    date, time, application identifiers, and transaction information, move the error
+    message to the screen output area, and send the screen to the terminal.
+  reason: '[LLM-classified] CICS/BMS platform mechanics — signon screen send with
+    ERASE and CURSOR options (duplicate of 7ce6a16f)'
+- rule_id: f04e91ff_d599_4199_bcdc_b1d7e8f4fa58
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Initialize error flag for session
+  rule_text: THE Sign-on session initialization SHALL set the error flag to off.
+  req_id: REQ-F-085
+  traceability_lines:
+  - 73
+  - 75
+- rule_id: 06755197_778e_4862_8e3c_d26c70967aef
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Collect and validate signon credentials
+  rule_text: WHEN the user submits the signon form by pressing ENTER, THE Signon Credential
+    Validator SHALL receive the input map, validate that user ID and password are
+    both non-empty, display an error message and redisplay the screen if either field
+    is empty, convert both fields to uppercase and store them for verification if
+    both are populated, and proceed to security file lookup when validation succeeds.
+  req_id: REQ-F-080
+  traceability_lines:
+  - 106
+  - 108
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 130
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 138
+  - 139
+  - 140
+- rule_id: 7ce6a16f_ba72_4ecb_a0f6_c4093a51ad88
+  program: COSGN00C
+  disposition: not_applicable
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Populate signon screen header and system information
+  rule_text: THE Signon Screen Display SHALL populate the screen header with current
+    date, time, application identifiers, and transaction information, move the error
+    message to the screen output area, and send the screen to the terminal.
+  reason: '[LLM-classified] CICS/BMS platform mechanics — signon screen send with
+    ERASE and CURSOR options'
+- rule_id: cc33196a_fb7a_477a_8c85_d34c6900ff03
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Route user input based on key pressed
+  rule_text: WHEN the user presses a key on the terminal, THE Signon Screen Handler
+    SHALL route to the signon-entry processor when ENTER is pressed, or display an
+    invalid-key error message and redisplay the screen for any other key.
+  req_id: REQ-F-084
+  traceability_lines:
+  - 84
+  - 85
+  - 86
+  - 87
+  - 91
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Verify user credentials against security file
+  rule_text: WHEN the user submits valid non-empty credentials, THE User Credential
+    Verification SHALL read the user security file (`WS-USRSEC-FILE`) using the user
+    ID as key, compare the stored password with the entered password when the read
+    succeeds, display 'Wrong Password. Try again ...' and redisplay the screen if
+    passwords do not match, display 'User not found. Try again ...' and redisplay
+    the screen if the user ID is not found, and display 'Unable to verify the User
+    ...' and redisplay the screen if a system error occurs during the read.
+  req_id: REQ-F-082
+  traceability_lines:
+  - 207
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 221
+  - 222
+  - 223
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 246
+  - 247
+  - 249
+  - 250
+  - 251
+  - 252
+  - 254
+  - 255
+  - 256
+  - 257
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 8921cbca_a7c9_433f_b4e2_d53b244ce60b
+- req_id: REQ-F-002
+  rule_ids:
+  - a21e330f_7ee2_4092_b5e1_76408bf98ffc
+- req_id: REQ-F-003
+  rule_ids:
+  - 6799c689_58cb_4a96_847d_7d595a449edd
+- req_id: REQ-F-004
+  rule_ids:
+  - 6799c689_58cb_4a96_847d_7d595a449edd
+- req_id: REQ-F-005
+  rule_ids:
+  - 1dfa3f2f_d8f1_4f3e_b124_0f69a05a7948
+  - ae05cec6_7096_43c0_b3d4_16f0fb8c740e
+  - ab945348_a492_4576_b9d1_b647125a1096
+- req_id: REQ-F-006
+  rule_ids:
+  - 9b4732e9_198b_438c_aefa_fdef8d225639
+  - 5aa415c0_9434_443b_9a2b_06ead1cd62ae
+- req_id: REQ-F-007
+  rule_ids:
+  - bb1a1d1a_91f5_4b35_a997_e977af987e9e
+  - c271f33f_5d40_441f_8f91_c920ce79cf8f
+- req_id: REQ-F-008
+  rule_ids:
+  - 34ae3396_a17f_4513_b45b_19c9e98435a1
+- req_id: REQ-F-009
+  rule_ids:
+  - 98f5c4be_1d40_4220_860e_6ac72bdff7b8
+- req_id: REQ-F-010
+  rule_ids:
+  - 68eda926_9720_4330_8442_8ca4a280d3c7
+- req_id: REQ-F-011
+  rule_ids:
+  - a3966c14_eae5_488c_8a15_484f700a52d1
+- req_id: REQ-F-012
+  rule_ids:
+  - a93d3022_500e_4176_8825_8d1062af9c01
+- req_id: REQ-F-013
+  rule_ids:
+  - b86f9cde_1881_4687_88c7_0afb759a9ccc
+- req_id: REQ-F-014
+  rule_ids:
+  - 64703e6d_f05a_4c51_82c3_5c6ba80f26ad
+- req_id: REQ-F-015
+  rule_ids:
+  - bff4c95d_5bdd_4b71_8f9b_18a4c21f1eaa
+- req_id: REQ-F-016
+  rule_ids:
+  - fc2eab01_fc70_43ae_881e_056fbca7effa
+  - 257ddbec_8159_4d7a_9e7b_764b2e938557
+- req_id: REQ-F-017
+  rule_ids:
+  - 819be69b_d1bc_4b32_976b_a7db0eda74bb
+- req_id: REQ-F-018
+  rule_ids:
+  - 4a3f72cf_81b9_4ebc_b9b0_f8d006ca5336
+- req_id: REQ-F-019
+  rule_ids:
+  - 6da3e9fe_189e_4cc3_9461_3dadf04da3f9
+- req_id: REQ-F-020
+  rule_ids:
+  - 52a06e0e_5945_4e4b_a4f0_ea5978e6b3a7
+- req_id: REQ-F-021
+  rule_ids:
+  - 4f87fab4_37a2_4096_a701_61b34f4637b7
+  - 77ffdb53_80c6_4963_849c_f1139fe5fc43
+- req_id: REQ-F-024
+  rule_ids:
+  - 77ffdb53_80c6_4963_849c_f1139fe5fc43
+- req_id: REQ-F-025
+  rule_ids:
+  - c1ecfdf4_d542_4ee3_ba76_a00dc46a9d3b
+- req_id: REQ-F-026
+  rule_ids:
+  - 77ffdb53_80c6_4963_849c_f1139fe5fc43
+- req_id: REQ-F-027
+  rule_ids:
+  - a175214b_9fcf_4082_ac3b_0c818cf90235
+- req_id: REQ-F-028
+  rule_ids:
+  - ef9a89cb_a71d_4ecc_8e23_47b6aef8cab6
+- req_id: REQ-F-029
+  rule_ids:
+  - 27c528de_e73e_45d5_898b_6babf967fcf4
+- req_id: REQ-F-030
+  rule_ids:
+  - d5562e7d_520f_4506_8270_0dab8bd0a61c
+- req_id: REQ-F-031
+  rule_ids:
+  - c6a3975e_d192_4a8f_9354_db74126c7d10
+- req_id: REQ-F-032
+  rule_ids:
+  - 81f603f0_1c05_4d46_8b14_e9f172c8bee3
+- req_id: REQ-F-033
+  rule_ids:
+  - 5be03b1c_3c24_4eed_b095_7a2ea2d688ac
+  - 6c6a6602_f1d8_4904_b1ff_ff3e4ef079a6
+  - 7516a3bd_c9f4_40db_af4e_811121b68aeb
+  - cd4855e2_f4be_41f9_a843_99b1628580dc
+  - bddddc2e_9e80_421e_9a1a_a0c5e6b1f3f1
+- req_id: REQ-F-034
+  rule_ids:
+  - 64bae2f4_9610_40c4_b4c4_4659ed04ea94
+- req_id: REQ-F-035
+  rule_ids:
+  - 07f54230_d276_4a5b_a33c_7c6afe9b92ab
+- req_id: REQ-F-036
+  rule_ids:
+  - e9c0ab04_61d8_4dc1_9f6c_e617b1907762
+- req_id: REQ-F-037
+  rule_ids:
+  - 2e66f056_abc1_4cbc_b0f2_b6c92afc410f
+- req_id: REQ-F-038
+  rule_ids:
+  - 4e9d7fce_59e0_449b_a7f8_67efff1fd31a
+- req_id: REQ-F-039
+  rule_ids:
+  - bb24ae00_2571_4e92_aca2_7e04d8d154af
+- req_id: REQ-F-040
+  rule_ids:
+  - bc60fed6_d6a8_42e7_b922_cc7295e7d7a8
+- req_id: REQ-F-041
+  rule_ids:
+  - 8d8bc010_15dd_4009_be5e_987837740f14
+- req_id: REQ-F-042
+  rule_ids:
+  - ffc89b32_9546_411b_b8cf_595010e418ac
+- req_id: REQ-F-043
+  rule_ids:
+  - 12d11e9c_ae4a_4f4b_b39b_734578bc1434
+- req_id: REQ-F-044
+  rule_ids:
+  - 477ed0fa_7f3f_42fe_86e3_68b1df9aa088
+- req_id: REQ-F-045
+  rule_ids:
+  - c32da6e1_1b8e_49ba_a8a6_26d19183ad55
+- req_id: REQ-F-047
+  rule_ids:
+  - 04b8f7f6_96be_402d_9cf5_7fa0cb106f04
+- req_id: REQ-F-048
+  rule_ids:
+  - 825d493f_cdd3_432f_9a3b_d41cdf2bbcd5
+- req_id: REQ-F-049
+  rule_ids:
+  - 2558167b_b8a4_4325_a548_999740cfe81a
+- req_id: REQ-F-050
+  rule_ids:
+  - 463df91e_3a76_43e4_9698_a3d95841e1aa
+- req_id: REQ-F-051
+  rule_ids:
+  - 41aa351d_8f2d_45d2_9795_edbd7afa789a
+- req_id: REQ-F-052
+  rule_ids:
+  - 8c3885a9_eafd_476c_b8ae_5897bd461c36
+- req_id: REQ-F-053
+  rule_ids:
+  - e48634bd_de82_4e49_be16_4d8a648c10c8
+- req_id: REQ-F-054
+  rule_ids:
+  - bd83d953_3557_4c25_a270_7061e35defe4
+  - 9c1c9b5d_929e_4a17_989e_9649bb00e5d2
+- req_id: REQ-F-055
+  rule_ids:
+  - 0b5236a4_5b06_444d_a2d9_df2d814f27cd
+- req_id: REQ-F-056
+  rule_ids:
+  - ef932c76_e945_4d16_97dd_17e24d8d101e
+- req_id: REQ-F-057
+  rule_ids:
+  - 631447df_f48e_4233_a8ac_47270c64ca8b
+- req_id: REQ-F-058
+  rule_ids:
+  - 138f4e42_f26c_409d_aae3_642e8eb6f982
+- req_id: REQ-F-059
+  rule_ids:
+  - 8151ae9c_f54b_4e2f_b572_0be78bf5b58f
+- req_id: REQ-F-060
+  rule_ids:
+  - bbf4548b_34f9_46aa_81d1_400af343d832
+- req_id: REQ-F-062
+  rule_ids:
+  - cc347085_ef7b_42f7_97e3_9a49273228e7
+- req_id: REQ-F-063
+  rule_ids:
+  - 68c9350b_bacf_4eb4_a97f_e21466e66c37
+- req_id: REQ-F-064
+  rule_ids:
+  - 7b0397c0_6e8e_473a_86e0_ee81711cee35
+- req_id: REQ-F-065
+  rule_ids:
+  - 821bedc0_3f5a_4dba_b01a_9bfc0daaf683
+- req_id: REQ-F-066
+  rule_ids:
+  - 1cd03b14_7baf_44a3_b6e5_f1690c4c45b4
+- req_id: REQ-F-067
+  rule_ids:
+  - fb4cc0fe_4d79_4b6e_afd5_8c45b28f6aa4
+- req_id: REQ-F-068
+  rule_ids:
+  - db5a9670_a0ed_428e_aacd_192f76fdf99f
+- req_id: REQ-F-069
+  rule_ids:
+  - 2cd93aa7_a94d_4a38_926a_c9234e6486ea
+- req_id: REQ-F-070
+  rule_ids:
+  - 6a8b21be_6914_4912_99ce_7ee1d4aa1587
+- req_id: REQ-F-071
+  rule_ids:
+  - 9fc85ad6_e403_4ce7_91aa_ef012d75a03a
+- req_id: REQ-F-072
+  rule_ids:
+  - 12b4dbfb_8f4c_4421_af32_5b8c49bd41a9
+- req_id: REQ-F-073
+  rule_ids:
+  - a4642248_003d_439e_b207_ad06ef6e437e
+- req_id: REQ-F-074
+  rule_ids:
+  - cb291351_46a2_4f92_8099_2e920049c0e1
+- req_id: REQ-F-075
+  rule_ids:
+  - 688f279c_acaa_4b7a_afa2_f9776ca2df11
+- req_id: REQ-F-076
+  rule_ids:
+  - 270230c9_91ce_4078_9af3_2d575cdfa54e
+- req_id: REQ-F-077
+  rule_ids:
+  - 4fe32fc4_c4e3_4cb5_b4cb_e4e6ab96e2a3
+- req_id: REQ-F-078
+  rule_ids:
+  - 5c631188_cd9d_430c_b609_15466e2f7b95
+- req_id: REQ-F-079
+  rule_ids:
+  - 2799469c_ed19_420e_8ae0_2c4be4ad65f4
+- req_id: REQ-F-080
+  rule_ids:
+  - 7ae92f73_f167_411a_be40_590a8c9dd72e
+  - 06755197_778e_4862_8e3c_d26c70967aef
+- req_id: REQ-F-081
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-082
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-083
+  rule_ids:
+  - a2464762_743b_44d3_815e_b709f48b99bc
+- req_id: REQ-F-084
+  rule_ids:
+  - cc33196a_fb7a_477a_8c85_d34c6900ff03
+- req_id: REQ-F-085
+  rule_ids:
+  - f04e91ff_d599_4199_bcdc_b1d7e8f4fa58
+- req_id: REQ-F-086
+  rule_ids:
+  - 125ca022_9bd9_48f3_b6cd_3f288f21440c
+- req_id: REQ-F-087
+  rule_ids:
+  - 477ed0fa_7f3f_42fe_86e3_68b1df9aa088
+- req_id: REQ-F-088
+  rule_ids:
+  - c32da6e1_1b8e_49ba_a8a6_26d19183ad55
+- req_id: REQ-F-089
+  rule_ids:
+  - 04b8f7f6_96be_402d_9cf5_7fa0cb106f04
+- req_id: REQ-F-090
+  rule_ids:
+  - 9c1c9b5d_929e_4a17_989e_9649bb00e5d2
+  - bd83d953_3557_4c25_a270_7061e35defe4
+- req_id: REQ-F-091
+  rule_ids:
+  - e48634bd_de82_4e49_be16_4d8a648c10c8
+- req_id: REQ-F-092
+  rule_ids:
+  - 0b5236a4_5b06_444d_a2d9_df2d814f27cd
+- req_id: REQ-F-093
+  rule_ids:
+  - ef932c76_e945_4d16_97dd_17e24d8d101e
+- req_id: REQ-F-094
+  rule_ids:
+  - 631447df_f48e_4233_a8ac_47270c64ca8b
+- req_id: REQ-F-095
+  rule_ids:
+  - 138f4e42_f26c_409d_aae3_642e8eb6f982
+- req_id: REQ-F-096
+  rule_ids:
+  - 8151ae9c_f54b_4e2f_b572_0be78bf5b58f
+- req_id: REQ-F-097
+  rule_ids:
+  - bbf4548b_34f9_46aa_81d1_400af343d832
+- req_id: REQ-F-098
+  rule_ids:
+  - 81f603f0_1c05_4d46_8b14_e9f172c8bee3
+- req_id: REQ-F-099
+  rule_ids:
+  - cc347085_ef7b_42f7_97e3_9a49273228e7
+- req_id: REQ-F-100
+  rule_ids:
+  - c666d893_ee6e_4aa6_80b8_a4877b460726
+- req_id: REQ-F-101
+  rule_ids:
+  - 825d493f_cdd3_432f_9a3b_d41cdf2bbcd5
+- req_id: REQ-F-102
+  rule_ids:
+  - 2558167b_b8a4_4325_a548_999740cfe81a
+- req_id: REQ-F-103
+  rule_ids:
+  - 463df91e_3a76_43e4_9698_a3d95841e1aa
+- req_id: REQ-F-104
+  rule_ids:
+  - 41aa351d_8f2d_45d2_9795_edbd7afa789a
+- req_id: REQ-F-105
+  rule_ids:
+  - 8c3885a9_eafd_476c_b8ae_5897bd461c36
+- req_id: REQ-F-106
+  rule_ids:
+  - 7b0397c0_6e8e_473a_86e0_ee81711cee35
+- req_id: REQ-F-107
+  rule_ids:
+  - 68c9350b_bacf_4eb4_a97f_e21466e66c37
+- req_id: REQ-F-108
+  rule_ids:
+  - 821bedc0_3f5a_4dba_b01a_9bfc0daaf683
+- req_id: REQ-F-109
+  rule_ids:
+  - db5a9670_a0ed_428e_aacd_192f76fdf99f
+- req_id: REQ-F-110
+  rule_ids:
+  - 1cd03b14_7baf_44a3_b6e5_f1690c4c45b4
+- req_id: REQ-F-111
+  rule_ids:
+  - fb4cc0fe_4d79_4b6e_afd5_8c45b28f6aa4
+- req_id: REQ-F-112
+  rule_ids:
+  - 4a3f72cf_81b9_4ebc_b9b0_f8d006ca5336
+- req_id: REQ-F-113
+  rule_ids:
+  - 6da3e9fe_189e_4cc3_9461_3dadf04da3f9
+- req_id: REQ-F-114
+  rule_ids:
+  - a21e330f_7ee2_4092_b5e1_76408bf98ffc
+- req_id: REQ-F-115
+  rule_ids:
+  - 1dfa3f2f_d8f1_4f3e_b124_0f69a05a7948
+- req_id: REQ-F-116
+  rule_ids:
+  - ae05cec6_7096_43c0_b3d4_16f0fb8c740e
+  - ab945348_a492_4576_b9d1_b647125a1096
+- req_id: REQ-F-117
+  rule_ids:
+  - 52a06e0e_5945_4e4b_a4f0_ea5978e6b3a7
+- req_id: REQ-F-118
+  rule_ids:
+  - bb24ae00_2571_4e92_aca2_7e04d8d154af
+- req_id: REQ-F-119
+  rule_ids:
+  - 9b4732e9_198b_438c_aefa_fdef8d225639
+- req_id: REQ-F-120
+  rule_ids:
+  - bb1a1d1a_91f5_4b35_a997_e977af987e9e
+- req_id: REQ-F-121
+  rule_ids:
+  - 5aa415c0_9434_443b_9a2b_06ead1cd62ae
+- req_id: REQ-F-122
+  rule_ids:
+  - c271f33f_5d40_441f_8f91_c920ce79cf8f
+- req_id: REQ-F-123
+  rule_ids:
+  - 34ae3396_a17f_4513_b45b_19c9e98435a1
+- req_id: REQ-F-124
+  rule_ids:
+  - 64703e6d_f05a_4c51_82c3_5c6ba80f26ad
+- req_id: REQ-F-125
+  rule_ids:
+  - bc60fed6_d6a8_42e7_b922_cc7295e7d7a8
+- req_id: REQ-F-126
+  rule_ids:
+  - bff4c95d_5bdd_4b71_8f9b_18a4c21f1eaa
+- req_id: REQ-F-127
+  rule_ids:
+  - fc2eab01_fc70_43ae_881e_056fbca7effa
+- req_id: REQ-F-128
+  rule_ids:
+  - 257ddbec_8159_4d7a_9e7b_764b2e938557
+- req_id: REQ-F-129
+  rule_ids:
+  - 819be69b_d1bc_4b32_976b_a7db0eda74bb
+- req_id: REQ-F-130
+  rule_ids:
+  - 77ffdb53_80c6_4963_849c_f1139fe5fc43
+- req_id: REQ-F-131
+  rule_ids:
+  - a175214b_9fcf_4082_ac3b_0c818cf90235
+- req_id: REQ-F-132
+  rule_ids:
+  - 4f87fab4_37a2_4096_a701_61b34f4637b7
+- req_id: REQ-F-133
+  rule_ids:
+  - 54815fb6_8fd6_4927_bbf4_5c89b891e145
+- req_id: REQ-F-134
+  rule_ids:
+  - f61e82fc_da5b_4481_87a1_b8276b02675e
+- req_id: REQ-F-135
+  rule_ids:
+  - c1ecfdf4_d542_4ee3_ba76_a00dc46a9d3b
+- req_id: REQ-F-136
+  rule_ids:
+  - 27c528de_e73e_45d5_898b_6babf967fcf4
+- req_id: REQ-F-137
+  rule_ids:
+  - ef9a89cb_a71d_4ecc_8e23_47b6aef8cab6
+- req_id: REQ-F-138
+  rule_ids:
+  - d5562e7d_520f_4506_8270_0dab8bd0a61c
+- req_id: REQ-F-139
+  rule_ids:
+  - c6a3975e_d192_4a8f_9354_db74126c7d10
+- req_id: REQ-F-140
+  rule_ids:
+  - 5be03b1c_3c24_4eed_b095_7a2ea2d688ac
+  - 6c6a6602_f1d8_4904_b1ff_ff3e4ef079a6
+  - 7516a3bd_c9f4_40db_af4e_811121b68aeb
+  - cd4855e2_f4be_41f9_a843_99b1628580dc
+  - bddddc2e_9e80_421e_9a1a_a0c5e6b1f3f1
+- req_id: REQ-F-141
+  rule_ids:
+  - 64bae2f4_9610_40c4_b4c4_4659ed04ea94
+- req_id: REQ-F-142
+  rule_ids:
+  - 07f54230_d276_4a5b_a33c_7c6afe9b92ab
+- req_id: REQ-F-143
+  rule_ids:
+  - e9c0ab04_61d8_4dc1_9f6c_e617b1907762
+- req_id: REQ-F-144
+  rule_ids:
+  - 2e66f056_abc1_4cbc_b0f2_b6c92afc410f
+- req_id: REQ-F-145
+  rule_ids:
+  - 4e9d7fce_59e0_449b_a7f8_67efff1fd31a
+- req_id: REQ-F-146
+  rule_ids:
+  - 8d8bc010_15dd_4009_be5e_987837740f14
+- req_id: REQ-F-147
+  rule_ids:
+  - ffc89b32_9546_411b_b8cf_595010e418ac
+- req_id: REQ-F-148
+  rule_ids:
+  - 98f5c4be_1d40_4220_860e_6ac72bdff7b8
+- req_id: REQ-F-149
+  rule_ids:
+  - 68eda926_9720_4330_8442_8ca4a280d3c7
+- req_id: REQ-F-150
+  rule_ids:
+  - a3966c14_eae5_488c_8a15_484f700a52d1
+- req_id: REQ-F-151
+  rule_ids:
+  - a93d3022_500e_4176_8825_8d1062af9c01
+- req_id: REQ-F-152
+  rule_ids:
+  - b86f9cde_1881_4687_88c7_0afb759a9ccc
+- req_id: REQ-F-153
+  rule_ids:
+  - 77fdbe9f_6750_45b6_ac2a_02b5a84b46d9
+  - 052ccce3_29e8_407a_95f3_b05cc37f9093
+- req_id: REQ-F-154
+  rule_ids:
+  - fd46bed6_0525_4d69_a4b7_c6cde8d525f5
+  - 644c342f_7276_4722_8c29_bf37966db80f
+- req_id: REQ-F-155
+  rule_ids:
+  - c59906af_864c_4207_83c0_f0542b120fbf
+  - 23d96016_f932_4828_92ea_8484560dc05a
+- req_id: REQ-F-156
+  rule_ids:
+  - 859fb3e6_a05d_4666_a336_c8ed5c859a7b
+  - 4800ddd9_e5e2_4510_8487_c9b17b2c383a
+- req_id: REQ-F-157
+  rule_ids:
+  - 39fb2f62_e0ba_4a97_8887_c04818e60e12
+- req_id: REQ-F-158
+  rule_ids:
+  - d8b92966_cf86_44e6_b44b_a6fac0f8da0d
+  - 034d0ba5_8300_47b6_93ab_e72ae10fa6d6
+- req_id: REQ-F-159
+  rule_ids:
+  - 037427ae_454b_4abc_9b37_d0e66a42d969
+- req_id: REQ-F-160
+  rule_ids:
+  - 77fdbe9f_6750_45b6_ac2a_02b5a84b46d9
+  - 052ccce3_29e8_407a_95f3_b05cc37f9093
+- req_id: REQ-F-161
+  rule_ids:
+  - 037427ae_454b_4abc_9b37_d0e66a42d969
+- req_id: REQ-F-162
+  rule_ids:
+  - fd46bed6_0525_4d69_a4b7_c6cde8d525f5
+  - 644c342f_7276_4722_8c29_bf37966db80f
+- req_id: REQ-F-163
+  rule_ids:
+  - c59906af_864c_4207_83c0_f0542b120fbf
+  - 23d96016_f932_4828_92ea_8484560dc05a
+- req_id: REQ-F-164
+  rule_ids:
+  - 859fb3e6_a05d_4666_a336_c8ed5c859a7b
+  - 4800ddd9_e5e2_4510_8487_c9b17b2c383a
+- req_id: REQ-F-165
+  rule_ids:
+  - 859fb3e6_a05d_4666_a336_c8ed5c859a7b
+  - 4800ddd9_e5e2_4510_8487_c9b17b2c383a
+- req_id: REQ-F-166
+  rule_ids:
+  - 859fb3e6_a05d_4666_a336_c8ed5c859a7b
+  - 4800ddd9_e5e2_4510_8487_c9b17b2c383a
+- req_id: REQ-F-167
+  rule_ids:
+  - 39fb2f62_e0ba_4a97_8887_c04818e60e12
+- req_id: REQ-F-168
+  rule_ids:
+  - d8b92966_cf86_44e6_b44b_a6fac0f8da0d
+  - 034d0ba5_8300_47b6_93ab_e72ae10fa6d6
+- req_id: REQ-F-169
+  rule_ids:
+  - 145097e4_d251_41a6_b303_67980b4b2ddc
+- req_id: REQ-F-170
+  rule_ids:
+  - 59494dba_1a9e_4b24_aaa6_adf83dc8e456
+- req_id: REQ-F-171
+  rule_ids:
+  - ac0584fb_1f9d_481a_9a94_ba74de1f5daf
+- req_id: REQ-F-172
+  rule_ids:
+  - 8759b7b8_a9aa_402a_ace1_5baef942da84
+- req_id: REQ-F-173
+  rule_ids:
+  - 46381e5d_4c4a_4344_8382_8e2d475a3b71
+- req_id: REQ-F-174
+  rule_ids:
+  - bc16c83f_d5f7_47b7_98dc_2a40f0bc8989
+- req_id: REQ-F-175
+  rule_ids:
+  - 0ec91d2c_fe3a_4c3e_b7b3_fe86af6a3f4f
+- req_id: REQ-F-176
+  rule_ids:
+  - ee3c3b14_bc51_4fde_9c0e_6868350d1aa0
+- req_id: REQ-F-177
+  rule_ids:
+  - b707fe35_66fd_4566_86fd_53ae282dbb40
+- req_id: REQ-F-178
+  rule_ids:
+  - e7e9f160_bb4c_498f_b18b_d95eeda54027
+- req_id: REQ-F-179
+  rule_ids:
+  - ea71a5f7_ebc5_497e_98d7_9ba25a2e88b1
+- req_id: REQ-F-180
+  rule_ids:
+  - e4f0f8f5_d1a1_479f_a2fa_4253f22b6d56
+- req_id: REQ-F-181
+  rule_ids:
+  - fa505c05_7923_441f_966f_1021d7df5f21
+- req_id: REQ-F-182
+  rule_ids:
+  - 5175839b_91e1_4004_8a92_d178d2e95a83
+- req_id: REQ-F-183
+  rule_ids:
+  - c40e1cb9_a4de_441d_86dc_271cf0c5fb5b
+- req_id: REQ-F-184
+  rule_ids:
+  - 68d45012_f022_4bcb_9b32_1c4fe505ba81
+- req_id: REQ-F-185
+  rule_ids:
+  - e8bd5a00_a9b4_4ff2_89d0_29835cf6373e
+- req_id: REQ-F-186
+  rule_ids:
+  - 9f404909_fed0_4c12_a715_1d8c9f439a79
+- req_id: REQ-F-187
+  rule_ids:
+  - e4508e4b_182e_44ac_8432_7ad7db88a4af
+- req_id: REQ-F-188
+  rule_ids:
+  - 2f19b7fe_5dfd_4726_9233_a95cfb8967d2
+- req_id: REQ-F-189
+  rule_ids:
+  - af68750a_566a_4772_ba3e_6cfcd905dce0
+- req_id: REQ-F-190
+  rule_ids:
+  - b146efe1_af9a_4a5e_8dcc_f1937be7a1c7
+- req_id: REQ-F-191
+  rule_ids:
+  - 9939b50b_1f5d_474e_9ce7_cea32a79c567
+- req_id: REQ-F-192
+  rule_ids:
+  - 8dadc650_24a9_4759_99ae_94e9d59e3e97
+- req_id: REQ-F-193
+  rule_ids:
+  - 0c710e42_a953_416e_8c4e_5b71af95afd7
+- req_id: REQ-F-194
+  rule_ids:
+  - dab2d2a9_78ec_4746_824b_930fc1527a92
+- req_id: REQ-F-195
+  rule_ids:
+  - 12b4dbfb_8f4c_4421_af32_5b8c49bd41a9
+- req_id: REQ-F-196
+  rule_ids:
+  - 2cd93aa7_a94d_4a38_926a_c9234e6486ea
+- req_id: REQ-F-197
+  rule_ids:
+  - 6a8b21be_6914_4912_99ce_7ee1d4aa1587
+- req_id: REQ-F-198
+  rule_ids:
+  - 9fc85ad6_e403_4ce7_91aa_ef012d75a03a
+- req_id: REQ-F-199
+  rule_ids:
+  - a4642248_003d_439e_b207_ad06ef6e437e
+- req_id: REQ-F-200
+  rule_ids:
+  - cb291351_46a2_4f92_8099_2e920049c0e1
+- req_id: REQ-F-201
+  rule_ids:
+  - 688f279c_acaa_4b7a_afa2_f9776ca2df11
+- req_id: REQ-F-202
+  rule_ids:
+  - 5c631188_cd9d_430c_b609_15466e2f7b95
+- req_id: REQ-F-203
+  rule_ids:
+  - 4fe32fc4_c4e3_4cb5_b4cb_e4e6ab96e2a3
+- req_id: REQ-F-204
+  rule_ids:
+  - 2799469c_ed19_420e_8ae0_2c4be4ad65f4
+- req_id: REQ-F-205
+  rule_ids:
+  - 2799469c_ed19_420e_8ae0_2c4be4ad65f4
+- req_id: REQ-N-001
+  rule_ids:
+  - ac0584fb_1f9d_481a_9a94_ba74de1f5daf

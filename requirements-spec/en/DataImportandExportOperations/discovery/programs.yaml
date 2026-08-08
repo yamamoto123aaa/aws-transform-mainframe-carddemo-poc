@@ -1,0 +1,121 @@
+# Data Import and Export Operations - Program Discovery
+# Generated: 2026-08-08T04:24:46Z
+# Source: TransformKG (Python discovery)
+
+function: DataImportandExportOperations
+programs:
+- name: CBEXPORT
+  type: COBOL
+  execution: batch
+  description: Multi-source data export with sequential record assembly; The program
+    orchestrates the export of customer, account, cross-reference, transaction, and
+    card data from five input sources into a unified export file. Each data category
+    is read sequentially, transformed into a standardized export record format with
+    a common header (record type, timestamp, sequence number, branch, and region),
+    and written to the export output store. The export process is driven by a main
+    control loop that invokes specialized export procedures for each data category
+    in sequence.
+  transaction_id: null
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.EXPORT.DATA
+  calls:
+  - CBEXPORT
+  - CEE3ABD
+  - IDCAMS
+  includes:
+  - CVACT01Y
+  - CVACT02Y
+  - CVACT03Y
+  - CVCUS01Y
+  - CVEXPORT
+  - CVTRA05Y
+- name: CBIMPORT
+  type: JCL
+  execution: batch
+  description: Customer data import and file splitting; The job invokes the import
+    program to read customer data from a multi-record export file and split it into
+    separate normalized output files for customer records, account records, card cross-reference
+    records, and transaction records. Error records are written to a dedicated error
+    file. The program processes the entire export dataset and distributes each record
+    type to its corresponding output store.
+  transaction_id: null
+  data_stores_read: &id002
+  - AWS.M2.CARDDEMO.EXPORT.DATA
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.IMPORT
+  - AWS.M2.CARDDEMO.CARDXREF.IMPORT
+  - AWS.M2.CARDDEMO.CUSTDATA.IMPORT
+  - AWS.M2.CARDDEMO.IMPORT.ERRORS
+  - AWS.M2.CARDDEMO.TRANSACT.IMPORT
+  calls:
+  - CBIMPORT
+  - CEE3ABD
+  includes:
+  - CVACT01Y
+  - CVACT02Y
+  - CVACT03Y
+  - CVCUS01Y
+  - CVEXPORT
+  - CVTRA05Y
+  invokes: CBIMPORT, CEE3ABD
+- name: TRANEXTR
+  type: JCL
+  execution: batch
+  description: 'Transaction type data extraction and backup; This job extracts transaction
+    type and transaction category data from a database and creates backup copies of
+    the previous versions. The job performs three sequential operations: backing up
+    the current transaction type file to a generation data group, backing up the current
+    transaction category file to a generation data group, and then extracting fresh
+    transaction type and category data from the database tables, writing the results
+    to new datasets. The job uses conditional execution to skip steps if previous
+    steps fail, ensuring data integrity throughout the extraction process.'
+  transaction_id: null
+  calls:
+  - DSNTIAUL
+  - IEBGENER
+  - IEFBR14
+  - IKJEFT01
+  invokes: DSNTIAUL, IEBGENER, IEFBR14, IKJEFT01
+- name: CBEXPORT
+  type: COBOL
+  execution: subroutine
+  description: Multi-source data export with sequential record assembly; The program
+    orchestrates the export of customer, account, cross-reference, transaction, and
+    card data from five input sources into a unified export file. Each data category
+    is read sequentially, transformed into a standardized export record format with
+    a common header (record type, timestamp, sequence number, branch, and region),
+    and written to the export output store. The export process is driven by a main
+    control loop that invokes specialized export procedures for each data category
+    in sequence.
+  data_stores_read: *id001
+  data_stores_write:
+  - AWS.M2.CARDDEMO.EXPORT.DATA
+  calls:
+  - CBEXPORT
+  - CEE3ABD
+  - IDCAMS
+- name: CBIMPORT
+  type: COBOL
+  execution: subroutine
+  description: Customer data import and file splitting; The job invokes the import
+    program to read customer data from a multi-record export file and split it into
+    separate normalized output files for customer records, account records, card cross-reference
+    records, and transaction records. Error records are written to a dedicated error
+    file. The program processes the entire export dataset and distributes each record
+    type to its corresponding output store.
+  data_stores_read: *id002
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.IMPORT
+  - AWS.M2.CARDDEMO.CARDXREF.IMPORT
+  - AWS.M2.CARDDEMO.CUSTDATA.IMPORT
+  - AWS.M2.CARDDEMO.IMPORT.ERRORS
+  - AWS.M2.CARDDEMO.TRANSACT.IMPORT
+  calls:
+  - CBIMPORT
+  - CEE3ABD

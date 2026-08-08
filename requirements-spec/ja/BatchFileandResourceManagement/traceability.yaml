@@ -1,0 +1,538 @@
+function: BatchFileandResourceManagement
+generated_at: '2026-08-08T04:25:05Z'
+summary:
+  total_rules: 27
+  captured: 19
+  not_applicable: 8
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 27
+    written: 27
+    shortfall: 0
+rules:
+- rule_id: 0d8339c0_a782_4290_97fe_ac5764ff455a
+  program: CARDFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: カードデータストアの代替インデックスを構築する
+  rule_text: カードデータストアインデックス作成機能は、効率的なセカンダリキー検索を可能にするため、投入済みのカードデータストア(AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS)から代替インデックス(AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX)を構築しなければならない。
+- rule_id: 911d3212_e9db_4eb5_b327_f1f04e6c1301
+  program: CARDFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: 既存のカードデータストアを削除する
+  rule_text: カードデータストア初期化機能は、既存のカードデータストア(`SYSIN`)クラスタが存在する場合、それを削除し、関連するすべてのデータおよびインデックスコンポーネントを除去しなければならない。
+- rule_id: 96a9cc33_6117_45d4_a3da_6dae48e77668
+  program: CARDFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: 指定容量でインデックス付きカードデータストアを作成する
+  rule_text: カードデータストア初期化機能は、16バイトキー、150バイト固定長レコード、ボリュームAWSHJ1上にプライマリ1シリンダおよびセカンダリ5シリンダ、リーダー2、ライター3の共用アクセス、削除時の自動消去を備えたインデックス付きカードデータストアを作成しなければならない。(物理ストア:`SYSIN`)
+- rule_id: bd47dc15_49ab_4e29_924b_72ee0f0bbc88
+  program: CARDFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: ソースファイルからカードデータストアへ投入する
+  rule_text: カードデータストア投入機能は、ソースファイル(AWS.M2.CARDDEMO.CARDDATA.PS)から全カードレコードをインデックス付きストア(AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS)にコピーし、効率的な取得のためにキーで編成しなければならない。(物理ストア:`CARDVSAM`、`SYSIN`)
+- rule_id: 6c7bb6ea_6289_42d8_8e38_41ffc8a163dd
+  program: CARDFILE
+  disposition: captured
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: アカウントIDに代替インデックスを定義する
+  rule_text: 代替インデックスライフサイクル管理機能は、非一意キーサポート、自動更新、および5シリンダのストレージ割り当てを備えた、アカウントIDフィールド上の新しい代替インデックスを定義しなければならない。(物理ストア:`SYSIN`)
+  req_id: REQ-F-002
+  traceability_lines:
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+  - 92
+- rule_id: c3d015fa_ce8a_4fa6_ae1f_9e98f71e1645
+  program: CARDFILE
+  disposition: captured
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: 再構築前に既存の代替インデックスを削除する
+  rule_text: 代替インデックスライフサイクル管理機能は、カードデータストア(`SYSIN`)から既存の代替インデックスが存在する場合、それを削除し、新規の再構築を可能にしなければならない。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 39
+  - 40
+- rule_id: 99dbd5ab_002d_40a3_a2a4_f5256f04c098
+  program: CARDFILE
+  disposition: captured
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: カードデータの代替インデックスパスを定義する
+  rule_text: 代替インデックスパス定義機能は、代替インデックスAWS.M2.CARDDEMO.CARDDATA.VSAM.AIXを参照する、AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX.PATHという名前のパスを定義し、この代替キーを通じてカードレコード(`SYSIN`)へのインデックスアクセスを可能にしなければならない。
+  req_id: REQ-F-003
+  traceability_lines:
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 100
+  - 101
+  - 102
+- rule_id: df3e522f_1975_4b35_93a2_8c509967732b
+  program: CARDFILE
+  disposition: captured
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: バッチ処理用にCICSファイルをオープンする
+  rule_text: ファイルアクセス有効化機能は、システムオペレータインタフェースを呼び出して、CICSリージョン内でカードデータファイル(CARDDAT)およびカードインデックスファイル(CARDAIX)をオープンし、バッチ処理がこれらのファイルにアクセスできるようにしなければならない。(物理ストア:`ISFIN`)
+  req_id: REQ-F-005
+  traceability_lines:
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+- rule_id: cdcc2008_2139_4015_8fa1_e3d98e2ba1a5
+  program: CARDFILE
+  disposition: captured
+  program_path: demo/jcl/CARDFILE.jcl
+  rule_name: バッチ処理用にCICSファイルをクローズする
+  rule_text: ファイルアクセス調整機能は、オペレータコマンドインタフェースを呼び出して、CICSリージョン内のCARDDATファイルおよびCARDAIXファイル(`ISFIN`)をクローズし、排他的バッチ処理を可能にしなければならない。
+  req_id: REQ-F-004
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+- rule_id: f4c4593c_f2cd_49ee_b12a_4397cd7674d8
+  program: CLOSEFIL
+  disposition: captured
+  program_path: demo/jcl/CLOSEFIL.jcl
+  rule_name: バッチ処理用にトランザクションファイルをクローズする
+  rule_text: ファイルクローズ処理機能は、トランザクションログファイル、クロスリファレンスインデックスファイル、アカウントデータファイル、アカウントインデックスファイル、およびユーザーセキュリティストアファイルを、トランザクション処理リージョン内でクローズし、排他的バッチアクセスを確立しなければならない。(物理ストア:`ISFIN`)
+  req_ids:
+  - REQ-F-006
+  - REQ-N-001
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+- rule_id: 1bf9da9c_0064_4e55_bfd9_a9b6404ebd05
+  program: CUSTFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CUSTFILE.jcl
+  rule_name: インデックス順構造を持つ新しい顧客データストアを定義する
+  rule_text: データストアライフサイクル管理機能は、プライマリ1シリンダおよびセカンダリ5シリンダ、オフセット0の9バイトキー、500バイト固定長レコード、2ユーザーの読み取り共用および3ユーザーの書き込み共用、削除時の消去を備えた、新しいインデックス順顧客データストア(`AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS`)を定義しなければならない。(物理ストア:`SYSIN`)
+- rule_id: 1cfefd1e_02fd_45b6_be26_2dcd8802cf10
+  program: CUSTFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CUSTFILE.jcl
+  rule_name: 既存の顧客データストアを削除する
+  rule_text: データストアライフサイクル管理機能は、再定義に備えて既存の顧客データストア(`AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS`)(`SYSIN`)を削除しなければならない。
+- rule_id: 2954dae7_18a0_45ba_9b3e_2a283206c041
+  program: CUSTFILE
+  disposition: not_applicable
+  reason: '[BRE function] ワーキングストレージ初期化'
+  program_path: demo/jcl/CUSTFILE.jcl
+  rule_name: フラットファイルから顧客データストアへ投入する
+  rule_text: データストア投入機能は、フラットファイルソース(`CUSTDATA`)から全顧客レコードをインデックス順ストア(`CUSTVSAM`)にコピーし、キー検索を可能にしなければならない。(物理ストア:`SYSIN`)
+- rule_id: abfc8898_edf6_41bc_ba24_3a32a9d9a4fa
+  program: CUSTFILE
+  disposition: captured
+  program_path: demo/jcl/CUSTFILE.jcl
+  rule_name: バッチ処理用に顧客データファイルをオープンする
+  rule_text: バッチファイルアクセス有効化機能は、システムオペレータコマンド機能を呼び出して、CICSリージョン内でCUSTDATファイルをオープンし、バッチ処理が直接ファイルアクセスを継続できるようにしなければならない。(物理ストア:`ISFIN`)
+  req_id: REQ-F-008
+  traceability_lines:
+  - 73
+  - 74
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+- rule_id: 074e81d5_498d_4388_84fb_744db7c11477
+  program: CUSTFILE
+  disposition: captured
+  program_path: demo/jcl/CUSTFILE.jcl
+  rule_name: CICSリージョン内の顧客データファイルをクローズする
+  rule_text: バッチオペレータコマンド送信機能は、CICSリージョンにファイルクローズ指示を送信し、排他的バッチアクセスのために顧客データファイルをクローズするよう指示しなければならない。(物理ストア:`ISFIN`)
+  req_id: REQ-F-007
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+- rule_id: 68d3e6c2_2159_455f_9d2c_8a022221bbfc
+  program: INTRDRJ1
+  disposition: captured
+  program_path: demo/jcl/INTRDRJ1.JCL
+  rule_name: JCLメンバーを印刷出力にコピーする
+  rule_text: コピーユーティリティ機能は、ソースデータセット(SYSUT1)からレコードを読み取り、intrdr処理を伴う印刷クラスA(SYSOUT)に書き込み、80バイト固定長の出力レコードを生成しなければならない。
+  req_id: REQ-F-009
+  traceability_lines:
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+- rule_id: c45e97c0_9378_4c8a_ab65_e85d209271a0
+  program: OPENFIL
+  disposition: captured
+  program_path: demo/jcl/OPENFIL.jcl
+  rule_name: バッチ処理用にトランザクションファイルおよび参照ファイルをオープンする
+  rule_text: 'THE File Opening Handler は、SDSF ユーティリティを呼び出して、CICS リージョン内の取引ファイル(TRANSACT)、クロスリファレンスファイル(CCXREF)、アカウントデータファイル(ACCTDAT)、クロスアカウントインデックスファイル(CXACAIX)、およびユーザーセキュリティファイル(USRSEC)をオープンするオペレータコマンドを送信し、各ファイルにオープン状態を設定してバッチアクセスを可能にする
+    SHALL。(physical store: `ISFIN`)'
+  req_id: REQ-F-010
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+- rule_id: 11008ba2_a613_40b5_b6c4_f97b778a7879
+  program: TRANFILE
+  disposition: captured
+  rule_name: 索引構造を持つ新しい取引データストアを定義する
+  rule_text: 'THE Transaction Data Store Initialization は、16バイトキー、350バイト固定長レコード、ボリューム
+    AWSHJ1 上のプライマリ1シリンダおよびセカンダリ5シリンダ、共有オプション (2 3)、データコンポーネントとインデックスコンポーネントを分離した、新しい索引付き取引データストアクラスタを定義する
+    SHALL。(physical store: `SYSIN`)'
+  req_id: REQ-F-016
+  traceability_lines:
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+- rule_id: 12e2ccd7_9e14_4936_884a_32ce3ed75f02
+  program: TRANFILE
+  disposition: captured
+  rule_name: 既存の取引データストアが存在する場合は削除する
+  rule_text: THE Transaction Data Store Initialization は、既存の取引データストア(`SYSIN`)クラスタが存在する場合はこれを削除し、後続の定義ステップが競合なく進行できるようにする
+    SHALL。
+  req_id: REQ-F-016
+  traceability_lines:
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+- rule_id: c19e6161_f7f1_44e3_90ea_c3153608bd48
+  program: TRANFILE
+  disposition: captured
+  rule_name: 取引データストアの代替索引を構築する
+  rule_text: THE Transaction Data Store Indexing は、取引データストアに代替索引を構築し、セカンダリキーによる効率的なアクセスパターンを可能にする
+    SHALL。
+  req_id: REQ-F-018
+  traceability_lines:
+  - 109
+  - 110
+  - 111
+- rule_id: ed435e48_f99b_4215_8b45_42c3e92b563a
+  program: TRANFILE
+  disposition: captured
+  rule_name: 取引レコードをデータストアにロードする
+  rule_text: 'THE Transaction Data Store Population は、ソースファイルから取引データストアへすべての取引レコードをコピーし、初期取引データセットを確立する
+    SHALL。(physical stores: `SYSIN`, `TRANSACT`, `TRANVSAM`)'
+  req_id: REQ-F-017
+  traceability_lines:
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+- rule_id: cdc972fe_c54b_4062_be8b_92ab7b16c138
+  program: TRANFILE
+  disposition: captured
+  program_path: demo/jcl/TRANFILE.jcl
+  rule_name: 取引レコード用の代替索引パスを定義する
+  rule_text: THE Dataset Utility は、代替索引をベースクラスタに関連付ける VSAM 代替索引パスを定義し、取引レコードへの索引付きアクセスを可能にする
+    SHALL(`SYSIN`)。
+  req_id: REQ-F-015
+  traceability_lines:
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 100
+  - 101
+- rule_id: 36bf29b4_a687_4b8a_b5b9_47e8af624146
+  program: TRANFILE
+  disposition: not_applicable
+  program_path: demo/jcl/TRANFILE.jcl
+  rule_name: バッチ処理のために取引ファイルをクローズする
+  rule_text: THE Batch Job Initialization は、著作権およびライセンス情報を表示する SHALL。
+  reason: '[LLM-classified] 著作権およびライセンス情報の表示 — 業務上の影響を持たないバッチ初期化の足場処理'
+- rule_id: 81c6aa78_6177_4b92_8d30_9db7526e2acb
+  program: TRANFILE
+  disposition: captured
+  program_path: demo/jcl/TRANFILE.jcl
+  rule_name: SDSF を呼び出して CICS 取引ファイルをクローズする
+  rule_text: 'WHEN バッチジョブステップが実行される時、THE File Access Control は、CICS リージョンへオペレータコマンドを発行することにより、TRANSACT
+    ファイルおよび CXACAIX ファイルを排他的バッチアクセス用にクローズし、コマンド出力を監視キューへ送る SHALL。(physical store:
+    `ISFIN`)'
+  req_id: REQ-F-011
+  traceability_lines:
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+- rule_id: 9d78d581_0823_4c48_96cf_c251032edc6a
+  program: TRANFILE
+  disposition: captured
+  program_path: demo/jcl/TRANFILE.jcl
+  rule_name: バッチ処理のために取引ファイルをオープンする
+  rule_text: THE Batch File Access Enablement は、オペレータコマンドを介して CICS リージョン内の TRANSACT
+    ファイルおよび CXACAIX ファイル(`ISFIN`)をオープンし、排他的バッチ処理に利用可能な状態にする SHALL。
+  req_id: REQ-F-012
+  traceability_lines:
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+- rule_id: 2b5c2b10_ef64_4985_873e_ebd5cd5a197a
+  program: TRANFILE
+  disposition: captured
+  program_path: demo/jcl/TRANFILE.jcl
+  rule_name: 既存の取引タイムスタンプ索引を削除する
+  rule_text: 'THE Transaction Index Maintenance は、取引マスターファイル上の既存の代替索引を削除する SHALL。(physical
+    store: `SYSIN`)'
+  req_id: REQ-F-013
+  traceability_lines:
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 38
+  - 39
+- rule_id: 448684dc_0e0b_4377_86cf_bacbfebd469e
+  program: TRANFILE
+  disposition: captured
+  program_path: demo/jcl/TRANFILE.jcl
+  rule_name: 取引タイムスタンプ代替索引を作成する
+  rule_text: 'THE Transaction Index Maintenance は、処理済みタイムスタンプをキーとし、自動メンテナンスを有効にした代替索引を取引マスターファイル上に作成する
+    SHALL。(physical store: `SYSIN`)'
+  req_id: REQ-F-014
+  traceability_lines:
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - c3d015fa_ce8a_4fa6_ae1f_9e98f71e1645
+- req_id: REQ-F-002
+  rule_ids:
+  - 6c7bb6ea_6289_42d8_8e38_41ffc8a163dd
+- req_id: REQ-F-003
+  rule_ids:
+  - 99dbd5ab_002d_40a3_a2a4_f5256f04c098
+- req_id: REQ-F-004
+  rule_ids:
+  - cdcc2008_2139_4015_8fa1_e3d98e2ba1a5
+- req_id: REQ-F-005
+  rule_ids:
+  - df3e522f_1975_4b35_93a2_8c509967732b
+- req_id: REQ-F-006
+  rule_ids:
+  - f4c4593c_f2cd_49ee_b12a_4397cd7674d8
+- req_id: REQ-F-007
+  rule_ids:
+  - 074e81d5_498d_4388_84fb_744db7c11477
+- req_id: REQ-F-008
+  rule_ids:
+  - abfc8898_edf6_41bc_ba24_3a32a9d9a4fa
+- req_id: REQ-F-009
+  rule_ids:
+  - 68d3e6c2_2159_455f_9d2c_8a022221bbfc
+- req_id: REQ-F-010
+  rule_ids:
+  - c45e97c0_9378_4c8a_ab65_e85d209271a0
+- req_id: REQ-F-011
+  rule_ids:
+  - 81c6aa78_6177_4b92_8d30_9db7526e2acb
+- req_id: REQ-F-012
+  rule_ids:
+  - 9d78d581_0823_4c48_96cf_c251032edc6a
+- req_id: REQ-F-013
+  rule_ids:
+  - 2b5c2b10_ef64_4985_873e_ebd5cd5a197a
+- req_id: REQ-F-014
+  rule_ids:
+  - 448684dc_0e0b_4377_86cf_bacbfebd469e
+- req_id: REQ-F-015
+  rule_ids:
+  - cdc972fe_c54b_4062_be8b_92ab7b16c138
+- req_id: REQ-F-016
+  rule_ids:
+  - 12e2ccd7_9e14_4936_884a_32ce3ed75f02
+  - 11008ba2_a613_40b5_b6c4_f97b778a7879
+- req_id: REQ-F-017
+  rule_ids:
+  - ed435e48_f99b_4215_8b45_42c3e92b563a
+- req_id: REQ-F-018
+  rule_ids:
+  - c19e6161_f7f1_44e3_90ea_c3153608bd48
+- req_id: REQ-N-001
+  rule_ids:
+  - f4c4593c_f2cd_49ee_b12a_4397cd7674d8

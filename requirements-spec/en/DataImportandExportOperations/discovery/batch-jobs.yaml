@@ -1,0 +1,48 @@
+# Data Import and Export Operations - Batch Job Discovery
+# Generated: 2026-08-08T04:24:46Z
+# Source: TransformKG (Python discovery)
+
+function: DataImportandExportOperations
+jobs:
+  migrate:
+  - id: BAT-001
+    name: CBIMPORT.jcl
+    description: Customer data import and file splitting; The job invokes the import
+      program to read customer data from a multi-record export file and split it into
+      separate normalized output files for customer records, account records, card
+      cross-reference records, and transaction records. Error records are written
+      to a dedicated error file. The program processes the entire export dataset and
+      distributes each record type to its corresponding output store.
+    programs:
+    - CBIMPORT
+    - CEE3ABD
+    data_stores_read:
+    - AWS.M2.CARDDEMO.EXPORT.DATA
+    data_stores_write:
+    - AWS.M2.CARDDEMO.ACCTDATA.IMPORT
+    - AWS.M2.CARDDEMO.CARDXREF.IMPORT
+    - AWS.M2.CARDDEMO.CUSTDATA.IMPORT
+    - AWS.M2.CARDDEMO.IMPORT.ERRORS
+    - AWS.M2.CARDDEMO.TRANSACT.IMPORT
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-002
+    name: TRANEXTR.jcl
+    description: 'Transaction type data extraction and backup; This job extracts transaction
+      type and transaction category data from a database and creates backup copies
+      of the previous versions. The job performs three sequential operations: backing
+      up the current transaction type file to a generation data group, backing up
+      the current transaction category file to a generation data group, and then extracting
+      fresh transaction type and category data from the database tables, writing the
+      results to new datasets. The job uses conditional execution to skip steps if
+      previous steps fail, ensuring data integrity throughout the extraction process.'
+    programs:
+    - DSNTIAUL
+    - IEBGENER
+    - IEFBR14
+    - IKJEFT01
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

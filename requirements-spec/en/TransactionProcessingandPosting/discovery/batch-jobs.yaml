@@ -1,0 +1,37 @@
+# Transaction Processing and Posting - Batch Job Discovery
+# Generated: 2026-08-08T04:25:33Z
+# Source: TransformKG (Python discovery)
+
+function: TransactionProcessingandPosting
+jobs:
+  migrate:
+  - id: BAT-002
+    name: POSTTRAN.jcl
+    description: Daily transaction posting and balance update; This job step invokes
+      the transaction posting program to process daily transaction records, validate
+      them against account and cross-reference data, and produce a rejected-transaction
+      output dataset. The program reads from the daily transaction file, account master
+      store, and card cross-reference store, then writes accepted transactions to
+      the transaction master and rejected transactions to a new rejection dataset.
+    programs:
+    - CBTRN02C
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup:
+  - id: BAT-001
+    name: COMBTRAN.jcl
+    description: Transaction consolidation and indexing; This job combines transaction
+      records from two sources (backup and system-generated), sorts them by transaction
+      identifier in ascending order, and loads the consolidated result into a transaction
+      master index. The sort operation merges the two input datasets and produces
+      a combined output; the subsequent load operation copies the sorted records into
+      the indexed transaction store for fast retrieval.
+    programs:
+    - IDCAMS
+    - SORT
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  skip: []

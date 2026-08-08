@@ -1,0 +1,98 @@
+2026-08-08 04:06:52,809 [main] INFO : Starting classification
+2026-08-08 04:06:52,898 [main] INFO : Classification started at : 04:06:52 (version 20260728133336)
+2026-08-08 04:06:53,099 [pool-2-thread-2] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/asm/MVSWAIT.asm was classified through a second check
+2026-08-08 04:06:53,125 [pool-2-thread-1] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/asm/COBDATFT.asm was classified through a second check
+2026-08-08 04:06:53,139 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/dcl/AUTHFRDS.dcl was classified through a second check
+2026-08-08 04:06:53,152 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/CIPAUSMY.cpy was classified through a second check
+2026-08-08 04:06:53,156 [pool-2-thread-12] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/PASFLPCB.CPY was classified through a second check
+2026-08-08 04:06:53,160 [pool-2-thread-2] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/PAUTBPCB.CPY was classified through a second check
+2026-08-08 04:06:53,161 [pool-2-thread-10] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/PADFLPCB.CPY was classified through a second check
+2026-08-08 04:06:53,162 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/CCPAURLY.cpy was classified through a second check
+2026-08-08 04:06:53,165 [pool-2-thread-14] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/IMSFUNCS.cpy was classified through a second check
+2026-08-08 04:06:53,176 [pool-2-thread-3] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/CCPAURQY.cpy was classified through a second check
+2026-08-08 04:06:53,176 [pool-2-thread-9] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/CCPAUERY.cpy was classified through a second check
+2026-08-08 04:06:53,185 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/cpy/CSDB2RWY.cpy was classified through a second check
+2026-08-08 04:06:53,187 [pool-2-thread-8] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy/CIPAUDTY.cpy was classified through a second check
+2026-08-08 04:06:53,214 [pool-2-thread-10] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/cpy/CSDB2RPY.cpy was classified through a second check
+2026-08-08 04:06:53,214 [pool-2-thread-5] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy-bms/COPAU01.cpy was classified through a second check
+2026-08-08 04:06:53,216 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/dcl/DCLTRCAT.dcl was classified through a second check
+2026-08-08 04:06:53,216 [pool-2-thread-8] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/dcl/DCLTRTYP.dcl was classified through a second check
+2026-08-08 04:06:53,228 [pool-2-thread-2] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/cpy-bms/COTRTUP.cpy was classified through a second check
+2026-08-08 04:06:53,243 [pool-2-thread-5] INFO : [Classification] 100 files done
+2026-08-08 04:06:53,256 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSMSG01Y.cpy was classified through a second check
+2026-08-08 04:06:53,256 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA03Y.cpy was classified through a second check
+2026-08-08 04:06:53,257 [pool-2-thread-8] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/COSTM01.CPY was classified through a second check
+2026-08-08 04:06:53,258 [pool-2-thread-3] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/COTTL01Y.cpy was classified through a second check
+2026-08-08 04:06:53,258 [pool-2-thread-10] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVCUS01Y.cpy was classified through a second check
+2026-08-08 04:06:53,259 [pool-2-thread-11] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/cpy-bms/COTRTLI.cpy was classified through a second check
+2026-08-08 04:06:53,259 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSUSR01Y.cpy was classified through a second check
+2026-08-08 04:06:53,261 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSMSG02Y.cpy was classified through a second check
+2026-08-08 04:06:53,263 [pool-2-thread-11] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA04Y.cpy was classified through a second check
+2026-08-08 04:06:53,264 [pool-2-thread-6] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-authorization-ims-db2-mq/cpy-bms/COPAU00.cpy was classified through a second check
+2026-08-08 04:06:53,267 [pool-2-thread-11] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA01Y.cpy was classified through a second check
+2026-08-08 04:06:53,267 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVCRD01Y.cpy was classified through a second check
+2026-08-08 04:06:53,271 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSDAT01Y.cpy was classified through a second check
+2026-08-08 04:06:53,272 [pool-2-thread-10] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CUSTREC.cpy was classified through a second check
+2026-08-08 04:06:53,273 [pool-2-thread-3] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/COMEN02Y.cpy was classified through a second check
+2026-08-08 04:06:53,274 [pool-2-thread-5] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA07Y.cpy was classified through a second check
+2026-08-08 04:06:53,276 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVEXPORT.cpy was classified through a second check
+2026-08-08 04:06:53,277 [pool-2-thread-6] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CODATECN.cpy was classified through a second check
+2026-08-08 04:06:53,280 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/UNUSED1Y.cpy was classified through a second check
+2026-08-08 04:06:53,280 [pool-2-thread-5] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVACT02Y.cpy was classified through a second check
+2026-08-08 04:06:53,281 [pool-2-thread-14] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA06Y.cpy was classified through a second check
+2026-08-08 04:06:53,281 [pool-2-thread-11] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/COCOM01Y.cpy was classified through a second check
+2026-08-08 04:06:53,282 [pool-2-thread-3] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVACT03Y.cpy was classified through a second check
+2026-08-08 04:06:53,283 [pool-2-thread-10] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA02Y.cpy was classified through a second check
+2026-08-08 04:06:53,284 [pool-2-thread-6] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVACT01Y.cpy was classified through a second check
+2026-08-08 04:06:53,285 [pool-2-thread-9] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSSTRPFY.cpy was classified through a second check
+2026-08-08 04:06:53,292 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/COADM02Y.cpy was classified through a second check
+2026-08-08 04:06:53,292 [pool-2-thread-5] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CVTRA05Y.cpy was classified through a second check
+2026-08-08 04:06:53,292 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSSETATY.cpy was classified through a second check
+2026-08-08 04:06:53,293 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSUTLDWY.cpy was classified through a second check
+2026-08-08 04:06:53,301 [pool-2-thread-8] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSUTLDPY.cpy was classified through a second check
+2026-08-08 04:06:53,310 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COSGN00.CPY was classified through a second check
+2026-08-08 04:06:53,314 [pool-2-thread-3] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COMEN01.CPY was classified through a second check
+2026-08-08 04:06:53,315 [pool-2-thread-9] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COCRDSL.CPY was classified through a second check
+2026-08-08 04:06:53,316 [pool-2-thread-6] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COTRN01.CPY was classified through a second check
+2026-08-08 04:06:53,319 [pool-2-thread-5] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/CORPT00.CPY was classified through a second check
+2026-08-08 04:06:53,321 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COUSR01.CPY was classified through a second check
+2026-08-08 04:06:53,324 [pool-2-thread-11] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COCRDUP.CPY was classified through a second check
+2026-08-08 04:06:53,324 [pool-2-thread-8] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COBIL00.CPY was classified through a second check
+2026-08-08 04:06:53,333 [pool-2-thread-10] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COACTVW.CPY was classified through a second check
+2026-08-08 04:06:53,341 [pool-2-thread-13] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COUSR02.CPY was classified through a second check
+2026-08-08 04:06:53,343 [pool-2-thread-4] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COUSR03.CPY was classified through a second check
+2026-08-08 04:06:53,347 [pool-2-thread-6] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COADM01.CPY was classified through a second check
+2026-08-08 04:06:53,368 [pool-2-thread-14] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COTRN00.CPY was classified through a second check
+2026-08-08 04:06:53,372 [pool-2-thread-5] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COTRN02.CPY was classified through a second check
+2026-08-08 04:06:53,388 [pool-2-thread-7] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COCRDLI.CPY was classified through a second check
+2026-08-08 04:06:53,391 [pool-2-thread-3] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COACTUP.CPY was classified through a second check
+2026-08-08 04:06:53,394 [pool-2-thread-9] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy-bms/COUSR00.CPY was classified through a second check
+2026-08-08 04:06:53,400 [pool-2-thread-14] INFO : [Classification] 200 files done
+2026-08-08 04:06:53,408 [pool-2-thread-2] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/cpy/CSLKPCDY.cpy was classified through a second check
+2026-08-08 04:06:53,409 [pool-2-thread-11] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/maclib/COCDATFT.mac was classified through a second check
+2026-08-08 04:06:53,469 [main] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/ctl/DB2TIAD1.ctl was classified through a context check
+2026-08-08 04:06:53,470 [main] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/ctl/DB2FREE.ctl was classified through a context check
+2026-08-08 04:06:53,470 [main] INFO : File /ramdisk/1/generic_and_classification/classification/files-to-classify/demo/app-transaction-type-db2/ctl/DB2TEP41.ctl was classified through a context check
+2026-08-08 04:06:53,470 [main] INFO : Classification successful, finished at : 04:06:53
+2026-08-08 04:06:53,470 [main] INFO : 237 files processed
+2026-08-08 04:06:53,470 [main] INFO : 0 files need no processing (with extension)
+2026-08-08 04:06:53,470 [main] INFO : Global duration : 1 sec
+2026-08-08 04:06:53,470 [main] INFO : Outcome:
+2026-08-08 04:06:53,471 [main] INFO : - macro: 1
+2026-08-08 04:06:53,471 [main] INFO : - proc: 2
+2026-08-08 04:06:53,471 [main] INFO : - controlm: 1
+2026-08-08 04:06:53,471 [main] INFO : - dbd: 4
+2026-08-08 04:06:53,471 [main] INFO : - BINARY: 14
+2026-08-08 04:06:53,471 [main] INFO : - bms: 21
+2026-08-08 04:06:53,471 [main] INFO : - cpy: 65
+2026-08-08 04:06:53,471 [main] INFO : - sql: 9
+2026-08-08 04:06:53,471 [main] INFO : - jcl: 46
+2026-08-08 04:06:53,471 [main] INFO : - Unknown: 12
+2026-08-08 04:06:53,471 [main] INFO : - asm-cpy: 1
+2026-08-08 04:06:53,471 [main] INFO : - csdcommand: 4
+2026-08-08 04:06:53,471 [main] INFO : - cob: 44
+2026-08-08 04:06:53,471 [main] INFO : - ca7: 1
+2026-08-08 04:06:53,471 [main] INFO : - asm: 2
+2026-08-08 04:06:53,471 [main] INFO : - ctl: 5
+2026-08-08 04:06:53,471 [main] INFO : - LISTCAT: 1
+2026-08-08 04:06:53,471 [main] INFO : - psb: 4

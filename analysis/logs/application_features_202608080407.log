@@ -1,0 +1,12 @@
+2026-08-08 04:07:53,514 [main] INFO : Starting application features
+2026-08-08 04:07:53,602 [main] INFO : PathIndexer built: 485 unique identifiers indexed, BitSet size = 0 KB
+2026-08-08 04:07:53,604 [main] INFO : Application Features analysis started at: 04:07:53 (version 20260629155750)
+2026-08-08 04:07:53,604 [main] INFO : Pre-compute: identified 25 conditional boundary nodes
+2026-08-08 04:07:53,605 [main] INFO : Pre-compute setup completed in 0 ms
+2026-08-08 04:07:53,605 [main] INFO : Processing 74 entrypoints with 15 threads (pre-compute enabled)
+2026-08-08 04:07:53,628 [pool-2-thread-3] INFO : Progress: 74/74 entrypoints processed
+2026-08-08 04:07:53,629 [main] INFO : Cache stats: 147 nodes cached
+2026-08-08 04:07:53,629 [main] INFO : Application Features analysis ended successfully at: 04:07:53
+2026-08-08 04:07:53,629 [main] INFO : Global duration: 0 sec
+2026-08-08 04:07:53,629 [main] INFO : Outcome: Identified 74 Application Features
+2026-08-08 04:07:53,630 [json-writer] INFO : JSON serialization complete: 74 results in 27 ms

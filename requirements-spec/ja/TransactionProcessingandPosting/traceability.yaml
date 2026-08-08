@@ -1,0 +1,1262 @@
+function: TransactionProcessingandPosting
+generated_at: '2026-08-08T04:27:39Z'
+summary:
+  total_rules: 49
+  captured: 48
+  not_applicable: 1
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 49
+    written: 49
+    shortfall: 0
+rules:
+- rule_id: 54fe9d5d_d931_4e30_8302_b3f8c43f9a9a
+  program: CBTRN01C
+  disposition: captured
+  rule_name: クロスリファレンスカード照会の準備と実行
+  rule_text: 日次トランザクションレコードの取得に成功した場合、クロスリファレンス照会準備SHALLはクロスリファレンス読み取りステータスを0に初期化し、日次トランザクションレコードからカード番号をクロスリファレンスレコードにコピーし、クロスリファレンス照会処理を呼び出す。
+  req_id: REQ-F-003
+  traceability_lines:
+  - 170
+  - 171
+  - 172
+- rule_id: b2999631_09bf_40bc_a82d_c58860a793bc
+  program: CBTRN01C
+  disposition: captured
+  rule_name: クロスリファレンス照会成功の検証とアカウント読み取り準備
+  rule_text: クロスリファレンス照会が成功した場合、アカウント照会準備SHALLはクロスリファレンス読み取りステータスが0であるとき、アカウント読み取りステータスを0に初期化し、クロスリファレンスレコードからアカウント識別子をアカウントレコードにコピーし、アカウント読み取り処理を呼び出す。
+  req_id: REQ-F-006
+  traceability_lines:
+  - 173
+  - 174
+  - 175
+  - 176
+- rule_id: 0d6c0689_8d00_462b_939c_e2ca906787d2
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: クロスリファレンスファイルでのカード番号照会
+  rule_text: カード番号照会が要求された場合、カードクロスリファレンス照会SHALLはカード番号をキーとしてクロスリファレンスファイル（`XREF-FILE`）からクロスリファレンスレコードを取得する。レコードが見つかった場合、クロスリファレンスレコードにアカウント識別子を設定する。レコードが見つからない場合、クロスリファレンス読み取りステータスを4に設定する。
+  req_ids:
+  - REQ-F-004
+  - REQ-F-005
+  traceability_lines:
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 233
+  - 239
+- rule_id: 2c8df34a_a958_4176_bb80_25e9cf5f33a8
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: 日次トランザクション、クロスリファレンス、およびアカウントファイルのオープン
+  rule_text: ファイル初期化ハンドラSHALLは、入力処理のために日次トランザクションファイル（`DALYTRAN-FILE`）、クロスリファレンスファイル（`XREF-FILE`）、およびアカウントファイル（`ACCOUNT-FILE`）をオープンする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 155
+  - 157
+  - 159
+  - 161
+  - 252
+  - 254
+  - 289
+  - 291
+  - 325
+  - 327
+- rule_id: 44f6c061_09d6_48aa_bf48_8b8d26973527
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: 次の日次トランザクションレコードの取得
+  rule_text: プログラムが次の日次トランザクションレコードを要求した場合、日次トランザクション取得SHALLは日次トランザクションファイル（`DALYTRAN-FILE`）から次のレコードを読み取る。成功した場合、アプリケーション結果を成功（0）に設定する。ファイル終端に達した場合、アプリケーション結果をファイル終端（16）に設定し、日次トランザクションファイル終端フラグを'Y'に設定する。入出力エラーが発生した場合、アプリケーション結果をエラー（12）に設定する。
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+  traceability_lines:
+  - 200
+  - 202
+  - 203
+  - 204
+  - 205
+  - 206
+  - 207
+  - 208
+  - 209
+  - 210
+  - 211
+  - 212
+  - 213
+  - 215
+  - 216
+  - 217
+  - 223
+  - 224
+- rule_id: 80de6354_62a0_404c_b632_72ba05f292be
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: アカウント識別子によるアカウントレコードの読み取り
+  rule_text: アカウント識別子照会が要求された場合、アカウントレコード取得SHALLはアカウント識別子をキーとしてアカウントファイル（`ACCOUNT-FILE`）からアカウントレコードを取得する。レコードが見つかった場合、アカウントレコードを設定する。レコードが見つからない場合、アカウント読み取りステータスを4に設定する。
+  req_ids:
+  - REQ-F-006
+  - REQ-F-007
+  traceability_lines:
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 247
+  - 250
+- rule_id: 908a4c39_9e23_4e75_b760_b7d4a594a406
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: アカウント未検出エラーの報告
+  rule_text: アカウント読み取りステータスが0と等しくない場合、アカウント未検出エラーハンドラSHALLはアカウントレコードを取得できないとき、アカウント識別子と'ACCOUNT
+    'および' NOT FOUND'というテキストを含むエラーメッセージを表示する。
+  req_id: REQ-F-008
+  traceability_lines:
+  - 177
+  - 178
+  - 179
+- rule_id: a0c44f1e_ccbd_48e9_9487_47f86dd8604b
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: ファイル終端まで日次トランザクションレコードを処理
+  rule_text: 処理対象の日次トランザクションレコードが残っている間、トランザクション処理ループSHALLは次の日次トランザクションレコードを繰り返し取得し、そのカード番号をクロスリファレンスファイルで照会してアカウント識別子を取得し、アカウントの存在を検証し、日次トランザクションファイルが終端に達するまで継続する。
+  req_id: REQ-F-002
+  traceability_lines:
+  - 164
+  - 165
+  - 166
+  - 170
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+  - 176
+  - 177
+  - 178
+  - 179
+  - 184
+  - 185
+  - 186
+- rule_id: 228d8123_0a5e_4778_aa01_8be0ac57d1df
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: 日次トランザクションファイルのオープン
+  rule_text: トランザクションファイルハンドラSHALLは、日次トランザクションファイル（`DALYTRAN-FILE`）を入力モードでオープンする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 252
+  - 254
+- rule_id: 48e40855_f1b9_470c_b988_45575e1c42e9
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: カードクロスリファレンスファイルのオープン
+  rule_text: クロスリファレンスファイルハンドラSHALLは、カードクロスリファレンスファイル（`XREF-FILE`）を入力モードでオープンする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 289
+  - 291
+- rule_id: 4a0ebf67_5406_43a5_9074_6f6d4aaa43c4
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: クロスリファレンス照会用のカード番号の準備
+  rule_text: カード番号マッパーSHALLは、日次トランザクションレコードからクロスリファレンスレコードにカード番号をコピーする。
+  req_id: REQ-F-003
+  traceability_lines:
+  - 171
+- rule_id: be71f221_3263_4bb8_9802_1904e9bc88ed
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: 次の日次トランザクションレコードの取得
+  rule_text: プログラムが次の日次トランザクションレコードを要求した場合、日次トランザクション取得SHALLは日次トランザクションファイル（`DALYTRAN-FILE`）から次のレコードを読み取る。成功した場合、アプリケーション結果を成功（0）に設定する。ファイル終端に達した場合、アプリケーション結果をファイル終端（16）に設定し、日次トランザクションファイル終端フラグを'Y'に設定する。入出力エラーが発生した場合、アプリケーション結果をエラー（12）に設定する。
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+  traceability_lines:
+  - 200
+  - 202
+  - 203
+  - 204
+  - 205
+  - 206
+  - 207
+  - 208
+  - 209
+  - 210
+  - 211
+  - 212
+  - 213
+  - 215
+  - 216
+  - 217
+  - 223
+  - 224
+- rule_id: c23f48d2_6114_4196_a287_501a8b63ca56
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: ファイル終端まで日次トランザクションを処理
+  rule_text: ファイル終端フラグが'Y'に設定されていない間、トランザクション処理ループSHALLは次の日次トランザクションレコードを取得し、カード番号のクロスリファレンス照会を実行する。
+  req_id: REQ-F-002
+  traceability_lines:
+  - 155
+  - 157
+  - 159
+  - 164
+  - 165
+  - 166
+  - 171
+  - 172
+  - 185
+  - 186
+- rule_id: eeb36e5d_5bd2_458c_a0e0_f3268adb0c1c
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: クロスリファレンスファイルでのカード照会
+  rule_text: カード番号がクロスリファレンス照会のために送信された場合、カードクロスリファレンス照会SHALLはカード番号でクロスリファレンスレコードを取得し、見つかった場合はカード番号、アカウントID、および顧客IDを表示する。レコードが見つからない場合は何もしない。（物理格納先：`XREF-FILE`）
+  req_id: REQ-F-004
+  traceability_lines:
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 234
+  - 236
+  - 237
+  - 238
+  - 239
+- rule_id: 1336c852_44c0_4faa_aa3b_958cb91f0bf3
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: カードクロスリファレンスファイルのオープン
+  rule_text: クロスリファレンスファイルハンドラSHALLは、カードクロスリファレンスファイル（`XREF-FILE`）を入力モードでオープンする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 289
+  - 291
+- rule_id: 41dc08b0_5200_4e98_b996_d18fc93074a8
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: クロスリファレンスファイルでのカード番号照会
+  rule_text: カード番号照会が要求された場合、カードクロスリファレンス照会SHALLはカード番号をキーとしてクロスリファレンスファイル（`XREF-FILE`）からクロスリファレンスレコードを取得する。レコードが見つかった場合、クロスリファレンスレコードにアカウント識別子を設定する。レコードが見つからない場合、クロスリファレンス読み取りステータスを4に設定する。
+  req_ids:
+  - REQ-F-004
+  - REQ-F-005
+  traceability_lines:
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 233
+  - 239
+- rule_id: 81685b58_b325_40e9_8c7c_e2ef1d968bdd
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: 日次トランザクションファイルのオープン
+  rule_text: トランザクションファイルハンドラSHALLは、日次トランザクションファイル（`DALYTRAN-FILE`）を入力モードでオープンする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 252
+  - 254
+- rule_id: 82ed2796_c494_4b3b_aa89_e3da06cae662
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: 次の日次トランザクションレコードの取得
+  rule_text: プログラムが次の日次トランザクションレコードを要求した場合、日次トランザクション取得SHALLは日次トランザクションファイル（`DALYTRAN-FILE`）から次のレコードを読み取る。成功した場合、アプリケーション結果を成功（0）に設定する。ファイル終端に達した場合、アプリケーション結果をファイル終端（16）に設定し、日次トランザクションファイル終端フラグを'Y'に設定する。入出力エラーが発生した場合、アプリケーション結果をエラー（12）に設定する。
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+  traceability_lines:
+  - 200
+  - 202
+  - 203
+  - 204
+  - 205
+  - 206
+  - 207
+  - 208
+  - 209
+  - 210
+  - 211
+  - 212
+  - 213
+  - 215
+  - 216
+  - 217
+  - 223
+  - 224
+- rule_id: 9c29145c_02bd_46f6_b440_29adc6b4844e
+  program: CBTRN01C
+  disposition: captured
+  program_path: demo/cbl/CBTRN01C.cbl
+  rule_name: ファイル終端まで日次トランザクションを処理
+  rule_text: ファイル終端フラグ（`END-OF-DAILY-TRANS-FILE`）が'Y'に設定されていない間、日次トランザクションプロセッサSHALLは次のトランザクションレコードを読み取り、トランザクションを表示し、カード番号を抽出し、クロスリファレンスファイルに対してカードを検証し、処理を継続するか、検証失敗を記録してトランザクションをスキップする。
+  req_ids:
+  - REQ-F-002
+  - REQ-F-005
+  traceability_lines:
+  - 155
+  - 157
+  - 159
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  - 169
+  - 170
+  - 171
+  - 172
+  - 173
+  - 180
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+- rule_id: 4a524a95_987e_4082_a97f_6369c037694c
+  program: CBTRN02C
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 新しいトランザクションカテゴリ残高レコードの作成
+  rule_text: アカウントタイプ・カテゴリの組み合わせに対して新しいトランザクションカテゴリ残高レコードを作成する必要がある場合、トランザクションカテゴリ残高レコード作成SHALLはトランザクションカテゴリ残高レコードを初期化し、トランザクションからアカウントID、トランザクションタイプコード、およびトランザクションカテゴリコードを設定し、トランザクション金額をカテゴリ残高に加算し、新しいレコードをトランザクションカテゴリ残高ファイルに書き込む。（物理格納先：`TCATBAL-FILE`）
+- rule_id: 0d681480_338c_4eb5_b15c_3468b7a794fb
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: カード相関参照ファイルのオープン
+  rule_text: 取引処理システムは、カード相関参照ファイル(`XREF-FILE`)を読み取り用にオープンしなければならない(SHALL)。
+  req_ids:
+  - REQ-F-011
+  - REQ-F-026
+  traceability_lines:
+  - 273
+  - 275
+- rule_id: 1f187727_764a_4b92_915f_fd05fbbaa47c
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 業務ルールに基づく取引の検証
+  rule_text: '取引レコードが検証可能な状態になったとき(WHEN)、取引検証エンジンは、カード相関参照ファイルでカード番号を検索しなければならない(SHALL)。見つからない場合は検証失敗理由を100に設定する。見つかった場合は、口座マスターファイルで口座を検索する。見つからない場合は検証失敗理由を101に設定する。見つかった場合は、現サイクルクレジットから現サイクルデビットを引き取引金額を加えた値を仮残高として計算する。仮残高がクレジット限度額を超える場合は検証失敗理由を102に設定する。口座有効期限が取引日より前の場合は検証失敗理由を103に設定する。それ以外の場合は、検証失敗理由0で検証は成功する。(物理ストア:
+    `ACCOUNT-FILE`, `XREF-FILE`)'
+  req_ids:
+  - REQ-F-014
+  - REQ-F-015
+  - REQ-F-016
+  - REQ-F-017
+  - REQ-F-018
+  - REQ-F-030
+  - REQ-F-031
+  - REQ-F-032
+  - REQ-F-033
+  - REQ-F-034
+  traceability_lines:
+  - 370
+  - 371
+  - 372
+  - 373
+  - 376
+  - 380
+  - 381
+  - 382
+  - 383
+  - 384
+  - 385
+  - 391
+  - 393
+  - 394
+  - 395
+  - 396
+  - 397
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 407
+  - 409
+  - 410
+  - 413
+  - 414
+  - 416
+  - 417
+  - 420
+  - 421
+- rule_id: 272238f8_dce1_48c1_a090_e5e68d4b6da0
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 日次ファイルからの次の取引レコードの取得
+  rule_text: 日次取引ファイルから取引レコードが要求されたとき(WHEN)、取引取得ハンドラーは、日次取引ファイル(`DALYTRAN-FILE`)から次の取引レコードを読み取らなければならない(SHALL)。成功した場合はアプリケーション結果を成功(0)に設定する。ファイル終端に達した場合はアプリケーション結果を16に設定し、ファイル終端フラグを'Y'に設定する。エラーが発生した場合はアプリケーション結果を12に設定する。
+  req_ids:
+  - REQ-F-013
+  - REQ-F-029
+  traceability_lines:
+  - 345
+  - 346
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 352
+  - 353
+  - 354
+  - 355
+  - 356
+  - 357
+  - 359
+  - 360
+  - 361
+  - 367
+  - 368
+- rule_id: 2cc94844_3a43_48d5_97c5_bdb2363ac4c2
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 日次取引入力ファイルのオープン
+  rule_text: 取引処理システムは、日次取引入力ファイル(`DALYTRAN-FILE`)を読み取り用にオープンしなければならない(SHALL)。
+  req_ids:
+  - REQ-F-011
+  - REQ-F-026
+  traceability_lines:
+  - 236
+  - 238
+- rule_id: 30a747d1_0154_4e1e_8332_0188019e7967
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 口座マスターファイルのオープン
+  rule_text: 取引処理システムは、口座マスターファイル(`ACCOUNT-FILE`)を読み取りおよび更新用にオープンしなければならない(SHALL)。
+  req_ids:
+  - REQ-F-011
+  - REQ-F-026
+  traceability_lines:
+  - 309
+  - 311
+- rule_id: 3ab7c993_22b4_4b48_ba37_d633f98175f7
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 登録用取引レコードの組み立て
+  rule_text: 取引レコード組み立て処理は、取引ID、種別コード、区分コード、発生源、説明、金額、加盟店ID、加盟店名、加盟店市区町村、加盟店郵便番号、およびカード番号を日次取引レコードから取引レコードにコピーしなければならない(SHALL)。DB2形式の現在のシステム日時を取得し、処理タイムスタンプとして格納する。
+  req_ids:
+  - REQ-F-022
+  - REQ-F-037
+  traceability_lines:
+  - 424
+  - 425
+  - 426
+  - 427
+  - 428
+  - 429
+  - 430
+  - 431
+  - 432
+  - 433
+  - 434
+  - 435
+  - 436
+  - 437
+  - 438
+  - 441
+  - 442
+- rule_id: 41763769_2dd4_4c9a_85b0_3d6fb390ac7f
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 現在のシステム日時の取得
+  rule_text: タイムスタンプフォーマッタは、現在のシステム日時を取得し、年、月、日、時、分、秒、ミリ秒の各要素を抽出し、日付区切りにハイフン、時刻区切りにドットを用い、末尾に'0000'を付加したDB2互換のタイムスタンプ文字列に整形しなければならない(SHALL)。
+  req_ids:
+  - REQ-F-022
+  - REQ-F-037
+  traceability_lines:
+  - 692
+  - 693
+  - 694
+  - 695
+  - 696
+  - 697
+  - 698
+  - 699
+  - 700
+  - 701
+  - 702
+  - 703
+- rule_id: 55ac9233_c8a6_4543_9adc_d5449675097a
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 取引アーカイブ出力ファイルのオープン
+  rule_text: 取引処理システムは、取引アーカイブファイル(`TRANSACT-FILE`)を書き込み用にオープンしなければならない(SHALL)。
+  req_ids:
+  - REQ-F-011
+  - REQ-F-027
+  traceability_lines:
+  - 254
+  - 256
+- rule_id: 6fda52c8_2563_4224_b3d4_5556a256b846
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: ファイル終端までの日次取引の処理
+  rule_text: 処理すべき日次取引が残っている間(WHILE)、取引処理システムは、次の取引を取得し、相関参照および口座レコードと照合して検証し、検証に成功した場合は取引を登録して口座残高を更新し、取引アーカイブに書き込まなければならない(SHALL)。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-028
+  traceability_lines:
+  - 193
+  - 195
+  - 196
+  - 197
+  - 199
+  - 202
+  - 203
+  - 204
+  - 205
+  - 210
+  - 211
+  - 212
+  - 216
+  - 217
+  - 218
+  - 219
+- rule_id: e5b43122_eb54_4a67_8e14_80b166756eec
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 取引レコードのアーカイブ
+  rule_text: 取引アーカイブ処理は、取引レコードを取引アーカイブファイル(`TRANSACT-FILE`)に書き込まなければならない(SHALL)。
+  req_ids:
+  - REQ-F-023
+  - REQ-F-038
+  traceability_lines:
+  - 562
+  - 564
+- rule_id: f1acc8e7_1873_4eaa_b1e5_6130b65745d8
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 口座残高およびサイクル金額の更新
+  rule_text: '取引が登録され口座残高を更新する必要があるとき(WHEN)、口座残高更新処理は、取引金額を口座の現在残高に加算しなければならない(SHALL)。取引金額がゼロまたは正の場合は現サイクルクレジットに加算する。取引金額が負の場合はその絶対値を現サイクルデビットに加算する。更新後の口座レコードを口座マスターファイルに再書き込みする。(物理ストア:
+    `ACCOUNT-FILE`)'
+  req_ids:
+  - REQ-F-021
+  - REQ-F-036
+  traceability_lines:
+  - 545
+  - 546
+  - 547
+  - 548
+  - 549
+  - 550
+  - 551
+  - 552
+  - 554
+- rule_id: 2538ad58_e0b1_449d_8df3_0fa9c329d883
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 口座マスターファイルでの口座の検索
+  rule_text: '相関参照検索から取得した口座IDが口座検証可能な状態になったとき(WHEN)、口座検証ハンドラーは、口座IDを口座ファイルキーに設定し、口座マスターファイルを読み取らなければならない(SHALL)。見つからない場合は検証失敗理由を101に設定する。見つかった場合は、現サイクルクレジットから現サイクルデビットを引き取引金額を加えた値を仮残高として計算する。仮残高がクレジット限度額を超える場合は検証失敗理由を102に設定する。口座有効期限が取引日より前の場合は検証失敗理由を103に設定する。それ以外の場合は検証は成功する。(物理ストア:
+    `ACCOUNT-FILE`)'
+  req_ids:
+  - REQ-F-015
+  - REQ-F-016
+  - REQ-F-017
+  - REQ-F-031
+  - REQ-F-032
+  - REQ-F-033
+  traceability_lines:
+  - 393
+  - 394
+  - 395
+  - 396
+  - 397
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 407
+  - 409
+  - 410
+  - 413
+  - 414
+  - 416
+  - 417
+  - 420
+  - 421
+- rule_id: 4bc21546_9e38_452d_b8c4_ee5f3860ddc1
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 取引処理ファイルのオープン
+  rule_text: '取引処理システムは、日次取引ファイル、カード相関参照ファイル、口座マスターファイル、および取引区分残高ファイルを処理用にオープンしなければならない(SHALL)。(物理ストア:
+    `DALYTRAN-FILE`, `XREF-FILE`)'
+  req_ids:
+  - REQ-F-011
+  - REQ-F-026
+  traceability_lines:
+  - 193
+  - 195
+  - 197
+  - 199
+  - 200
+  - 238
+  - 275
+  - 311
+  - 329
+- rule_id: 56220b64_fe74_4faf_81af_4efbb84b6d44
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 日次ファイルからの次の取引レコードの取得
+  rule_text: 日次取引ファイルから取引レコードが要求されたとき(WHEN)、取引取得ハンドラーは、日次取引ファイル(`DALYTRAN-FILE`)から次の取引レコードを読み取らなければならない(SHALL)。成功した場合はアプリケーション結果を成功(0)に設定する。ファイル終端に達した場合はアプリケーション結果を16に設定し、ファイル終端フラグを'Y'に設定する。エラーが発生した場合はアプリケーション結果を12に設定する。
+  req_ids:
+  - REQ-F-013
+  - REQ-F-029
+  traceability_lines:
+  - 345
+  - 346
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 352
+  - 353
+  - 354
+  - 355
+  - 356
+  - 357
+  - 359
+  - 360
+  - 361
+  - 367
+  - 368
+- rule_id: 5eefb752_98f3_4054_8e01_eb38ca3f6f81
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 口座残高およびサイクル金額の更新
+  rule_text: '取引が登録され口座残高を更新する必要があるとき(WHEN)、口座残高更新処理は、取引金額を口座の現在残高に加算しなければならない(SHALL)。取引金額がゼロまたは正の場合は現サイクルクレジットに加算する。取引金額が負の場合はその絶対値を現サイクルデビットに加算する。更新後の口座レコードを口座マスターファイルに再書き込みする。(物理ストア:
+    `ACCOUNT-FILE`)'
+  req_ids:
+  - REQ-F-021
+  - REQ-F-036
+  traceability_lines:
+  - 545
+  - 546
+  - 547
+  - 548
+  - 549
+  - 550
+  - 551
+  - 552
+  - 554
+- rule_id: 81d12174_b33d_4c43_92da_06c9bc591114
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 既存の取引区分残高レコードの更新
+  rule_text: '既存の取引区分残高レコードを新しい取引で更新する必要があるとき(WHEN)、取引区分残高レコード更新処理は、取引金額を既存の区分残高に加算し、更新後のレコードを取引区分残高ファイルに再書き込みしなければならない(SHALL)。(物理ストア:
+    `TCATBAL-FILE`)'
+  req_ids:
+  - REQ-F-020
+  - REQ-F-035
+  traceability_lines:
+  - 526
+  - 527
+  - 528
+- rule_id: 8ac702c9_6a76_4f87_831d_ee50a6ae98ef
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: ファイル終端までの取引の処理
+  rule_text: 日次取引ファイルに取引レコードが残っている間(WHILE)、取引処理システムは、次の取引レコードを取得し、検証を行い、検証に成功した場合はこれを登録しなければならない(SHALL)。ファイル終端に達するまで繰り返す。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-028
+  traceability_lines:
+  - 202
+  - 203
+  - 204
+  - 205
+  - 210
+  - 211
+  - 212
+  - 216
+  - 217
+  - 218
+  - 219
+- rule_id: 901dcce4_20d7_4377_a505_177de2804913
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 承認済み取引の区分残高への登録
+  rule_text: '取引が検証に合格し登録可能な状態になったとき(WHEN)、取引区分残高登録処理は、口座ID、取引種別コード、および取引区分コードをキーとして取引区分残高レコードの読み取りを試みなければならない(SHALL)。レコードが存在しない場合は、取引金額を初期区分残高とする新規レコードを作成する。レコードが存在する場合は、取引金額を既存の区分残高に加算する。(物理ストア:
+    `TCATBAL-FILE`)'
+  req_ids:
+  - REQ-F-020
+  - REQ-F-035
+  traceability_lines:
+  - 424
+  - 440
+  - 441
+  - 467
+  - 468
+  - 469
+  - 470
+  - 471
+  - 473
+  - 474
+  - 475
+  - 478
+  - 479
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+- rule_id: c5b5b7ea_b681_4bad_8440_80f48c835022
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 業務ルールに基づく取引の検証
+  rule_text: '取引レコードが検証可能な状態になったとき(WHEN)、取引検証エンジンは、カード相関参照ファイルでカード番号を検索しなければならない(SHALL)。見つからない場合は検証失敗理由を100に設定する。見つかった場合は、口座マスターファイルで口座を検索する。見つからない場合は検証失敗理由を101に設定する。見つかった場合は、現サイクルクレジットから現サイクルデビットを引き取引金額を加えた値を仮残高として計算する。仮残高がクレジット限度額を超える場合は検証失敗理由を102に設定する。口座有効期限が取引日より前の場合は検証失敗理由を103に設定する。それ以外の場合は、検証失敗理由0で検証は成功する。(物理ストア:
+    `ACCOUNT-FILE`, `XREF-FILE`)'
+  req_ids:
+  - REQ-F-014
+  - REQ-F-015
+  - REQ-F-016
+  - REQ-F-017
+  - REQ-F-018
+  - REQ-F-030
+  - REQ-F-031
+  - REQ-F-032
+  - REQ-F-033
+  - REQ-F-034
+  traceability_lines:
+  - 370
+  - 371
+  - 372
+  - 373
+  - 376
+  - 380
+  - 381
+  - 382
+  - 383
+  - 384
+  - 385
+  - 391
+  - 393
+  - 394
+  - 395
+  - 396
+  - 397
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 407
+  - 409
+  - 410
+  - 413
+  - 414
+  - 416
+  - 417
+  - 420
+  - 421
+- rule_id: c861b16f_2ff3_468e_aece_3d8a468e9a6d
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 相関参照ファイルでのカードの検索
+  rule_text: 'WHEN トランザクションレコードのカード番号が検索可能な状態になったとき、THE カード相互参照検索 SHALL カード番号を相互参照ファイルキーに移動し、相互参照ファイルを読み込む。カードが見つからない場合は検証失敗理由を100に設定する。見つかった場合は次の検証ステップのためにアカウントIDを抽出する。(physical
+    store: `XREF-FILE`)'
+  req_ids:
+  - REQ-F-014
+  - REQ-F-030
+  traceability_lines:
+  - 380
+  - 381
+  - 382
+  - 383
+  - 384
+  - 385
+  - 391
+- rule_id: 08d67fbb_f7cd_4d83_a594_225d2b9b3bee
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: プログラムを初期化し、必要なすべてのファイルをオープンする
+  rule_text: THE トランザクション処理システム SHALL 処理のために、日次トランザクションファイル(`DALYTRAN-FILE`)、相互参照ファイル(`XREF-FILE`)、日次拒否ファイル(`DALYREJS-FILE`)、およびアカウントファイル(`ACCOUNT-FILE`)をオープンする。
+  req_ids:
+  - REQ-F-011
+  - REQ-F-026
+  - REQ-F-027
+  traceability_lines:
+  - 193
+  - 195
+  - 197
+  - 198
+  - 199
+  - 238
+  - 275
+  - 293
+  - 311
+- rule_id: 2ec9fe37_f4e1_492a_98a2_b0e9fdec1d16
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 有効なトランザクションを記帳し、アカウント残高を更新する
+  rule_text: 'WHEN トランザクションがすべての検証チェックに合格したとき、THE アカウント更新ハンドラ SHALL トランザクション金額をアカウント現在残高(`ACCT-CURR-BAL`)に加算する。トランザクション金額が非負の場合は現在サイクルクレジット(`ACCT-CURR-CYC-CREDIT`)に加算し、トランザクション金額が負の場合は現在サイクルデビット(`ACCT-CURR-CYC-DEBIT`)に加算する。その後、更新されたアカウントレコードをアカウントファイル(`ACCOUNT-FILE`)に再書き込みする。(physical
+    stores: `DALYREJS-FILE`)'
+  req_ids:
+  - REQ-F-021
+  - REQ-F-036
+  traceability_lines:
+  - 424
+  - 441
+  - 446
+  - 447
+  - 448
+  - 451
+  - 545
+  - 546
+  - 547
+  - 548
+  - 549
+  - 550
+  - 551
+  - 552
+  - 554
+- rule_id: 8f17f4a0_4465_445e_be69_6cc7b2fc8b14
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 日次ファイルから次のトランザクションレコードを取得する
+  rule_text: WHEN 日次トランザクションファイルからトランザクションレコードが要求されたとき、THE トランザクション取得ハンドラ SHALL 日次トランザクションファイル(`DALYTRAN-FILE`)から次のトランザクションレコードを読み込む。成功した場合はアプリケーション結果を成功(0)に設定し、ファイル終端に達した場合はアプリケーション結果を16に設定しファイル終端フラグを'Y'に設定し、エラーが発生した場合はアプリケーション結果を12に設定する。
+  req_ids:
+  - REQ-F-013
+  - REQ-F-029
+  traceability_lines:
+  - 345
+  - 346
+  - 347
+  - 348
+  - 349
+  - 350
+  - 351
+  - 352
+  - 353
+  - 354
+  - 355
+  - 356
+  - 357
+  - 359
+  - 360
+  - 361
+  - 367
+  - 368
+- rule_id: 987a8de4_7193_4fc1_8741_adfed58df0ee
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 相互参照とアカウントデータに対してトランザクションを検証する
+  rule_text: WHEN トランザクションレコードが検証可能な状態になったとき、THE トランザクション検証エンジン SHALL 相互参照ファイル(`XREF-FILE`)でカード番号を検索してアカウントIDを取得する。カードが見つからない場合は検証失敗理由を100('INVALID
+    CARD NUMBER FOUND')に設定する。カードが見つかった場合はアカウントIDを使用してアカウントファイル(`ACCOUNT-FILE`)でアカウントレコードを検索する。アカウントが見つからない場合は検証失敗理由を101('ACCOUNT
+    RECORD NOT FOUND')に設定する。アカウントが見つかった場合は、現在サイクルクレジットから現在サイクルデビットを引きトランザクション金額を加えた値として仮残高を計算し、この残高がクレジット限度額を超える場合は検証失敗理由を102('OVERLIMIT
+    TRANSACTION')に設定する。また、アカウントの有効期限がトランザクション日付より前であるかどうかを確認し、その場合は検証失敗理由を103('TRANSACTION
+    RECEIVED AFTER ACCT EXPIRATION')に設定する。
+  req_ids:
+  - REQ-F-014
+  - REQ-F-015
+  - REQ-F-016
+  - REQ-F-017
+  - REQ-F-018
+  - REQ-F-030
+  - REQ-F-031
+  - REQ-F-032
+  - REQ-F-033
+  - REQ-F-034
+  traceability_lines:
+  - 370
+  - 371
+  - 372
+  - 373
+  - 376
+  - 380
+  - 381
+  - 382
+  - 383
+  - 384
+  - 385
+  - 386
+  - 387
+  - 391
+  - 393
+  - 394
+  - 395
+  - 396
+  - 397
+  - 398
+  - 399
+  - 400
+  - 401
+  - 402
+  - 403
+  - 404
+  - 405
+  - 407
+  - 409
+  - 410
+  - 411
+  - 412
+  - 413
+  - 414
+  - 416
+  - 417
+  - 418
+  - 419
+  - 420
+  - 421
+- rule_id: 9a03bb1d_96c0_4152_900b_02ba6cafdbf1
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: ファイル終端まで日次トランザクションを処理する
+  rule_text: WHILE 日次トランザクションファイルにトランザクションレコードが残っている間、THE トランザクション処理システム SHALL 次のトランザクションレコードを取得し、相互参照とアカウントデータに対して検証し、トランザクションをアカウントに記帳するか、検証失敗理由とともに拒否されたトランザクションを拒否ファイルに書き込む。すべてのトランザクションレコードが処理されるまで繰り返す。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-028
+  - REQ-F-039
+  traceability_lines:
+  - 202
+  - 203
+  - 204
+  - 205
+  - 210
+  - 211
+  - 212
+  - 213
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+- rule_id: f50a9538_7a19_4e7c_8f55_97b5b5b7059d
+  program: CBTRN02C
+  disposition: captured
+  program_path: demo/cbl/CBTRN02C.cbl
+  rule_name: 拒否されたトランザクションを拒否ファイルに書き込む
+  rule_text: WHEN トランザクションが検証に失敗したとき、THE 拒否レコードライタ SHALL トランザクションデータと検証トレーラをコピーして拒否レコードを組み立て、その拒否レコードを日次拒否ファイル(`DALYREJS-FILE`)に書き込む。
+  req_ids:
+  - REQ-F-019
+  - REQ-F-039
+  traceability_lines:
+  - 446
+  - 447
+  - 448
+  - 451
+- rule_id: 4138ab5c_8a65_49f4_8019_8ab27a9c2127
+  program: COMBTRAN
+  disposition: captured
+  program_path: demo/jcl/COMBTRAN.jcl
+  rule_name: 識別子でトランザクションレコードを結合およびソートする
+  rule_text: 'THE トランザクション統合およびソート SHALL バックアップストアとシステム生成ストアからトランザクションレコードを読み込み、それらを単一のデータセットに統合し、トランザクション識別子で昇順にソートし、ソート結果を結合トランザクションデータセットに書き込む。(physical
+    stores: `SORTIN`, `SORTOUT`, `SYMNAMES`, `SYSIN`)'
+  req_id: REQ-F-024
+  traceability_lines:
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+- rule_id: 8ea42305_187d_4fb4_b8bb_dc043f4e684a
+  program: COMBTRAN
+  disposition: captured
+  program_path: demo/jcl/COMBTRAN.jcl
+  rule_name: 統合されたトランザクションをマスタインデックスにロードする
+  rule_text: 'THE トランザクションマスタロード SHALL 結合データセットから統合されたトランザクションレコードをトランザクションマスタインデックスストアにコピーする。(physical
+    stores: `SYSIN`, `TRANSACT`, `TRANVSAM`)'
+  req_id: REQ-F-025
+  traceability_lines:
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+- rule_id: 38b21011_3184_469b_801b_4f7fbdb9b8b8
+  program: POSTTRAN
+  disposition: captured
+  program_path: demo/jcl/POSTTRAN.jcl
+  rule_name: トランザクション記帳と残高更新を実行する
+  rule_text: 'THE トランザクション記帳エンジン SHALL トランザクション記帳プログラム(`CBTRN02C`)を呼び出し、トランザクションファイル(`DALYTRAN`)から日次トランザクションレコードを読み込み、各トランザクションをアカウントマスタストア(`ACCTFILE`)およびカード相互参照ストア(`XREFFILE`)に対して検証し、受理されたトランザクションでトランザクションマスタストア(`TRANFILE`)を更新し、拒否されたトランザクションを拒否データセット(`DALYREJS`)に書き込む。(physical
+    stores: `STEPLIB`, `TCATBALF`)'
+  req_id: REQ-N-001
+  traceability_lines:
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 2c8df34a_a958_4176_bb80_25e9cf5f33a8
+  - 228d8123_0a5e_4778_aa01_8be0ac57d1df
+  - 48e40855_f1b9_470c_b988_45575e1c42e9
+  - 81685b58_b325_40e9_8c7c_e2ef1d968bdd
+  - 1336c852_44c0_4faa_aa3b_958cb91f0bf3
+- req_id: REQ-F-002
+  rule_ids:
+  - a0c44f1e_ccbd_48e9_9487_47f86dd8604b
+  - c23f48d2_6114_4196_a287_501a8b63ca56
+  - 9c29145c_02bd_46f6_b440_29adc6b4844e
+- req_id: REQ-F-003
+  rule_ids:
+  - 4a0ebf67_5406_43a5_9074_6f6d4aaa43c4
+  - 54fe9d5d_d931_4e30_8302_b3f8c43f9a9a
+- req_id: REQ-F-004
+  rule_ids:
+  - 0d6c0689_8d00_462b_939c_e2ca906787d2
+  - 41dc08b0_5200_4e98_b996_d18fc93074a8
+  - eeb36e5d_5bd2_458c_a0e0_f3268adb0c1c
+- req_id: REQ-F-005
+  rule_ids:
+  - 0d6c0689_8d00_462b_939c_e2ca906787d2
+  - 41dc08b0_5200_4e98_b996_d18fc93074a8
+  - 9c29145c_02bd_46f6_b440_29adc6b4844e
+- req_id: REQ-F-006
+  rule_ids:
+  - b2999631_09bf_40bc_a82d_c58860a793bc
+  - 80de6354_62a0_404c_b632_72ba05f292be
+- req_id: REQ-F-007
+  rule_ids:
+  - 80de6354_62a0_404c_b632_72ba05f292be
+- req_id: REQ-F-008
+  rule_ids:
+  - 908a4c39_9e23_4e75_b760_b7d4a594a406
+- req_id: REQ-F-009
+  rule_ids:
+  - 44f6c061_09d6_48aa_bf48_8b8d26973527
+  - be71f221_3263_4bb8_9802_1904e9bc88ed
+  - 82ed2796_c494_4b3b_aa89_e3da06cae662
+- req_id: REQ-F-010
+  rule_ids:
+  - 44f6c061_09d6_48aa_bf48_8b8d26973527
+  - be71f221_3263_4bb8_9802_1904e9bc88ed
+  - 82ed2796_c494_4b3b_aa89_e3da06cae662
+- req_id: REQ-F-011
+  rule_ids:
+  - 08d67fbb_f7cd_4d83_a594_225d2b9b3bee
+  - 4bc21546_9e38_452d_b8c4_ee5f3860ddc1
+  - 2cc94844_3a43_48d5_97c5_bdb2363ac4c2
+  - 0d681480_338c_4eb5_b15c_3468b7a794fb
+  - 30a747d1_0154_4e1e_8332_0188019e7967
+  - 55ac9233_c8a6_4543_9adc_d5449675097a
+- req_id: REQ-F-012
+  rule_ids:
+  - 9a03bb1d_96c0_4152_900b_02ba6cafdbf1
+  - 8ac702c9_6a76_4f87_831d_ee50a6ae98ef
+  - 6fda52c8_2563_4224_b3d4_5556a256b846
+- req_id: REQ-F-013
+  rule_ids:
+  - 272238f8_dce1_48c1_a090_e5e68d4b6da0
+  - 56220b64_fe74_4faf_81af_4efbb84b6d44
+  - 8f17f4a0_4465_445e_be69_6cc7b2fc8b14
+- req_id: REQ-F-014
+  rule_ids:
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - c861b16f_2ff3_468e_aece_3d8a468e9a6d
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+- req_id: REQ-F-015
+  rule_ids:
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - 2538ad58_e0b1_449d_8df3_0fa9c329d883
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+- req_id: REQ-F-016
+  rule_ids:
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - 2538ad58_e0b1_449d_8df3_0fa9c329d883
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+- req_id: REQ-F-017
+  rule_ids:
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - 2538ad58_e0b1_449d_8df3_0fa9c329d883
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+- req_id: REQ-F-018
+  rule_ids:
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+- req_id: REQ-F-019
+  rule_ids:
+  - f50a9538_7a19_4e7c_8f55_97b5b5b7059d
+- req_id: REQ-F-020
+  rule_ids:
+  - 901dcce4_20d7_4377_a505_177de2804913
+  - 81d12174_b33d_4c43_92da_06c9bc591114
+- req_id: REQ-F-021
+  rule_ids:
+  - f1acc8e7_1873_4eaa_b1e5_6130b65745d8
+  - 5eefb752_98f3_4054_8e01_eb38ca3f6f81
+  - 2ec9fe37_f4e1_492a_98a2_b0e9fdec1d16
+- req_id: REQ-F-022
+  rule_ids:
+  - 3ab7c993_22b4_4b48_ba37_d633f98175f7
+  - 41763769_2dd4_4c9a_85b0_3d6fb390ac7f
+- req_id: REQ-F-023
+  rule_ids:
+  - e5b43122_eb54_4a67_8e14_80b166756eec
+- req_id: REQ-F-024
+  rule_ids:
+  - 4138ab5c_8a65_49f4_8019_8ab27a9c2127
+- req_id: REQ-F-025
+  rule_ids:
+  - 8ea42305_187d_4fb4_b8bb_dc043f4e684a
+- req_id: REQ-F-026
+  rule_ids:
+  - 08d67fbb_f7cd_4d83_a594_225d2b9b3bee
+  - 4bc21546_9e38_452d_b8c4_ee5f3860ddc1
+  - 2cc94844_3a43_48d5_97c5_bdb2363ac4c2
+  - 0d681480_338c_4eb5_b15c_3468b7a794fb
+  - 30a747d1_0154_4e1e_8332_0188019e7967
+- req_id: REQ-F-027
+  rule_ids:
+  - 55ac9233_c8a6_4543_9adc_d5449675097a
+  - 08d67fbb_f7cd_4d83_a594_225d2b9b3bee
+- req_id: REQ-F-028
+  rule_ids:
+  - 6fda52c8_2563_4224_b3d4_5556a256b846
+  - 8ac702c9_6a76_4f87_831d_ee50a6ae98ef
+  - 9a03bb1d_96c0_4152_900b_02ba6cafdbf1
+- req_id: REQ-F-029
+  rule_ids:
+  - 272238f8_dce1_48c1_a090_e5e68d4b6da0
+  - 56220b64_fe74_4faf_81af_4efbb84b6d44
+  - 8f17f4a0_4465_445e_be69_6cc7b2fc8b14
+- req_id: REQ-F-030
+  rule_ids:
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - c861b16f_2ff3_468e_aece_3d8a468e9a6d
+- req_id: REQ-F-031
+  rule_ids:
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - 2538ad58_e0b1_449d_8df3_0fa9c329d883
+- req_id: REQ-F-032
+  rule_ids:
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - 2538ad58_e0b1_449d_8df3_0fa9c329d883
+- req_id: REQ-F-033
+  rule_ids:
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+  - 2538ad58_e0b1_449d_8df3_0fa9c329d883
+- req_id: REQ-F-034
+  rule_ids:
+  - 1f187727_764a_4b92_915f_fd05fbbaa47c
+  - c5b5b7ea_b681_4bad_8440_80f48c835022
+  - 987a8de4_7193_4fc1_8741_adfed58df0ee
+- req_id: REQ-F-035
+  rule_ids:
+  - 901dcce4_20d7_4377_a505_177de2804913
+  - 81d12174_b33d_4c43_92da_06c9bc591114
+- req_id: REQ-F-036
+  rule_ids:
+  - f1acc8e7_1873_4eaa_b1e5_6130b65745d8
+  - 5eefb752_98f3_4054_8e01_eb38ca3f6f81
+  - 2ec9fe37_f4e1_492a_98a2_b0e9fdec1d16
+- req_id: REQ-F-037
+  rule_ids:
+  - 3ab7c993_22b4_4b48_ba37_d633f98175f7
+  - 41763769_2dd4_4c9a_85b0_3d6fb390ac7f
+- req_id: REQ-F-038
+  rule_ids:
+  - e5b43122_eb54_4a67_8e14_80b166756eec
+- req_id: REQ-F-039
+  rule_ids:
+  - f50a9538_7a19_4e7c_8f55_97b5b5b7059d
+  - 9a03bb1d_96c0_4152_900b_02ba6cafdbf1
+- req_id: REQ-N-001
+  rule_ids:
+  - 38b21011_3184_469b_801b_4f7fbdb9b8b8

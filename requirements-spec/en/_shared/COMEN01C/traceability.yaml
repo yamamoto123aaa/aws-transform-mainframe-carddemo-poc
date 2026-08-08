@@ -1,0 +1,884 @@
+function: _shared/COMEN01C
+generated_at: '2026-08-08T04:32:58Z'
+summary:
+  total_rules: 46
+  captured: 46
+  not_applicable: 0
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 46
+    written: 46
+    shortfall: 0
+rules:
+- rule_id: 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Route to sign-on screen when PF3 key is pressed
+  rule_text: WHEN the PF3 function key is pressed during reentry processing, THE Card
+    Demonstration Application SHALL set the destination program name to the sign-on
+    screen program and transfer control to it
+  traceability_lines:
+  - 93
+  - 96
+  - 97
+  - 98
+  req_id: REQ-F-007
+- rule_id: 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Ensure destination program is set before transfer
+  rule_text: WHEN the program is about to transfer control to the destination program,
+    THE Card Demonstration Application SHALL verify the destination program name is
+    set; if it is empty or uninitialized, default it to the sign-on screen program
+  traceability_lines:
+  - 194
+  - 196
+  - 198
+  - 199
+  - 200
+  req_id: REQ-F-015
+- rule_id: 70ab086e_2212_473a_bc77_cd3016f78121
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Initialize and validate communication area on entry
+  rule_text: WHEN the program is invoked by CICS, THE Card Demonstration Application
+    SHALL check whether a communication area was passed; if no area is present, transfer
+    control to the sign-on screen; otherwise, extract the communication area into
+    working storage for processing
+  traceability_lines:
+  - 75
+  - 82
+  - 84
+  - 85
+  - 86
+  - 87
+  - 91
+  req_ids:
+  - REQ-F-001
+  - REQ-F-002
+- rule_id: fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Transfer control to destination program
+  rule_text: THE Card Demonstration Application SHALL transfer control to the destination
+    program specified in the communication area
+  traceability_lines:
+  - 201
+  - 202
+  - 203
+  req_id: REQ-F-016
+- rule_id: 07753d23_0910_426c_bd5c_24d5948558fd
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Initialize error handling and prepare for menu processing
+  rule_text: THE Menu Processing Initialization SHALL initialize the error flag indicator
+    to OFF state.
+  traceability_lines:
+  - 75
+  - 77
+  req_id: REQ-F-003
+- rule_id: 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Extract and normalize menu option selection
+  rule_text: THE Menu Option Input Normalizer SHALL trim trailing spaces from the
+    menu option input and replace remaining spaces with zeros.
+  traceability_lines:
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  req_id: REQ-F-009
+- rule_id: 1bae53bd_498d_460c_beb7_dc8cd8228047
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Populate communication area for menu option transfer
+  rule_text: WHEN the menu option passes all validation checks, THE Menu Option Transfer
+    Handler SHALL populate the communication area with originating transaction and
+    program context, reset the program context indicator to zero, and transfer control
+    to the selected menu option program via XCTL.
+  traceability_lines:
+  - 145
+  - 146
+  - 177
+  - 178
+  - 180
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  req_id: REQ-F-014
+- rule_id: 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Convert menu option to numeric value
+  rule_text: THE Menu Option Converter SHALL convert the normalized alphanumeric option
+    selection to numeric form.
+  traceability_lines:
+  - 124
+  req_id: REQ-F-009
+- rule_id: 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Prepare and transfer to selected menu option program
+  rule_text: WHEN the selected menu option program name is 'COPAUS0C' and the program
+    is available, THE Menu Option Program Transfer SHALL populate the communication
+    area with the originating transaction identifier and program name, reset the program
+    context indicator to zero, and transfer control to the target program via XCTL.
+  traceability_lines:
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+  - 159
+  req_id: REQ-F-012
+- rule_id: 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Receive menu screen from user
+  rule_text: THE Menu Screen Receiver SHALL receive the menu screen input from the
+    user via CICS RECEIVE MAP, capturing the response code and reason code.
+  traceability_lines:
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  req_id: REQ-F-005
+- rule_id: 5f76bee2_856a_43ff_be78_5c24ea5326af
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Initialize error handling for menu processing
+  rule_text: THE Menu Processing SHALL clear the error flag indicator to indicate
+    no error condition.
+  traceability_lines:
+  - 77
+  req_id: REQ-F-003
+- rule_id: 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Check user authorization for restricted menu options
+  rule_text: WHEN the user type is standard user and the selected menu option is restricted
+    to authorized users only, THE User Authorization Checker SHALL set the error flag
+    indicator to 'Y' to deny access to the restricted menu option.
+  traceability_lines:
+  - 136
+  - 137
+  - 138
+  - 143
+  req_id: REQ-F-011
+- rule_id: 71687c5e_8523_4f47_aecd_c64b2739609c
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Receive and process menu screen input on re-entry
+  rule_text: WHEN the program context indicator indicates re-entry status, THE Menu
+    Screen Input Handler SHALL receive the menu screen input and dispatch based on
+    the attention identifier; when the ENTER key is pressed, process the selected
+    menu option.
+  traceability_lines:
+  - 87
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 103
+  - 104
+  - 105
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+- rule_id: 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Trim and validate menu option selection
+  rule_text: THE Menu Option Validator SHALL trim the menu option input, convert it
+    to numeric form, and validate that it is numeric, within the range 1 to 11, and
+    not zero; set the error flag indicator to 'Y' if validation fails.
+  traceability_lines:
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 127
+  - 128
+  - 129
+  - 130
+  - 134
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+- rule_id: aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Restore communication area from caller context
+  rule_text: WHEN the communication area length is greater than zero, THE Communication
+    Area Handler SHALL restore the incoming communication area into the local communication
+    area record.
+  traceability_lines:
+  - 82
+  - 85
+  - 86
+  req_id: REQ-F-002
+- rule_id: b420427b_0cd3_47fd_8d7d_c82c652797f3
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Restore communication area from caller context
+  rule_text: WHEN the communication area length is greater than zero, THE Communication
+    Area Handler SHALL restore the incoming communication area into the local communication
+    area record.
+  traceability_lines:
+  - 82
+  - 85
+  - 86
+  req_id: REQ-F-002
+- rule_id: c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Check user authorization for restricted menu options
+  rule_text: WHEN the user type is standard user and the selected menu option is restricted
+    to authorized users only, THE User Authorization Checker SHALL set the error flag
+    indicator to 'Y' to deny access to the restricted menu option.
+  traceability_lines:
+  - 136
+  - 137
+  - 138
+  - 143
+  req_id: REQ-F-011
+- rule_id: e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Dispatch menu option based on attention key
+  rule_text: WHEN the ENTER key is pressed on the menu screen, THE Menu Option Dispatcher
+    SHALL route to the menu option processing handler.
+  traceability_lines:
+  - 93
+  - 94
+  - 95
+  - 103
+  req_id: REQ-F-006
+- rule_id: f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Validate menu option is within acceptable range
+  rule_text: WHEN the menu option is non-numeric, exceeds the available menu options
+    count, or equals zero, THE Menu Option Validator SHALL set the error flag indicator
+    to ON to reject the invalid selection.
+  traceability_lines:
+  - 127
+  - 128
+  - 129
+  - 130
+  - 134
+  req_id: REQ-F-010
+- rule_id: fa56a870_d434_44fb_a576_861f909c096b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Receive menu screen input from user
+  rule_text: THE Menu Screen Input Receiver SHALL receive the menu option selection
+    from the user display, capturing response and reason codes.
+  traceability_lines:
+  - 87
+  - 92
+  - 223
+  - 225
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  req_id: REQ-F-005
+- rule_id: fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Verify target program availability before transfer
+  rule_text: WHEN the error flag indicator is not set and the selected menu option
+    program name is 'COPAUS0C', THE Program Transfer Handler SHALL verify the target
+    program is available; when available, populate the communication area with the
+    originating transaction identifier, originating program name, and reset the program
+    context indicator to zero, then transfer control to the target program; when the
+    program is not available, invoke error handling.
+  traceability_lines:
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+  - 159
+  - 168
+  req_id: REQ-F-012
+- rule_id: 04a5424a_8c20_47c1_b623_2ea2553ff505
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Initialize menu option assembly loop
+  rule_text: THE Menu Option Assembly SHALL initialize the loop counter to 1 and iterate
+    through each menu option up to the configured count.
+  traceability_lines:
+  - 262
+  - 264
+  - 265
+  req_id: REQ-F-019
+- rule_id: 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Assemble and send menu screen to terminal
+  rule_text: THE Menu Screen Sender SHALL populate the menu screen header information
+    and menu option display lines, move the message text to the error message field,
+    and send the menu screen to the terminal with the ERASE option.
+  traceability_lines:
+  - 208
+  - 210
+  - 211
+  - 213
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  req_id: REQ-F-018
+- rule_id: 2cba932a_cf83_44e3_8483_4843f60b2a6b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 3
+  rule_text: WHEN the loop counter reaches 3, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 3 output field.
+  traceability_lines:
+  - 279
+  - 280
+  req_id: REQ-F-022
+- rule_id: 2f50812f_0664_48df_b149_f764e235cd68
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 9
+  rule_text: WHEN the loop counter reaches 9, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 9 output field.
+  traceability_lines:
+  - 291
+  - 292
+  req_id: REQ-F-028
+- rule_id: 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Handle out-of-range menu option positions
+  rule_text: WHEN the loop counter exceeds the range of defined menu option positions,
+    THE Menu Option Assembly SHALL take no action and continue to the next loop iteration.
+  traceability_lines:
+  - 301
+  req_id: REQ-F-032
+- rule_id: 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 5
+  rule_text: WHEN the loop counter reaches 5, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 5 output field.
+  traceability_lines:
+  - 283
+  - 284
+  req_id: REQ-F-024
+- rule_id: 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Receive user input from menu screen
+  rule_text: WHEN the user submits input from the menu screen, THE Menu Screen Input
+    Receiver SHALL receive the user's menu option selection from the menu screen and
+    capture the response status.
+  traceability_lines:
+  - 225
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  req_id: REQ-F-005
+- rule_id: 6aecc870_6740_4eaa_8783_1623b9b54d3b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Validate selected menu option program availability
+  rule_text: WHILE no error flag is set, WHEN the selected menu option program is
+    'COPAUS0C', THE Menu Option Program Validator SHALL query the CICS system to verify
+    the program is installed; if the program is not found, set the error message color
+    to red and display an error message indicating the option is not installed.
+  traceability_lines:
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 160
+  - 162
+  - 163
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  req_id: REQ-F-012
+- rule_id: 74cb64d4_f373_4143_b92a_ee12650ec1dd
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 4
+  rule_text: WHEN the loop counter reaches 4, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 4 output field.
+  traceability_lines:
+  - 281
+  - 282
+  req_id: REQ-F-023
+- rule_id: 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Handle initial program invocation versus re-entry
+  rule_text: 'WHEN the communication area is received from the caller, THE Menu Screen
+    Handler SHALL extract the shared context, and if this is the first invocation,
+    display the menu screen with cleared fields; if re-entering, receive the user''s
+    input and dispatch based on the key pressed: process the menu selection when Enter
+    is pressed, handle the PF3 key via an alternative path, or display an invalid-key
+    error message for any other key.'
+  traceability_lines:
+  - 82
+  - 85
+  - 86
+  - 87
+  - 89
+  - 90
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 99
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  req_ids:
+  - REQ-F-004
+  - REQ-F-005
+  - REQ-F-006
+  - REQ-F-008
+- rule_id: 88d333fc_515a_4c71_a41a_f0098fb53395
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 10
+  rule_text: WHEN the loop counter reaches 10, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 10 output field.
+  traceability_lines:
+  - 293
+  - 294
+  req_id: REQ-F-029
+- rule_id: 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Process user menu selection and validate option
+  rule_text: WHEN the user presses Enter after selecting a menu option, THE Menu Option
+    Validator SHALL extract and trim the user's option input, convert spaces to zeros,
+    convert to numeric, and validate that the option is numeric, does not exceed the
+    menu option count (11), and is not zero; if validation fails, set the error flag
+    and display the error message 'Please enter a valid option number...'; if validation
+    succeeds, continue processing.
+  traceability_lines:
+  - 113
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 127
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  - 133
+  - 134
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+- rule_id: 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 7
+  rule_text: WHEN the loop counter reaches 7, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 7 output field.
+  traceability_lines:
+  - 287
+  - 288
+  req_id: REQ-F-026
+- rule_id: a9d3084b_128c_48bc_87dd_afc97a486276
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 1
+  rule_text: WHEN the loop counter reaches 1, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 1 output field.
+  traceability_lines:
+  - 269
+  - 270
+  - 271
+  - 272
+  - 274
+  - 275
+  - 276
+  req_id: REQ-F-020
+- rule_id: ba1d0480_6267_48ae_9643_f40a1036f289
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 11
+  rule_text: WHEN the loop counter reaches 11, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 11 output field.
+  traceability_lines:
+  - 295
+  - 296
+  req_id: REQ-F-030
+- rule_id: c2f02404_628c_43ff_96c6_27418e4c156d
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Handle other valid menu option selections
+  rule_text: WHILE no error flag is set, WHEN the selected menu option is a standard
+    option (not COPAUS0C, not DUMMY-prefixed), THE Menu Option Processor SHALL process
+    the selected option via an alternative path and send the menu screen.
+  traceability_lines:
+  - 188
+  - 190
+  - 191
+  req_id: REQ-F-014
+- rule_id: c7560c00_bdf1_4adb_8217_81eec0adb873
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 6
+  rule_text: WHEN the loop counter reaches 6, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 6 output field.
+  traceability_lines:
+  - 285
+  - 286
+  req_id: REQ-F-025
+- rule_id: c7b30dcd_37c3_4227_9e11_908ae2944698
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 2
+  rule_text: WHEN the loop counter reaches 2, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 2 output field.
+  traceability_lines:
+  - 277
+  - 278
+  req_id: REQ-F-021
+- rule_id: c7c03249_5948_4907_94cd_07387b82224b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 12
+  rule_text: WHEN the loop counter reaches 12, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 12 output field.
+  traceability_lines:
+  - 297
+  - 298
+  req_id: REQ-F-031
+- rule_id: cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Handle coming-soon menu options
+  rule_text: WHILE no error flag is set, WHEN the selected menu option program name
+    begins with 'DUMMY', THE Menu Option Status Handler SHALL set the error message
+    color to green and display an informational message indicating the option is coming
+    soon.
+  traceability_lines:
+  - 169
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+  - 176
+  req_id: REQ-F-013
+- rule_id: e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Populate menu screen header information
+  rule_text: THE Menu Screen Header Populator SHALL retrieve the current system date
+    and time, populate the screen title lines with 'AWS Mainframe Modernization' and
+    'CardDemo', populate the transaction identifier and program name fields, format
+    and display the current date as MM/DD/YY, and format and display the current time
+    as HH:MM:SS.
+  traceability_lines:
+  - 238
+  - 240
+  - 242
+  - 243
+  - 244
+  - 245
+  - 247
+  - 248
+  - 249
+  - 251
+  - 253
+  - 254
+  - 255
+  - 257
+  req_id: REQ-F-017
+- rule_id: ec426b03_2e20_49e5_8320_abcf89151462
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Initialize program state and clear error indicators
+  rule_text: THE Menu Screen Handler SHALL clear the error flag and initialize the
+    message text buffer to spaces.
+  traceability_lines:
+  - 75
+  - 77
+  - 79
+  - 80
+  req_id: REQ-F-003
+- rule_id: ed0cfee9_753c_40b1_978a_d251390edc18
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Enforce user authorization for admin-only menu options
+  rule_text: WHEN a regular user selects a menu option restricted to administrators,
+    THE Menu Authorization Enforcer SHALL set the error flag to 'Y', display the error
+    message 'No access - Admin Only option... ', and send the menu screen.
+  traceability_lines:
+  - 136
+  - 137
+  - 138
+  - 140
+  - 141
+  - 142
+  - 143
+  req_id: REQ-F-011
+- rule_id: f1f88f40_e483_49f7_9046_d957614d2ef3
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Format and assign menu option 8
+  rule_text: WHEN the loop counter reaches 8, THE Menu Option Assembly SHALL format
+    the menu option text by concatenating the sequence number, a period and space,
+    and the display name, then display it in menu option 8 output field.
+  traceability_lines:
+  - 289
+  - 290
+  req_id: REQ-F-027
+- rule_id: fa01f60e_aed1_4dbc_9f0e_77dd073aa23f
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: Complete menu option assembly loop
+  rule_text: THE Menu Option Assembly SHALL terminate the loop after all menu options
+    have been processed.
+  traceability_lines:
+  - 303
+  req_id: REQ-F-033
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 70ab086e_2212_473a_bc77_cd3016f78121
+- req_id: REQ-F-002
+  rule_ids:
+  - 70ab086e_2212_473a_bc77_cd3016f78121
+  - aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  - b420427b_0cd3_47fd_8d7d_c82c652797f3
+- req_id: REQ-F-003
+  rule_ids:
+  - 07753d23_0910_426c_bd5c_24d5948558fd
+  - 5f76bee2_856a_43ff_be78_5c24ea5326af
+  - ec426b03_2e20_49e5_8320_abcf89151462
+- req_id: REQ-F-004
+  rule_ids:
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+- req_id: REQ-F-005
+  rule_ids:
+  - 71687c5e_8523_4f47_aecd_c64b2739609c
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  - fa56a870_d434_44fb_a576_861f909c096b
+  - 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  - 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+- req_id: REQ-F-006
+  rule_ids:
+  - 71687c5e_8523_4f47_aecd_c64b2739609c
+  - e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+- req_id: REQ-F-007
+  rule_ids:
+  - 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+- req_id: REQ-F-008
+  rule_ids:
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+- req_id: REQ-F-009
+  rule_ids:
+  - 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  - 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  - 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  - 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+- req_id: REQ-F-010
+  rule_ids:
+  - 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  - f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  - 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+- req_id: REQ-F-011
+  rule_ids:
+  - 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  - c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  - ed0cfee9_753c_40b1_978a_d251390edc18
+- req_id: REQ-F-012
+  rule_ids:
+  - fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  - 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  - 6aecc870_6740_4eaa_8783_1623b9b54d3b
+- req_id: REQ-F-013
+  rule_ids:
+  - cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+- req_id: REQ-F-014
+  rule_ids:
+  - 1bae53bd_498d_460c_beb7_dc8cd8228047
+  - c2f02404_628c_43ff_96c6_27418e4c156d
+- req_id: REQ-F-015
+  rule_ids:
+  - 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+- req_id: REQ-F-016
+  rule_ids:
+  - fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+- req_id: REQ-F-017
+  rule_ids:
+  - e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+- req_id: REQ-F-018
+  rule_ids:
+  - 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+- req_id: REQ-F-019
+  rule_ids:
+  - 04a5424a_8c20_47c1_b623_2ea2553ff505
+- req_id: REQ-F-020
+  rule_ids:
+  - a9d3084b_128c_48bc_87dd_afc97a486276
+- req_id: REQ-F-021
+  rule_ids:
+  - c7b30dcd_37c3_4227_9e11_908ae2944698
+- req_id: REQ-F-022
+  rule_ids:
+  - 2cba932a_cf83_44e3_8483_4843f60b2a6b
+- req_id: REQ-F-023
+  rule_ids:
+  - 74cb64d4_f373_4143_b92a_ee12650ec1dd
+- req_id: REQ-F-024
+  rule_ids:
+  - 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+- req_id: REQ-F-025
+  rule_ids:
+  - c7560c00_bdf1_4adb_8217_81eec0adb873
+- req_id: REQ-F-026
+  rule_ids:
+  - 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+- req_id: REQ-F-027
+  rule_ids:
+  - f1f88f40_e483_49f7_9046_d957614d2ef3
+- req_id: REQ-F-028
+  rule_ids:
+  - 2f50812f_0664_48df_b149_f764e235cd68
+- req_id: REQ-F-029
+  rule_ids:
+  - 88d333fc_515a_4c71_a41a_f0098fb53395
+- req_id: REQ-F-030
+  rule_ids:
+  - ba1d0480_6267_48ae_9643_f40a1036f289
+- req_id: REQ-F-031
+  rule_ids:
+  - c7c03249_5948_4907_94cd_07387b82224b
+- req_id: REQ-F-032
+  rule_ids:
+  - 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+- req_id: REQ-F-033
+  rule_ids:
+  - fa01f60e_aed1_4dbc_9f0e_77dd073aa23f

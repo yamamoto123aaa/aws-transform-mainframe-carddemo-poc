@@ -1,0 +1,1187 @@
+[
+  {
+    "path": "demo/app-authorization-ims-db2-mq/README.md",
+    "name": "README.md",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/bms/COPAU00.bms",
+    "name": "COPAU00.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/bms/COPAU01.bms",
+    "name": "COPAU01.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/CBPAUP0C.cbl",
+    "name": "CBPAUP0C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl",
+    "name": "COPAUA0C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
+    "name": "COPAUS0C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
+    "name": "COPAUS1C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/COPAUS2C.cbl",
+    "name": "COPAUS2C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL",
+    "name": "DBUNLDGS.CBL",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL",
+    "name": "PAUDBLOD.CBL",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL",
+    "name": "PAUDBUNL.CBL",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy-bms/COPAU00.cpy",
+    "name": "COPAU00.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy-bms/COPAU01.cpy",
+    "name": "COPAU01.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/CCPAUERY.cpy",
+    "name": "CCPAUERY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/CCPAURLY.cpy",
+    "name": "CCPAURLY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/CCPAURQY.cpy",
+    "name": "CCPAURQY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/CIPAUDTY.cpy",
+    "name": "CIPAUDTY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/CIPAUSMY.cpy",
+    "name": "CIPAUSMY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/IMSFUNCS.cpy",
+    "name": "IMSFUNCS.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/PADFLPCB.CPY",
+    "name": "PADFLPCB.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/PASFLPCB.CPY",
+    "name": "PASFLPCB.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/cpy/PAUTBPCB.CPY",
+    "name": "PAUTBPCB.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/csd/CRDDEMO2.csd",
+    "name": "CRDDEMO2.csd",
+    "fileType": "csdcommand"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/data/EBCDIC/AWS.M2.CARDDEMO.IMSDATA.DBPAUTP0.dat",
+    "name": "AWS.M2.CARDDEMO.IMSDATA.DBPAUTP0.dat",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/dcl/AUTHFRDS.dcl",
+    "name": "AUTHFRDS.dcl",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ddl/AUTHFRDS.ddl",
+    "name": "AUTHFRDS.ddl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ddl/XAUTHFRD.ddl",
+    "name": "XAUTHFRD.ddl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/DBPAUTP0.dbd",
+    "name": "DBPAUTP0.dbd",
+    "fileType": "dbd"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/DBPAUTX0.dbd",
+    "name": "DBPAUTX0.dbd",
+    "fileType": "dbd"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/DLIGSAMP.PSB",
+    "name": "DLIGSAMP.PSB",
+    "fileType": "psb"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/PADFLDBD.DBD",
+    "name": "PADFLDBD.DBD",
+    "fileType": "dbd"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/PASFLDBD.DBD",
+    "name": "PASFLDBD.DBD",
+    "fileType": "dbd"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/PAUTBUNL.PSB",
+    "name": "PAUTBUNL.PSB",
+    "fileType": "psb"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/PSBPAUTB.psb",
+    "name": "PSBPAUTB.psb",
+    "fileType": "psb"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/ims/PSBPAUTL.psb",
+    "name": "PSBPAUTL.psb",
+    "fileType": "psb"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+    "name": "CBPAUP0J.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+    "name": "DBPAUTP0.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+    "name": "LOADPADB.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+    "name": "UNLDGSAM.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+    "name": "UNLDPADB.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/README.md",
+    "name": "README.md",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/bms/COTRTLI.bms",
+    "name": "COTRTLI.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/bms/COTRTUP.bms",
+    "name": "COTRTUP.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cbl/COBTUPDT.cbl",
+    "name": "COBTUPDT.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cbl/COTRTLIC.cbl",
+    "name": "COTRTLIC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cbl/COTRTUPC.cbl",
+    "name": "COTRTUPC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cpy-bms/COTRTLI.cpy",
+    "name": "COTRTLI.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cpy-bms/COTRTUP.cpy",
+    "name": "COTRTUP.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cpy/CSDB2RPY.cpy",
+    "name": "CSDB2RPY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/cpy/CSDB2RWY.cpy",
+    "name": "CSDB2RWY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/csd/CRDDEMOD.csd",
+    "name": "CRDDEMOD.csd",
+    "fileType": "csdcommand"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/DB2CREAT.ctl",
+    "name": "DB2CREAT.ctl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/DB2FREE.ctl",
+    "name": "DB2FREE.ctl",
+    "fileType": "ctl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/DB2LTCAT.ctl",
+    "name": "DB2LTCAT.ctl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/DB2LTTYP.ctl",
+    "name": "DB2LTTYP.ctl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/DB2TEP41.ctl",
+    "name": "DB2TEP41.ctl",
+    "fileType": "ctl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/DB2TIAD1.ctl",
+    "name": "DB2TIAD1.ctl",
+    "fileType": "ctl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ctl/REPROCT.ctl",
+    "name": "REPROCT.ctl",
+    "fileType": "ctl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/dcl/DCLTRCAT.dcl",
+    "name": "DCLTRCAT.dcl",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/dcl/DCLTRTYP.dcl",
+    "name": "DCLTRTYP.dcl",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ddl/TRNTYCAT.ddl",
+    "name": "TRNTYCAT.ddl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ddl/TRNTYPE.ddl",
+    "name": "TRNTYPE.ddl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ddl/XTRNTYCAT.ddl",
+    "name": "XTRNTYCAT.ddl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/ddl/XTRNTYPE.ddl",
+    "name": "XTRNTYPE.ddl",
+    "fileType": "sql"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/jcl/CREADB21.jcl",
+    "name": "CREADB21.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+    "name": "MNTTRDB2.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-transaction-type-db2/jcl/TRANEXTR.jcl",
+    "name": "TRANEXTR.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/app-vsam-mq/README.md",
+    "name": "README.md",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/app-vsam-mq/cbl/COACCT01.cbl",
+    "name": "COACCT01.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-vsam-mq/cbl/CODATE01.cbl",
+    "name": "CODATE01.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/app-vsam-mq/csd/CRDDEMOM.csd",
+    "name": "CRDDEMOM.csd",
+    "fileType": "csdcommand"
+  },
+  {
+    "path": "demo/asm/COBDATFT.asm",
+    "name": "COBDATFT.asm",
+    "fileType": "asm"
+  },
+  {
+    "path": "demo/asm/MVSWAIT.asm",
+    "name": "MVSWAIT.asm",
+    "fileType": "asm"
+  },
+  {
+    "path": "demo/bms/COACTUP.bms",
+    "name": "COACTUP.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COACTVW.bms",
+    "name": "COACTVW.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COADM01.bms",
+    "name": "COADM01.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COBIL00.bms",
+    "name": "COBIL00.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COCRDLI.bms",
+    "name": "COCRDLI.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COCRDSL.bms",
+    "name": "COCRDSL.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COCRDUP.bms",
+    "name": "COCRDUP.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COMEN01.bms",
+    "name": "COMEN01.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/CORPT00.bms",
+    "name": "CORPT00.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COSGN00.bms",
+    "name": "COSGN00.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COTRN00.bms",
+    "name": "COTRN00.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COTRN01.bms",
+    "name": "COTRN01.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COTRN02.bms",
+    "name": "COTRN02.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COUSR00.bms",
+    "name": "COUSR00.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COUSR01.bms",
+    "name": "COUSR01.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COUSR02.bms",
+    "name": "COUSR02.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/bms/COUSR03.bms",
+    "name": "COUSR03.bms",
+    "fileType": "bms"
+  },
+  {
+    "path": "demo/catlg/LISTCAT.txt",
+    "name": "LISTCAT.txt",
+    "fileType": "LISTCAT"
+  },
+  {
+    "path": "demo/cbl/CBACT01C.cbl",
+    "name": "CBACT01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBACT02C.cbl",
+    "name": "CBACT02C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBACT03C.cbl",
+    "name": "CBACT03C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBACT04C.cbl",
+    "name": "CBACT04C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBCUS01C.cbl",
+    "name": "CBCUS01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBEXPORT.cbl",
+    "name": "CBEXPORT.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBIMPORT.cbl",
+    "name": "CBIMPORT.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBSTM03A.CBL",
+    "name": "CBSTM03A.CBL",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBSTM03B.CBL",
+    "name": "CBSTM03B.CBL",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBTRN01C.cbl",
+    "name": "CBTRN01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBTRN02C.cbl",
+    "name": "CBTRN02C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CBTRN03C.cbl",
+    "name": "CBTRN03C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COACTUPC.cbl",
+    "name": "COACTUPC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COACTVWC.cbl",
+    "name": "COACTVWC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COADM01C.cbl",
+    "name": "COADM01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COBIL00C.cbl",
+    "name": "COBIL00C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COBSWAIT.cbl",
+    "name": "COBSWAIT.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COCRDLIC.cbl",
+    "name": "COCRDLIC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COCRDSLC.cbl",
+    "name": "COCRDSLC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COCRDUPC.cbl",
+    "name": "COCRDUPC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COMEN01C.cbl",
+    "name": "COMEN01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CORPT00C.cbl",
+    "name": "CORPT00C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COSGN00C.cbl",
+    "name": "COSGN00C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COTRN00C.cbl",
+    "name": "COTRN00C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COTRN01C.cbl",
+    "name": "COTRN01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COTRN02C.cbl",
+    "name": "COTRN02C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COUSR00C.cbl",
+    "name": "COUSR00C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COUSR01C.cbl",
+    "name": "COUSR01C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COUSR02C.cbl",
+    "name": "COUSR02C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/COUSR03C.cbl",
+    "name": "COUSR03C.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cbl/CSUTLDTC.cbl",
+    "name": "CSUTLDTC.cbl",
+    "fileType": "cob"
+  },
+  {
+    "path": "demo/cpy-bms/COACTUP.CPY",
+    "name": "COACTUP.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COACTVW.CPY",
+    "name": "COACTVW.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COADM01.CPY",
+    "name": "COADM01.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COBIL00.CPY",
+    "name": "COBIL00.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COCRDLI.CPY",
+    "name": "COCRDLI.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COCRDSL.CPY",
+    "name": "COCRDSL.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COCRDUP.CPY",
+    "name": "COCRDUP.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COMEN01.CPY",
+    "name": "COMEN01.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/CORPT00.CPY",
+    "name": "CORPT00.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COSGN00.CPY",
+    "name": "COSGN00.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COTRN00.CPY",
+    "name": "COTRN00.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COTRN01.CPY",
+    "name": "COTRN01.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COTRN02.CPY",
+    "name": "COTRN02.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COUSR00.CPY",
+    "name": "COUSR00.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COUSR01.CPY",
+    "name": "COUSR01.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COUSR02.CPY",
+    "name": "COUSR02.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy-bms/COUSR03.CPY",
+    "name": "COUSR03.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/COADM02Y.cpy",
+    "name": "COADM02Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/COCOM01Y.cpy",
+    "name": "COCOM01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CODATECN.cpy",
+    "name": "CODATECN.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/COMEN02Y.cpy",
+    "name": "COMEN02Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/COSTM01.CPY",
+    "name": "COSTM01.CPY",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/COTTL01Y.cpy",
+    "name": "COTTL01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSDAT01Y.cpy",
+    "name": "CSDAT01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSLKPCDY.cpy",
+    "name": "CSLKPCDY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSMSG01Y.cpy",
+    "name": "CSMSG01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSMSG02Y.cpy",
+    "name": "CSMSG02Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSSETATY.cpy",
+    "name": "CSSETATY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSSTRPFY.cpy",
+    "name": "CSSTRPFY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSUSR01Y.cpy",
+    "name": "CSUSR01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSUTLDPY.cpy",
+    "name": "CSUTLDPY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CSUTLDWY.cpy",
+    "name": "CSUTLDWY.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CUSTREC.cpy",
+    "name": "CUSTREC.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVACT01Y.cpy",
+    "name": "CVACT01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVACT02Y.cpy",
+    "name": "CVACT02Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVACT03Y.cpy",
+    "name": "CVACT03Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVCRD01Y.cpy",
+    "name": "CVCRD01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVCUS01Y.cpy",
+    "name": "CVCUS01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVEXPORT.cpy",
+    "name": "CVEXPORT.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA01Y.cpy",
+    "name": "CVTRA01Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA02Y.cpy",
+    "name": "CVTRA02Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA03Y.cpy",
+    "name": "CVTRA03Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA04Y.cpy",
+    "name": "CVTRA04Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA05Y.cpy",
+    "name": "CVTRA05Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA06Y.cpy",
+    "name": "CVTRA06Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/CVTRA07Y.cpy",
+    "name": "CVTRA07Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/cpy/UNUSED1Y.cpy",
+    "name": "UNUSED1Y.cpy",
+    "fileType": "cpy"
+  },
+  {
+    "path": "demo/csd/CARDDEMO.CSD",
+    "name": "CARDDEMO.CSD",
+    "fileType": "csdcommand"
+  },
+  {
+    "path": "demo/ctl/REPROCT.ctl",
+    "name": "REPROCT.ctl",
+    "fileType": "ctl"
+  },
+  {
+    "path": "demo/data/ASCII/acctdata.txt",
+    "name": "acctdata.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/carddata.txt",
+    "name": "carddata.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/cardxref.txt",
+    "name": "cardxref.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/custdata.txt",
+    "name": "custdata.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/dailytran.txt",
+    "name": "dailytran.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/discgrp.txt",
+    "name": "discgrp.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/tcatbal.txt",
+    "name": "tcatbal.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/trancatg.txt",
+    "name": "trancatg.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/ASCII/trantype.txt",
+    "name": "trantype.txt",
+    "fileType": "Unknown"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.ACCDATA.PS",
+    "name": "AWS.M2.CARDDEMO.ACCDATA.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.ACCTDATA.PS",
+    "name": "AWS.M2.CARDDEMO.ACCTDATA.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.CARDDATA.PS",
+    "name": "AWS.M2.CARDDEMO.CARDDATA.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.CARDXREF.PS",
+    "name": "AWS.M2.CARDDEMO.CARDXREF.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.CUSTDATA.PS",
+    "name": "AWS.M2.CARDDEMO.CUSTDATA.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.DALYTRAN.PS",
+    "name": "AWS.M2.CARDDEMO.DALYTRAN.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.DALYTRAN.PS.INIT",
+    "name": "AWS.M2.CARDDEMO.DALYTRAN.PS.INIT",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.DISCGRP.PS",
+    "name": "AWS.M2.CARDDEMO.DISCGRP.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.EXPORT.DATA.PS",
+    "name": "AWS.M2.CARDDEMO.EXPORT.DATA.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.TCATBALF.PS",
+    "name": "AWS.M2.CARDDEMO.TCATBALF.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.TRANCATG.PS",
+    "name": "AWS.M2.CARDDEMO.TRANCATG.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.TRANTYPE.PS",
+    "name": "AWS.M2.CARDDEMO.TRANTYPE.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/data/EBCDIC/AWS.M2.CARDDEMO.USRSEC.PS",
+    "name": "AWS.M2.CARDDEMO.USRSEC.PS",
+    "fileType": "BINARY"
+  },
+  {
+    "path": "demo/jcl/ACCTFILE.jcl",
+    "name": "ACCTFILE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CARDFILE.jcl",
+    "name": "CARDFILE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CBADMCDJ.jcl",
+    "name": "CBADMCDJ.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CBEXPORT.jcl",
+    "name": "CBEXPORT.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CBIMPORT.jcl",
+    "name": "CBIMPORT.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CLOSEFIL.jcl",
+    "name": "CLOSEFIL.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/COMBTRAN.jcl",
+    "name": "COMBTRAN.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CREASTMT.JCL",
+    "name": "CREASTMT.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/CUSTFILE.jcl",
+    "name": "CUSTFILE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/DALYREJS.jcl",
+    "name": "DALYREJS.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/DEFCUST.jcl",
+    "name": "DEFCUST.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/DEFGDGB.jcl",
+    "name": "DEFGDGB.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/DEFGDGD.jcl",
+    "name": "DEFGDGD.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/DISCGRP.jcl",
+    "name": "DISCGRP.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/DUSRSECJ.jcl",
+    "name": "DUSRSECJ.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/ESDSRRDS.jcl",
+    "name": "ESDSRRDS.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/FTPJCL.JCL",
+    "name": "FTPJCL.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/INTCALC.jcl",
+    "name": "INTCALC.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/INTRDRJ1.JCL",
+    "name": "INTRDRJ1.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/INTRDRJ2.JCL",
+    "name": "INTRDRJ2.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/OPENFIL.jcl",
+    "name": "OPENFIL.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/POSTTRAN.jcl",
+    "name": "POSTTRAN.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/PRTCATBL.jcl",
+    "name": "PRTCATBL.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/READACCT.jcl",
+    "name": "READACCT.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/READCARD.jcl",
+    "name": "READCARD.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/READCUST.jcl",
+    "name": "READCUST.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/READXREF.jcl",
+    "name": "READXREF.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/REPTFILE.jcl",
+    "name": "REPTFILE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TCATBALF.jcl",
+    "name": "TCATBALF.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TRANBKP.jcl",
+    "name": "TRANBKP.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TRANCATG.jcl",
+    "name": "TRANCATG.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TRANFILE.jcl",
+    "name": "TRANFILE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TRANIDX.jcl",
+    "name": "TRANIDX.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TRANREPT.jcl",
+    "name": "TRANREPT.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TRANTYPE.jcl",
+    "name": "TRANTYPE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/TXT2PDF1.JCL",
+    "name": "TXT2PDF1.JCL",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/WAITSTEP.jcl",
+    "name": "WAITSTEP.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/jcl/XREFFILE.jcl",
+    "name": "XREFFILE.jcl",
+    "fileType": "jcl"
+  },
+  {
+    "path": "demo/maclib/ASMWAIT.mac",
+    "name": "ASMWAIT.mac",
+    "fileType": "macro"
+  },
+  {
+    "path": "demo/maclib/COCDATFT.mac",
+    "name": "COCDATFT.mac",
+    "fileType": "asm-cpy"
+  },
+  {
+    "path": "demo/proc/REPROC.prc",
+    "name": "REPROC.prc",
+    "fileType": "proc"
+  },
+  {
+    "path": "demo/proc/TRANREPT.prc",
+    "name": "TRANREPT.prc",
+    "fileType": "proc"
+  },
+  {
+    "path": "demo/scheduler/CardDemo.ca7",
+    "name": "CardDemo.ca7",
+    "fileType": "ca7"
+  },
+  {
+    "path": "demo/scheduler/CardDemo.controlm",
+    "name": "CardDemo.controlm",
+    "fileType": "controlm"
+  }
+]

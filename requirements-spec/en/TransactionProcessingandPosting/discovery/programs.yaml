@@ -1,0 +1,138 @@
+# Transaction Processing and Posting - Program Discovery
+# Generated: 2026-08-08T04:25:33Z
+# Source: TransformKG (Python discovery)
+
+function: TransactionProcessingandPosting
+programs:
+- name: CBTRN01C
+  type: COBOL
+  execution: batch
+  description: Daily transaction account lookup and validation; The program processes
+    daily transaction records sequentially, looking up each transaction's card number
+    in a cross-reference file to obtain the associated account identifier, then retrieving
+    the corresponding account record to validate its existence. When an account is
+    not found, the program displays an error message with the account identifier.;
+    Daily transaction card cross-reference lookup; The program opens two files—a daily
+    transaction file and a card cross-reference file—then processes each transaction
+    record by reading the card number, looking up the corresponding cross-reference
+    record, and displaying the matched card, account, and customer identifiers. Processing
+    continues until the daily transaction file is exhausted.; Daily transaction card
+    verification processing; The program reads daily transaction records sequentially,
+    displays each transaction, and verifies the associated card number against a cross-reference
+    file. When a card is found in the cross-reference file, processing continues;
+    when a card cannot be verified, the transaction is logged and skipped. The program
+    terminates when all daily transactions have been processed.
+  transaction_id: null
+  calls:
+  - CEE3ABD
+  includes:
+  - CVACT01Y
+  - CVACT02Y
+  - CVACT03Y
+  - CVCUS01Y
+  - CVTRA05Y
+  - CVTRA06Y
+- name: CBTRN02C
+  type: COBOL
+  execution: batch
+  description: Daily transaction validation and rejection handling; The program processes
+    daily transaction records by validating each transaction against cross-reference
+    and account data, then either posts valid transactions to the account or writes
+    rejected transactions to a rejection file. Validation checks include card number
+    validity, account existence, credit limit compliance, and account expiration status.
+    Rejected transactions are written to the daily rejection file with the specific
+    validation failure reason and description.; Daily transaction posting and balance
+    updates; The program processes daily transaction records sequentially, validating
+    each transaction against card cross-reference and account master data, then posting
+    approved transactions to update transaction category balances and account balances.
+    Validation checks card existence, account existence, available credit, and account
+    expiration; transactions failing any check are rejected. Approved transactions
+    create new category balance records or update existing ones, and adjust the account's
+    current balance and cycle credit/debit amounts.; Daily transaction posting and
+    account reconciliation; The program processes daily transactions from an input
+    file, validates each transaction against cross-reference and account records,
+    and posts approved transactions to both the account master file and a transaction
+    archive. Validation checks that the card number exists in the cross-reference
+    file, the associated account exists and has not expired, and the transaction amount
+    does not exceed available credit. Approved transactions update the account's current
+    balance and cycle credit/debit amounts, then are written to the transaction archive
+    with a processing timestamp.
+  transaction_id: null
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.DALYTRAN.PS
+  - AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.DALYREJS
+  - AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  calls:
+  - CEE3ABD
+  includes:
+  - CVACT01Y
+  - CVACT03Y
+  - CVTRA01Y
+  - CVTRA05Y
+  - CVTRA06Y
+- name: COMBTRAN
+  type: JCL
+  execution: batch
+  description: Transaction consolidation and indexing; This job combines transaction
+    records from two sources (backup and system-generated), sorts them by transaction
+    identifier in ascending order, and loads the consolidated result into a transaction
+    master index. The sort operation merges the two input datasets and produces a
+    combined output; the subsequent load operation copies the sorted records into
+    the indexed transaction store for fast retrieval.
+  transaction_id: null
+  calls:
+  - IDCAMS
+  - SORT
+  invokes: IDCAMS, SORT
+- name: POSTTRAN
+  type: JCL
+  execution: batch
+  description: Daily transaction posting and balance update; This job step invokes
+    the transaction posting program to process daily transaction records, validate
+    them against account and cross-reference data, and produce a rejected-transaction
+    output dataset. The program reads from the daily transaction file, account master
+    store, and card cross-reference store, then writes accepted transactions to the
+    transaction master and rejected transactions to a new rejection dataset.
+  transaction_id: null
+  calls:
+  - CBTRN02C
+  invokes: CBTRN02C
+- name: CBTRN02C
+  type: COBOL
+  execution: subroutine
+  description: Daily transaction validation and rejection handling; The program processes
+    daily transaction records by validating each transaction against cross-reference
+    and account data, then either posts valid transactions to the account or writes
+    rejected transactions to a rejection file. Validation checks include card number
+    validity, account existence, credit limit compliance, and account expiration status.
+    Rejected transactions are written to the daily rejection file with the specific
+    validation failure reason and description.; Daily transaction posting and balance
+    updates; The program processes daily transaction records sequentially, validating
+    each transaction against card cross-reference and account master data, then posting
+    approved transactions to update transaction category balances and account balances.
+    Validation checks card existence, account existence, available credit, and account
+    expiration; transactions failing any check are rejected. Approved transactions
+    create new category balance records or update existing ones, and adjust the account's
+    current balance and cycle credit/debit amounts.; Daily transaction posting and
+    account reconciliation; The program processes daily transactions from an input
+    file, validates each transaction against cross-reference and account records,
+    and posts approved transactions to both the account master file and a transaction
+    archive. Validation checks that the card number exists in the cross-reference
+    file, the associated account exists and has not expired, and the transaction amount
+    does not exceed available credit. Approved transactions update the account's current
+    balance and cycle credit/debit amounts, then are written to the transaction archive
+    with a processing timestamp.
+  data_stores_read: *id001
+  data_stores_write:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.DALYREJS
+  - AWS.M2.CARDDEMO.TCATBALF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS
+  calls:
+  - CEE3ABD

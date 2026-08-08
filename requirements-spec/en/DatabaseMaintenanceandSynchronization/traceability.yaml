@@ -1,0 +1,1618 @@
+function: DatabaseMaintenanceandSynchronization
+generated_at: '2026-08-08T04:26:54Z'
+summary:
+  total_rules: 55
+  captured: 54
+  not_applicable: 0
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 1
+  reconciliation:
+    expected: 55
+    written: 55
+    shortfall: 0
+rules:
+- rule_id: 54a38cad_1c15_4491_ba85_0aeeb2442da4
+  program: CBADMCDJ
+  disposition: captured
+  program_path: demo/jcl/CBADMCDJ.jcl
+  rule_name: Define application program resources for account and card operations
+  rule_text: THE CICS Configuration Utility SHALL register application program resources
+    for login, account management, card management, transaction processing, bill-pay,
+    administration, and test functions within the CARDDEMO application group; associate
+    programs with transaction identifiers and configure dynamic allocation.
+  req_id: REQ-F-003
+  traceability_lines:
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 100
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+- rule_id: 59884b28_2672_4d03_86e5_6d02a4c9082d
+  program: CBADMCDJ
+  disposition: captured
+  program_path: demo/jcl/CBADMCDJ.jcl
+  rule_name: List and finalize CARDDEMO application group configuration
+  rule_text: THE CICS Configuration Utility SHALL list all registered resources in
+    the CARDDEMO application group to verify successful installation and generate
+    a configuration summary report.
+  req_id: REQ-F-005
+  traceability_lines:
+  - 159
+  - 161
+  - 163
+- rule_id: a91d00eb_ca31_4854_9e72_776c389dcf12
+  program: CBADMCDJ
+  disposition: captured
+  program_path: demo/jcl/CBADMCDJ.jcl
+  rule_name: Define transaction routing entries for application access
+  rule_text: THE CICS Configuration Utility SHALL register transaction routing entries
+    that map transaction identifiers (CCDM, CCT1, CCT2, CCT3, CCT4) to their corresponding
+    application programs within the CARDDEMO application group; configure flexible
+    task data length for parameter passing.
+  req_id: REQ-F-004
+  traceability_lines:
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 139
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+- rule_id: b231b9ca_d2b1_49c9_939f_877a4af65bef
+  program: CBADMCDJ
+  disposition: captured
+  program_path: demo/jcl/CBADMCDJ.jcl
+  rule_name: Invoke CICS configuration utility with read-write access
+  rule_text: 'THE CICS Configuration Utility SHALL invoke with read-write access to
+    the configuration data store, page size 60, and compatibility mode disabled; load
+    the CICS system library and process inline resource definitions from the input
+    stream. (physical stores: `DFHCSD`, `STEPLIB`, `SYSIN`)'
+  req_id: REQ-F-001
+  traceability_lines:
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+- rule_id: b37d0118_7b57_487b_bf38_7be9051929d0
+  program: CBADMCDJ
+  disposition: captured
+  program_path: demo/jcl/CBADMCDJ.jcl
+  rule_name: Define screen map resources for login and account management
+  rule_text: THE CICS Configuration Utility SHALL register screen map resources for
+    login, account management, card management, transaction processing, bill-pay,
+    administration, and test screens within the CARDDEMO application group.
+  req_id: REQ-F-002
+  traceability_lines:
+  - 35
+  - 37
+  - 38
+  - 40
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+- rule_id: 63015545_6a74_43de_919e_5fbccd69d601
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Open the transaction input file
+  rule_text: THE Transaction File Handler SHALL open the transaction input file (`TR-RECORD`)
+    for sequential access.
+  req_ids:
+  - REQ-F-006
+  - REQ-F-034
+  traceability_lines:
+  - 82
+  - 83
+- rule_id: 6f4c32f7_a5fd_4128_ac94_3a1de33cae66
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Read the next transaction record
+  rule_text: 'WHEN a record read is requested, THE Transaction Record Reader SHALL
+    retrieve the next record from the input file into the input buffer, and set the
+    last record indicator to ''Y'' when end of file is reached. (physical store: `TR-RECORD`)'
+  req_ids:
+  - REQ-F-007
+  - REQ-F-041
+  traceability_lines:
+  - 100
+  - 101
+  - 102
+  - 103
+- rule_id: 7c9d28cc_4cd1_48d4_a022_723061d52268
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Process transaction records until end of file
+  rule_text: WHILE records remain available in the input file, THE Transaction Batch
+    Processor SHALL repeatedly treat each record and read the next record until the
+    end of file is reached.
+  req_id: REQ-F-008
+  traceability_lines:
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: 8d85ac70_3b3b_49c1_81ef_81bf5cb6b9b4
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Insert transaction record into database
+  rule_text: 'WHEN a transaction record with type indicator ''A'' is ready for insertion,
+    THE Transaction Database Writer SHALL insert the transaction reference number
+    and description into the transaction type database table. (physical store: `CARDDEMO.TRANSACTION_TYPE`)'
+  req_ids:
+  - REQ-F-009
+  - REQ-F-036
+  traceability_lines:
+  - 132
+  - 134
+  - 137
+  - 138
+  - 139
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 145
+  - 146
+  - 147
+  - 148
+- rule_id: f7184c91_b4e8_427e_81d3_b4793c509228
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Evaluate transaction record type and dispatch
+  rule_text: 'WHEN a transaction record is ready for processing, THE Transaction Record
+    Dispatcher SHALL evaluate the record type indicator and dispatch to the appropriate
+    operation: when the type is ''A'', invoke the insert-to-database procedure; when
+    the type is ''U'', ''D'', ''*'', or any other value, invoke the corresponding
+    handler (not shown in this slice).'
+  req_ids:
+  - REQ-F-008
+  - REQ-F-013
+  - REQ-F-036
+  - REQ-F-040
+  traceability_lines:
+  - 109
+  - 110
+  - 111
+  - 113
+  - 129
+- rule_id: 0ee6de90_73fd_4fa2_8703_c8714a9b03b5
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Process transaction records until end of file
+  rule_text: WHILE records remain available in the input file, THE Transaction Batch
+    Processor SHALL repeatedly treat each record and read the next record until the
+    end of file is reached.
+  req_id: REQ-F-008
+  traceability_lines:
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: 53520bc7_6c3d_42bf_b95d_427b1a760a0f
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Open the transaction input file
+  rule_text: THE Transaction File Handler SHALL open the transaction input file (`TR-RECORD`)
+    for sequential access.
+  req_ids:
+  - REQ-F-006
+  - REQ-F-034
+  traceability_lines:
+  - 82
+  - 83
+- rule_id: a0fb7b53_6211_4d3c_884d_a8bf478bab28
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Update transaction type record in database
+  rule_text: WHEN a transaction record with type 'U' (update) is being processed,
+    THE Transaction Type Database Updater SHALL update the transaction type record
+    in the transaction type database store (`CARDDEMO.TRANSACTION_TYPE`), setting
+    the description to the input record description where the transaction type matches
+    the input record reference number.
+  req_ids:
+  - REQ-F-010
+  - REQ-F-037
+  traceability_lines:
+  - 166
+  - 168
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+- rule_id: c08cc76a_9675_421e_a1a1_19ccb9590df4
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Read the next transaction record
+  rule_text: 'WHEN a record read is requested, THE Transaction Record Reader SHALL
+    retrieve the next record from the input file into the input buffer, and set the
+    last record indicator to ''Y'' when end of file is reached. (physical store: `TR-RECORD`)'
+  req_ids:
+  - REQ-F-007
+  - REQ-F-041
+  traceability_lines:
+  - 100
+  - 101
+  - 102
+  - 103
+- rule_id: db045388_94a5_4fdc_a30c_a8ea4eceb024
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Route transaction record by type
+  rule_text: 'WHEN a transaction record is ready for processing, THE Transaction Record
+    Router SHALL evaluate the record type indicator and route to the appropriate handler:
+    ''A'' for add, ''U'' for update, ''D'' for delete, ''*'' for comment, or no action
+    for other values.'
+  req_ids:
+  - REQ-F-008
+  - REQ-F-012
+  - REQ-F-013
+  - REQ-F-037
+  - REQ-F-039
+  - REQ-F-040
+  traceability_lines:
+  - 109
+  - 110
+  - 114
+  - 116
+  - 129
+- rule_id: 0dcb978c_8fc6_4f52_bcd5_94908a0975ad
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Open the transaction input file
+  rule_text: THE Transaction File Handler SHALL open the transaction input file (`TR-RECORD`)
+    for sequential access.
+  req_ids:
+  - REQ-F-006
+  - REQ-F-034
+  traceability_lines:
+  - 82
+  - 83
+- rule_id: 75a1ce78_f940_4acc_8a2e_701b462fd0b0
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Read the next transaction record
+  rule_text: 'WHEN a record read is requested, THE Transaction Record Reader SHALL
+    retrieve the next record from the input file into the input buffer, and set the
+    last record indicator to ''Y'' when end of file is reached. (physical store: `TR-RECORD`)'
+  req_ids:
+  - REQ-F-007
+  - REQ-F-041
+  traceability_lines:
+  - 100
+  - 101
+  - 102
+  - 103
+- rule_id: b3be353d_f5d7_4b9a_8156_e432b44a2614
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Evaluate transaction record type and dispatch action
+  rule_text: 'WHEN a transaction record is ready for processing, THE Transaction Record
+    Dispatcher SHALL evaluate the record type indicator and dispatch to the corresponding
+    action: ''A'' for add, ''U'' for update, ''D'' for delete, ''*'' for comment/skip,
+    or no action for any other value.'
+  req_ids:
+  - REQ-F-008
+  - REQ-F-012
+  - REQ-F-013
+  - REQ-F-038
+  - REQ-F-039
+  - REQ-F-040
+  traceability_lines:
+  - 109
+  - 110
+  - 117
+  - 119
+  - 129
+- rule_id: d09450a8_d8b9_4190_9d72_404c196a323c
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Process transaction records until end of file
+  rule_text: WHILE records remain available in the input file, THE Transaction Batch
+    Processor SHALL repeatedly treat each record and read the next record until the
+    end of file is reached.
+  req_id: REQ-F-008
+  traceability_lines:
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: f7829b9f_d92d_49fe_a236_d3118a6ac67f
+  program: COBTUPDT
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/cbl/COBTUPDT.cbl
+  rule_name: Delete transaction type record from database
+  rule_text: 'WHEN a transaction record with type indicator ''D'' is processed, THE
+    Transaction Type Record Deleter SHALL delete the transaction type record from
+    the database store where the transaction type code matches the input record reference
+    number. (physical store: `CARDDEMO.TRANSACTION_TYPE`)'
+  req_ids:
+  - REQ-F-011
+  - REQ-F-038
+  traceability_lines:
+  - 196
+  - 198
+  - 201
+  - 202
+  - 203
+  - 204
+- rule_id: 7b667ff9_baca_4261_9bf0_ab5f4cac8863
+  program: CREADB21
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/CREADB21.jcl
+  rule_name: Free existing database plans and packages
+  rule_text: 'THE Database plan and package cleanup SHALL invoke the TSO batch utility
+    to free existing database plans and packages, returning a code of 8 when the plans
+    or packages do not exist (indicating successful cleanup of non-existent resources)
+    or a success code when resources are freed. (physical stores: `STEPLIB`, `SYSTSIN`)'
+  req_id: REQ-F-014
+  traceability_lines:
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+- rule_id: 45ae64b0_c556_4aae_b976_a13ac644df91
+  program: CREADB21
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/CREADB21.jcl
+  rule_name: Create database table via TSO batch utility
+  rule_text: 'THE Database Table Creation SHALL invoke the table-creation utility
+    to establish the transaction-type table, loading runtime libraries and control
+    parameters from cataloged datasets, and route diagnostic output to the job log.
+    (physical stores: `STEPLIB`, `SYSIN`, `SYSTSIN`)'
+  req_id: REQ-F-015
+  traceability_lines:
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+- rule_id: adbb14b6_9f17_462f_96f2_2f9b54c612d3
+  program: CREADB21
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/CREADB21.jcl
+  rule_name: Load transaction type lookup table
+  rule_text: 'THE Transaction Type Loader SHALL invoke the DB2 test execution program
+    (`DSNTEP4`) to load the transaction type lookup table from the input dataset,
+    routing all diagnostic output to the job log. (physical stores: `STEPLIB`, `SYSIN`,
+    `SYSTSIN`)'
+  req_id: REQ-F-016
+  traceability_lines:
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+- rule_id: dd8b09dc_539f_4660_b0a5_c7549928a8e8
+  program: CREADB21
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/CREADB21.jcl
+  rule_name: Load transaction type category table conditionally
+  rule_text: 'WHEN the first step completes successfully, THE Transaction Type Category
+    Loader SHALL invoke the DB2 test execution program (`DSNTEP4`) to load the transaction
+    type category table from the input dataset, routing all diagnostic output to the
+    job log. (physical stores: `STEPLIB`, `SYSIN`, `SYSTSIN`)'
+  req_id: REQ-F-018
+  traceability_lines:
+  - 73
+  - 74
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+- rule_id: a317e08a_6b78_48af_bfd1_0ed8c9f74a79
+  program: DBPAUTP0
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl
+  rule_name: Unload authorization database with conditional activation
+  rule_text: 'THE Database Unload Utility SHALL Extract authorization records from
+    the authorization database, apply conditional activation to minimize resource
+    overhead, read from the authorization data store, authorization index, IMS libraries,
+    and recovery control datasets, and write the extracted records to the output dataset
+    with variable-length block format. (physical stores: `DDPAUTP0`, `DDPAUTX0`, `DFSCTL`,
+    `DFSRESLB`, `DFSURGU1`, `DFSVSAMP`, `RECON1`, `RECON2`, `RECON3`, `STEPLIB`)'
+  req_id: REQ-F-019
+  traceability_lines:
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+- rule_id: 078291b3_167e_4875_a7b8_364856d04759
+  program: DBUNLDGS
+  disposition: captured
+  rule_name: Retrieve next pending authorization summary record
+  rule_text: THE Authorization Summary Retrieval SHALL initialize the PCB status,
+    delegate to the database interface (`CBLTDLI`) to retrieve the next authorization
+    summary record using the Get Next function, and when successful (status SPACES),
+    validate the account identifier and process child records; when end-of-root-segment
+    status ('GB') is returned, set the end-of-root-segment indicator to 'Y'.
+  req_ids:
+  - REQ-F-021
+  - REQ-F-023
+  traceability_lines:
+  - 216
+  - 219
+  - 220
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 240
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 246
+  - 247
+  - 248
+  - 249
+  - 251
+  - 252
+- rule_id: 0524bbbf_d14c_4581_a28c_9f5a4ed37997
+  program: DBUNLDGS
+  disposition: not_accounted_for
+  reason: Citations pruned by identifier-grounding check
+  program_path: demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL
+  rule_name: Insert pending authorization detail record
+  rule_text: THE Authorization Detail Insertion SHALL delegate to the database interface
+    (`CBLTDLI`) to insert the pending authorization detail record using the Insert
+    function.
+- rule_id: ad734934_56ba_4240_b525_acf14e853e22
+  program: DBUNLDGS
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL
+  rule_name: Retrieve next pending authorization detail record
+  rule_text: THE Authorization Detail Retrieval SHALL delegate to the database interface
+    (`CBLTDLI`) to retrieve the next authorization detail record using the Get Next
+    within Parent function, and when successful (status SPACES), insert the child
+    authorization detail record; when end-of-child-segment status ('GE') is returned,
+    set the end-of-child-segment indicator to 'Y'; reinitialize the PCB status after
+    each operation.
+  req_ids:
+  - REQ-F-025
+  - REQ-F-026
+  - REQ-F-066
+  - REQ-F-067
+  traceability_lines:
+  - 263
+  - 266
+  - 267
+  - 268
+  - 269
+  - 270
+  - 271
+  - 272
+  - 273
+  - 274
+  - 275
+  - 276
+  - 281
+  - 282
+  - 283
+  - 284
+  - 285
+  - 286
+  - 289
+  - 295
+- rule_id: e174b21f_8da5_45a5_9018_f97a91f19d1f
+  program: DBUNLDGS
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL
+  rule_name: Process pending authorization detail records until child exhausted
+  rule_text: WHILE the end-of-child-segment indicator (`WS-END-OF-CHILD-SEG`) is not
+    set to 'Y', THE Authorization Detail Processor SHALL repeatedly retrieve and process
+    the next pending authorization detail record until the child segment exhaustion
+    is signaled.
+  req_ids:
+  - REQ-F-024
+  - REQ-F-065
+  traceability_lines:
+  - 244
+  - 245
+  - 246
+- rule_id: e2817aff_7640_4895_9f61_b70d172740fe
+  program: DBUNLDGS
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL
+  rule_name: Process pending authorization records until root exhausted
+  rule_text: WHILE the end-of-root-segment indicator (`WS-END-OF-ROOT-SEG`) is not
+    set to 'Y', THE Authorization Record Processor SHALL repeatedly retrieve and process
+    the next pending authorization summary record until the root segment exhaustion
+    is signaled.
+  req_ids:
+  - REQ-F-020
+  - REQ-F-062
+  traceability_lines:
+  - 164
+  - 172
+  - 173
+- rule_id: f394d55e_8816_471a_94da_a0a01ee31702
+  program: DBUNLDGS
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL
+  rule_name: Insert pending authorization summary record
+  rule_text: THE Authorization Summary Insertion SHALL delegate to the database interface
+    (`CBLTDLI`) to insert the pending authorization summary record using the Insert
+    function.
+  req_id: REQ-F-022
+  traceability_lines:
+  - 300
+  - 301
+  - 302
+  - 303
+  - 304
+- rule_id: 70331750_a475_439a_8224_56bf84cd36aa
+  program: LOADPADB
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/jcl/LOADPADB.JCL
+  rule_name: Execute IMS batch payment audit database load
+  rule_text: 'THE Payment Audit Database Load SHALL Execute the IMS batch message
+    processing program to load payment audit records from the root and child input
+    datasets into the IMS database, using the specified PSBs (PAUDBLOD and PSBPAUTB)
+    for schema and authentication, and produce diagnostic output to standard print
+    and error streams. (physical stores: `DFSRESLB`, `DFSVSAMP`, `INFILE1`, `INFILE2`,
+    `STEPLIB`)'
+  req_id: REQ-F-033
+  traceability_lines:
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+- rule_id: 3a739b50_a30b_4158_8ab3_2f53e6893b62
+  program: MNTTRDB2
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/MNTTRDB2.jcl
+  rule_name: Process batch transaction maintenance requests
+  rule_text: 'THE Transaction Table Maintenance SHALL read transaction maintenance
+    records from the input file, classify each record by its operation code (add,
+    delete, update, or comment), and delegate to the transaction update program to
+    execute the corresponding database operation against the transaction table. (physical
+    stores: `DBRMLIB`, `INPFILE`, `STEPLIB`, `SYSTSIN`)'
+  req_id: REQ-F-035
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+- rule_id: 40bb12ed_bf0e_4c93_b37a_729b5d537d53
+  program: PAUDBLOD
+  disposition: captured
+  rule_name: Retrieve parent root segment and prepare for child insertion
+  rule_text: WHEN a child segment record with a numeric root segment key is successfully
+    read from the input file, THE Parent Segment Retriever SHALL initialize the PCB
+    status field, delegate to the IMS database interface (`CBLTDLI`) to retrieve the
+    parent root segment using the Get Unique function with the qualified segment search
+    argument; if the retrieval succeeds (PCB status is SPACES), invoke the child segment
+    insertion routine.
+  req_ids:
+  - REQ-F-048
+  - REQ-F-049
+  - REQ-F-050
+  traceability_lines:
+  - 292
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 305
+  - 307
+  - 308
+  - 309
+- rule_id: 19f22bc4_bbc4_4dc9_912a_ba400e9a5bc5
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Process root segment records from input file
+  rule_text: 'WHILE the end-of-root-segment-file flag (`END-ROOT-SEG-FILE`) is not
+    set to ''Y'', THE Root Segment Reader SHALL read the next root segment record
+    from the input file (`INFILE1`); if the read succeeds (input file 1 status (`WS-INFIL1-STATUS`)
+    is SPACES or ''00''), move the raw record data to the pending authorization summary
+    buffer and invoke the root segment insertion routine; if the read reaches end-of-file
+    (status ''10''), set the end-of-root-segment-file flag to ''Y'' to terminate processing.
+    (physical stores: `INFILE2`)'
+  req_ids:
+  - REQ-F-028
+  - REQ-F-043
+  - REQ-F-045
+  traceability_lines:
+  - 177
+  - 178
+  - 180
+  - 181
+  - 190
+  - 201
+  - 209
+  - 222
+  - 225
+  - 226
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  - 236
+  - 237
+- rule_id: 35749987_ddd5_4ee6_af85_60f11deff211
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Read and validate root segment records
+  rule_text: WHEN a root segment record is available in the input file, THE Root Segment
+    Reader SHALL read the next record from the root segment input file (`INFILE1`);
+    if the read succeeds (file status is SPACES or '00'), move the raw record data
+    to the pending authorization summary buffer; if the file status is '10' (end of
+    file), set the end-of-root-segment-file flag (`END-ROOT-SEG-FILE`) to 'Y'.
+  req_ids:
+  - REQ-F-028
+  - REQ-F-044
+  - REQ-F-045
+  traceability_lines:
+  - 222
+  - 225
+  - 226
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  - 236
+  - 237
+- rule_id: 50f356a0_3d50_438c_887f_9cb7af838a20
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Read and validate child segment records
+  rule_text: WHEN a child segment record is available in the input file, THE Child
+    Segment Reader SHALL read the next record from the child segment input file (`INFILE2`);
+    if the read succeeds (file status is SPACES or '00'), validate that the root segment
+    key (`ROOT-SEG-KEY`) is numeric; if numeric, move the key to the qualified segment
+    search argument and move the child segment record data to the pending authorization
+    details buffer; if the file status is '10' (end of file), set the end-of-child-segment-file
+    flag (`END-CHILD-SEG-FILE`) to 'Y'.
+  req_ids:
+  - REQ-F-030
+  - REQ-F-031
+  - REQ-F-046
+  - REQ-F-047
+  - REQ-F-051
+  traceability_lines:
+  - 269
+  - 271
+  - 272
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  - 279
+  - 280
+  - 281
+  - 282
+  - 283
+  - 284
+  - 285
+  - 288
+  - 289
+- rule_id: 690fd0c3_1845_457c_bce1_7aa96b10c09f
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Process child segments until file exhausted
+  rule_text: WHILE the end-of-child-segment-file flag (`END-CHILD-SEG-FILE`) is not
+    set to 'Y', THE Child Segment Processor SHALL repeatedly invoke the child segment
+    reading and processing procedure until the end-of-child-segment-file flag (`END-CHILD-SEG-FILE`)
+    is set to 'Y'.
+  req_ids:
+  - REQ-F-030
+  - REQ-F-046
+  - REQ-F-051
+  traceability_lines:
+  - 180
+  - 181
+- rule_id: 99f5c93a_5a5f_4d67_a2f1_f7d83a0f003b
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Initialize program and open input files
+  rule_text: THE Authorization Record Loader SHALL open the root segment input file
+    (`INFILE1`) and the child segment input file (`INFILE2`) for sequential reading.
+  req_id: REQ-F-027
+  traceability_lines:
+  - 169
+  - 175
+  - 177
+  - 178
+  - 180
+  - 181
+  - 190
+  - 201
+  - 209
+- rule_id: a4c78323_d7fb_4e5e_8c3b_19907146d489
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Initialize input files for segment processing
+  rule_text: THE Segment File Handler SHALL open the root segment input file (`INFILE1`)
+    and the child segment input file (`INFILE2`) for sequential read access.
+  req_id: REQ-F-027
+  traceability_lines:
+  - 190
+  - 201
+  - 209
+- rule_id: d8f0764f_02ee_4ea9_90a4_497fb36028b0
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Insert root segment into IMS database
+  rule_text: WHEN a root segment record is successfully read from the input file,
+    THE Root Segment Inserter SHALL delegate to the IMS database interface (`CBLTDLI`)
+    to insert the root segment record into the authorization database using the Insert
+    function code.
+  req_ids:
+  - REQ-F-029
+  - REQ-F-044
+  traceability_lines:
+  - 242
+  - 244
+  - 245
+  - 246
+  - 247
+- rule_id: ef259c24_35e1_4bbf_8dbd_d0d7e7709954
+  program: PAUDBLOD
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL
+  rule_name: Insert child segment into IMS database under parent
+  rule_text: WHEN the parent root segment is successfully retrieved from the IMS database,
+    THE Child Segment Inserter SHALL delegate to the IMS database interface (`CBLTDLI`)
+    to insert the child segment record into the authorization database under the parent
+    root segment using the Insert function code.
+  req_ids:
+  - REQ-F-032
+  - REQ-F-049
+  traceability_lines:
+  - 318
+  - 320
+  - 321
+  - 322
+  - 323
+  - 324
+- rule_id: 7b09ae63_febe_4a90_9b7d_4c7b3b971e21
+  program: PAUDBUNL
+  disposition: captured
+  rule_name: Validate account identifier is numeric
+  rule_text: WHEN a root segment is successfully retrieved with a valid account identifier,
+    THE Account Validation SHALL verify that the account identifier is numeric; if
+    valid, initialize the end-of-child-segment flag and begin child-segment retrieval;
+    if invalid, skip child-segment processing.
+  req_ids:
+  - REQ-F-055
+  - REQ-F-056
+  traceability_lines:
+  - 232
+  - 234
+  - 235
+  - 236
+  - 237
+- rule_id: 25f842f1_318a_4f3f_8400_7810e7947b34
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Initialize program and open output file
+  rule_text: THE Authorization Record Handler SHALL open the output file (`OPFILE1`)
+    for sequential writing.
+  req_id: REQ-F-052
+  traceability_lines:
+  - 157
+  - 161
+  - 163
+  - 164
+  - 173
+  - 186
+- rule_id: 317fc127_3dbd_42c3_b2fa_0813d0687a60
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Retrieve next authorization detail record
+  rule_text: WHEN the authorization detail retrieval is requested, THE Authorization
+    Record Handler SHALL delegate to the database access service (`CBLTDLI`) to retrieve
+    the next authorization detail record within the current parent; when no more child
+    records are available (status 'GE'), set the end_of_child_segment (`WS-END-OF-CHILD-SEG`)
+    flag to 'Y' to terminate detail processing.
+  req_ids:
+  - REQ-F-060
+  - REQ-F-074
+  traceability_lines:
+  - 253
+  - 256
+  - 257
+  - 258
+  - 259
+  - 260
+  - 273
+  - 274
+  - 275
+  - 278
+  - 284
+- rule_id: 4fe03c98_8d29_4a44_af84_72ffa8774fa2
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Retrieve next authorization summary record
+  rule_text: WHEN the authorization summary retrieval is requested, THE Authorization
+    Record Handler SHALL delegate to the database access service (`CBLTDLI`) to retrieve
+    the next authorization summary record; when successful (status SPACES), validate
+    the account identifier is numeric and write the record to the output file (`OPFILE1`),
+    then process associated detail records; when the root segment is exhausted (status
+    'GB'), set the end-of-root-segment flag to terminate processing.
+  req_ids:
+  - REQ-F-055
+  - REQ-F-057
+  - REQ-F-070
+  - REQ-F-071
+  traceability_lines:
+  - 207
+  - 210
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  - 221
+  - 222
+  - 223
+  - 227
+  - 231
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 239
+  - 241
+  - 242
+- rule_id: 7e7ae560_2540_47bf_a5e8_6a073fe2f596
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Process authorization detail records until child segment exhausted
+  rule_text: WHILE the end of child segment has not been reached (end_of_child_segment
+    (`WS-END-OF-CHILD-SEG`) is not 'Y'), THE Authorization Record Handler SHALL retrieve
+    the next authorization detail record within the current parent summary.
+  req_ids:
+  - REQ-F-058
+  - REQ-F-072
+  traceability_lines:
+  - 234
+  - 235
+  - 236
+- rule_id: a1831e74_f89c_4275_8501_82e45d7232e4
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Process authorization records until root segment exhausted
+  rule_text: WHILE the end of root segment has not been reached (end_of_root_segment
+    (`WS-END-OF-ROOT-SEG`) is not 'Y'), THE Authorization Record Handler SHALL retrieve
+    the next authorization summary record.
+  req_ids:
+  - REQ-F-054
+  - REQ-F-069
+  traceability_lines:
+  - 163
+  - 164
+- rule_id: 0a847866_ccd5_4b1a_b75d_e8ff1cadab18
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Process child segment batch for account
+  rule_text: WHILE the end-of-child-segment flag (`WS-END-OF-CHILD-SEG`) is not set
+    to 'Y', THE Child Segment Processor SHALL retrieve the next child segment for
+    the current account and write it to the output file.
+  req_ids:
+  - REQ-F-058
+  - REQ-F-072
+  traceability_lines:
+  - 235
+  - 236
+- rule_id: 200575b0_57fd_489d_963e_c31b20929c26
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Process authorization records until root segment exhausted
+  rule_text: WHILE the end of root segment has not been reached (end_of_root_segment
+    (`WS-END-OF-ROOT-SEG`) is not 'Y'), THE Authorization Record Handler SHALL retrieve
+    the next authorization summary record.
+  req_ids:
+  - REQ-F-054
+  - REQ-F-069
+  traceability_lines:
+  - 163
+  - 164
+- rule_id: 651ebcb7_f6ec_495c_9dc9_9ba1e9b0842d
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Retrieve next root segment from database
+  rule_text: WHEN the root segment retrieval cycle is initiated, THE Root Segment
+    Retrieval SHALL delegate to the database access service (`CBLTDLI`) to retrieve
+    the next root segment; when successful (PCB status is spaces), extract the account
+    identifier and process child segments; when end-of-data is reached (PCB status
+    is 'GB'), set the end-of-root-segment flag to 'Y' to terminate processing.
+  req_ids:
+  - REQ-F-055
+  - REQ-F-057
+  - REQ-F-070
+  - REQ-F-071
+  traceability_lines:
+  - 207
+  - 210
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  - 221
+  - 222
+  - 223
+  - 229
+  - 230
+  - 231
+  - 232
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 239
+  - 241
+  - 242
+- rule_id: 802876a9_cd2f_431d_b92f_cf63cd95d510
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Retrieve next child segment and write to output
+  rule_text: WHEN the child segment retrieval cycle is initiated, THE Child Segment
+    Retrieval and Output SHALL delegate to the database access service (`CBLTDLI`)
+    to retrieve the next child segment within the current parent account; when successful
+    (PCB status is spaces), move the child segment data to the output record and write
+    it to the output file (`OPFILE2`); when end-of-child-group is reached (PCB status
+    is 'GE'), set the end-of-child-segment flag to 'Y' to terminate child-segment
+    processing.
+  req_ids:
+  - REQ-F-059
+  - REQ-F-060
+  - REQ-F-073
+  - REQ-F-074
+  traceability_lines:
+  - 253
+  - 256
+  - 257
+  - 258
+  - 259
+  - 260
+  - 261
+  - 262
+  - 263
+  - 264
+  - 265
+  - 266
+  - 270
+  - 271
+  - 272
+  - 273
+  - 274
+  - 275
+  - 278
+  - 284
+- rule_id: c0a3a303_83e7_48cb_be47_dfc92d66463e
+  program: PAUDBUNL
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL
+  rule_name: Initialize output file for batch processing
+  rule_text: THE Output File Handler SHALL open the output file (`OPFILE2`) for sequential
+    write access.
+  req_id: REQ-F-053
+  traceability_lines:
+  - 161
+  - 173
+  - 194
+- rule_id: 1a919f4a_c61a_4e41_8939_d4ffc89c6a87
+  program: UNLDGSAM
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL
+  rule_name: Execute IMS database unload program
+  rule_text: 'THE IMS Database Unload SHALL invoke the unload program (DBUNLDGS) through
+    the IMS runtime controller, allocating all required runtime libraries, database
+    definition stores, and GSAM data resources, and direct execution output to the
+    print and error streams. (physical stores: `DDPAUTP0`, `DDPAUTX0`, `DFSRESLB`,
+    `DFSVSAMP`, `PADFILOP`, `PASFILOP`, `STEPLIB`)'
+  req_id: REQ-F-061
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 22
+  - 23
+  - 24
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+- rule_id: 35e94fde_1f11_4952_a6ea_a14685cd890f
+  program: UNLDPADB
+  disposition: captured
+  program_path: demo/app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL
+  rule_name: Unload IMS authorization database to sequential output files
+  rule_text: 'THE IMS database unload utility SHALL extract authorization database
+    records in DLI mode, writing root records to the root output file and child records
+    to the child output file, using the PAUTBUNL unload specification with the disable
+    option applied. (physical stores: `DDPAUTP0`, `DDPAUTX0`, `DFSRESLB`, `DFSVSAMP`,
+    `IMS`, `OUTFIL1`, `OUTFIL2`, `STEPLIB`)'
+  req_id: REQ-F-068
+  traceability_lines:
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - b231b9ca_d2b1_49c9_939f_877a4af65bef
+- req_id: REQ-F-002
+  rule_ids:
+  - b37d0118_7b57_487b_bf38_7be9051929d0
+- req_id: REQ-F-003
+  rule_ids:
+  - 54a38cad_1c15_4491_ba85_0aeeb2442da4
+- req_id: REQ-F-004
+  rule_ids:
+  - a91d00eb_ca31_4854_9e72_776c389dcf12
+- req_id: REQ-F-005
+  rule_ids:
+  - 59884b28_2672_4d03_86e5_6d02a4c9082d
+- req_id: REQ-F-006
+  rule_ids:
+  - 63015545_6a74_43de_919e_5fbccd69d601
+  - 53520bc7_6c3d_42bf_b95d_427b1a760a0f
+  - 0dcb978c_8fc6_4f52_bcd5_94908a0975ad
+- req_id: REQ-F-007
+  rule_ids:
+  - 6f4c32f7_a5fd_4128_ac94_3a1de33cae66
+  - c08cc76a_9675_421e_a1a1_19ccb9590df4
+  - 75a1ce78_f940_4acc_8a2e_701b462fd0b0
+- req_id: REQ-F-008
+  rule_ids:
+  - 7c9d28cc_4cd1_48d4_a022_723061d52268
+  - 0ee6de90_73fd_4fa2_8703_c8714a9b03b5
+  - d09450a8_d8b9_4190_9d72_404c196a323c
+  - f7184c91_b4e8_427e_81d3_b4793c509228
+  - db045388_94a5_4fdc_a30c_a8ea4eceb024
+  - b3be353d_f5d7_4b9a_8156_e432b44a2614
+- req_id: REQ-F-009
+  rule_ids:
+  - 8d85ac70_3b3b_49c1_81ef_81bf5cb6b9b4
+- req_id: REQ-F-010
+  rule_ids:
+  - a0fb7b53_6211_4d3c_884d_a8bf478bab28
+- req_id: REQ-F-011
+  rule_ids:
+  - f7829b9f_d92d_49fe_a236_d3118a6ac67f
+- req_id: REQ-F-012
+  rule_ids:
+  - db045388_94a5_4fdc_a30c_a8ea4eceb024
+  - b3be353d_f5d7_4b9a_8156_e432b44a2614
+- req_id: REQ-F-013
+  rule_ids:
+  - f7184c91_b4e8_427e_81d3_b4793c509228
+  - db045388_94a5_4fdc_a30c_a8ea4eceb024
+  - b3be353d_f5d7_4b9a_8156_e432b44a2614
+- req_id: REQ-F-014
+  rule_ids:
+  - 7b667ff9_baca_4261_9bf0_ab5f4cac8863
+- req_id: REQ-F-015
+  rule_ids:
+  - 45ae64b0_c556_4aae_b976_a13ac644df91
+- req_id: REQ-F-016
+  rule_ids:
+  - adbb14b6_9f17_462f_96f2_2f9b54c612d3
+- req_id: REQ-F-018
+  rule_ids:
+  - dd8b09dc_539f_4660_b0a5_c7549928a8e8
+- req_id: REQ-F-019
+  rule_ids:
+  - a317e08a_6b78_48af_bfd1_0ed8c9f74a79
+- req_id: REQ-F-020
+  rule_ids:
+  - e2817aff_7640_4895_9f61_b70d172740fe
+- req_id: REQ-F-021
+  rule_ids:
+  - 078291b3_167e_4875_a7b8_364856d04759
+- req_id: REQ-F-022
+  rule_ids:
+  - f394d55e_8816_471a_94da_a0a01ee31702
+- req_id: REQ-F-023
+  rule_ids:
+  - 078291b3_167e_4875_a7b8_364856d04759
+- req_id: REQ-F-024
+  rule_ids:
+  - e174b21f_8da5_45a5_9018_f97a91f19d1f
+- req_id: REQ-F-025
+  rule_ids:
+  - ad734934_56ba_4240_b525_acf14e853e22
+- req_id: REQ-F-026
+  rule_ids:
+  - ad734934_56ba_4240_b525_acf14e853e22
+- req_id: REQ-F-027
+  rule_ids:
+  - 99f5c93a_5a5f_4d67_a2f1_f7d83a0f003b
+  - a4c78323_d7fb_4e5e_8c3b_19907146d489
+- req_id: REQ-F-028
+  rule_ids:
+  - 19f22bc4_bbc4_4dc9_912a_ba400e9a5bc5
+  - 35749987_ddd5_4ee6_af85_60f11deff211
+- req_id: REQ-F-029
+  rule_ids:
+  - d8f0764f_02ee_4ea9_90a4_497fb36028b0
+- req_id: REQ-F-030
+  rule_ids:
+  - 50f356a0_3d50_438c_887f_9cb7af838a20
+  - 690fd0c3_1845_457c_bce1_7aa96b10c09f
+- req_id: REQ-F-031
+  rule_ids:
+  - 50f356a0_3d50_438c_887f_9cb7af838a20
+- req_id: REQ-F-032
+  rule_ids:
+  - ef259c24_35e1_4bbf_8dbd_d0d7e7709954
+- req_id: REQ-F-033
+  rule_ids:
+  - 70331750_a475_439a_8224_56bf84cd36aa
+- req_id: REQ-F-034
+  rule_ids:
+  - 63015545_6a74_43de_919e_5fbccd69d601
+  - 53520bc7_6c3d_42bf_b95d_427b1a760a0f
+  - 0dcb978c_8fc6_4f52_bcd5_94908a0975ad
+- req_id: REQ-F-035
+  rule_ids:
+  - 3a739b50_a30b_4158_8ab3_2f53e6893b62
+- req_id: REQ-F-036
+  rule_ids:
+  - 8d85ac70_3b3b_49c1_81ef_81bf5cb6b9b4
+  - f7184c91_b4e8_427e_81d3_b4793c509228
+- req_id: REQ-F-037
+  rule_ids:
+  - a0fb7b53_6211_4d3c_884d_a8bf478bab28
+  - db045388_94a5_4fdc_a30c_a8ea4eceb024
+- req_id: REQ-F-038
+  rule_ids:
+  - f7829b9f_d92d_49fe_a236_d3118a6ac67f
+  - b3be353d_f5d7_4b9a_8156_e432b44a2614
+- req_id: REQ-F-039
+  rule_ids:
+  - db045388_94a5_4fdc_a30c_a8ea4eceb024
+  - b3be353d_f5d7_4b9a_8156_e432b44a2614
+- req_id: REQ-F-040
+  rule_ids:
+  - f7184c91_b4e8_427e_81d3_b4793c509228
+  - db045388_94a5_4fdc_a30c_a8ea4eceb024
+  - b3be353d_f5d7_4b9a_8156_e432b44a2614
+- req_id: REQ-F-041
+  rule_ids:
+  - 6f4c32f7_a5fd_4128_ac94_3a1de33cae66
+  - c08cc76a_9675_421e_a1a1_19ccb9590df4
+  - 75a1ce78_f940_4acc_8a2e_701b462fd0b0
+- req_id: REQ-F-043
+  rule_ids:
+  - 19f22bc4_bbc4_4dc9_912a_ba400e9a5bc5
+- req_id: REQ-F-044
+  rule_ids:
+  - d8f0764f_02ee_4ea9_90a4_497fb36028b0
+  - 35749987_ddd5_4ee6_af85_60f11deff211
+- req_id: REQ-F-045
+  rule_ids:
+  - 35749987_ddd5_4ee6_af85_60f11deff211
+  - 19f22bc4_bbc4_4dc9_912a_ba400e9a5bc5
+- req_id: REQ-F-046
+  rule_ids:
+  - 690fd0c3_1845_457c_bce1_7aa96b10c09f
+  - 50f356a0_3d50_438c_887f_9cb7af838a20
+- req_id: REQ-F-047
+  rule_ids:
+  - 50f356a0_3d50_438c_887f_9cb7af838a20
+- req_id: REQ-F-048
+  rule_ids:
+  - 40bb12ed_bf0e_4c93_b37a_729b5d537d53
+- req_id: REQ-F-049
+  rule_ids:
+  - ef259c24_35e1_4bbf_8dbd_d0d7e7709954
+  - 40bb12ed_bf0e_4c93_b37a_729b5d537d53
+- req_id: REQ-F-050
+  rule_ids:
+  - 40bb12ed_bf0e_4c93_b37a_729b5d537d53
+- req_id: REQ-F-051
+  rule_ids:
+  - 50f356a0_3d50_438c_887f_9cb7af838a20
+  - 690fd0c3_1845_457c_bce1_7aa96b10c09f
+- req_id: REQ-F-052
+  rule_ids:
+  - 25f842f1_318a_4f3f_8400_7810e7947b34
+- req_id: REQ-F-053
+  rule_ids:
+  - c0a3a303_83e7_48cb_be47_dfc92d66463e
+- req_id: REQ-F-054
+  rule_ids:
+  - a1831e74_f89c_4275_8501_82e45d7232e4
+  - 200575b0_57fd_489d_963e_c31b20929c26
+- req_id: REQ-F-055
+  rule_ids:
+  - 4fe03c98_8d29_4a44_af84_72ffa8774fa2
+  - 651ebcb7_f6ec_495c_9dc9_9ba1e9b0842d
+  - 7b09ae63_febe_4a90_9b7d_4c7b3b971e21
+- req_id: REQ-F-056
+  rule_ids:
+  - 7b09ae63_febe_4a90_9b7d_4c7b3b971e21
+- req_id: REQ-F-057
+  rule_ids:
+  - 4fe03c98_8d29_4a44_af84_72ffa8774fa2
+  - 651ebcb7_f6ec_495c_9dc9_9ba1e9b0842d
+- req_id: REQ-F-058
+  rule_ids:
+  - 7e7ae560_2540_47bf_a5e8_6a073fe2f596
+  - 0a847866_ccd5_4b1a_b75d_e8ff1cadab18
+- req_id: REQ-F-059
+  rule_ids:
+  - 802876a9_cd2f_431d_b92f_cf63cd95d510
+- req_id: REQ-F-060
+  rule_ids:
+  - 317fc127_3dbd_42c3_b2fa_0813d0687a60
+  - 802876a9_cd2f_431d_b92f_cf63cd95d510
+- req_id: REQ-F-061
+  rule_ids:
+  - 1a919f4a_c61a_4e41_8939_d4ffc89c6a87
+- req_id: REQ-F-062
+  rule_ids:
+  - e2817aff_7640_4895_9f61_b70d172740fe
+- req_id: REQ-F-065
+  rule_ids:
+  - e174b21f_8da5_45a5_9018_f97a91f19d1f
+- req_id: REQ-F-066
+  rule_ids:
+  - ad734934_56ba_4240_b525_acf14e853e22
+- req_id: REQ-F-067
+  rule_ids:
+  - ad734934_56ba_4240_b525_acf14e853e22
+- req_id: REQ-F-068
+  rule_ids:
+  - 35e94fde_1f11_4952_a6ea_a14685cd890f
+- req_id: REQ-F-069
+  rule_ids:
+  - a1831e74_f89c_4275_8501_82e45d7232e4
+  - 200575b0_57fd_489d_963e_c31b20929c26
+- req_id: REQ-F-070
+  rule_ids:
+  - 4fe03c98_8d29_4a44_af84_72ffa8774fa2
+  - 651ebcb7_f6ec_495c_9dc9_9ba1e9b0842d
+- req_id: REQ-F-071
+  rule_ids:
+  - 4fe03c98_8d29_4a44_af84_72ffa8774fa2
+  - 651ebcb7_f6ec_495c_9dc9_9ba1e9b0842d
+- req_id: REQ-F-072
+  rule_ids:
+  - 7e7ae560_2540_47bf_a5e8_6a073fe2f596
+  - 0a847866_ccd5_4b1a_b75d_e8ff1cadab18
+- req_id: REQ-F-073
+  rule_ids:
+  - 802876a9_cd2f_431d_b92f_cf63cd95d510
+- req_id: REQ-F-074
+  rule_ids:
+  - 317fc127_3dbd_42c3_b2fa_0813d0687a60
+  - 802876a9_cd2f_431d_b92f_cf63cd95d510

@@ -1,0 +1,884 @@
+function: Unclassified
+generated_at: '2026-08-08T04:27:47Z'
+summary:
+  total_rules: 73
+  captured: 19
+  not_applicable: 8
+  unreachable: 0
+  delegated: 46
+  not_accounted_for: 0
+  reconciliation:
+    expected: 73
+    written: 73
+    shortfall: 0
+rules:
+- rule_id: 3482392c_59a4_4182_a65c_374d80e82257
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] Data formatting for display'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Populate administration menu screen header
+  rule_text: THE Administration Menu Header Populator SHALL retrieve the current date
+    and time, format the date as MM/DD/YY into the current date output (`CURDATEO`)
+    and the time as HH:MM:SS into the current time output (`CURTIMEO`), and populate
+    the title lines (`TITLE01O`, `TITLE02O`), transaction identifier (`TRNNAMEO`),
+    and program name (`PGMNAMEO`) on the administration menu screen
+- rule_id: 6c43f75a_9488_47cb_b772_545fd5393657
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] Data formatting for display'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Build administration menu option display lines
+  rule_text: WHILE administration menu options remain to be placed on the screen (index
+    does not exceed the admin option count (`CDEMO-ADMIN-OPT-COUNT`)), THE Administration
+    Menu Option Builder SHALL format each option's number and name into a display
+    string (`WS-ADMIN-OPT-TXT`) and assign it to the corresponding numbered option
+    output field (`OPTN001O` through `OPTN010O`) on the administration menu screen
+- rule_id: 2a325f67_ac29_4e20_a0b7_d19c2d8f9e3a
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMS platform mechanics'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Transfer control to selected administrator function program
+  rule_text: WHEN the option validation succeeds and the selected program is not a
+    placeholder, THE Administrator Menu Handler SHALL populate the communication area
+    with the originating transaction identifier, originating program name, and reset
+    program context indicator; transfer control to the selected administrator function
+    program via XCTL
+- rule_id: 86d7c7b9_9013_4024_a9ad_33996c1294c0
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] Screen rendering mechanics'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Handle uninstalled menu option program
+  rule_text: IF a program-not-found condition occurs during menu option navigation,
+    THEN THE Administration Menu Controller SHALL set the error message color (`ERRMSGC`)
+    to green, compose the message 'This option is not installed ...' into the message
+    text (`WS-MESSAGE`), and re-display the administration menu screen with the error
+    message
+- rule_id: d24a1c7f_8abd_441b_875c_272df896ee4c
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] Working storage initialization'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Initialize error handling and program state
+  rule_text: THE Administrator Menu Handler SHALL establish error handling for missing
+    programs and initialize the error flag indicator to off
+- rule_id: 3527e626_26b3_4741_bdee_11b8f9e5278c
+  program: COADM01C
+  disposition: not_applicable
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Receive administrator menu screen map
+  rule_text: THE Screen Input Receiver SHALL receive the administrator menu screen
+    map and capture the response code and reason code
+  reason: '[LLM-classified] Screen map receive mechanics — platform I/O operation
+    with no standalone business consequence beyond what is covered by REQ-F-018'
+- rule_id: 5f4e784a_0370_4133_893b_7d6535fce630
+  program: COADM01C
+  disposition: not_applicable
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Assemble and display administration menu screen
+  rule_text: THE Administration Menu Screen Sender SHALL populate the screen header
+    and menu options, move the message text (`WS-MESSAGE`) to the error message display
+    (`ERRMSGO`), and send the fully assembled administration menu screen to the terminal
+  reason: '[LLM-classified] Screen assembly and send mechanics — presentation rendering
+    covered by REQ-F-002 pattern; no additional business rule'
+- rule_id: 7cc3a630_448e_42f3_a0c5_8ef06c00d695
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Validate and process entered menu option
+  rule_text: WHEN the user presses Enter on the administration menu screen, THE Administration
+    Menu Option Validator SHALL trim and normalise the option input (`OPTIONI`), convert
+    it to a numeric option number (`WS-OPTION`), and display it on screen; if the
+    value is non-numeric, out of range (greater than the admin option count (`CDEMO-ADMIN-OPT-COUNT`)),
+    or zero, set the error flag (`WS-ERR-FLG`) active, display the message 'Please
+    enter a valid option number...', and re-show the menu; if the value is valid but
+    the target program is not installed, display 'This option is not installed ...'
+    in green and re-show the menu
+  req_ids:
+  - REQ-F-020
+  - REQ-F-021
+  traceability_lines:
+  - 117
+  - 119
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 129
+  - 131
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 140
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+- rule_id: c5382f92_354c_4ee7_af5a_a0f8064d0044
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Initialize state and dispatch on entry type
+  rule_text: 'WHEN the administration menu program is invoked, THE Administration
+    Menu Controller SHALL clear the error flag (`WS-ERR-FLG`) and message areas, then
+    dispatch: if no prior session context exists send the menu screen immediately;
+    if re-entering and not yet in re-entry mode send the menu screen with a cleared
+    output area; if re-entering in re-entry mode receive the user''s input and route
+    to option processing on Enter, exit on PF3, or display the invalid-key message
+    (`CCDA-MSG-INVALID-KEY`) and re-display the menu on any other key'
+  req_ids:
+  - REQ-F-017
+  - REQ-F-018
+  - REQ-F-019
+  traceability_lines:
+  - 75
+  - 77
+  - 78
+  - 79
+  - 81
+  - 83
+  - 84
+  - 86
+  - 89
+  - 90
+  - 91
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 103
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+- rule_id: 742c20d9_db62_4c6a_a148_38ba97351f24
+  program: COADM01C
+  disposition: not_applicable
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Receive administrator menu screen map
+  rule_text: THE Screen Input Receiver SHALL receive the administrator menu screen
+    map and capture the response code and reason code
+  reason: '[LLM-classified] Duplicate of screen map receive mechanics already covered'
+- rule_id: 7cba54c7_740e_4218_9300_2e7d47066f39
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Receive and process administrator menu screen input
+  rule_text: WHILE the program is re-entered (program context indicator is 1), WHEN
+    the ENTER key is pressed, THE Administrator Menu Handler SHALL receive the administrator
+    menu screen input and process the selected option
+  req_id: REQ-F-018
+  traceability_lines:
+  - 86
+  - 89
+  - 90
+  - 91
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 107
+  - 108
+  - 109
+- rule_id: c2a66076_3a80_4a9f_bc3a_ef7ad15b8d7c
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Trim and validate administrator menu option input
+  rule_text: WHEN the user submits a menu option selection, THE Option Input Validator
+    SHALL extract and trim the option input, normalize spaces to zeros, convert to
+    numeric, and validate that the option is numeric, within range 1-6, and not zero;
+    set error flag if validation fails
+  req_ids:
+  - REQ-F-020
+  - REQ-F-021
+  traceability_lines:
+  - 117
+  - 119
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 131
+  - 132
+  - 133
+  - 134
+  - 138
+- rule_id: 693b72c8_348b_493f_933b_e6959b32fcda
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Handle PF3 key to return to signon screen
+  rule_text: WHEN the user presses the PF3 key, THE Card Demonstration Application
+    SHALL set the destination program to the signon screen program and transfer control
+  req_id: REQ-F-023
+  traceability_lines:
+  - 97
+  - 100
+  - 101
+  - 102
+- rule_id: 9951c148_6f18_44bb_8047_2ad830b9f8ac
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Validate and default destination program name
+  rule_text: WHEN the destination program name is empty or unset, THE Card Demonstration
+    Application SHALL default the destination program name to the signon screen program
+  req_id: REQ-F-024
+  traceability_lines:
+  - 165
+  - 166
+  - 167
+- rule_id: beac0e73_5ba8_4939_a915_2606a1e14a6e
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Transfer control to destination program
+  rule_text: THE Card Demonstration Application SHALL transfer control to the destination
+    program
+  req_id: REQ-F-025
+  traceability_lines:
+  - 168
+  - 169
+  - 170
+- rule_id: d8312702_2e72_43bd_b9b6_66182f024225
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Initialize program when no communication area is provided
+  rule_text: WHEN the program is invoked with no communication area, THE Card Demonstration
+    Application SHALL transfer control to the signon screen program
+  req_id: REQ-F-015
+  traceability_lines:
+  - 75
+  - 86
+  - 88
+- rule_id: f845ee81_0e55_4d0d_a0bf_fed1be6117a6
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: Load communication area from caller context
+  rule_text: WHEN the program is invoked with a communication area, THE Card Demonstration
+    Application SHALL load the communication area data into the local record structure
+  req_id: REQ-F-016
+  traceability_lines:
+  - 89
+  - 90
+  - 91
+- rule_id: 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 70ab086e_2212_473a_bc77_cd3016f78121
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 5f76bee2_856a_43ff_be78_5c24ea5326af
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 71687c5e_8523_4f47_aecd_c64b2739609c
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: b420427b_0cd3_47fd_8d7d_c82c652797f3
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fa56a870_d434_44fb_a576_861f909c096b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 2cba932a_cf83_44e3_8483_4843f60b2a6b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 2f50812f_0664_48df_b149_f764e235cd68
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 74cb64d4_f373_4143_b92a_ee12650ec1dd
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 88d333fc_515a_4c71_a41a_f0098fb53395
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: a9d3084b_128c_48bc_87dd_afc97a486276
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: ba1d0480_6267_48ae_9643_f40a1036f289
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c2f02404_628c_43ff_96c6_27418e4c156d
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c7560c00_bdf1_4adb_8217_81eec0adb873
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c7b30dcd_37c3_4227_9e11_908ae2944698
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: c7c03249_5948_4907_94cd_07387b82224b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: ed0cfee9_753c_40b1_978a_d251390edc18
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: f1f88f40_e483_49f7_9046_d957614d2ef3
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: fa01f60e_aed1_4dbc_9f0e_77dd073aa23f
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 1bae53bd_498d_460c_beb7_dc8cd8228047
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 07753d23_0910_426c_bd5c_24d5948558fd
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 04a5424a_8c20_47c1_b623_2ea2553ff505
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 6aecc870_6740_4eaa_8783_1623b9b54d3b
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: ec426b03_2e20_49e5_8320_abcf89151462
+  program: COMEN01C
+  disposition: delegated
+  reason: Shared subroutine — requirements and traceability in spec/_shared/
+- rule_id: 73c3bf1c_0743_4eb0_bd12_a7622009459e
+  program: COSGN00C
+  disposition: captured
+  rule_name: Initialize program and prepare for signon
+  rule_text: THE Signon Screen Handler SHALL initialize the error flag to OFF, clear
+    the message buffer, and display the signon screen with cursor positioned on the
+    user ID field.
+  req_id: REQ-F-001
+  traceability_lines:
+  - 73
+  - 75
+  - 77
+  - 78
+  - 80
+  - 81
+  - 82
+  - 83
+- rule_id: 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Authenticate user against security file
+  rule_text: WHEN the user ID and password have been collected and validated as non-empty,
+    THE User authentication and session routing SHALL read the user security file
+    (`WS-USRSEC-FILE`) using the user ID as key; if the read succeeds and the retrieved
+    password matches the entered password, populate the communication area with the
+    user's transaction ID, program name, user ID, and user type, and transfer control
+    to the administrator menu program if the user type is administrator, or to the
+    general menu program otherwise; if the read fails with not-found or any other
+    error, invoke the appropriate error-handling branch.
+  req_ids:
+  - REQ-F-008
+  - REQ-F-012
+  - REQ-F-013
+  - REQ-F-014
+  traceability_lines:
+  - 207
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 230
+  - 231
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 239
+  - 240
+  - 246
+  - 257
+- rule_id: 7ae92f73_f167_411a_be40_590a8c9dd72e
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Collect and validate signon credentials
+  rule_text: WHEN the user submits the signon form by pressing ENTER, THE Signon Credential
+    Validator SHALL receive the input map, validate that user ID and password are
+    both non-empty, display an error message and redisplay the screen if either field
+    is empty, convert both fields to uppercase and store them for verification if
+    both are populated, and proceed to security file lookup when validation succeeds.
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+  traceability_lines:
+  - 106
+  - 108
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 130
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 138
+  - 139
+  - 140
+- rule_id: a2464762_743b_44d3_815e_b709f48b99bc
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Route on Enter key or alternative input
+  rule_text: WHEN the Enter key is pressed on the sign-on screen, THE Sign-on input
+    dispatcher SHALL invoke the enter-key processing logic to collect and validate
+    credentials.
+  req_id: REQ-F-003
+  traceability_lines:
+  - 80
+  - 84
+  - 85
+  - 86
+  - 87
+  - 95
+  - 96
+- rule_id: b8075fba_4718_438c_9ec7_456168813b1a
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Populate signon screen header and system information
+  rule_text: THE Signon Screen Display SHALL populate the screen header with current
+    date, time, application identifiers, and transaction information, move the error
+    message to the screen output area, and send the screen to the terminal.
+  req_id: REQ-F-002
+  traceability_lines:
+  - 143
+  - 145
+  - 147
+  - 149
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 175
+  - 177
+  - 179
+  - 181
+  - 182
+  - 183
+  - 184
+  - 186
+  - 187
+  - 188
+  - 190
+  - 192
+  - 193
+  - 194
+  - 196
+  - 198
+  - 199
+  - 200
+  - 202
+  - 203
+  - 204
+- rule_id: f04e91ff_d599_4199_bcdc_b1d7e8f4fa58
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Initialize error flag for session
+  rule_text: THE Sign-on session initialization SHALL set the error flag to off.
+  req_id: REQ-F-001
+  traceability_lines:
+  - 73
+  - 75
+- rule_id: 06755197_778e_4862_8e3c_d26c70967aef
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Collect and validate signon credentials
+  rule_text: WHEN the user submits the signon form by pressing ENTER, THE Signon Credential
+    Validator SHALL receive the input map, validate that user ID and password are
+    both non-empty, display an error message and redisplay the screen if either field
+    is empty, convert both fields to uppercase and store them for verification if
+    both are populated, and proceed to security file lookup when validation succeeds.
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+  traceability_lines:
+  - 106
+  - 108
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 130
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 138
+  - 139
+  - 140
+- rule_id: 7ce6a16f_ba72_4ecb_a0f6_c4093a51ad88
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Populate signon screen header and system information
+  rule_text: THE Signon Screen Display SHALL populate the screen header with current
+    date, time, application identifiers, and transaction information, move the error
+    message to the screen output area, and send the screen to the terminal.
+  req_id: REQ-F-002
+  traceability_lines:
+  - 143
+  - 145
+  - 147
+  - 149
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 175
+  - 177
+  - 179
+  - 181
+  - 182
+  - 183
+  - 184
+  - 186
+  - 187
+  - 188
+  - 190
+  - 192
+  - 193
+  - 194
+  - 196
+  - 198
+  - 199
+  - 200
+  - 202
+  - 203
+  - 204
+- rule_id: cc33196a_fb7a_477a_8c85_d34c6900ff03
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Route user input based on key pressed
+  rule_text: WHEN the user presses a key on the terminal, THE Signon Screen Handler
+    SHALL route to the signon-entry processor when ENTER is pressed, or display an
+    invalid-key error message and redisplay the screen for any other key.
+  req_ids:
+  - REQ-F-003
+  - REQ-F-004
+  traceability_lines:
+  - 84
+  - 85
+  - 86
+  - 87
+  - 91
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Verify user credentials against security file
+  rule_text: WHEN the user submits valid non-empty credentials, THE User Credential
+    Verification SHALL read the user security file (`WS-USRSEC-FILE`) using the user
+    ID as key, compare the stored password with the entered password when the read
+    succeeds, display 'Wrong Password. Try again ...' and redisplay the screen if
+    passwords do not match, display 'User not found. Try again ...' and redisplay
+    the screen if the user ID is not found, and display 'Unable to verify the User
+    ...' and redisplay the screen if a system error occurs during the read.
+  req_ids:
+  - REQ-F-008
+  - REQ-F-009
+  - REQ-F-010
+  - REQ-F-011
+  traceability_lines:
+  - 207
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 221
+  - 222
+  - 223
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 246
+  - 247
+  - 249
+  - 250
+  - 251
+  - 252
+  - 254
+  - 255
+  - 256
+  - 257
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - f04e91ff_d599_4199_bcdc_b1d7e8f4fa58
+  - 73c3bf1c_0743_4eb0_bd12_a7622009459e
+- req_id: REQ-F-002
+  rule_ids:
+  - b8075fba_4718_438c_9ec7_456168813b1a
+  - 7ce6a16f_ba72_4ecb_a0f6_c4093a51ad88
+- req_id: REQ-F-003
+  rule_ids:
+  - a2464762_743b_44d3_815e_b709f48b99bc
+  - cc33196a_fb7a_477a_8c85_d34c6900ff03
+- req_id: REQ-F-004
+  rule_ids:
+  - cc33196a_fb7a_477a_8c85_d34c6900ff03
+- req_id: REQ-F-005
+  rule_ids:
+  - 7ae92f73_f167_411a_be40_590a8c9dd72e
+  - 06755197_778e_4862_8e3c_d26c70967aef
+- req_id: REQ-F-006
+  rule_ids:
+  - 7ae92f73_f167_411a_be40_590a8c9dd72e
+  - 06755197_778e_4862_8e3c_d26c70967aef
+- req_id: REQ-F-008
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-009
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-010
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-011
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-012
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-013
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-014
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-015
+  rule_ids:
+  - d8312702_2e72_43bd_b9b6_66182f024225
+- req_id: REQ-F-016
+  rule_ids:
+  - f845ee81_0e55_4d0d_a0bf_fed1be6117a6
+- req_id: REQ-F-017
+  rule_ids:
+  - c5382f92_354c_4ee7_af5a_a0f8064d0044
+- req_id: REQ-F-018
+  rule_ids:
+  - 7cba54c7_740e_4218_9300_2e7d47066f39
+  - c5382f92_354c_4ee7_af5a_a0f8064d0044
+- req_id: REQ-F-019
+  rule_ids:
+  - c5382f92_354c_4ee7_af5a_a0f8064d0044
+- req_id: REQ-F-020
+  rule_ids:
+  - 7cc3a630_448e_42f3_a0c5_8ef06c00d695
+  - c2a66076_3a80_4a9f_bc3a_ef7ad15b8d7c
+- req_id: REQ-F-021
+  rule_ids:
+  - 7cc3a630_448e_42f3_a0c5_8ef06c00d695
+  - c2a66076_3a80_4a9f_bc3a_ef7ad15b8d7c
+- req_id: REQ-F-023
+  rule_ids:
+  - 693b72c8_348b_493f_933b_e6959b32fcda
+- req_id: REQ-F-024
+  rule_ids:
+  - 9951c148_6f18_44bb_8047_2ad830b9f8ac
+- req_id: REQ-F-025
+  rule_ids:
+  - beac0e73_5ba8_4939_a915_2606a1e14a6e

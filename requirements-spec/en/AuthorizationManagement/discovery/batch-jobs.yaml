@@ -1,0 +1,26 @@
+# Authorization Management - Batch Job Discovery
+# Generated: 2026-08-08T04:24:35Z
+# Source: TransformKG (Python discovery)
+
+function: AuthorizationManagement
+jobs:
+  migrate:
+  - id: BAT-001
+    name: CBPAUP0J.jcl
+    description: Batch authorization expiration cleanup; This job executes an IMS
+      batch program to delete expired authorization records from the authorization
+      database. The job invokes the authorization-update program under the IMS batch
+      message processing environment, passing configuration parameters that specify
+      the target program, the PSB (Program Specification Block) for database access,
+      and control flags. The program processes authorization records and removes those
+      that have exceeded their validity period, with execution output and diagnostics
+      routed to standard job output datasets.
+    programs:
+    - CBPAUP0C
+    - DFSRRC00
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

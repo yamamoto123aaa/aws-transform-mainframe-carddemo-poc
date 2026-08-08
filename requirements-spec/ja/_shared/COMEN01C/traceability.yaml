@@ -1,0 +1,791 @@
+function: _shared/COMEN01C
+generated_at: '2026-08-08T04:32:58Z'
+summary:
+  total_rules: 46
+  captured: 46
+  not_applicable: 0
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 46
+    written: 46
+    shortfall: 0
+rules:
+- rule_id: 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: PF3キー押下時にサインオン画面へ遷移する
+  rule_text: 再入処理中にPF3ファンクションキーが押下された場合、カードデモンストレーションアプリケーションは、宛先プログラム名をサインオン画面プログラムに設定し、そのプログラムへ制御を渡すものとする
+  traceability_lines:
+  - 93
+  - 96
+  - 97
+  - 98
+  req_id: REQ-F-007
+- rule_id: 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 制御を渡す前に宛先プログラムが設定されていることを確認する
+  rule_text: プログラムが宛先プログラムへ制御を渡そうとする場合、カードデモンストレーションアプリケーションは、宛先プログラム名が設定されているかを検証し、空または未初期化である場合はサインオン画面プログラムをデフォルト値として設定するものとする
+  traceability_lines:
+  - 194
+  - 196
+  - 198
+  - 199
+  - 200
+  req_id: REQ-F-015
+- rule_id: 70ab086e_2212_473a_bc77_cd3016f78121
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: エントリ時に通信領域を初期化し検証する
+  rule_text: プログラムがCICSによって呼び出された場合、カードデモンストレーションアプリケーションは、通信領域が渡されたかどうかを確認し、領域が存在しない場合はサインオン画面へ制御を渡し、そうでない場合は処理のために通信領域をワーキングストレージへ抽出するものとする
+  traceability_lines:
+  - 75
+  - 82
+  - 84
+  - 85
+  - 86
+  - 87
+  - 91
+  req_ids:
+  - REQ-F-001
+  - REQ-F-002
+- rule_id: fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 宛先プログラムへ制御を渡す
+  rule_text: カードデモンストレーションアプリケーションは、通信領域内で指定された宛先プログラムへ制御を渡すものとする
+  traceability_lines:
+  - 201
+  - 202
+  - 203
+  req_id: REQ-F-016
+- rule_id: 07753d23_0910_426c_bd5c_24d5948558fd
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: エラー処理を初期化し、メニュー処理の準備を行う
+  rule_text: メニュー処理初期化は、エラーフラグ指標をOFF状態に初期化するものとする。
+  traceability_lines:
+  - 75
+  - 77
+  req_id: REQ-F-003
+- rule_id: 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション選択を抽出し正規化する
+  rule_text: メニューオプション入力正規化機能は、メニューオプション入力の末尾の空白を除去し、残りの空白をゼロに置き換えるものとする。
+  traceability_lines:
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  req_id: REQ-F-009
+- rule_id: 1bae53bd_498d_460c_beb7_dc8cd8228047
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション転送のために通信領域を設定する
+  rule_text: メニューオプションがすべての検証チェックに合格した場合、メニューオプション転送ハンドラは、通信元のトランザクションおよびプログラムコンテキストを通信領域に設定し、プログラムコンテキスト指標をゼロにリセットし、XCTLを介して選択されたメニューオプションプログラムへ制御を渡すものとする。
+  traceability_lines:
+  - 145
+  - 146
+  - 177
+  - 178
+  - 180
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  req_id: REQ-F-014
+- rule_id: 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプションを数値に変換する
+  rule_text: メニューオプション変換機能は、正規化された英数字のオプション選択を数値形式に変換するものとする。
+  traceability_lines:
+  - 124
+  req_id: REQ-F-009
+- rule_id: 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 選択されたメニューオプションプログラムへの準備と転送を行う
+  rule_text: 選択されたメニューオプションプログラム名が'COPAUS0C'であり、そのプログラムが利用可能である場合、メニューオプションプログラム転送機能は、通信元のトランザクション識別子およびプログラム名を通信領域に設定し、プログラムコンテキスト指標をゼロにリセットし、XCTLを介して対象プログラムへ制御を渡すものとする。
+  traceability_lines:
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+  - 159
+  req_id: REQ-F-012
+- rule_id: 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: ユーザーからメニュー画面を受信する
+  rule_text: メニュー画面受信機能は、CICS RECEIVE MAPを介してユーザーからメニュー画面入力を受信し、応答コードおよび理由コードを取得するものとする。
+  traceability_lines:
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  req_id: REQ-F-005
+- rule_id: 5f76bee2_856a_43ff_be78_5c24ea5326af
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニュー処理のためにエラー処理を初期化する
+  rule_text: メニュー処理は、エラー状態がないことを示すためにエラーフラグ指標をクリアするものとする。
+  traceability_lines:
+  - 77
+  req_id: REQ-F-003
+- rule_id: 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 制限付きメニューオプションに対するユーザー権限を確認する
+  rule_text: ユーザータイプが標準ユーザーであり、選択されたメニューオプションが認可されたユーザーのみに制限されている場合、ユーザー権限確認機能は、制限付きメニューオプションへのアクセスを拒否するためにエラーフラグ指標を'Y'に設定するものとする。
+  traceability_lines:
+  - 136
+  - 137
+  - 138
+  - 143
+  req_id: REQ-F-011
+- rule_id: 71687c5e_8523_4f47_aecd_c64b2739609c
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 再入時にメニュー画面入力を受信し処理する
+  rule_text: プログラムコンテキスト指標が再入状態を示す場合、メニュー画面入力ハンドラは、メニュー画面入力を受信し、アテンション識別子に基づいて処理を振り分けるものとする。ENTERキーが押下された場合は、選択されたメニューオプションを処理する
+  traceability_lines:
+  - 87
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 103
+  - 104
+  - 105
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+- rule_id: 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション選択をトリムし検証する
+  rule_text: メニューオプション検証機能は、メニューオプション入力をトリムし、数値形式に変換し、それが数値であること、1から11の範囲内であること、およびゼロでないことを検証するものとする。検証に失敗した場合はエラーフラグ指標を'Y'に設定する。
+  traceability_lines:
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 127
+  - 128
+  - 129
+  - 130
+  - 134
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+- rule_id: aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 呼び出し元コンテキストから通信領域を復元する
+  rule_text: 通信領域の長さがゼロより大きい場合、通信領域ハンドラは、受信した通信領域をローカルの通信領域レコードに復元するものとする。
+  traceability_lines:
+  - 82
+  - 85
+  - 86
+  req_id: REQ-F-002
+- rule_id: b420427b_0cd3_47fd_8d7d_c82c652797f3
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 呼び出し元コンテキストから通信領域を復元する
+  rule_text: 通信領域の長さがゼロより大きい場合、通信領域ハンドラは、受信した通信領域をローカルの通信領域レコードに復元するものとする。
+  traceability_lines:
+  - 82
+  - 85
+  - 86
+  req_id: REQ-F-002
+- rule_id: c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 制限付きメニューオプションに対するユーザー権限を確認する
+  rule_text: ユーザータイプが標準ユーザーであり、選択されたメニューオプションが認可されたユーザーのみに制限されている場合、ユーザー権限確認機能は、制限付きメニューオプションへのアクセスを拒否するためにエラーフラグ指標を'Y'に設定するものとする。
+  traceability_lines:
+  - 136
+  - 137
+  - 138
+  - 143
+  req_id: REQ-F-011
+- rule_id: e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: アテンションキーに基づいてメニューオプションを振り分ける
+  rule_text: メニュー画面でENTERキーが押下された場合、メニューオプションディスパッチャーは、メニューオプション処理ハンドラへ制御を渡すものとする。
+  traceability_lines:
+  - 93
+  - 94
+  - 95
+  - 103
+  req_id: REQ-F-006
+- rule_id: f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプションが許容範囲内であることを検証する
+  rule_text: メニューオプションが数値でない、利用可能なメニューオプション数を超えている、またはゼロに等しい場合、メニューオプション検証機能は、無効な選択を拒否するためにエラーフラグ指標をONに設定するものとする。
+  traceability_lines:
+  - 127
+  - 128
+  - 129
+  - 130
+  - 134
+  req_id: REQ-F-010
+- rule_id: fa56a870_d434_44fb_a576_861f909c096b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: ユーザーからメニュー画面入力を受信する
+  rule_text: メニュー画面入力受信機能は、ユーザーの表示画面からメニューオプション選択を受信し、応答コードおよび理由コードを取得するものとする。
+  traceability_lines:
+  - 87
+  - 92
+  - 223
+  - 225
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  req_id: REQ-F-005
+- rule_id: fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 転送前にターゲットプログラムの利用可否を確認する
+  rule_text: エラーフラグ指標が設定されておらず、かつ選択されたメニューオプションのプログラム名が'COPAUS0C'である場合、THE プログラム転送ハンドラは、ターゲットプログラムが利用可能であることを確認しなければならない（SHALL）。利用可能な場合は、通信領域に発信元トランザクション識別子、発信元プログラム名を設定し、プログラムコンテキスト指標をゼロにリセットした後、ターゲットプログラムに制御を渡すこと。利用可能でない場合は、エラー処理を呼び出すこと。
+  traceability_lines:
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+  - 159
+  - 168
+  req_id: REQ-F-012
+- rule_id: 04a5424a_8c20_47c1_b623_2ea2553ff505
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション組み立てループの初期化
+  rule_text: THE メニューオプション組み立て処理は、ループカウンタを1に初期化し、設定された件数までメニューオプションを1件ずつ処理しなければならない（SHALL）。
+  traceability_lines:
+  - 262
+  - 264
+  - 265
+  req_id: REQ-F-019
+- rule_id: 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニュー画面の組み立てと端末への送信
+  rule_text: THE メニュー画面送信処理は、メニュー画面のヘッダー情報とメニューオプション表示行を設定し、メッセージテキストをエラーメッセージフィールドに移し、ERASEオプション付きでメニュー画面を端末に送信しなければならない（SHALL）。
+  traceability_lines:
+  - 208
+  - 210
+  - 211
+  - 213
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  req_id: REQ-F-018
+- rule_id: 2cba932a_cf83_44e3_8483_4843f60b2a6b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション3の書式設定と割り当て
+  rule_text: ループカウンタが3に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション3の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 279
+  - 280
+  req_id: REQ-F-022
+- rule_id: 2f50812f_0664_48df_b149_f764e235cd68
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション9の書式設定と割り当て
+  rule_text: ループカウンタが9に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション9の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 291
+  - 292
+  req_id: REQ-F-028
+- rule_id: 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 範囲外のメニューオプション位置の処理
+  rule_text: ループカウンタが定義済みのメニューオプション位置の範囲を超えた場合、THE メニューオプション組み立て処理は、何も行わずに次のループの繰り返しに進まなければならない（SHALL）。
+  traceability_lines:
+  - 301
+  req_id: REQ-F-032
+- rule_id: 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション5の書式設定と割り当て
+  rule_text: ループカウンタが5に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション5の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 283
+  - 284
+  req_id: REQ-F-024
+- rule_id: 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニュー画面からのユーザー入力の受信
+  rule_text: ユーザーがメニュー画面から入力を送信した場合、THE メニュー画面入力受信処理は、メニュー画面からユーザーのメニューオプション選択を受信し、応答ステータスを取得しなければならない（SHALL）。
+  traceability_lines:
+  - 225
+  - 227
+  - 228
+  - 229
+  - 230
+  - 231
+  - 232
+  - 233
+  req_id: REQ-F-005
+- rule_id: 6aecc870_6740_4eaa_8783_1623b9b54d3b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 選択されたメニューオプションのプログラム利用可否の検証
+  rule_text: エラーフラグが設定されていない間、選択されたメニューオプションのプログラムが'COPAUS0C'である場合、THE メニューオプションプログラム検証処理は、CICSシステムに問い合わせてプログラムがインストールされていることを確認しなければならない（SHALL）。プログラムが見つからない場合は、エラーメッセージの色を赤に設定し、オプションがインストールされていないことを示すエラーメッセージを表示すること。
+  traceability_lines:
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 160
+  - 162
+  - 163
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  req_id: REQ-F-012
+- rule_id: 74cb64d4_f373_4143_b92a_ee12650ec1dd
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション4の書式設定と割り当て
+  rule_text: ループカウンタが4に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション4の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 281
+  - 282
+  req_id: REQ-F-023
+- rule_id: 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 初回プログラム呼び出しと再入力の処理
+  rule_text: 呼び出し元から通信領域を受信した場合、THE メニュー画面ハンドラは、共有コンテキストを抽出し、初回呼び出しである場合はフィールドをクリアしたメニュー画面を表示しなければならない（SHALL）。再入力の場合は、ユーザーの入力を受信し、押されたキーに基づいて処理を振り分けること。Enterキーが押された場合はメニュー選択を処理し、PF3キーが押された場合は別処理経路で処理し、それ以外のキーの場合は無効キーのエラーメッセージを表示すること。
+  traceability_lines:
+  - 82
+  - 85
+  - 86
+  - 87
+  - 89
+  - 90
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 99
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  req_ids:
+  - REQ-F-004
+  - REQ-F-005
+  - REQ-F-006
+  - REQ-F-008
+- rule_id: 88d333fc_515a_4c71_a41a_f0098fb53395
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション10の書式設定と割り当て
+  rule_text: ループカウンタが10に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション10の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 293
+  - 294
+  req_id: REQ-F-029
+- rule_id: 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: ユーザーのメニュー選択の処理とオプションの検証
+  rule_text: ユーザーがメニューオプションを選択した後にEnterキーを押した場合、THE メニューオプション検証処理は、ユーザーのオプション入力を抽出してトリムし、スペースをゼロに変換し、数値に変換し、オプションが数値であること、メニューオプション件数（11）を超えないこと、およびゼロでないことを検証しなければならない（SHALL）。検証に失敗した場合は、エラーフラグを設定し、「Please
+    enter a valid option number...」というエラーメッセージを表示すること。検証に成功した場合は、処理を継続すること。
+  traceability_lines:
+  - 113
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 127
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  - 133
+  - 134
+  req_ids:
+  - REQ-F-009
+  - REQ-F-010
+- rule_id: 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション7の書式設定と割り当て
+  rule_text: ループカウンタが7に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション7の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 287
+  - 288
+  req_id: REQ-F-026
+- rule_id: a9d3084b_128c_48bc_87dd_afc97a486276
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション1の書式設定と割り当て
+  rule_text: ループカウンタが1に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション1の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 269
+  - 270
+  - 271
+  - 272
+  - 274
+  - 275
+  - 276
+  req_id: REQ-F-020
+- rule_id: ba1d0480_6267_48ae_9643_f40a1036f289
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション11の書式設定と割り当て
+  rule_text: ループカウンタが11に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション11の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 295
+  - 296
+  req_id: REQ-F-030
+- rule_id: c2f02404_628c_43ff_96c6_27418e4c156d
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: その他の有効なメニューオプション選択の処理
+  rule_text: エラーフラグが設定されていない間、選択されたメニューオプションが標準オプション（COPAUS0Cでもなく、DUMMYで始まるものでもない）である場合、THE
+    メニューオプション処理は、別処理経路を通じて選択されたオプションを処理し、メニュー画面を送信しなければならない（SHALL）。
+  traceability_lines:
+  - 188
+  - 190
+  - 191
+  req_id: REQ-F-014
+- rule_id: c7560c00_bdf1_4adb_8217_81eec0adb873
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション6の書式設定と割り当て
+  rule_text: ループカウンタが6に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション6の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 285
+  - 286
+  req_id: REQ-F-025
+- rule_id: c7b30dcd_37c3_4227_9e11_908ae2944698
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション2の書式設定と割り当て
+  rule_text: ループカウンタが2に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション2の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 277
+  - 278
+  req_id: REQ-F-021
+- rule_id: c7c03249_5948_4907_94cd_07387b82224b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション12の書式設定と割り当て
+  rule_text: ループカウンタが12に達した場合、THE メニューオプション組み立て処理は、順序番号、ピリオドとスペース、表示名を連結してメニューオプションテキストを書式設定し、メニューオプション12の出力フィールドに表示しなければならない（SHALL）。
+  traceability_lines:
+  - 297
+  - 298
+  req_id: REQ-F-031
+- rule_id: cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 近日公開のメニューオプションを処理する
+  rule_text: エラーフラグが設定されていない間、選択されたメニューオプションのプログラム名が'DUMMY'で始まる場合、Menu Option Status
+    Handlerはエラーメッセージの色を緑に設定し、当該オプションが近日公開であることを示す案内メッセージを表示しなければならない(SHALL)。
+  traceability_lines:
+  - 169
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+  - 176
+  req_id: REQ-F-013
+- rule_id: e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニュー画面のヘッダー情報を設定する
+  rule_text: Menu Screen Header Populatorは現在のシステム日時を取得し、画面タイトル行に'AWS Mainframe Modernization'と'CardDemo'を設定し、トランザクション識別子およびプログラム名のフィールドを設定し、現在の日付をMM/DD/YY形式で整形して表示し、現在の時刻をHH:MM:SS形式で整形して表示しなければならない(SHALL)。
+  traceability_lines:
+  - 238
+  - 240
+  - 242
+  - 243
+  - 244
+  - 245
+  - 247
+  - 248
+  - 249
+  - 251
+  - 253
+  - 254
+  - 255
+  - 257
+  req_id: REQ-F-017
+- rule_id: ec426b03_2e20_49e5_8320_abcf89151462
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: プログラムの状態を初期化し、エラー表示をクリアする
+  rule_text: Menu Screen Handlerはエラーフラグをクリアし、メッセージテキストバッファを空白で初期化しなければならない(SHALL)。
+  traceability_lines:
+  - 75
+  - 77
+  - 79
+  - 80
+  req_id: REQ-F-003
+- rule_id: ed0cfee9_753c_40b1_978a_d251390edc18
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: 管理者専用のメニューオプションに対するユーザー権限を強制する
+  rule_text: 一般ユーザーが管理者専用に制限されたメニューオプションを選択した場合、Menu Authorization Enforcerはエラーフラグを'Y'に設定し、エラーメッセージ'No
+    access - Admin Only option... 'を表示し、メニュー画面を送信しなければならない(SHALL)。
+  traceability_lines:
+  - 136
+  - 137
+  - 138
+  - 140
+  - 141
+  - 142
+  - 143
+  req_id: REQ-F-011
+- rule_id: f1f88f40_e483_49f7_9046_d957614d2ef3
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプション8を整形して割り当てる
+  rule_text: ループカウンタが8に達した場合、Menu Option Assemblyは連番、ピリオドとスペース、および表示名を連結してメニューオプションのテキストを整形し、それをメニューオプション8の出力フィールドに表示しなければならない(SHALL)。
+  traceability_lines:
+  - 289
+  - 290
+  req_id: REQ-F-027
+- rule_id: fa01f60e_aed1_4dbc_9f0e_77dd073aa23f
+  program: COMEN01C
+  disposition: captured
+  program_path: demo/cbl/COMEN01C.cbl
+  rule_name: メニューオプションの組み立てループを完了する
+  rule_text: Menu Option Assemblyは、すべてのメニューオプションが処理された後にループを終了しなければならない(SHALL)。
+  traceability_lines:
+  - 303
+  req_id: REQ-F-033
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 70ab086e_2212_473a_bc77_cd3016f78121
+- req_id: REQ-F-002
+  rule_ids:
+  - 70ab086e_2212_473a_bc77_cd3016f78121
+  - aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  - b420427b_0cd3_47fd_8d7d_c82c652797f3
+- req_id: REQ-F-003
+  rule_ids:
+  - 07753d23_0910_426c_bd5c_24d5948558fd
+  - 5f76bee2_856a_43ff_be78_5c24ea5326af
+  - ec426b03_2e20_49e5_8320_abcf89151462
+- req_id: REQ-F-004
+  rule_ids:
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+- req_id: REQ-F-005
+  rule_ids:
+  - 71687c5e_8523_4f47_aecd_c64b2739609c
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  - fa56a870_d434_44fb_a576_861f909c096b
+  - 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  - 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+- req_id: REQ-F-006
+  rule_ids:
+  - 71687c5e_8523_4f47_aecd_c64b2739609c
+  - e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+- req_id: REQ-F-007
+  rule_ids:
+  - 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+- req_id: REQ-F-008
+  rule_ids:
+  - 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+- req_id: REQ-F-009
+  rule_ids:
+  - 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  - 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  - 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  - 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+- req_id: REQ-F-010
+  rule_ids:
+  - 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  - f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  - 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+- req_id: REQ-F-011
+  rule_ids:
+  - 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  - c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  - ed0cfee9_753c_40b1_978a_d251390edc18
+- req_id: REQ-F-012
+  rule_ids:
+  - fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  - 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  - 6aecc870_6740_4eaa_8783_1623b9b54d3b
+- req_id: REQ-F-013
+  rule_ids:
+  - cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+- req_id: REQ-F-014
+  rule_ids:
+  - 1bae53bd_498d_460c_beb7_dc8cd8228047
+  - c2f02404_628c_43ff_96c6_27418e4c156d
+- req_id: REQ-F-015
+  rule_ids:
+  - 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+- req_id: REQ-F-016
+  rule_ids:
+  - fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+- req_id: REQ-F-017
+  rule_ids:
+  - e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+- req_id: REQ-F-018
+  rule_ids:
+  - 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+- req_id: REQ-F-019
+  rule_ids:
+  - 04a5424a_8c20_47c1_b623_2ea2553ff505
+- req_id: REQ-F-020
+  rule_ids:
+  - a9d3084b_128c_48bc_87dd_afc97a486276
+- req_id: REQ-F-021
+  rule_ids:
+  - c7b30dcd_37c3_4227_9e11_908ae2944698
+- req_id: REQ-F-022
+  rule_ids:
+  - 2cba932a_cf83_44e3_8483_4843f60b2a6b
+- req_id: REQ-F-023
+  rule_ids:
+  - 74cb64d4_f373_4143_b92a_ee12650ec1dd
+- req_id: REQ-F-024
+  rule_ids:
+  - 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+- req_id: REQ-F-025
+  rule_ids:
+  - c7560c00_bdf1_4adb_8217_81eec0adb873
+- req_id: REQ-F-026
+  rule_ids:
+  - 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+- req_id: REQ-F-027
+  rule_ids:
+  - f1f88f40_e483_49f7_9046_d957614d2ef3
+- req_id: REQ-F-028
+  rule_ids:
+  - 2f50812f_0664_48df_b149_f764e235cd68
+- req_id: REQ-F-029
+  rule_ids:
+  - 88d333fc_515a_4c71_a41a_f0098fb53395
+- req_id: REQ-F-030
+  rule_ids:
+  - ba1d0480_6267_48ae_9643_f40a1036f289
+- req_id: REQ-F-031
+  rule_ids:
+  - c7c03249_5948_4907_94cd_07387b82224b
+- req_id: REQ-F-032
+  rule_ids:
+  - 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+- req_id: REQ-F-033
+  rule_ids:
+  - fa01f60e_aed1_4dbc_9f0e_77dd073aa23f

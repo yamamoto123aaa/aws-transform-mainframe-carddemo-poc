@@ -1,0 +1,1105 @@
+function: DataImportandExportOperations
+generated_at: '2026-08-08T04:25:41Z'
+summary:
+  total_rules: 55
+  captured: 43
+  not_applicable: 12
+  unreachable: 0
+  delegated: 0
+  not_accounted_for: 0
+  reconciliation:
+    expected: 55
+    written: 55
+    shortfall: 0
+rules:
+- rule_id: 6a78660b_9dc5_46ae_8f1d_0f442cc6dfff
+  program: CBEXPORT
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: プログラムを初期化し、バッチエクスポートを準備する
+  rule_text: エクスポートバッチプロセッサは、現在のタイムスタンプを生成し、必要な入力および出力データソースをすべてオープンすることでエクスポート環境を初期化し、その後すべてのデータカテゴリのエクスポートを順次実行するものとする。
+- rule_id: 6bc99d0b_1531_438f_9a04_e76ed2ca1c63
+  program: CBEXPORT
+  disposition: captured
+  rule_name: カードエクスポートレコードを作成して書き込む
+  rule_text: カードエクスポートレコードアセンブラは、エクスポートレコードを初期化し、レコードタイプを 'D' に設定し、フォーマット済みタイムスタンプとインクリメントされたシーケンス番号を割り当て、支店識別子を
+    '0001' に、地域コードを 'NORTH' に設定し、入力レコードのすべてのカードフィールドをエクスポートレコードにマッピングし、組み立てたエクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込むものとする。
+  req_id: REQ-F-008
+  traceability_lines:
+  - 522
+  - 524
+  - 526
+  - 527
+  - 528
+  - 529
+  - 530
+  - 531
+  - 532
+  - 534
+  - 535
+  - 536
+  - 537
+  - 538
+  - 539
+  - 540
+  - 542
+- rule_id: 782ed925_4e20_4100_b52f_7e5ab1562033
+  program: CBEXPORT
+  disposition: captured
+  rule_name: 顧客エクスポートレコードを作成して書き込む
+  rule_text: 顧客エクスポートレコードアセンブラは、エクスポートレコードを初期化し、レコードタイプを 'C' に設定し、フォーマット済みタイムスタンプとインクリメントされたシーケンス番号を割り当て、支店識別子を
+    '0001' に、地域コードを 'NORTH' に設定し、入力レコードのすべての顧客フィールドをエクスポートレコードにマッピングし、組み立てたエクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込むものとする。
+  req_id: REQ-F-004
+  traceability_lines:
+  - 269
+  - 271
+  - 273
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  - 279
+  - 281
+  - 282
+  - 283
+  - 284
+  - 285
+  - 286
+  - 287
+  - 288
+  - 289
+  - 290
+  - 291
+  - 292
+  - 293
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 301
+- rule_id: a92d37d1_702a_4e16_844b_d7843950ba2d
+  program: CBEXPORT
+  disposition: captured
+  rule_name: トランザクションエクスポートレコードを作成して書き込む
+  rule_text: トランザクションエクスポートレコードアセンブラは、エクスポートレコードを初期化し、レコードタイプを 'T' に設定し、フォーマット済みタイムスタンプとインクリメントされたシーケンス番号を割り当て、支店識別子を
+    '0001' に、地域コードを 'NORTH' に設定し、入力レコードのすべてのトランザクションフィールドをエクスポートレコードにマッピングし、組み立てたエクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込むものとする。
+  req_id: REQ-F-007
+  traceability_lines:
+  - 457
+  - 459
+  - 461
+  - 462
+  - 463
+  - 464
+  - 465
+  - 466
+  - 467
+  - 469
+  - 470
+  - 471
+  - 472
+  - 473
+  - 474
+  - 475
+  - 476
+  - 477
+  - 478
+  - 479
+  - 480
+  - 481
+  - 482
+  - 484
+- rule_id: ae25457a_9b04_43e9_b43a_87d762b328c4
+  program: CBEXPORT
+  disposition: captured
+  rule_name: クロスリファレンスエクスポートレコードを作成して書き込む
+  rule_text: クロスリファレンスエクスポートレコードアセンブラは、エクスポートレコードを初期化し、レコードタイプを 'X' に設定し、フォーマット済みタイムスタンプとインクリメントされたシーケンス番号を割り当て、支店識別子を
+    '0001' に、地域コードを 'NORTH' に設定し、入力レコードのすべてのクロスリファレンスフィールドをエクスポートレコードにマッピングし、組み立てたエクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込むものとする。
+  req_id: REQ-F-006
+  traceability_lines:
+  - 402
+  - 404
+  - 406
+  - 407
+  - 408
+  - 409
+  - 410
+  - 411
+  - 412
+  - 414
+  - 415
+  - 416
+  - 417
+  - 419
+- rule_id: f07bcb62_3031_41fe_bd56_7df734570ebd
+  program: CBEXPORT
+  disposition: captured
+  rule_name: アカウントエクスポートレコードを作成して書き込む
+  rule_text: アカウントエクスポートレコードアセンブラは、エクスポートレコードを初期化し、レコードタイプを 'A' に設定し、フォーマット済みタイムスタンプとインクリメントされたシーケンス番号を割り当て、支店識別子を
+    '0001' に、地域コードを 'NORTH' に設定し、入力レコードのすべてのアカウントフィールドをエクスポートレコードにマッピングし、組み立てたエクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込むものとする。
+  req_id: REQ-F-005
+  traceability_lines:
+  - 338
+  - 340
+  - 342
+  - 343
+  - 344
+  - 345
+  - 346
+  - 347
+  - 348
+  - 350
+  - 351
+  - 352
+  - 353
+  - 354
+  - 355
+  - 356
+  - 357
+  - 358
+  - 359
+  - 360
+  - 361
+  - 362
+  - 364
+- rule_id: 6cf3bd82_e257_4124_9fac_28ca3f8aa139
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: エクスポートデータクラスタを削除して再作成する
+  rule_text: エクスポートクラスタ準備処理は、既存のエクスポートクラスタが存在する場合はそれを削除し、その後オフセット28に4バイトキーを持ち、500バイト固定長レコード(`SYSIN`)、プライマリ10シリンダおよびセカンダリ5シリンダ、10%のフリースペース、および読み取り/書き込みの同時共有を備えた新しいインデックス付きVSAMクラスタを定義するものとする。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 24
+  - 25
+  - 26
+  - 27
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+- rule_id: ff24b7ad_caef_4641_97d8_df56638761f0
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 顧客データを統合するためにエクスポートプログラムを実行する
+  rule_text: 'エクスポートプログラムの実行は、5つのソースVSAMファイルから顧客、アカウント、カード、トランザクション、およびクロスリファレンスのレコードを読み取り、データを統合し、統合されたエクスポートレコードをエクスポートVSAMクラスタに書き込むものとする。(物理ストア:
+    `ACCTFILE`、`CARDFILE`、`CUSTFILE`、`EXPFILE`、`STEPLIB`、`TRANSACT`、`XREFFILE`)'
+  req_id: REQ-F-009
+  traceability_lines:
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+- rule_id: 02e0b703_8e73_4236_878a_46a2158c628b
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: エクスポートレコード用の現在の日付と時刻を生成する
+  rule_text: タイムスタンプジェネレータは、現在のシステム日付と時刻を取得し、日付をYYYY-MM-DD形式、時刻をHH:MM:SS形式でフォーマットし、それらを結合して、エクスポートレコード識別用に末尾に
+    '.00' を付加した26文字のISO 8601タイムスタンプとするものとする。
+  req_id: REQ-F-002
+  traceability_lines:
+  - 172
+  - 174
+  - 175
+  - 176
+  - 178
+  - 179
+  - 180
+  - 181
+  - 182
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+  - 190
+  - 191
+  - 192
+  - 193
+  - 194
+  - 195
+- rule_id: 09dcf940_806d_4c06_a83e_198d66821254
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 変換を伴うトランザクションレコードのエクスポート
+  rule_text: トランザクションストア(`TRANSACTION-INPUT`)にトランザクションレコードが残っている間、トランザクションエクスポートハンドラは、トランザクションストア(`TRANSACTION-INPUT`)から各トランザクションレコードを読み取り、それを標準化されたエクスポート形式に変換し、エクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込み、ファイル終端に達するまでこれを継続するものとする。
+  req_id: REQ-F-007
+  traceability_lines:
+  - 431
+  - 435
+  - 437
+  - 438
+  - 439
+  - 440
+  - 446
+  - 448
+- rule_id: 479ec3ea_a9ef_4316_a88e_648763b2aac6
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: すべての入力および出力データソースをオープンする
+  rule_text: ファイルハンドラは、顧客ストア(`CUSTOMER-INPUT`)、アカウントストア(`ACCOUNT-INPUT`)、クロスリファレンスストア(`XREF-INPUT`)、トランザクションストア(`TRANSACTION-INPUT`)、およびカードストア(`CARD-INPUT`)を順次入力用にオープンし、エクスポート出力ストア(`EXPORT-OUTPUT`)を順次出力用にオープンするものとする。
+  req_id: REQ-F-003
+  traceability_lines:
+  - 198
+  - 200
+  - 207
+  - 214
+  - 221
+  - 228
+  - 235
+- rule_id: 5504a506_4ca9_41a1_960e_b2053b379958
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 次のカードレコードを読み取る
+  rule_text: カードレコードリーダーは、カードストア(`CARD-INPUT`)から次の順次カードレコードを読み取り、これ以上レコードが存在しない場合はファイル終端インジケータを設定するものとする。
+  req_id: REQ-F-008
+  traceability_lines:
+  - 511
+  - 513
+- rule_id: 5f102e96_b1f2_4ee3_9b09_d42efa2a6d30
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 次のトランザクションレコードを読み取る
+  rule_text: トランザクションレコードリーダーは、トランザクションストア(`TRANSACTION-INPUT`)から次の順次トランザクションレコードを読み取り、これ以上レコードが存在しない場合はファイル終端インジケータを設定するものとする。
+  req_id: REQ-F-007
+  traceability_lines:
+  - 446
+  - 448
+- rule_id: 86b49ccd_ccbf_4f45_9cbf_023611812efc
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 変換を伴う顧客レコードのエクスポート
+  rule_text: 顧客ストア(`CUSTOMER-INPUT`)に顧客レコードが残っている間、顧客エクスポートハンドラは、顧客ストア(`CUSTOMER-INPUT`)から各顧客レコードを読み取り、それを標準化されたエクスポート形式に変換し、エクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込み、ファイル終端に達するまでこれを継続するものとする。
+  req_id: REQ-F-004
+  traceability_lines:
+  - 243
+  - 247
+  - 249
+  - 250
+  - 251
+  - 252
+  - 258
+  - 260
+- rule_id: 88f4eb8a_38e0_466c_bb1f_6908636856f1
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 変換を伴うクロスリファレンスレコードのエクスポート
+  rule_text: クロスリファレンスストア(`XREF-INPUT`)にクロスリファレンスレコードが残っている間、クロスリファレンスエクスポートハンドラは、クロスリファレンスストア(`XREF-INPUT`)から各クロスリファレンスレコードを読み取り、それを標準化されたエクスポート形式に変換し、エクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込み、ファイル終端に達するまでこれを継続するものとする。
+  req_id: REQ-F-006
+  traceability_lines:
+  - 376
+  - 380
+  - 382
+  - 383
+  - 384
+  - 385
+  - 391
+  - 393
+- rule_id: 9ce43ce6_fd8a_44b8_a792_3ae5419f6387
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 次のアカウントレコードを読み取る
+  rule_text: アカウントレコードリーダーは、アカウントストア(`ACCOUNT-INPUT`)から次の順次アカウントレコードを読み取り、これ以上レコードが存在しない場合はファイル終端インジケータを設定するものとする。
+  req_id: REQ-F-005
+  traceability_lines:
+  - 327
+  - 329
+- rule_id: ac4090c1_0bf4_476c_bcc7_b011555a9304
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 次のクロスリファレンスレコードを読み取る
+  rule_text: クロスリファレンスレコードリーダーは、クロスリファレンスストア(`XREF-INPUT`)から次の順次クロスリファレンスレコードを読み取り、これ以上レコードが存在しない場合はファイル終端インジケータを設定するものとする。
+  req_id: REQ-F-006
+  traceability_lines:
+  - 391
+  - 393
+- rule_id: afdfc8ea_8d5d_4ed7_bcc3_d4295b00744b
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 変換を伴うカードレコードのエクスポート
+  rule_text: カードストア(`CARD-INPUT`)にカードレコードが残っている間、カードエクスポートハンドラは、カードストア(`CARD-INPUT`)から各カードレコードを読み取り、それを標準化されたエクスポート形式に変換し、エクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込み、ファイル終端に達するまでこれを継続するものとする。
+  req_id: REQ-F-008
+  traceability_lines:
+  - 496
+  - 500
+  - 502
+  - 503
+  - 504
+  - 505
+  - 511
+  - 513
+- rule_id: f4a93eed_4efc_4a0e_95e0_f407e9a0a699
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 変換を伴うアカウントレコードのエクスポート
+  rule_text: アカウントストア(`ACCOUNT-INPUT`)にアカウントレコードが残っている間、アカウントエクスポートハンドラは、アカウントストア(`ACCOUNT-INPUT`)から各アカウントレコードを読み取り、それを標準化されたエクスポート形式に変換し、エクスポートレコードをエクスポート出力ストア(`EXPORT-OUTPUT`)に書き込み、ファイル終端に達するまでこれを継続するものとする。
+  req_id: REQ-F-005
+  traceability_lines:
+  - 312
+  - 316
+  - 318
+  - 319
+  - 320
+  - 321
+  - 327
+  - 329
+- rule_id: f8c546ab_1b9d_4770_be52_38211004d8b1
+  program: CBEXPORT
+  disposition: captured
+  program_path: demo/jcl/CBEXPORT.jcl
+  rule_name: 次の顧客レコードを読み取る
+  rule_text: THE Customer Record Reader は、顧客ストア(`CUSTOMER-INPUT`)から次の連続する顧客レコードを読み込み、これ以上レコードが存在しない場合はファイル終端インジケータを設定するSHALL。
+  req_id: REQ-F-004
+  traceability_lines:
+  - 258
+  - 260
+- rule_id: 6d16a05a_d452_47cb_b658_a9b5a1e638b4
+  program: CBIMPORT
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: プログラムの初期化とデータファイルのオープン
+  rule_text: THE Account Export Processor は、プログラム環境を初期化し、読み込み用にエクスポート入力ファイル(`EXPORT-INPUT`)を、書き込み用にアカウント出力ファイル(`ACCOUNT-OUTPUT`)をオープンするSHALL。
+- rule_id: dc12fd86_a97e_4045_b0ab_8563086b6885
+  program: CBIMPORT
+  disposition: captured
+  rule_name: アカウントレコードの変換と書き込み
+  rule_text: WHEN アカウントレコード(タイプ 'A')が処理対象として選択されたとき、THE Account Record Transformer
+    は、アカウントレコード構造を初期化し、すべてのエクスポートアカウントフィールド(アカウント識別子、有効状態、現在の残高、クレジット限度額、現金クレジット限度額、開設日、失効日、再発行日、現サイクルクレジット、現サイクルデビット、住所の郵便番号、およびグループ識別子)を対応するアカウントレコードフィールドにマッピングし、組み立てたアカウントレコードを出力ファイル(`ACCOUNT-OUTPUT`)に書き込むSHALL。
+  req_id: REQ-F-013
+  traceability_lines:
+  - 323
+  - 325
+  - 327
+  - 328
+  - 329
+  - 330
+  - 331
+  - 332
+  - 333
+  - 334
+  - 335
+  - 336
+  - 337
+  - 338
+  - 339
+  - 341
+- rule_id: 1a3e76b3_9ec8_4cd9_85c5_a7e8aadfeeab
+  program: CBIMPORT
+  disposition: captured
+  rule_name: エクスポートデータからのカードレコードの抽出と書き込み
+  rule_text: WHEN エクスポートストリーム内でカードデータレコード(レコードタイプ 'D')が識別されたとき、THE Card Record Writer
+    は、カードレコードを初期化し、エクスポートレコードからカード番号(`CARD-NUM`)、アカウント識別子(`CARD-ACCT-ID`)、カード確認値コード(`CARD-CVV-CD`)、エンボス名(`CARD-EMBOSSED-NAME`)、失効日(`CARD-EXPIRAION-DATE`)、および有効状態(`CARD-ACTIVE-STATUS`)をカードレコードにマッピングし、カードレコードをカード出力ファイル(`CARD-OUTPUT`)に書き込むSHALL。
+  req_id: REQ-F-015
+  traceability_lines:
+  - 402
+  - 404
+  - 406
+  - 407
+  - 408
+  - 409
+  - 410
+  - 411
+  - 412
+  - 414
+- rule_id: b70e792d_8d07_46bf_b591_1a5607260db8
+  program: CBIMPORT
+  disposition: captured
+  rule_name: 顧客レコードの変換と書き込み
+  rule_text: WHEN 顧客レコード(タイプ 'C')が処理対象として選択されたとき、THE Customer Record Transformer は、顧客出力レコードを初期化し、エクスポートレコードからすべての顧客データフィールドを顧客出力レコード構造にマッピングし、組み立てたレコードを顧客出力ファイル(`CUSTOMER-OUTPUT`)に書き込むSHALL。
+  req_id: REQ-F-014
+  traceability_lines:
+  - 288
+  - 290
+  - 292
+  - 293
+  - 294
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+  - 303
+  - 304
+  - 305
+  - 306
+  - 307
+  - 308
+  - 309
+  - 310
+  - 312
+- rule_id: 4c7d3540_b961_448e_953b_299d4c9728cd
+  program: CBIMPORT
+  disposition: captured
+  rule_name: クロスリファレンスレコードの処理と書き込み
+  rule_text: 'WHEN タイプ ''X'' のエクスポートレコードが処理されているとき、THE Cross-Reference Record Writer
+    は、クロスリファレンスレコードを初期化し、エクスポートレコードからカード番号、顧客識別子、およびアカウント識別子をマッピングし、クロスリファレンスレコードを出力ファイルに書き込むSHALL。(物理ストア:
+    `XREF-OUTPUT`)'
+  req_id: REQ-F-016
+  traceability_lines:
+  - 352
+  - 354
+  - 356
+  - 357
+  - 358
+  - 359
+  - 361
+- rule_id: c2d2e6b2_d3b8_42af_bf73_a71c7bb6612f
+  program: CBIMPORT
+  disposition: captured
+  rule_name: 取引レコードの変換と出力への書き込み
+  rule_text: 'WHEN 取引タイプのエクスポートレコードが処理対象として選択されたとき、THE Transaction Record Writer は、取引レコードを初期化し、すべてのエクスポート取引フィールドを取引レコードフィールドにマッピングし、完成した取引レコードを取引出力ファイルに書き込むSHALL。(物理ストア:
+    `TRANSACTION-OUTPUT`)'
+  req_id: REQ-F-017
+  traceability_lines:
+  - 372
+  - 374
+  - 376
+  - 377
+  - 378
+  - 379
+  - 380
+  - 381
+  - 382
+  - 383
+  - 384
+  - 385
+  - 386
+  - 387
+  - 388
+  - 389
+  - 391
+- rule_id: 1c3b9835_5c03_4cc0_81da_161783e46fb3
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: タイプ別のエクスポートレコードのディスパッチ
+  rule_text: WHEN エクスポートレコードが処理可能な状態にあるとき、THE Export Record Dispatcher は、エクスポートレコードタイプ(`EXPORT-REC-TYPE`)を評価し、レコードを適切なハンドラにルーティングするSHALL。タイプが
+    'A' の場合はアカウントレコードプロセッサを呼び出し、その他のレコードタイプはそれぞれのハンドラまたはデフォルトハンドラで処理される。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-013
+  traceability_lines:
+  - 270
+  - 272
+  - 275
+  - 276
+  - 285
+- rule_id: 5386e2b5_ecb8_4a1e_b1a5_4045b9618797
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: ファイル終端までのエクスポートファイルレコードの処理
+  rule_text: WHILE 入力ファイルにエクスポートレコードが残っている間、THE Export File Processor は、入力ファイルからエクスポートレコードを繰り返し読み込んでディスパッチするSHALL。レコードが残っている間は継続し、ファイル終端インジケータが設定された時点で終了する。
+  req_id: REQ-F-011
+  traceability_lines:
+  - 248
+  - 250
+  - 252
+  - 254
+  - 255
+  - 256
+- rule_id: 9457d100_bffa_4113_b405_db20d64fb1e6
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 入力ファイルからの次のエクスポートレコードの読み込み
+  rule_text: THE Export Record Reader は、エクスポート入力ファイル(`EXPORT-INPUT`)から次のレコードをエクスポートレコードバッファに読み込むSHALL。
+  reason: '[LLM-classified] 連続読み込みの機構 — ループでの読み込み前進処理であり、REQ-F-002で捉えられている内容を超える独立した業務ルールは存在しない'
+- rule_id: 03d39c91_23ed_4e74_b268_909a171cdeb4
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: タイプ別のエクスポートレコードのディスパッチ
+  rule_text: WHEN エクスポートレコードが入力ファイルから読み込まれたとき、THE Export Record Dispatcher は、レコードタイプインジケータを評価し、適切なハンドラにディスパッチするSHALL。カードレコードタイプ('C')およびカードデータレコードタイプ('D')はカードレコードプロセッサを呼び出し、アカウントレコードタイプ('A')、クロスリファレンスレコードタイプ('X')、取引レコードタイプ('T')、および未認識のタイプはそれぞれのハンドラを呼び出す。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-015
+  traceability_lines:
+  - 270
+  - 272
+  - 281
+  - 282
+  - 285
+- rule_id: 72218f86_e3a5_4ee0_b4b7_434cc407033e
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: プログラムの初期化とデータファイルのオープン
+  rule_text: THE Card Export Processor は、読み込み用にエクスポート入力ファイル(`EXPORT-INPUT`)を、書き込み用にカード出力ファイル(`CARD-OUTPUT`)をオープンするSHALL。
+  reason: '[LLM-classified] ファイルオープン/初期化の機構 — 独立した業務ルールは存在しない'
+- rule_id: 79822e8a_c8ff_4703_a7fd_f98320d9e32b
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 入力ファイルからの次のエクスポートレコードの読み込み
+  rule_text: THE Export Record Reader は、エクスポート入力ファイル(`EXPORT-INPUT`)から次のレコードをエクスポートレコードバッファに読み込むSHALL。
+  reason: '[LLM-classified] 連続読み込みの機構 — 読み込み前進ループ機構の重複'
+- rule_id: cfc8370c_123b_4523_b1c2_9c07530d075a
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: ファイル終端までのエクスポートファイルレコードの処理
+  rule_text: WHILE 入力ファイルにエクスポートレコードが残っている間、THE Export File Processor は、入力ファイルからエクスポートレコードを繰り返し読み込んでディスパッチするSHALL。レコードが残っている間は継続し、ファイル終端インジケータが設定された時点で終了する。
+  req_id: REQ-F-011
+  traceability_lines:
+  - 248
+  - 250
+  - 252
+  - 254
+  - 255
+  - 256
+- rule_id: a36f7dc6_de2e_4397_8d74_da53836d9b53
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 顧客データのインポートと分割操作の実行
+  rule_text: 'THE Import and File-Split Handler は、複数レコード形式のエクスポートファイルを読み込み、各レコードを検証・解析し、顧客レコードを顧客データストアに、アカウントレコードをアカウントデータストアに、カードクロスリファレンスレコードをカードクロスリファレンスストアに、取引レコードを取引データストアに分配し、拒否または誤りのあるレコードをエラー出力ストアに書き込むSHALL。(物理ストア:
+    `ACCTOUT`, `CUSTOUT`, `ERROUT`, `EXPFILE`, `STEPLIB`, `TRNXOUT`, `XREFOUT`)'
+  req_id: REQ-F-010
+  traceability_lines:
+  - 3
+  - 4
+  - 5
+  - 7
+  - 8
+  - 9
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+  - 65
+- rule_id: 42fcee36_65ca_4058_8bc2_9195a27fc125
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: タイプ別のエクスポートレコードのディスパッチ
+  rule_text: WHEN エクスポートレコードが処理可能な状態にあるとき、THE Record Type Dispatcher は、レコードタイプインジケータを評価し、タイプが
+    'C' の場合は顧客プロセッサにレコードをルーティングし、タイプ 'A'、'X'、'T'、または 'D' の場合は代替のハンドラにルーティングするSHALL。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-014
+  traceability_lines:
+  - 270
+  - 272
+  - 273
+  - 274
+  - 285
+- rule_id: 5e47bf7c_f0b3_4725_a3ab_ef20ef2d4d65
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: ファイル終端までのエクスポートファイルレコードの処理
+  rule_text: WHILE 入力ファイルにエクスポートレコードが残っている間、THE Export File Processor は、入力ファイルからエクスポートレコードを繰り返し読み込んでディスパッチするSHALL。レコードが残っている間は継続し、ファイル終端インジケータが設定された時点で終了する。
+  req_id: REQ-F-011
+  traceability_lines:
+  - 248
+  - 250
+  - 252
+  - 254
+  - 255
+  - 256
+- rule_id: 7ceddb92_9f41_4a8d_b802_1ddb12d1ac8c
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: プログラムの初期化とデータファイルのオープン
+  rule_text: THE File Initialization Handler は、順次読み込みアクセス用にエクスポート入力ファイル(`EXPORT-INPUT`)をオープンし、順次書き込みアクセス用に顧客出力ファイル(`CUSTOMER-OUTPUT`)をオープンするSHALL。
+  reason: '[LLM-classified] ファイルオープン/初期化の機構 — 独立した業務ルールは存在しない'
+- rule_id: 8ee30e1c_93a9_43b5_8c1f_6146b79ddda4
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 入力ファイルから次のエクスポートレコードを読み込む
+  rule_text: THE Export Record Reader は、エクスポート入力ファイル(`EXPORT-INPUT`)から次のレコードをエクスポートレコードバッファへ読み込むものとする。
+  reason: '[LLM-classified] シーケンシャル読み込み処理 — 読み込み・前進ループ処理の重複'
+- rule_id: b8a89b1c_bbf6_49d5_adda_cf8326249df6
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: プログラムを初期化し、データファイルをオープンする
+  rule_text: 'THE File Initialization Handler は、エクスポート入力ファイルと相互参照出力ファイルを順次アクセス用にオープンするものとする。(物理ストア:
+    `EXPORT-INPUT`, `XREF-OUTPUT`)'
+  reason: '[LLM-classified] ファイルオープン・初期化処理 — 独立したビジネスルールなし'
+- rule_id: d918699e_cb04_4697_b4d4_e8a11ef2a1b0
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 入力ファイルから次のエクスポートレコードを読み込む
+  rule_text: THE Export Record Reader は、エクスポート入力ファイル(`EXPORT-INPUT`)から次のレコードをエクスポートレコードバッファへ読み込むものとする。
+  reason: '[LLM-classified] シーケンシャル読み込み処理 — 読み込み・前進ループ処理の重複'
+- rule_id: d92b4157_ce69_4397_96fa_05fd4881e9cd
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: ファイル終端までエクスポートファイルレコードを処理する
+  rule_text: WHILE 入力ファイルにエクスポートレコードが残っている間、THE Export File Processor は、入力ファイルからエクスポートレコードを繰り返し読み込みディスパッチするものとし、レコードが残っている間は継続し、ファイル終端指示子が設定された時点で終了するものとする。
+  req_id: REQ-F-011
+  traceability_lines:
+  - 248
+  - 250
+  - 252
+  - 254
+  - 255
+  - 256
+- rule_id: dd1f886b_7678_4517_8d2c_4b83fb807f80
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: エクスポートレコードをタイプ別にディスパッチする
+  rule_text: WHEN 処理対象のエクスポートレコードが利用可能な場合、THE Export Record Dispatcher は、レコードタイプを評価し適切なハンドラへルーティングするものとし、レコードタイプが'X'の場合は相互参照プロセッサを呼び出すものとする。その他のレコードタイプはそれぞれの分岐で処理されるものとする。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-016
+  traceability_lines:
+  - 270
+  - 272
+  - 277
+  - 278
+  - 285
+- rule_id: 0e14434e_127b_4374_842e_fcfe49ffc44d
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: エクスポートレコードをタイプ別にディスパッチする
+  rule_text: WHEN 入力ファイルからエクスポートレコードが読み込まれた場合、THE Export Record Dispatcher は、レコードタイプを評価し適切なハンドラへディスパッチするものとし、カードレコードはカード処理へ、アカウントレコードはアカウント処理へ、相互参照レコードは相互参照処理へ、トランザクションレコードはトランザクション処理へ、顧客レコードは顧客処理へ、その他のレコードタイプは不明レコード処理へディスパッチするものとする。
+  req_id: REQ-F-012
+  traceability_lines:
+  - 270
+  - 272
+  - 283
+  - 284
+  - 285
+- rule_id: 640c860d_a141_478a_b847_8c92e6b7c3f0
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: プログラムを初期化し、データファイルをオープンする
+  rule_text: 'THE Export Processing System は、エクスポート入力ファイルとエラー出力ファイルを順次アクセス用にオープンするものとする。(物理ストア:
+    `ERROR-OUTPUT`, `EXPORT-INPUT`)'
+  reason: '[LLM-classified] ファイルオープン・初期化処理 — 独立したビジネスルールなし'
+- rule_id: 7def3cce_5e12_4fec_a58a_b6fe3b9b726a
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 不明なエクスポートレコードタイプをエラーとしてログに記録する
+  rule_text: 'WHEN 認識できないレコードタイプのエクスポートレコードが検出された場合、THE Error Record Logger は、現在のタイムスタンプ、不明なレコードタイプ、シーケンス番号、および説明メッセージをエラーレコード構造に取り込み、フォーマット済みのエラーレコードをエラー出力ファイルへ書き込むものとする。(物理ストア:
+    `ERROR-OUTPUT`)'
+  req_id: REQ-F-018
+  traceability_lines:
+  - 425
+  - 429
+  - 430
+  - 431
+  - 432
+  - 434
+  - 437
+  - 439
+- rule_id: a333920b_b72e_48f3_ab83_2b50e1fe1733
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: ファイル終端までエクスポートレコードを順次読み込む
+  rule_text: 'WHILE 入力ファイルにエクスポートレコードが残っている間、THE Export Record Reader は、入力ファイルから次のエクスポートレコードをエクスポートレコードバッファへ読み込み、ファイル終端に達するまで継続するものとする。(物理ストア:
+    `EXPORT-INPUT`)'
+  req_id: REQ-F-011
+  traceability_lines:
+  - 248
+  - 250
+  - 252
+  - 254
+  - 255
+  - 256
+  - 259
+  - 261
+- rule_id: 13fe76bd_3633_4149_87b1_8946ba2cbba5
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: プログラムを初期化し、データファイルをオープンする
+  rule_text: 'THE Export Processing System は、エクスポート入力ファイルとトランザクション出力ファイルを順次アクセス用にオープンするものとする。(物理ストア:
+    `EXPORT-INPUT`, `TRANSACTION-OUTPUT`)'
+  reason: '[LLM-classified] ファイルオープン・初期化処理 — 独立したビジネスルールなし'
+- rule_id: 1eb274a7_de30_4545_b648_6719af1efac4
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: エクスポートレコードをタイプ別に適切なハンドラへルーティングする
+  rule_text: WHEN 処理対象のエクスポートレコードが利用可能な場合、THE Export Record Router は、レコードタイプを評価し、レコードタイプが'T'の場合はトランザクションプロセッサへディスパッチするものとする。その他のレコードタイプはそれぞれのハンドラへルーティングされるものとする。
+  req_ids:
+  - REQ-F-012
+  - REQ-F-017
+  traceability_lines:
+  - 270
+  - 272
+  - 279
+  - 280
+  - 285
+- rule_id: 8bb38033_268b_4d82_a756_2c3a74b9fc1d
+  program: CBIMPORT
+  disposition: captured
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: ファイル終端までエクスポートファイルレコードを処理する
+  rule_text: WHILE 入力ファイルにエクスポートレコードが残っている間、THE Export File Processor は、入力ファイルからエクスポートレコードを繰り返し読み込みディスパッチするものとし、レコードが残っている間は継続し、ファイル終端指示子が設定された時点で終了するものとする。
+  req_id: REQ-F-011
+  traceability_lines:
+  - 248
+  - 250
+  - 252
+  - 254
+  - 255
+  - 256
+- rule_id: c538ea91_bd78_4ee9_b253_6190e5858a2c
+  program: CBIMPORT
+  disposition: not_applicable
+  program_path: demo/jcl/CBIMPORT.jcl
+  rule_name: 入力ファイルから次のエクスポートレコードを読み込む
+  rule_text: THE Export Record Reader は、エクスポート入力ファイル(`EXPORT-INPUT`)から次のレコードをエクスポートレコードバッファへ読み込むものとする。
+  reason: '[LLM-classified] シーケンシャル読み込み処理 — 読み込み・前進ループ処理の重複'
+- rule_id: 25b6cc49_081f_4b68_83f5_148c4e28ceeb
+  program: TRANEXTR
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/TRANEXTR.jcl
+  rule_name: 現在のトランザクションタイプファイルをバックアップする
+  rule_text: 'THE Transaction Type Backup は、現在のトランザクションタイプファイルを新しい世代データグループメンバーへコピーし、すべてのレコードとレコード形式を保持するものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_id: REQ-F-019
+  traceability_lines:
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+- rule_id: 8408fc26_0f3f_40c9_a8b3_de808b7952f7
+  program: TRANEXTR
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/TRANEXTR.jcl
+  rule_name: データベースからトランザクションカテゴリレコードを抽出する
+  rule_text: 'WHEN 前段のトランザクションタイプ抽出ステップが復帰コード4未満で完了した場合、THE Transaction Category Data
+    Extraction は、データベースからすべてのトランザクションカテゴリレコードを取得し、タイプコード、カテゴリコード、カテゴリデータ、およびパディングを連結し、タイプコードとカテゴリコードでソートし、フォーマット済みのレコードをトランザクションカテゴリ出力データセットへ書き込むものとする。(物理ストア:
+    `STEPLIB`, `SYSIN`, `SYSREC00`, `SYSTSIN`)'
+  req_ids:
+  - REQ-F-023
+  - REQ-N-001
+  traceability_lines:
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 100
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+- rule_id: d8e92c6a_b089_4c41_95d5_83d5cccc13e3
+  program: TRANEXTR
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/TRANEXTR.jcl
+  rule_name: 前回の抽出出力ファイルを削除する
+  rule_text: WHEN 前段のトランザクションカテゴリバックアップステップが成功した場合、THE Previous Extraction Output
+    Cleanup は、前回実行分のトランザクションタイプ出力データセット(DD01)とトランザクションカテゴリ出力データセット(DD02)を削除するものとする。
+  req_ids:
+  - REQ-F-021
+  - REQ-N-001
+  traceability_lines:
+  - 50
+  - 51
+  - 52
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+- rule_id: e8a97965_41f1_467b_a411_8b0f67051df6
+  program: TRANEXTR
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/TRANEXTR.jcl
+  rule_name: 現在のトランザクションカテゴリファイルをバックアップする
+  rule_text: 'WHEN 前段のトランザクションタイプバックアップステップが成功した場合、THE Transaction Category Backup
+    は、現在のトランザクションカテゴリファイルを新しい世代データグループメンバーへコピーし、すべてのレコードとレコード形式を保持するものとする。(物理ストア:
+    `SYSUT1`, `SYSUT2`)'
+  req_ids:
+  - REQ-F-020
+  - REQ-N-001
+  traceability_lines:
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+- rule_id: fe4f5815_8cfb_4b41_80db_ec23a6160002
+  program: TRANEXTR
+  disposition: captured
+  program_path: demo/app-transaction-type-db2/jcl/TRANEXTR.jcl
+  rule_name: データベースから取引種別レコードを抽出する
+  rule_text: 'WHEN 直前のクリーンアップステップが成功した場合、THE 取引種別データ抽出 SHALL データベースから全ての取引種別レコードを取得し、種別コードと説明およびパディングを連結し、種別コードでソートし、フォーマット済みレコードを取引種別出力データセットに書き込む。（物理ストア:
+    `STEPLIB`, `SYSIN`, `SYSREC00`, `SYSTSIN`）'
+  req_ids:
+  - REQ-F-022
+  - REQ-N-001
+  traceability_lines:
+  - 62
+  - 63
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 90
+  - 91
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - 6cf3bd82_e257_4124_9fac_28ca3f8aa139
+- req_id: REQ-F-002
+  rule_ids:
+  - 02e0b703_8e73_4236_878a_46a2158c628b
+- req_id: REQ-F-003
+  rule_ids:
+  - 479ec3ea_a9ef_4316_a88e_648763b2aac6
+- req_id: REQ-F-004
+  rule_ids:
+  - 86b49ccd_ccbf_4f45_9cbf_023611812efc
+  - f8c546ab_1b9d_4770_be52_38211004d8b1
+  - 782ed925_4e20_4100_b52f_7e5ab1562033
+- req_id: REQ-F-005
+  rule_ids:
+  - f4a93eed_4efc_4a0e_95e0_f407e9a0a699
+  - 9ce43ce6_fd8a_44b8_a792_3ae5419f6387
+  - f07bcb62_3031_41fe_bd56_7df734570ebd
+- req_id: REQ-F-006
+  rule_ids:
+  - 88f4eb8a_38e0_466c_bb1f_6908636856f1
+  - ac4090c1_0bf4_476c_bcc7_b011555a9304
+  - ae25457a_9b04_43e9_b43a_87d762b328c4
+- req_id: REQ-F-007
+  rule_ids:
+  - 09dcf940_806d_4c06_a83e_198d66821254
+  - 5f102e96_b1f2_4ee3_9b09_d42efa2a6d30
+  - a92d37d1_702a_4e16_844b_d7843950ba2d
+- req_id: REQ-F-008
+  rule_ids:
+  - afdfc8ea_8d5d_4ed7_bcc3_d4295b00744b
+  - 5504a506_4ca9_41a1_960e_b2053b379958
+  - 6bc99d0b_1531_438f_9a04_e76ed2ca1c63
+- req_id: REQ-F-009
+  rule_ids:
+  - ff24b7ad_caef_4641_97d8_df56638761f0
+- req_id: REQ-F-010
+  rule_ids:
+  - a36f7dc6_de2e_4397_8d74_da53836d9b53
+- req_id: REQ-F-011
+  rule_ids:
+  - 5386e2b5_ecb8_4a1e_b1a5_4045b9618797
+  - cfc8370c_123b_4523_b1c2_9c07530d075a
+  - 5e47bf7c_f0b3_4725_a3ab_ef20ef2d4d65
+  - d92b4157_ce69_4397_96fa_05fd4881e9cd
+  - 8bb38033_268b_4d82_a756_2c3a74b9fc1d
+  - a333920b_b72e_48f3_ab83_2b50e1fe1733
+- req_id: REQ-F-012
+  rule_ids:
+  - 0e14434e_127b_4374_842e_fcfe49ffc44d
+  - 1c3b9835_5c03_4cc0_81da_161783e46fb3
+  - 03d39c91_23ed_4e74_b268_909a171cdeb4
+  - 42fcee36_65ca_4058_8bc2_9195a27fc125
+  - dd1f886b_7678_4517_8d2c_4b83fb807f80
+  - 1eb274a7_de30_4545_b648_6719af1efac4
+- req_id: REQ-F-013
+  rule_ids:
+  - 1c3b9835_5c03_4cc0_81da_161783e46fb3
+  - dc12fd86_a97e_4045_b0ab_8563086b6885
+- req_id: REQ-F-014
+  rule_ids:
+  - 42fcee36_65ca_4058_8bc2_9195a27fc125
+  - b70e792d_8d07_46bf_b591_1a5607260db8
+- req_id: REQ-F-015
+  rule_ids:
+  - 03d39c91_23ed_4e74_b268_909a171cdeb4
+  - 1a3e76b3_9ec8_4cd9_85c5_a7e8aadfeeab
+- req_id: REQ-F-016
+  rule_ids:
+  - dd1f886b_7678_4517_8d2c_4b83fb807f80
+  - 4c7d3540_b961_448e_953b_299d4c9728cd
+- req_id: REQ-F-017
+  rule_ids:
+  - 1eb274a7_de30_4545_b648_6719af1efac4
+  - c2d2e6b2_d3b8_42af_bf73_a71c7bb6612f
+- req_id: REQ-F-018
+  rule_ids:
+  - 7def3cce_5e12_4fec_a58a_b6fe3b9b726a
+- req_id: REQ-F-019
+  rule_ids:
+  - 25b6cc49_081f_4b68_83f5_148c4e28ceeb
+- req_id: REQ-F-020
+  rule_ids:
+  - e8a97965_41f1_467b_a411_8b0f67051df6
+- req_id: REQ-F-021
+  rule_ids:
+  - d8e92c6a_b089_4c41_95d5_83d5cccc13e3
+- req_id: REQ-F-022
+  rule_ids:
+  - fe4f5815_8cfb_4b41_80db_ec23a6160002
+- req_id: REQ-F-023
+  rule_ids:
+  - 8408fc26_0f3f_40c9_a8b3_de808b7952f7
+- req_id: REQ-N-001
+  rule_ids:
+  - d8e92c6a_b089_4c41_95d5_83d5cccc13e3
+  - e8a97965_41f1_467b_a411_8b0f67051df6
+  - fe4f5815_8cfb_4b41_80db_ec23a6160002
+  - 8408fc26_0f3f_40c9_a8b3_de808b7952f7

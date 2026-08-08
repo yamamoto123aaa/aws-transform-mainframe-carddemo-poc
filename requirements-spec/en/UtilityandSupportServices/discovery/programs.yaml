@@ -1,0 +1,123 @@
+# Utility and Support Services - Program Discovery
+# Generated: 2026-08-08T04:25:49Z
+# Source: TransformKG (Python discovery)
+
+function: UtilityandSupportServices
+programs:
+- name: COBDATFT
+  type: COBOL
+  execution: batch
+  description: 'Date format transformation and validation; This program transforms
+    date formats between two representations: dates without separators (YYYYMMDD)
+    and dates with hyphens (YYYY-MM-DD). It validates that the input type indicator
+    matches the input date format, rejects mismatched output type requests, and populates
+    an error message when validation fails.'
+  transaction_id: null
+  includes:
+  - COCDATFT.mac
+- name: COBSWAIT
+  type: COBOL
+  execution: batch
+  description: Wait time service invocation; The program accepts a wait time parameter
+    from standard input, converts it to the internal wait-time format, and delegates
+    to the wait-time service to pause execution for the specified duration in milliseconds.
+  transaction_id: null
+  calls:
+  - MVSWAIT
+- name: CODATE01
+  type: COBOL
+  execution: batch
+  description: Message queue request-reply date service; This program implements a
+    message queue-based request-reply service that retrieves date and time information.
+    It opens three queues (input, output, and error), retrieves incoming requests
+    from the input queue, processes each request by capturing the current system date
+    and time, and sends the formatted response back to the reply queue. If any operation
+    fails, error details are sent to the error queue. All queues are properly closed
+    at termination.
+  transaction_id: null
+  calls:
+  - MQCLOSE
+  - MQGET
+  - MQOPEN
+  - MQPUT
+  includes:
+  - CMQGMOV
+  - CMQMDV
+  - CMQODV
+  - CMQPMOV
+  - CMQTML
+  - CMQV
+- name: CSUTLDTC
+  type: COBOL
+  execution: batch
+  description: Date validation and Lillian conversion; The program accepts a date
+    string and format mask from the caller, delegates to the system date service to
+    convert the date to Lillian format and validate it, captures the validation result
+    and any error feedback, and returns a formatted message describing the outcome
+    to the caller.
+  transaction_id: null
+  calls:
+  - CEEDAYS
+- name: FTPJCL
+  type: JCL
+  execution: batch
+  description: File transfer via FTP protocol; This job executes an FTP session to
+    transfer a file from the mainframe to a remote FTP server. The job connects to
+    an FTP server using provided credentials, navigates to a specified folder, and
+    uploads a mainframe dataset to the remote system as a text file. The FTP commands
+    are supplied via inline control statements that specify the server address, authentication,
+    directory navigation, and the PUT operation to send the file.
+  transaction_id: null
+  calls:
+  - FTP
+  invokes: FTP
+- name: MVSWAIT
+  type: COBOL
+  execution: batch
+  description: Interval timer delay execution; This program receives a delay interval
+    value from its caller, stores it in the timer event control block, and invokes
+    the interval control timer to pause execution for the specified duration. Upon
+    timer completion, the program restores the caller's registers and returns control.
+  transaction_id: null
+  calls:
+  - ASMWAIT.mac
+- name: TXT2PDF1
+  type: JCL
+  execution: batch
+  description: Text-to-PDF conversion batch job; This job converts a text file to
+    PDF format using a TSO batch wrapper. The job reads the input text dataset, invokes
+    the conversion process with browsing enabled, and writes the output PDF to a named
+    dataset. The conversion is triggered unconditionally as the main batch operation.
+  transaction_id: null
+  calls:
+  - IKJEFT1B
+  invokes: IKJEFT1B
+- name: WAITSTEP
+  type: JCL
+  execution: batch
+  description: Batch wait operation with configurable delay; This job step invokes
+    a wait utility program to pause batch processing for a specified duration. The
+    program reads a delay value in centiseconds from inline input and suspends execution
+    accordingly, allowing time-based sequencing between dependent batch steps. The
+    delay is specified as 36 seconds (3600 centiseconds) in the control input.
+  transaction_id: null
+  calls:
+  - COBSWAIT
+  invokes: COBSWAIT
+- name: COBSWAIT
+  type: COBOL
+  execution: subroutine
+  description: Wait time service invocation; The program accepts a wait time parameter
+    from standard input, converts it to the internal wait-time format, and delegates
+    to the wait-time service to pause execution for the specified duration in milliseconds.
+  calls:
+  - MVSWAIT
+- name: MVSWAIT
+  type: COBOL
+  execution: subroutine
+  description: Interval timer delay execution; This program receives a delay interval
+    value from its caller, stores it in the timer event control block, and invokes
+    the interval control timer to pause execution for the specified duration. Upon
+    timer completion, the program restores the caller's registers and returns control.
+  calls:
+  - ASMWAIT.mac

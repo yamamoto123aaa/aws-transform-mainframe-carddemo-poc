@@ -1,0 +1,19 @@
+offset_convention: 1-based
+data_stores:
+- name: AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO
+  type: QSAM
+  internal_readers:
+  - PAUDBLOD
+  internal_writers:
+  - PAUDBUNL
+- name: AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO
+  type: QSAM
+  internal_readers:
+  - PAUDBLOD
+  internal_writers:
+  - PAUDBUNL
+- name: INPFILE
+  type: QSAM
+  internal_readers:
+  - COBTUPDT
+  internal_writers: []

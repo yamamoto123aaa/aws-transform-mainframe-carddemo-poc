@@ -1,0 +1,138 @@
+2026-08-08 04:08:00,332 [main] INFO :  _____      _              _       _           _   __                    _          _            _____     _                  _
+2026-08-08 04:08:00,332 [main] INFO : /  ___|    | |            | |     | |         | | / /                   | |        | |          |  ___|   | |                | |
+2026-08-08 04:08:00,333 [main] INFO : \ `--.  ___| |__   ___  __| |_   _| | ___ _ __| |/ / _ __   _____      _| | ___  __| | __ _  ___| |____  _| |_ _ __ __ _  ___| |_ ___  _ __
+2026-08-08 04:08:00,333 [main] INFO :  `--. \/ __| '_ \ / _ \/ _` | | | | |/ _ \ '__|    \| '_ \ / _ \ \ /\ / / |/ _ \/ _` |/ _` |/ _ \  __\ \/ / __| '__/ _` |/ __| __/ _ \| '__|
+2026-08-08 04:08:00,333 [main] INFO : /\__/ / (__| | | |  __/ (_| | |_| | |  __/ |  | |\  \ | | | (_) \ V  V /| |  __/ (_| | (_| |  __/ |___>  <| |_| | | (_| | (__| || (_) | |
+2026-08-08 04:08:00,333 [main] INFO : \____/ \___|_| |_|\___|\__,_|\__,_|_|\___|_|  \_| \_/_| |_|\___/ \_/\_/ |_|\___|\__,_|\__, |\___\____/_/\_\\__|_|  \__,_|\___|\__\___/|_|
+2026-08-08 04:08:00,333 [main] INFO :                                                                                        __/ |
+2026-08-08 04:08:00,333 [main] INFO :                                                                                       |___/
+2026-08-08 04:08:00,333 [main] INFO :   Scheduler Knowledge Extractor
+2026-08-08 04:08:00,333 [main] INFO :                          Version: V20260630135052
+2026-08-08 04:08:00,348 [main] INFO : [LegacyTypeDetection] classification file location : /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/.classification.json
+2026-08-08 04:08:00,405 [main] INFO : [LegacyTypeDetection] classification file found at /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/.classification.json
+2026-08-08 04:08:00,415 [main] INFO : [LegacyTypeDetection] classification file location : /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/.classification.json
+2026-08-08 04:08:00,418 [main] INFO : [LegacyTypeDetection] classification file found at /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/.classification.json
+2026-08-08 04:08:00,432 [main] INFO : [LegacyTypeDetection] dependencies file location : /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/.dependencies.json
+2026-08-08 04:08:00,462 [main] INFO : [LegacyTypeDetection] dependencies file found at /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/.dependencies.json
+2026-08-08 04:08:00,485 [main] INFO : [LegacyTypeDetection] charset file not found at /ramdisk/1/scheduler_knowledge/.ske_engine_metadata/file-charsets.json
+2026-08-08 04:08:00,506 [pool-2-thread-2] INFO : Processing file #1 (CA7)
+2026-08-08 04:08:00,506 [pool-2-thread-1] INFO : Processing file #2 (CONTROLM)
+2026-08-08 04:08:00,507 [pool-2-thread-1] INFO : Parsing Control-M XML: /ramdisk/1/assets/demo/scheduler/CardDemo.controlm
+2026-08-08 04:08:00,507 [pool-2-thread-1] INFO : [ControlM] Parsing XML
+2026-08-08 04:08:00,509 [pool-2-thread-2] INFO : [#BUUWCy] Preparing extraction for: CardDemo.ca7
+2026-08-08 04:08:00,509 [pool-2-thread-2] INFO : [#BUUWCy] Preparing extraction
+2026-08-08 04:08:00,510 [pool-2-thread-2] INFO : [#BUUWCy] Extraction started for: CardDemo.ca7 (streaming)
+2026-08-08 04:08:00,510 [pool-2-thread-2] INFO : [#BUUWCy] Extraction started (streaming)
+2026-08-08 04:08:00,512 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CLOSEFIL'
+2026-08-08 04:08:00,513 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CLOSEFIL'
+2026-08-08 04:08:00,513 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'CLOSEFIL' uses JCL 'CLOSEFIL' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CBPAUP0J'
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CBPAUP0J'
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'CBPAUP0J' uses JCL 'CBPAUP0J' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'POSTTRAN'
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'POSTTRAN'
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'POSTTRAN' uses JCL 'POSTTRAN' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'WAITSTEP'
+2026-08-08 04:08:00,514 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'WAITSTEP'
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'WAITSTEP' uses JCL 'WAITSTEP' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'OPENFIL'
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'OPENFIL'
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'OPENFIL' uses JCL 'OPENFIL' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TRANTYPE'
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TRANTYPE'
+2026-08-08 04:08:00,515 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'TRANTYPE' uses JCL 'TRANTYPE' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'WAITSTEP'
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'WAITSTEP'
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'WAITSTEP' uses JCL 'WAITSTEP' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CLOSEFIL1'
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CLOSEFIL1'
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'CLOSEFIL1' uses JCL 'CLOSEFIL' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CLOSEFIL2'
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CLOSEFIL2'
+2026-08-08 04:08:00,516 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'CLOSEFIL2' uses JCL 'CLOSEFIL' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TRANCATG'
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TRANCATG'
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'TRANCATG' uses JCL 'TRANCATG' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TCATBALF'
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TCATBALF'
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'TCATBALF' uses JCL 'TCATBALF' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READACCT'
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READACCT'
+2026-08-08 04:08:00,517 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'READACCT' uses JCL 'READACCT' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READCARD'
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READCARD'
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'READCARD' uses JCL 'READCARD' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READCUST'
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READCUST'
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'READCUST' uses JCL 'READCUST' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READXREF'
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'READXREF'
+2026-08-08 04:08:00,518 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'READXREF' uses JCL 'READXREF' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CREASTMT'
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'CREASTMT'
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'CREASTMT' uses JCL 'CREASTMT' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TXT2PDF1'
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'TXT2PDF1'
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'TXT2PDF1' uses JCL 'TXT2PDF1' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'PRTCATBL'
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] Detected new job: 'PRTCATBL'
+2026-08-08 04:08:00,519 [pool-2-thread-2] INFO : [#BUUWCy] DETAIL: job 'PRTCATBL' uses JCL 'PRTCATBL' (sys=CARDDEMO, user=000, runs=1058)
+2026-08-08 04:08:00,520 [pool-2-thread-2] INFO : [#BUUWCy] Rebuilder produced 46 normalized record(s)
+2026-08-08 04:08:00,520 [pool-2-thread-2] INFO : [#BUUWCy] Rebuilder produced 46 normalized record(s)
+2026-08-08 04:08:00,520 [pool-2-thread-2] INFO : [#BUUWCy] Parsing complete — 17 job(s) with JCL, 28 trigger edge(s), 0 schedule(s)
+2026-08-08 04:08:00,520 [pool-2-thread-2] INFO : [#BUUWCy] Parsing complete — 17 job(s) with JCL, 28 trigger edge(s), 0 schedule(s)
+2026-08-08 04:08:00,520 [pool-2-thread-2] INFO : [#BUUWCy] Entry-point resolution yielded 0 entry-point job(s)
+2026-08-08 04:08:00,521 [pool-2-thread-2] INFO : [#BUUWCy] Entry-point resolution yielded 0 entry-point job(s)
+2026-08-08 04:08:00,521 [pool-2-thread-2] INFO : [#BUUWCy] Extraction completed for: CardDemo.ca7 — 0 task(s), 0 folder(s)
+2026-08-08 04:08:00,521 [pool-2-thread-2] INFO : [#BUUWCy] Extraction done — 0 task(s), 0 folder(s)
+2026-08-08 04:08:00,529 [pool-2-thread-1] INFO : XML parsed successfully — 15 JOB element(s) found
+2026-08-08 04:08:00,529 [pool-2-thread-1] INFO : [ControlM] Parsed OK — 15 JOB(s)
+2026-08-08 04:08:00,535 [pool-2-thread-1] INFO : Extracted task: CLOSEFIL (type=JOB, folder=DAILY-TransactionBackup)
+2026-08-08 04:08:00,535 [pool-2-thread-1] INFO : [ControlM] Task #1 extracted (type=JOB)
+2026-08-08 04:08:00,536 [pool-2-thread-1] INFO : Extracted task: TRANBKP (type=JOB, folder=DAILY-TransactionBackup)
+2026-08-08 04:08:00,536 [pool-2-thread-1] INFO : [ControlM] Task #2 extracted (type=JOB)
+2026-08-08 04:08:00,537 [pool-2-thread-1] INFO : Extracted task: WAITSTEP (type=JOB, folder=DAILY-TransactionBackup)
+2026-08-08 04:08:00,537 [pool-2-thread-1] INFO : [ControlM] Task #3 extracted (type=JOB)
+2026-08-08 04:08:00,537 [pool-2-thread-1] INFO : Extracted task: OPENFIL (type=JOB, folder=DAILY-TransactionBackup)
+2026-08-08 04:08:00,537 [pool-2-thread-1] INFO : [ControlM] Task #4 extracted (type=JOB)
+2026-08-08 04:08:00,537 [pool-2-thread-1] INFO : Extracted task: MNTTRDB2 (type=JOB, folder=WEEKLY-TransactionTypesDBRefresh)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : [ControlM] Task #5 extracted (type=JOB)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : Extracted task: CLOSEFIL (type=JOB, folder=WEEKLY-DisclosureGroupsRefresh)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : [ControlM] Task #6 extracted (type=JOB)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : Extracted task: DISCGRP (type=JOB, folder=WEEKLY-DisclosureGroupsRefresh)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : [ControlM] Task #7 extracted (type=JOB)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : Extracted task: WAITSTEP (type=JOB, folder=WEEKLY-DisclosureGroupsRefresh)
+2026-08-08 04:08:00,538 [pool-2-thread-1] INFO : [ControlM] Task #8 extracted (type=JOB)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : Extracted task: OPENFIL (type=JOB, folder=WEEKLY-DisclosureGroupsRefresh)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : [ControlM] Task #9 extracted (type=JOB)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : Extracted task: TRANEXTR (type=JOB, folder=WEEKLY-DisclosureGroupsRefresh)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : [ControlM] Task #10 extracted (type=JOB)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : Extracted task: CLOSEFIL (type=JOB, folder=MONTHLY-InterestCalculation)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : [ControlM] Task #11 extracted (type=JOB)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : Extracted task: INTCALC (type=JOB, folder=MONTHLY-InterestCalculation)
+2026-08-08 04:08:00,539 [pool-2-thread-1] INFO : [ControlM] Task #12 extracted (type=JOB)
+2026-08-08 04:08:00,540 [pool-2-thread-1] INFO : Extracted task: COMBTRAN (type=JOB, folder=MONTHLY-InterestCalculation)
+2026-08-08 04:08:00,540 [pool-2-thread-1] INFO : [ControlM] Task #13 extracted (type=JOB)
+2026-08-08 04:08:00,540 [pool-2-thread-1] INFO : Extracted task: WAITSTEP (type=JOB, folder=MONTHLY-InterestCalculation)
+2026-08-08 04:08:00,540 [pool-2-thread-1] INFO : [ControlM] Task #14 extracted (type=JOB)
+2026-08-08 04:08:00,540 [pool-2-thread-1] INFO : Extracted task: OPENFIL (type=JOB, folder=MONTHLY-InterestCalculation)
+2026-08-08 04:08:00,540 [pool-2-thread-1] INFO : [ControlM] Task #15 extracted (type=JOB)
+2026-08-08 04:08:00,542 [pool-2-thread-1] INFO : Extraction complete — 15 task(s), 4 folder(s), 11 condition(s)
+2026-08-08 04:08:00,542 [pool-2-thread-1] INFO : [ControlM] Done — 15 task(s), 4 folder(s), 11 condition(s)
+2026-08-08 04:08:00,561 [main] INFO : 2 files processed successfully, 0 failed, 0 skipped
+2026-08-08 04:08:00,561 [main] INFO : ====== Performances report ======
+2026-08-08 04:08:00,561 [main] INFO : ====== Performances report ======
+2026-08-08 04:08:00,565 [main] INFO : == Category: CA7 nb processed 1  total time : 39ms
+2026-08-08 04:08:00,566 [main] INFO : demo/scheduler/CardDemo.ca7 : 39ms
+2026-08-08 04:08:00,567 [main] INFO : ==
+2026-08-08 04:08:00,567 [main] INFO : == Category: CA7 nb processed 1  total time : 39ms
+2026-08-08 04:08:00,567 [main] INFO : #1 : 39ms
+2026-08-08 04:08:00,567 [main] INFO : ==
+2026-08-08 04:08:00,567 [main] INFO : == Category: CONTROLM nb processed 1  total time : 53ms
+2026-08-08 04:08:00,567 [main] INFO : demo/scheduler/CardDemo.controlm : 53ms
+2026-08-08 04:08:00,567 [main] INFO : ==
+2026-08-08 04:08:00,567 [main] INFO : == Category: CONTROLM nb processed 1  total time : 53ms
+2026-08-08 04:08:00,567 [main] INFO : #1 : 53ms
+2026-08-08 04:08:00,567 [main] INFO : ==
+2026-08-08 04:08:00,567 [main] INFO : ======
+2026-08-08 04:08:00,567 [main] INFO : ======

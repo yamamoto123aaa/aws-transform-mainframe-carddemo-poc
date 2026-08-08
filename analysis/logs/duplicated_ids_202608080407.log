@@ -1,0 +1,6 @@
+2026-08-08 04:07:47,013 [main] INFO : Starting duplicated ids analysis
+2026-08-08 04:07:47,015 [main] INFO : Duplicated ids analysis started at: 04:07:47 (version 20260724160641)
+2026-08-08 04:07:47,168 [main] INFO : Analysis successful, finished at: 04:07:47
+2026-08-08 04:07:47,168 [main] INFO : 237 files processed
+2026-08-08 04:07:47,168 [main] INFO : Global duration: 0 sec
+2026-08-08 04:07:47,168 [main] INFO : Duplicated ids found: 0

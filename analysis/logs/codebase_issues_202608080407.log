@@ -1,0 +1,283 @@
+2026-08-08 04:07:56,481 [main] INFO :  | |   ___ __ _ __ _ __ _  _|_ _|_ _  _ __ _  _| |_ ___/ __| |_  ___ __| |_____ _ _
+2026-08-08 04:07:56,482 [main] INFO :  | |__/ -_) _` / _` / _| || || || ' \| '_ \ || |  _(_-< (__| ' \/ -_) _| / / -_) '_|
+2026-08-08 04:07:56,482 [main] INFO :  |____\___\__, \__,_\__|\_, |___|_||_| .__/\_,_|\__/__/\___|_||_\___\__|_\_\___|_|
+2026-08-08 04:07:56,482 [main] INFO :           |___/         |__/         |_|
+2026-08-08 04:07:56,482 [main] INFO :                              Version:   V20260630135106
+2026-08-08 04:07:56,482 [main] INFO : System utilities path provided: /opt/amazon/shared/systemUtilities.json
+2026-08-08 04:07:56,483 [main] INFO : Watchdog started with timeout of 3000 minutes
+2026-08-08 04:07:56,484 [main] INFO : Folder found at /ramdisk/1/assets
+2026-08-08 04:07:56,484 [main] INFO : [CodebaseFilter] No .workpackages-files.json found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/.workpackages-files.json — all codebase files will be analyzed
+2026-08-08 04:07:56,484 [main] INFO : [LIC] Legacy Input Checkers running...
+2026-08-08 04:07:56,484 [main] INFO : [  IID] Insights and Issues Detectors running...
+2026-08-08 04:07:56,500 [main] INFO : [LegacyTypeDetection] classification file location : /ramdisk/1/legacy_inputs/.lic_engine_metadata/.classification.json
+2026-08-08 04:07:56,559 [main] INFO : [LegacyTypeDetection] classification file found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/.classification.json
+2026-08-08 04:07:56,576 [main] INFO : [LegacyTypeDetection] dependencies file location : /ramdisk/1/legacy_inputs/.lic_engine_metadata/.dependencies.json
+2026-08-08 04:07:56,611 [main] INFO : [LegacyTypeDetection] dependencies file found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/.dependencies.json
+2026-08-08 04:07:56,633 [main] INFO : [Homonyms] File not found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/.homonyms.json
+2026-08-08 04:07:56,634 [main] INFO : [Homonyms] File not found at /ramdisk/1/legacy_inputs/.homonyms.json
+2026-08-08 04:07:56,634 [main] INFO : [Homonyms] Loaded 0 homonym results
+2026-08-08 04:07:56,634 [main] INFO : [DuplicatedIds] File not found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/.duplicatedIds.json
+2026-08-08 04:07:56,634 [main] INFO : [DuplicatedIds] File not found at /ramdisk/1/legacy_inputs/.duplicatedIds.json
+2026-08-08 04:07:56,634 [main] INFO : [DuplicatedIds] Loaded 0 duplicated ID results
+2026-08-08 04:07:56,640 [main] INFO : [LegacyTypeDetection] charset file not found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/file-charsets.json
+2026-08-08 04:07:56,640 [main] INFO : [LegacyTypeDetection] charset file not found at /ramdisk/1/legacy_inputs/file-charsets.json
+2026-08-08 04:07:56,655 [main] INFO : Transform output files detected : 3 
+2026-08-08 04:07:56,655 [main] INFO : Transform output files detected : 4 
+2026-08-08 04:07:56,657 [main] INFO : Loaded 7 transformed files
+2026-08-08 04:07:56,657 [main] INFO : [LegacyTypes] File not found at /ramdisk/1/legacy_inputs/.lic_engine_metadata/.legacyTypes.json
+2026-08-08 04:07:56,658 [main] INFO : [LegacyTypes] File not found at /ramdisk/1/legacy_inputs/.legacyTypes.json
+2026-08-08 04:07:56,658 [main] INFO : [LegacyTypes] Loaded 0 legacy type entries
+2026-08-08 04:07:56,658 [main] INFO : Using system utilities file: /opt/amazon/shared/systemUtilities.json
+2026-08-08 04:07:56,698 [main] WARN : System utility name collision (ignored): NSCFI
+2026-08-08 04:07:56,698 [main] WARN : System utility name collision (ignored): NSCMA
+2026-08-08 04:07:56,698 [main] WARN : System utility name collision (ignored): NSCOB
+2026-08-08 04:07:56,698 [main] WARN : System utility name collision (ignored): NSCUS
+2026-08-08 04:07:56,698 [main] WARN : System utility name collision (ignored): NSCUT
+2026-08-08 04:07:56,699 [main] WARN : System utility name collision (ignored): TLMSINQR
+2026-08-08 04:07:56,699 [main] WARN : System utility name collision (ignored): QCAPCMD
+2026-08-08 04:07:56,699 [main] WARN : System utility name collision (ignored): SETJMP.H
+2026-08-08 04:07:56,699 [main] WARN : System utility name collision (ignored): SIGNAL.H
+2026-08-08 04:07:56,710 [main] INFO : [InsightDescription] Loading insights from jcl-dd-3rd-party-utilities-insights.json
+2026-08-08 04:07:56,725 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,725 [main] INFO : [InsightDescription] Loading insights from jcl-dd-gdg-insights.json
+2026-08-08 04:07:56,727 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,727 [main] INFO : [InsightDescription] Loading insights from jcl-sort-features-insights.json
+2026-08-08 04:07:56,729 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,729 [main] INFO : [InsightDescription] Loading insights from jcl-idcams-insights.json
+2026-08-08 04:07:56,731 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,731 [main] INFO : [InsightDescription] Loading insights from jcl-called-program-insights.json
+2026-08-08 04:07:56,732 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,732 [main] INFO : [InsightDescription] Loading insights from jcl-extra-languages-insights.json
+2026-08-08 04:07:56,734 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,734 [main] INFO : [InsightDescription] Loading insights from jcl-file-transfer-insights.json
+2026-08-08 04:07:56,735 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,736 [main] INFO : [InsightDescription] Loading insights from jcl-condition-insights.json
+2026-08-08 04:07:56,737 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,737 [main] INFO : [InsightDescription] Loading insights from jcl-multi-gdg-insights.json
+2026-08-08 04:07:56,739 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,739 [main] INFO : [InsightDescription] Loading insights from jcl-called-prg-inlined.json
+2026-08-08 04:07:56,740 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,740 [main] INFO : [InsightDescription] Loading insights from jcl-uses-dd-inlined.json
+2026-08-08 04:07:56,742 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,760 [main] INFO : [IssueDescription] Loading issues from generic-outputs-issues.json
+2026-08-08 04:07:56,768 [main] INFO : [IssueDescription] 8 issues description loaded
+2026-08-08 04:07:56,769 [main] INFO : [IssueDescription] Loading issues from missing-issues.json
+2026-08-08 04:07:56,771 [main] INFO : [IssueDescription] 7 issues description loaded
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Source File: CUSTFILE (Assignment clause)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.DATEPARM (Read Dataset)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO (Read Dataset)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO (Read Dataset)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.DBDLIB (Read Dataset)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PSBLIB (Read Dataset)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Dataset: OEMA.IMS.IMSP.SDFSRESL.V151 (Read Dataset)
+2026-08-08 04:07:56,771 [main] WARN : Ignoring missing Missing Source File: CARDFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Dataset: IMS.DBDLIB (Read Dataset)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Dataset: IMS.PROCLIB (Read Dataset)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Dataset: IMS.PSBLIB (Read Dataset)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: ACCTFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: CUSTFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: TRNXFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: XREFFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: ACCTFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: TCATBALF (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: TRANSACT (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: XREFFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: ACCTFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: CARDFILE (Assignment clause)
+2026-08-08 04:07:56,772 [main] WARN : Ignoring missing Missing Source File: CUSTFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: DALYTRAN (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: TRANFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: XREFFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDEMO.FTP.TEST.BKUP (Read Dataset)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDEMO.FTP.TEST.BKUP.INTRDR (Read Dataset)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Dataset: CEE.SCEERUN (Read Dataset)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Dataset: OEMA.DB2.VERSIONA.SDSNLOAD (Read Dataset)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: ACCTFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: CARDFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: CUSTFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: EXPFILE (Assignment clause)
+2026-08-08 04:07:56,773 [main] WARN : Ignoring missing Missing Source File: TRANSACT (Assignment clause)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Source File: XREFFILE (Assignment clause)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Source File: OUTFIL1 (Assignment clause)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Source File: OUTFIL2 (Assignment clause)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.TRANCATG.PS (Read Dataset; Resolved Symbol; Write Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.TRANCATG.PS.BKUP(+1) (Resolved Symbol; Write Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.TRANTYPE.BKUP(+1) (Resolved Symbol; Write Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.TRANTYPE.PS (Read Dataset; Resolved Symbol; Write Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: OEMA.DB2.VERSIONA.SDSNLOAD (Read Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.PAUTDB.CHILD.GSAM (Read Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.PAUTDB.ROOT.GSAM (Read Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.DBDLIB (Read Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PAUTHDB (Read Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PAUTHDBX (Read Dataset)
+2026-08-08 04:07:56,774 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PSBLIB (Read Dataset)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Dataset: OEMA.IMS.IMSP.SDFSRESL.V151 (Read Dataset)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: ACCTFILE (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: DALYREJS (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: DALYTRAN (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: TCATBALF (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: TRANFILE (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: XREFFILE (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: DATEPARM (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: TRANFILE (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Source File: TRANREPT (Assignment clause)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.DBRMLIB (Read Dataset)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Dataset: INPFILE (Read Dataset)
+2026-08-08 04:07:56,775 [main] WARN : Ignoring missing Missing Dataset: OEMA.DB2.VERSIONA.SDSNLOAD (Read Dataset)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.ESDSRRDS.PS (Read Dataset; Write Dataset)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.STATEMNT.PS (Read Dataset)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.LBD.TXT2PDF.EXEC (Read Dataset)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.IMPORT.ERRORS (Write Dataset)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.TRANSACT.IMPORT (Write Dataset)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Source File: ACCTFILE (Assignment clause)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Source File: ARRYFILE (Assignment clause)
+2026-08-08 04:07:56,776 [main] WARN : Ignoring missing Missing Source File: VBRCFILE (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDEMO.FTP.TEST.BKUP (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.CICSTS.DFHCSD (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.DATEPARM (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Can't create MISSING ISSUE for non-existing file: Global:TRANSACTION:CDV1
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: ACCTOUT (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: CARDOUT (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: CUSTOUT (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: ERROUT (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: EXPFILE (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: TRNXOUT (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: XREFOUT (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: HTMLFILE (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Source File: STMTFILE (Assignment clause)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.DBDLIB (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PAUTHDB (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PAUTHDBX (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PSBLIB (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.RECON1 (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.RECON2 (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.RECON3 (Read Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.STATEMNT.HTML (Write Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.STATEMNT.PS (Write Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.TRXFL.SEQ (Read Dataset; Write Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO (Read Dataset; Write Dataset)
+2026-08-08 04:07:56,777 [main] WARN : Ignoring missing Missing Dataset: AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO (Read Dataset; Write Dataset)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.DBDLIB (Read Dataset)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PAUTHDB (Read Dataset)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PAUTHDBX (Read Dataset)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Dataset: OEM.IMS.IMSP.PSBLIB (Read Dataset)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Dataset: OEMA.IMS.IMSP.SDFSRESL.V151 (Read Dataset)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Source File: INFILE1 (Assignment clause)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Source File: INFILE2 (Assignment clause)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Source File: XREFFILE (Assignment clause)
+2026-08-08 04:07:56,778 [main] WARN : Ignoring missing Missing Source File: INPFILE (Assignment clause)
+2026-08-08 04:07:56,781 [main] INFO : [InsightDescription] Loading insights from systemcalls-insights.json
+2026-08-08 04:07:56,782 [main] INFO : [InsightDescription] 3 insights description loaded
+2026-08-08 04:07:56,785 [main] INFO : [Found 3 unsupported system utility(ies):,   - AWS.M2.CARDDEMO.LOADLIB,   - DSNTIAC,   - XXXXXXXX.PROD.LOADLIB]
+2026-08-08 04:07:56,785 [main] INFO : No legacy types from BI Backend — skipping unsupported language detection
+2026-08-08 04:07:56,785 [main] INFO : Skipping unsupported language detection — no legacy types provided
+2026-08-08 04:07:56,786 [main] INFO : No ADABAS database calls detected.
+2026-08-08 04:07:56,794 [main] INFO : [IssueDescription] Loading issues from cics-issues.json
+2026-08-08 04:07:56,796 [main] INFO : [IssueDescription] 2 issues description loaded
+2026-08-08 04:07:56,796 [main] INFO : [InsightDescription] Loading insights from cics-insights.json
+2026-08-08 04:07:56,797 [main] INFO : [InsightDescription] 2 insights description loaded
+2026-08-08 04:07:56,798 [main] INFO : [CICS_FILE] demo/cbl/COTRN01C.cbl => 1 links: TRANSACT (R/O)
+2026-08-08 04:07:56,798 [main] INFO : [CICS_FILE] demo/cbl/COCRDSLC.cbl => 2 links: CARDAIX (R/O),CARDDAT (R/O)
+2026-08-08 04:07:56,798 [main] INFO : [CICS_FILE] demo/cbl/COACTVWC.cbl => 3 links: ACCTDAT (R/O),CUSTDAT (R/O),CXACAIX (R/O)
+2026-08-08 04:07:56,798 [main] INFO : [CICS_FILE] demo/cbl/COSGN00C.cbl => 1 links: USRSEC (R/O)
+2026-08-08 04:07:56,798 [main] INFO : [CICS_FILE] demo/cbl/COTRN02C.cbl => 3 links: CCXREF (R/O),CXACAIX (R/O),TRANSACT (R/W)
+2026-08-08 04:07:56,799 [main] INFO : [CICS_FILE] demo/cbl/COUSR00C.cbl => 1 links: USRSEC (R/O)
+2026-08-08 04:07:56,799 [main] INFO : [CICS_FILE] demo/cbl/COTRN00C.cbl => 1 links: TRANSACT (R/O)
+2026-08-08 04:07:56,799 [main] INFO : [CICS_FILE] demo/cbl/COACTUPC.cbl => 3 links: ACCTDAT (R/W),CUSTDAT (R/W),CXACAIX (R/O)
+2026-08-08 04:07:56,799 [main] INFO : [CICS_FILE] demo/app-vsam-mq/cbl/COACCT01.cbl => 1 links: ACCTDAT (R/O)
+2026-08-08 04:07:56,799 [main] INFO : [CICS_FILE] demo/cbl/COCRDUPC.cbl => 1 links: CARDDAT (R/W)
+2026-08-08 04:07:56,799 [main] INFO : [CICS_FILE] demo/cbl/COUSR02C.cbl => 1 links: USRSEC (R/W)
+2026-08-08 04:07:56,800 [main] INFO : [CICS_FILE] demo/cbl/COUSR01C.cbl => 1 links: USRSEC (W/O)
+2026-08-08 04:07:56,800 [main] INFO : [CICS_FILE] demo/app-authorization-ims-db2-mq/cbl/COPAUA0C.cbl => 3 links: ACCTDAT (R/O),CCXREF (R/O),CUSTDAT (R/O)
+2026-08-08 04:07:56,800 [main] INFO : [CICS_FILE] demo/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl => 3 links: ACCTDAT (R/O),CUSTDAT (R/O),CXACAIX (R/O)
+2026-08-08 04:07:56,800 [main] INFO : [CICS_FILE] demo/cbl/COCRDLIC.cbl => 1 links: CARDDAT (R/O)
+2026-08-08 04:07:56,800 [main] INFO : [CICS_FILE] demo/cbl/COBIL00C.cbl => 3 links: ACCTDAT (R/W),CXACAIX (R/O),TRANSACT (R/W)
+2026-08-08 04:07:56,800 [main] INFO : [CICS_FILE] demo/cbl/COUSR03C.cbl => 1 links: USRSEC (R/W)
+2026-08-08 04:07:56,801 [main] INFO : [CICS_FILE] R/W - 5 files
+2026-08-08 04:07:56,802 [main] INFO :   - ACCTDAT (dataset: AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS ; type: VSAM KSDS DATASET)
+2026-08-08 04:07:56,802 [main] INFO :   - CARDDAT (dataset: AWS.M2.CARDDEMO.CARDDATA.VSAM.KSDS ; type: VSAM KSDS DATASET)
+2026-08-08 04:07:56,802 [main] INFO :   - CUSTDAT (dataset: AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS ; type: VSAM KSDS DATASET)
+2026-08-08 04:07:56,802 [main] INFO :   - TRANSACT (dataset: AWS.M2.CARDDEMO.TRANSACT.VSAM.KSDS ; type: VSAM KSDS DATASET)
+2026-08-08 04:07:56,802 [main] INFO :   - USRSEC (dataset: AWS.M2.CARDDEMO.USRSEC.VSAM.KSDS ; type: VSAM KSDS DATASET)
+2026-08-08 04:07:56,802 [main] INFO : [CICS_FILE] R/O - 3 files
+2026-08-08 04:07:56,802 [main] INFO :   - CARDAIX (dataset: AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX.PATH ; type: DATASET)
+2026-08-08 04:07:56,802 [main] INFO :   - CCXREF (dataset: AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS ; type: VSAM KSDS DATASET)
+2026-08-08 04:07:56,802 [main] INFO :   - CXACAIX (dataset: AWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATH ; type: DATASET)
+2026-08-08 04:07:56,806 [main] INFO : [InsightDescription] Loading insights from bms-insights.json
+2026-08-08 04:07:56,808 [main] INFO : [InsightDescription] 6 insights description loaded
+2026-08-08 04:07:56,810 [main] INFO : Found 0 YML files
+2026-08-08 04:07:56,810 [main] INFO : No DBD files found.
+2026-08-08 04:07:56,811 [main] INFO : No PSB files found.
+2026-08-08 04:07:56,812 [main] INFO : [InsightDescription] Loading insights from code-use-cee-insights.json
+2026-08-08 04:07:56,814 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,814 [main] INFO : [InsightDescription] Loading insights from code-use-zip-insights.json
+2026-08-08 04:07:56,815 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,815 [main] INFO : [InsightDescription] Loading insights from code-use-indexed-insights.json
+2026-08-08 04:07:56,816 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,816 [main] INFO : [InsightDescription] Loading insights from code-use-cics-file-insights.json
+2026-08-08 04:07:56,817 [main] INFO : [InsightDescription] 2 insights description loaded
+2026-08-08 04:07:56,817 [main] INFO : [InsightDescription] Loading insights from code-use-sequential-insights.json
+2026-08-08 04:07:56,818 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,818 [main] INFO : [InsightDescription] Loading insights from code-use-report-section.json
+2026-08-08 04:07:56,820 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,820 [main] INFO : [InsightDescription] Loading insights from code-write-jcl.json
+2026-08-08 04:07:56,821 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,821 [main] INFO : [InsightDescription] Loading insights from code-write-to-database-using-view.json
+2026-08-08 04:07:56,822 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,822 [main] INFO : [InsightDescription] Loading insights from unusual-database-columns.json
+2026-08-08 04:07:56,824 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,824 [main] INFO : [InsightDescription] Loading insights from code-use-mq.json
+2026-08-08 04:07:56,825 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,825 [main] INFO : [InsightDescription] Loading insights from code-use-xml.json
+2026-08-08 04:07:56,826 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,826 [main] INFO : [InsightDescription] Loading insights from code-01-aliasing.json
+2026-08-08 04:07:56,827 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,828 [main] INFO : [InsightDescription] Loading insights from code-use-pointer.json
+2026-08-08 04:07:56,829 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,829 [main] INFO : [InsightDescription] Loading insights from ims-databases.json
+2026-08-08 04:07:56,829 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,830 [main] INFO : [InsightDescription] Loading insights from ims-databases-functions-calls.json
+2026-08-08 04:07:56,830 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,831 [main] INFO : [InsightDescription] Loading insights from summary-datasets.json
+2026-08-08 04:07:56,832 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,832 [main] INFO : [InsightDescription] Loading insights from summary-ims-databases.json
+2026-08-08 04:07:56,833 [main] INFO : [InsightDescription] 1 insights description loaded
+2026-08-08 04:07:56,834 [main] INFO : No insights about CICS files access will be emitted since no parsed CSD was provided
+2026-08-08 04:07:56,836 [main] INFO : Loaded 0 LISTCAT definition(s).
+2026-08-08 04:07:56,836 [main] INFO : Enriched dataset summary with JCL datasets. Total datasets: 0.
+2026-08-08 04:07:56,836 [main] INFO : Starting TransformErrorDetector
+2026-08-08 04:07:56,837 [main] WARN : Transform artifacts are missing/not normalized. Skipping TransformErrorDetector
+2026-08-08 04:07:56,839 [main] INFO : [IssueDescription] Loading issues from pli-macro-issues.json
+2026-08-08 04:07:56,841 [main] INFO : [IssueDescription] 4 issues description loaded
+2026-08-08 04:07:56,842 [main] INFO : Starting step: Finding issues into codebase...
+
+2026-08-08 04:07:56,842 [main] INFO : Walking code base at /ramdisk/1/assets
+2026-08-08 04:07:56,861 [main] INFO : Found 109 code base files to perform detection on
+2026-08-08 04:07:56,876 [pool-2-thread-12] INFO : [IssueDescription] Loading issues from cobol-code-issues.json
+2026-08-08 04:07:56,881 [pool-2-thread-12] INFO : [IssueDescription] 1 issues description loaded
+2026-08-08 04:07:57,018 [main] INFO : Ending step : Finding issues into codebase in 1 sec
+
+
+2026-08-08 04:07:57,019 [main] INFO : ====== Performances report ======
+2026-08-08 04:07:57,019 [main] INFO : ====== Performances report ======
+2026-08-08 04:07:57,022 [main] INFO : == Category: processDetectionsFinding > com.aws.bluage.analyse.lic.legacy.code.detectors.engine.finder.DefaultRegexDetector nb processed 109  total time : 1s
+2026-08-08 04:07:57,022 [main] INFO : demo/cbl/COCRDUPC.cbl : 59ms
+2026-08-08 04:07:57,022 [main] INFO : demo/cbl/COCRDLIC.cbl : 55ms
+2026-08-08 04:07:57,022 [main] INFO : demo/cbl/COACTUPC.cbl : 49ms
+2026-08-08 04:07:57,022 [main] INFO : demo/cpy-bms/COCRDLI.CPY : 49ms
+2026-08-08 04:07:57,022 [main] INFO : demo/cpy-bms/COTRN00.CPY : 49ms
+2026-08-08 04:07:57,022 [main] INFO : ==
+2026-08-08 04:07:57,022 [main] INFO : == Category: processDetectionsFinding > com.aws.bluage.analyse.lic.legacy.code.detectors.engine.finder.DefaultRegexDetector nb processed 109  total time : 1s
+2026-08-08 04:07:57,023 [main] INFO : #1 : 59ms
+2026-08-08 04:07:57,023 [main] INFO : #2 : 55ms
+2026-08-08 04:07:57,023 [main] INFO : #3 : 49ms
+2026-08-08 04:07:57,023 [main] INFO : #4 : 49ms
+2026-08-08 04:07:57,023 [main] INFO : #5 : 49ms
+2026-08-08 04:07:57,023 [main] INFO : ==
+2026-08-08 04:07:57,023 [main] INFO : ======
+2026-08-08 04:07:57,023 [main] INFO : ======
+2026-08-08 04:07:57,026 [main] INFO : [  IID] Done in 00:00:00.540
+2026-08-08 04:07:57,026 [main] INFO : [  OUT] Output generation running...
+2026-08-08 04:07:57,046 [main] INFO : [  OUT] Done in 00:00:00.020
+2026-08-08 04:07:57,046 [main] INFO : [LIC] Done in 00:00:00.562
+2026-08-08 04:07:57,050 [main] INFO : Wrote execution status to /ramdisk/1/legacy_inputs/lic-status.json

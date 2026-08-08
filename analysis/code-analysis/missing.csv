@@ -1,0 +1,73 @@
+Name,Type,Path,Parents,Link Types
+COCRDSEC,Missing Program,-,CDV1,Start program
+AWS.M2.CARDDEMO.DATEPARM,Missing Dataset,-,"TRANREPT.prc, TRANREPT.jcl","Read Dataset, Read Dataset"
+AWS.M2.CARDDEMO.DBRMLIB,Missing Dataset,-,MNTTRDB2.jcl,Read Dataset
+AWS.M2.CARDDEMO.ESDSRRDS.PS,Missing Dataset,-,ESDSRRDS.jcl,Read Dataset; Write Dataset
+AWS.M2.CARDDEMO.IMPORT.ERRORS,Missing Dataset,-,CBIMPORT.jcl,Write Dataset
+AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO,Missing Dataset,-,"LOADPADB.JCL, UNLDPADB.JCL","Read Dataset, Read Dataset; Write Dataset"
+AWS.M2.CARDDEMO.PAUTDB.CHILD.GSAM,Missing Dataset,-,UNLDGSAM.JCL,Read Dataset
+AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO,Missing Dataset,-,"LOADPADB.JCL, UNLDPADB.JCL","Read Dataset, Read Dataset; Write Dataset"
+AWS.M2.CARDDEMO.PAUTDB.ROOT.GSAM,Missing Dataset,-,UNLDGSAM.JCL,Read Dataset
+AWS.M2.CARDDEMO.STATEMNT.HTML,Missing Dataset,-,CREASTMT.JCL,Write Dataset
+AWS.M2.CARDDEMO.STATEMNT.PS,Missing Dataset,-,"TXT2PDF1.JCL, CREASTMT.JCL","Read Dataset, Write Dataset"
+AWS.M2.CARDDEMO.TRANCATG.PS.BKUP(+1),Missing Dataset,-,TRANEXTR.jcl,Resolved Symbol; Write Dataset
+AWS.M2.CARDDEMO.TRANCATG.PS,Missing Dataset,-,TRANEXTR.jcl,Read Dataset; Resolved Symbol; Write Dataset
+AWS.M2.CARDDEMO.TRANSACT.IMPORT,Missing Dataset,-,CBIMPORT.jcl,Write Dataset
+AWS.M2.CARDDEMO.TRANTYPE.BKUP(+1),Missing Dataset,-,TRANEXTR.jcl,Resolved Symbol; Write Dataset
+AWS.M2.CARDDEMO.TRANTYPE.PS,Missing Dataset,-,TRANEXTR.jcl,Read Dataset; Resolved Symbol; Write Dataset
+AWS.M2.CARDDEMO.TRXFL.SEQ,Missing Dataset,-,CREASTMT.JCL,Read Dataset; Write Dataset
+AWS.M2.CARDEMO.FTP.TEST.BKUP.INTRDR,Missing Dataset,-,INTRDRJ2.JCL,Read Dataset
+AWS.M2.CARDEMO.FTP.TEST.BKUP,Missing Dataset,-,"INTRDRJ2.JCL, INTRDRJ1.JCL","Read Dataset, Read Dataset"
+AWS.M2.LBD.TXT2PDF.EXEC,Missing Dataset,-,TXT2PDF1.JCL,Read Dataset
+CEE.SCEERUN,Missing Dataset,-,CREADB21.jcl,Read Dataset
+IMS.DBDLIB,Missing Dataset,-,CBPAUP0J.jcl,Read Dataset
+IMS.PROCLIB,Missing Dataset,-,CBPAUP0J.jcl,Read Dataset
+IMS.PSBLIB,Missing Dataset,-,CBPAUP0J.jcl,Read Dataset
+INPFILE,Missing Dataset,-,MNTTRDB2.jcl,Read Dataset
+OEM.CICSTS.DFHCSD,Missing Dataset,-,CBADMCDJ.jcl,Read Dataset
+OEM.IMS.IMSP.DBDLIB,Missing Dataset,-,"LOADPADB.JCL, UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","Read Dataset, Read Dataset, Read Dataset, Read Dataset"
+OEM.IMS.IMSP.PAUTHDBX,Missing Dataset,-,"UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","Read Dataset, Read Dataset, Read Dataset"
+OEM.IMS.IMSP.PAUTHDB,Missing Dataset,-,"UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","Read Dataset, Read Dataset, Read Dataset"
+OEM.IMS.IMSP.PSBLIB,Missing Dataset,-,"LOADPADB.JCL, UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","Read Dataset, Read Dataset, Read Dataset, Read Dataset"
+OEM.IMS.IMSP.RECON1,Missing Dataset,-,DBPAUTP0.jcl,Read Dataset
+OEM.IMS.IMSP.RECON2,Missing Dataset,-,DBPAUTP0.jcl,Read Dataset
+OEM.IMS.IMSP.RECON3,Missing Dataset,-,DBPAUTP0.jcl,Read Dataset
+OEMA.DB2.VERSIONA.SDSNLOAD,Missing Dataset,-,"CREADB21.jcl, TRANEXTR.jcl, MNTTRDB2.jcl","Read Dataset, Read Dataset, Read Dataset"
+OEMA.IMS.IMSP.SDFSRESL.V151,Missing Dataset,-,"LOADPADB.JCL, UNLDGSAM.JCL, UNLDPADB.JCL","Read Dataset, Read Dataset, Read Dataset"
+ACCTFILE,Missing Source File,-,"CBSTM03B.CBL, CBACT04C.cbl, CBTRN01C.cbl, CBEXPORT.cbl, CBTRN02C.cbl, CBACT01C.cbl","Assignment clause, Assignment clause, Assignment clause, Assignment clause, Assignment clause, Assignment clause"
+ACCTOUT,Missing Source File,-,CBIMPORT.cbl,Assignment clause
+ARRYFILE,Missing Source File,-,CBACT01C.cbl,Assignment clause
+AWS.M2.LBD.TXT2PDF.LOAD,Missing PDS,-,TXT2PDF1.JCL,PDS use
+CARDFILE,Missing Source File,-,"CBACT02C.cbl, CBTRN01C.cbl, CBEXPORT.cbl","Assignment clause, Assignment clause, Assignment clause"
+CARDOUT,Missing Source File,-,CBIMPORT.cbl,Assignment clause
+CUSTFILE,Missing Source File,-,"CBCUS01C.cbl, CBSTM03B.CBL, CBTRN01C.cbl, CBEXPORT.cbl","Assignment clause, Assignment clause, Assignment clause, Assignment clause"
+CUSTOUT,Missing Source File,-,CBIMPORT.cbl,Assignment clause
+DALYREJS,Missing Source File,-,CBTRN02C.cbl,Assignment clause
+DALYTRAN,Missing Source File,-,"CBTRN01C.cbl, CBTRN02C.cbl","Assignment clause, Assignment clause"
+DATEPARM,Missing Source File,-,CBTRN03C.cbl,Assignment clause
+DFSVSMDB,Missing Control Card,-,"LOADPADB.JCL, UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","Control card, Control card, Control card, Control card"
+ERROUT,Missing Source File,-,CBIMPORT.cbl,Assignment clause
+EXPFILE,Missing Source File,-,"CBEXPORT.cbl, CBIMPORT.cbl","Assignment clause, Assignment clause"
+HTMLFILE,Missing Source File,-,CBSTM03A.CBL,Assignment clause
+IMS.SDFSRESL,Missing [Dataset, PDS],-,CBPAUP0J.jcl,PDS use; Read Dataset
+INFILE1,Missing Source File,-,PAUDBLOD.CBL,Assignment clause
+INFILE2,Missing Source File,-,PAUDBLOD.CBL,Assignment clause
+INPFILE,Missing Source File,-,COBTUPDT.cbl,Assignment clause
+OEM.CICSTS.V05R06M0.CICS.SDFHLOAD,Missing PDS,-,CBADMCDJ.jcl,PDS use
+OEM.DB2.DAZ1.RUNLIB.LOAD,Missing PDS,-,"CREADB21.jcl, TRANEXTR.jcl","PDS use; Resolved Symbol, PDS use"
+OEM.DB2.DAZ1.SDSNEXIT,Missing PDS,-,"CREADB21.jcl, MNTTRDB2.jcl","PDS use, PDS use"
+OEM.DB2.DAZ1.SDSNLOAD,Missing [Dataset, PDS],-,CREADB21.jcl,PDS use; Read Dataset; Resolved Symbol
+OEMA.IMS.IMSP.SDFSRESL,Missing [Dataset, PDS],-,"LOADPADB.JCL, UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","PDS use; Read Dataset, PDS use; Read Dataset, PDS use; Read Dataset, PDS use; Read Dataset"
+OEMPP.IMS.V15R01MB.PROCLIB,Missing PDS,-,"LOADPADB.JCL, UNLDGSAM.JCL, DBPAUTP0.jcl, UNLDPADB.JCL","PDS use, PDS use, PDS use, PDS use"
+OUTFIL1,Missing Source File,-,PAUDBUNL.CBL,Assignment clause
+OUTFIL2,Missing Source File,-,PAUDBUNL.CBL,Assignment clause
+STMTFILE,Missing Source File,-,CBSTM03A.CBL,Assignment clause
+TCATBALF,Missing Source File,-,"CBACT04C.cbl, CBTRN02C.cbl","Assignment clause, Assignment clause"
+TRANFILE,Missing Source File,-,"CBTRN01C.cbl, CBTRN02C.cbl, CBTRN03C.cbl","Assignment clause, Assignment clause, Assignment clause"
+TRANREPT,Missing Source File,-,CBTRN03C.cbl,Assignment clause
+TRANSACT,Missing Source File,-,"CBACT04C.cbl, CBEXPORT.cbl","Assignment clause, Assignment clause"
+TRNXFILE,Missing Source File,-,CBSTM03B.CBL,Assignment clause
+TRNXOUT,Missing Source File,-,CBIMPORT.cbl,Assignment clause
+VBRCFILE,Missing Source File,-,CBACT01C.cbl,Assignment clause
+XREFFILE,Missing Source File,-,"CBSTM03B.CBL, CBACT04C.cbl, CBTRN01C.cbl, CBEXPORT.cbl, CBTRN02C.cbl, CBACT03C.cbl","Assignment clause, Assignment clause, Assignment clause, Assignment clause, Assignment clause, Assignment clause"
+XREFOUT,Missing Source File,-,CBIMPORT.cbl,Assignment clause

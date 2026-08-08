@@ -1,0 +1,817 @@
+function: Unclassified
+generated_at: '2026-08-08T04:27:47Z'
+summary:
+  total_rules: 73
+  captured: 19
+  not_applicable: 8
+  unreachable: 0
+  delegated: 46
+  not_accounted_for: 0
+  reconciliation:
+    expected: 73
+    written: 73
+    shortfall: 0
+rules:
+- rule_id: 3482392c_59a4_4182_a65c_374d80e82257
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] 表示用データフォーマット'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理メニュー画面ヘッダーを設定する
+  rule_text: 管理メニューヘッダー設定機能は、現在の日付と時刻を取得し、日付をMM/DD/YY形式で現在日付出力(`CURDATEO`)に、時刻をHH:MM:SS形式で現在時刻出力(`CURTIMEO`)に設定し、管理メニュー画面上のタイトル行(`TITLE01O`、`TITLE02O`)、トランザクション識別子(`TRNNAMEO`)、およびプログラム名(`PGMNAMEO`)を設定しなければならない(SHALL)。
+- rule_id: 6c43f75a_9488_47cb_b772_545fd5393657
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] 表示用データフォーマット'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理メニューオプション表示行を構築する
+  rule_text: 管理メニューオプションが画面上に配置されるべき状態が残っている間(インデックスが管理オプション件数(`CDEMO-ADMIN-OPT-COUNT`)を超えない間)、管理メニューオプション構築機能は、各オプションの番号と名称を表示文字列(`WS-ADMIN-OPT-TXT`)にフォーマットし、管理メニュー画面上の対応する番号付きオプション出力フィールド(`OPTN001O`から`OPTN010O`)に割り当てなければならない(SHALL)。
+- rule_id: 2a325f67_ac29_4e20_a0b7_d19c2d8f9e3a
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] CICS/BMSプラットフォーム機構'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 選択された管理者機能プログラムへ制御を移す
+  rule_text: オプション検証が成功し、選択されたプログラムがプレースホルダーでない場合、管理者メニューハンドラーは、通信領域に起点トランザクション識別子、起点プログラム名、およびプログラムコンテキスト指標のリセットを設定し、XCTLを介して選択された管理者機能プログラムへ制御を移さなければならない(SHALL)。
+- rule_id: 86d7c7b9_9013_4024_a9ad_33996c1294c0
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] 画面表示機構'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 未導入のメニューオプションプログラムを処理する
+  rule_text: メニューオプションのナビゲーション中にプログラムが見つからない状態が発生した場合、管理メニューコントローラーは、エラーメッセージ色(`ERRMSGC`)を緑に設定し、メッセージテキスト(`WS-MESSAGE`)に「This
+    option is not installed ...」というメッセージを構成し、エラーメッセージ付きで管理メニュー画面を再表示しなければならない(SHALL)。
+- rule_id: d24a1c7f_8abd_441b_875c_272df896ee4c
+  program: COADM01C
+  disposition: not_applicable
+  reason: '[Pattern-classified] ワーキングストレージの初期化'
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: エラー処理とプログラム状態を初期化する
+  rule_text: 管理者メニューハンドラーは、プログラム未検出時のエラー処理を確立し、エラーフラグ指標を初期状態でオフに設定しなければならない(SHALL)。
+- rule_id: 3527e626_26b3_4741_bdee_11b8f9e5278c
+  program: COADM01C
+  disposition: not_applicable
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理者メニュー画面マップを受信する
+  rule_text: 画面入力受信機能は、管理者メニュー画面マップを受信し、応答コードと理由コードを取得しなければならない(SHALL)。
+  reason: '[LLM-classified] 画面マップ受信機構 — REQ-F-018で対応済みの範囲を超える独立した業務上の影響はないプラットフォームI/O操作'
+- rule_id: 5f4e784a_0370_4133_893b_7d6535fce630
+  program: COADM01C
+  disposition: not_applicable
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理メニュー画面を組み立てて表示する
+  rule_text: 管理メニュー画面送信機能は、画面ヘッダーとメニューオプションを設定し、メッセージテキスト(`WS-MESSAGE`)をエラーメッセージ表示(`ERRMSGO`)に移し、完全に組み立てられた管理メニュー画面を端末へ送信しなければならない(SHALL)。
+  reason: '[LLM-classified] 画面組み立ておよび送信機構 — REQ-F-002パターンで対応済みのプレゼンテーション表示であり、追加の業務ルールはない'
+- rule_id: 7cc3a630_448e_42f3_a0c5_8ef06c00d695
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 入力されたメニューオプションを検証し処理する
+  rule_text: 利用者が管理メニュー画面でEnterキーを押した場合、管理メニューオプション検証機能は、オプション入力(`OPTIONI`)をトリムして正規化し、数値のオプション番号(`WS-OPTION`)に変換して画面に表示しなければならない(SHALL)。値が数値でない場合、範囲外(管理オプション件数(`CDEMO-ADMIN-OPT-COUNT`)より大きい)である場合、またはゼロである場合は、エラーフラグ(`WS-ERR-FLG`)を有効に設定し、「Please
+    enter a valid option number...」というメッセージを表示してメニューを再表示しなければならない(SHALL)。値が有効であるが対象プログラムが導入されていない場合は、「This
+    option is not installed ...」を緑色で表示してメニューを再表示しなければならない(SHALL)。
+  req_ids:
+  - REQ-F-020
+  - REQ-F-021
+  traceability_lines:
+  - 117
+  - 119
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 129
+  - 131
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 140
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+- rule_id: c5382f92_354c_4ee7_af5a_a0f8064d0044
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 状態を初期化し、エントリー種別に応じて処理を振り分ける
+  rule_text: '管理メニュープログラムが呼び出された場合、管理メニューコントローラーは、エラーフラグ(`WS-ERR-FLG`)とメッセージ領域をクリアしなければならない(SHALL)。その後、以下のとおり振り分けなければならない(SHALL):
+    事前のセッションコンテキストが存在しない場合は直ちにメニュー画面を送信する。再入場であり、かつ再入場モードにまだ入っていない場合は、出力領域をクリアしてメニュー画面を送信する。再入場モードで再入場している場合は、利用者の入力を受信し、Enterキーではオプション処理へルーティングし、PF3キーでは終了し、その他のキーでは無効キーメッセージ(`CCDA-MSG-INVALID-KEY`)を表示してメニューを再表示する。'
+  req_ids:
+  - REQ-F-017
+  - REQ-F-018
+  - REQ-F-019
+  traceability_lines:
+  - 75
+  - 77
+  - 78
+  - 79
+  - 81
+  - 83
+  - 84
+  - 86
+  - 89
+  - 90
+  - 91
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 103
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+- rule_id: 742c20d9_db62_4c6a_a148_38ba97351f24
+  program: COADM01C
+  disposition: not_applicable
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理者メニュー画面マップを受信する
+  rule_text: 画面入力受信機能は、管理者メニュー画面マップを受信し、応答コードと理由コードを取得しなければならない(SHALL)。
+  reason: '[LLM-classified] 既に対応済みの画面マップ受信機構の重複'
+- rule_id: 7cba54c7_740e_4218_9300_2e7d47066f39
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理者メニュー画面入力を受信し処理する
+  rule_text: プログラムが再入場している間(プログラムコンテキスト指標が1である間)、ENTERキーが押された場合、管理者メニューハンドラーは、管理者メニュー画面入力を受信し、選択されたオプションを処理しなければならない(SHALL)。
+  req_id: REQ-F-018
+  traceability_lines:
+  - 86
+  - 89
+  - 90
+  - 91
+  - 95
+  - 96
+  - 97
+  - 98
+  - 99
+  - 107
+  - 108
+  - 109
+- rule_id: c2a66076_3a80_4a9f_bc3a_ef7ad15b8d7c
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 管理者メニューオプション入力をトリムして検証する
+  rule_text: 利用者がメニューオプションの選択を送信した場合、オプション入力検証機能は、オプション入力を抽出してトリムし、空白をゼロに正規化し、数値に変換し、オプションが数値であること、1から6の範囲内であること、およびゼロでないことを検証しなければならない(SHALL)。検証に失敗した場合はエラーフラグを設定しなければならない(SHALL)。
+  req_ids:
+  - REQ-F-020
+  - REQ-F-021
+  traceability_lines:
+  - 117
+  - 119
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 131
+  - 132
+  - 133
+  - 134
+  - 138
+- rule_id: 693b72c8_348b_493f_933b_e6959b32fcda
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: PF3キーを処理してサインオン画面に戻る
+  rule_text: 利用者がPF3キーを押した場合、カードデモンストレーションアプリケーションは、宛先プログラムをサインオン画面プログラムに設定し、制御を移さなければならない(SHALL)。
+  req_id: REQ-F-023
+  traceability_lines:
+  - 97
+  - 100
+  - 101
+  - 102
+- rule_id: 9951c148_6f18_44bb_8047_2ad830b9f8ac
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 宛先プログラム名を検証し、デフォルト値を設定する
+  rule_text: 宛先プログラム名が空または未設定である場合、カードデモンストレーションアプリケーションは、宛先プログラム名をサインオン画面プログラムにデフォルト設定しなければならない(SHALL)。
+  req_id: REQ-F-024
+  traceability_lines:
+  - 165
+  - 166
+  - 167
+- rule_id: beac0e73_5ba8_4939_a915_2606a1e14a6e
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 宛先プログラムへ制御を移す
+  rule_text: カードデモンストレーションアプリケーションは、宛先プログラムへ制御を移さなければならない(SHALL)。
+  req_id: REQ-F-025
+  traceability_lines:
+  - 168
+  - 169
+  - 170
+- rule_id: d8312702_2e72_43bd_b9b6_66182f024225
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 通信領域が提供されない場合にプログラムを初期化する
+  rule_text: 通信領域なしでプログラムが呼び出された場合、カードデモンストレーションアプリケーションは、サインオン画面プログラムへ制御を移さなければならない(SHALL)。
+  req_id: REQ-F-015
+  traceability_lines:
+  - 75
+  - 86
+  - 88
+- rule_id: f845ee81_0e55_4d0d_a0bf_fed1be6117a6
+  program: COADM01C
+  disposition: captured
+  program_path: demo/cbl/COADM01C.cbl
+  rule_name: 呼び出し元コンテキストから通信領域をロードする
+  rule_text: プログラムが通信領域とともに呼び出されるとき、Card Demonstration Applicationは通信領域のデータをローカルレコード構造にロードしなければならない(SHALL)
+  req_id: REQ-F-016
+  traceability_lines:
+  - 89
+  - 90
+  - 91
+- rule_id: 14a4d1cd_bdb0_4c7b_931f_bb30f04cdd4c
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 483a7b9d_b3d1_4c4b_a59e_706dc4a17c85
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 70ab086e_2212_473a_bc77_cd3016f78121
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: fcda745f_1ecb_431a_bcdd_c8331c6d49f2
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 14d3620e_0858_49a9_944f_4f8d2dd718ba
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 21f86bf9_9062_4f6b_9f49_895a37029f7b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 5f76bee2_856a_43ff_be78_5c24ea5326af
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 67cfd2ce_51d1_46d5_a93b_a43d3a14b4dc
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 71687c5e_8523_4f47_aecd_c64b2739609c
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 7ad957ea_1e70_447e_9db6_9eae3a3dc5c8
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: aaf34a3b_7bd2_46b8_a168_978d5959e49b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: b420427b_0cd3_47fd_8d7d_c82c652797f3
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: c8dd6151_8b6b_4ebe_983c_4ded5d399422
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: e14df3fc_b0f0_4ac5_a4aa_d10505319f31
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: f8b62a72_aae7_4f6f_9f3e_6eb03206d22d
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: fa56a870_d434_44fb_a576_861f909c096b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: fc55f924_a9ee_418d_b45d_78a7abca2e2b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 2cba932a_cf83_44e3_8483_4843f60b2a6b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 2f50812f_0664_48df_b149_f764e235cd68
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 32d5bdc1_1540_4b04_a2eb_58962d1f9ef4
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 3dc84328_d7e6_4f80_bd70_aa43eddf0768
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 694ee155_a8a5_443d_a6fa_5d3ff1faf760
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 74cb64d4_f373_4143_b92a_ee12650ec1dd
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 83dafae1_6ad8_4a62_b260_c139ff3e73b9
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 88d333fc_515a_4c71_a41a_f0098fb53395
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 8bf90c8b_a5aa_49a4_9e7d_75b4b4651426
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 93f65b73_dc22_4e0b_b6ae_a815bd4a5c5d
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: a9d3084b_128c_48bc_87dd_afc97a486276
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: ba1d0480_6267_48ae_9643_f40a1036f289
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: c2f02404_628c_43ff_96c6_27418e4c156d
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: c7560c00_bdf1_4adb_8217_81eec0adb873
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: c7b30dcd_37c3_4227_9e11_908ae2944698
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: c7c03249_5948_4907_94cd_07387b82224b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: e3c40515_c638_45ff_97a4_90eb8ec9dd9b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: ed0cfee9_753c_40b1_978a_d251390edc18
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: f1f88f40_e483_49f7_9046_d957614d2ef3
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: fa01f60e_aed1_4dbc_9f0e_77dd073aa23f
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 1bae53bd_498d_460c_beb7_dc8cd8228047
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — 要件およびトレーサビリティは spec/_shared/ を参照
+- rule_id: 31f64527_46dc_4a20_86d0_11e0a4ba8fc5
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: 3b571e0f_392f_4f3b_b2d2_adf6079455a5
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: 10c0a860_6fc6_4239_8dfe_47dbac8dd06f
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: 07753d23_0910_426c_bd5c_24d5948558fd
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: 04a5424a_8c20_47c1_b623_2ea2553ff505
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: 6aecc870_6740_4eaa_8783_1623b9b54d3b
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: cb2b9f96_93fc_4d12_a3dd_f76f8e5080f8
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: ec426b03_2e20_49e5_8320_abcf89151462
+  program: COMEN01C
+  disposition: delegated
+  reason: 共有サブルーチン — spec/_shared/ における要件およびトレーサビリティ
+- rule_id: 73c3bf1c_0743_4eb0_bd12_a7622009459e
+  program: COSGN00C
+  disposition: captured
+  rule_name: プログラムを初期化し、サインオンの準備を行う
+  rule_text: THE Signon Screen Handler は、エラーフラグをOFFに初期化し、メッセージバッファをクリアし、カーソルをユーザーIDフィールドに配置してサインオン画面を表示しなければならない(SHALL)。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 73
+  - 75
+  - 77
+  - 78
+  - 80
+  - 81
+  - 82
+  - 83
+- rule_id: 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: セキュリティファイルに対してユーザーを認証する
+  rule_text: WHEN ユーザーIDおよびパスワードが収集され、空でないことが検証された場合、THE User authentication and session
+    routing は、ユーザーIDをキーとしてユーザーセキュリティファイル(`WS-USRSEC-FILE`)を読み込まなければならない(SHALL)。読み込みが成功し、取得したパスワードが入力されたパスワードと一致する場合、通信領域にユーザーのトランザクションID、プログラム名、ユーザーID、およびユーザータイプを設定し、ユーザータイプが管理者である場合は管理者メニュープログラムに、それ以外の場合は一般メニュープログラムに制御を移さなければならない(SHALL)。読み込みが未検出またはその他のエラーで失敗した場合は、適切なエラー処理分岐を呼び出さなければならない(SHALL)。
+  req_ids:
+  - REQ-F-008
+  - REQ-F-012
+  - REQ-F-013
+  - REQ-F-014
+  traceability_lines:
+  - 207
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 221
+  - 222
+  - 223
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 230
+  - 231
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  - 238
+  - 239
+  - 240
+  - 246
+  - 257
+- rule_id: 7ae92f73_f167_411a_be40_590a8c9dd72e
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: サインオン資格情報を収集し検証する
+  rule_text: WHEN ユーザーがENTERキーを押下してサインオンフォームを送信した場合、THE Signon Credential Validator
+    は、入力マップを受け取り、ユーザーIDおよびパスワードの両方が空でないことを検証しなければならない(SHALL)。いずれかのフィールドが空である場合はエラーメッセージを表示して画面を再表示し、両方のフィールドが入力されている場合は両方を大文字に変換して検証用に保存し、検証が成功した場合はセキュリティファイルの照会に進まなければならない(SHALL)。
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+  traceability_lines:
+  - 106
+  - 108
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 130
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 138
+  - 139
+  - 140
+- rule_id: a2464762_743b_44d3_815e_b709f48b99bc
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: Enterキーまたは代替入力に基づいて処理を振り分ける
+  rule_text: WHEN サインオン画面でEnterキーが押下された場合、THE Sign-on input dispatcher は、資格情報を収集し検証するためにEnterキー処理ロジックを呼び出さなければならない(SHALL)。
+  req_id: REQ-F-003
+  traceability_lines:
+  - 80
+  - 84
+  - 85
+  - 86
+  - 87
+  - 95
+  - 96
+- rule_id: b8075fba_4718_438c_9ec7_456168813b1a
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: サインオン画面のヘッダーおよびシステム情報を設定する
+  rule_text: THE Signon Screen Display は、現在の日付、時刻、アプリケーション識別子、およびトランザクション情報を画面ヘッダーに設定し、エラーメッセージを画面出力領域に移動し、画面を端末へ送信しなければならない(SHALL)。
+  req_id: REQ-F-002
+  traceability_lines:
+  - 143
+  - 145
+  - 147
+  - 149
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 175
+  - 177
+  - 179
+  - 181
+  - 182
+  - 183
+  - 184
+  - 186
+  - 187
+  - 188
+  - 190
+  - 192
+  - 193
+  - 194
+  - 196
+  - 198
+  - 199
+  - 200
+  - 202
+  - 203
+  - 204
+- rule_id: f04e91ff_d599_4199_bcdc_b1d7e8f4fa58
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: セッションのエラーフラグを初期化する
+  rule_text: THE Sign-on session initialization は、エラーフラグをOFFに設定しなければならない(SHALL)。
+  req_id: REQ-F-001
+  traceability_lines:
+  - 73
+  - 75
+- rule_id: 06755197_778e_4862_8e3c_d26c70967aef
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: サインオン資格情報を収集し検証する
+  rule_text: WHEN ユーザーがENTERキーを押下してサインオンフォームを送信した場合、THE Signon Credential Validator
+    は、入力マップを受け取り、ユーザーIDおよびパスワードの両方が空でないことを検証しなければならない(SHALL)。いずれかのフィールドが空である場合はエラーメッセージを表示して画面を再表示し、両方のフィールドが入力されている場合は両方を大文字に変換して検証用に保存し、検証が成功した場合はセキュリティファイルの照会に進まなければならない(SHALL)。
+  req_ids:
+  - REQ-F-005
+  - REQ-F-006
+  traceability_lines:
+  - 106
+  - 108
+  - 110
+  - 111
+  - 112
+  - 113
+  - 114
+  - 115
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 130
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 138
+  - 139
+  - 140
+- rule_id: 7ce6a16f_ba72_4ecb_a0f6_c4093a51ad88
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: サインオン画面のヘッダーおよびシステム情報を設定する
+  rule_text: THE Signon Screen Display は、現在の日付、時刻、アプリケーション識別子、およびトランザクション情報を画面ヘッダーに設定し、エラーメッセージを画面出力領域に移動し、画面を端末へ送信しなければならない(SHALL)。
+  req_id: REQ-F-002
+  traceability_lines:
+  - 143
+  - 145
+  - 147
+  - 149
+  - 151
+  - 152
+  - 153
+  - 154
+  - 155
+  - 156
+  - 157
+  - 175
+  - 177
+  - 179
+  - 181
+  - 182
+  - 183
+  - 184
+  - 186
+  - 187
+  - 188
+  - 190
+  - 192
+  - 193
+  - 194
+  - 196
+  - 198
+  - 199
+  - 200
+  - 202
+  - 203
+  - 204
+- rule_id: cc33196a_fb7a_477a_8c85_d34c6900ff03
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: 押下されたキーに基づいてユーザー入力を振り分ける
+  rule_text: WHEN ユーザーが端末上でキーを押下した場合、THE Signon Screen Handler は、ENTERが押下された場合はサインオン入力処理プロセッサへ振り分け、それ以外のキーが押下された場合は無効キーのエラーメッセージを表示して画面を再表示しなければならない(SHALL)。
+  req_ids:
+  - REQ-F-003
+  - REQ-F-004
+  traceability_lines:
+  - 84
+  - 85
+  - 86
+  - 87
+  - 91
+  - 93
+  - 94
+  - 95
+  - 96
+- rule_id: fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+  program: COSGN00C
+  disposition: captured
+  program_path: demo/cbl/COSGN00C.cbl
+  rule_name: セキュリティファイルに対してユーザー資格情報を検証する
+  rule_text: WHEN ユーザーが空でない有効な資格情報を送信した場合、THE User Credential Verification は、ユーザーIDをキーとしてユーザーセキュリティファイル(`WS-USRSEC-FILE`)を読み込み、読み込みが成功した場合は保存されたパスワードと入力されたパスワードを比較しなければならない(SHALL)。パスワードが一致しない場合は
+    'Wrong Password. Try again ...' を表示して画面を再表示し、ユーザーIDが見つからない場合は 'User not found.
+    Try again ...' を表示して画面を再表示し、読み込み中にシステムエラーが発生した場合は 'Unable to verify the User ...'
+    を表示して画面を再表示しなければならない(SHALL)。
+  req_ids:
+  - REQ-F-008
+  - REQ-F-009
+  - REQ-F-010
+  - REQ-F-011
+  traceability_lines:
+  - 207
+  - 209
+  - 211
+  - 212
+  - 213
+  - 214
+  - 215
+  - 216
+  - 217
+  - 218
+  - 219
+  - 221
+  - 222
+  - 223
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 246
+  - 247
+  - 249
+  - 250
+  - 251
+  - 252
+  - 254
+  - 255
+  - 256
+  - 257
+requirements:
+- req_id: REQ-F-001
+  rule_ids:
+  - f04e91ff_d599_4199_bcdc_b1d7e8f4fa58
+  - 73c3bf1c_0743_4eb0_bd12_a7622009459e
+- req_id: REQ-F-002
+  rule_ids:
+  - b8075fba_4718_438c_9ec7_456168813b1a
+  - 7ce6a16f_ba72_4ecb_a0f6_c4093a51ad88
+- req_id: REQ-F-003
+  rule_ids:
+  - a2464762_743b_44d3_815e_b709f48b99bc
+  - cc33196a_fb7a_477a_8c85_d34c6900ff03
+- req_id: REQ-F-004
+  rule_ids:
+  - cc33196a_fb7a_477a_8c85_d34c6900ff03
+- req_id: REQ-F-005
+  rule_ids:
+  - 7ae92f73_f167_411a_be40_590a8c9dd72e
+  - 06755197_778e_4862_8e3c_d26c70967aef
+- req_id: REQ-F-006
+  rule_ids:
+  - 7ae92f73_f167_411a_be40_590a8c9dd72e
+  - 06755197_778e_4862_8e3c_d26c70967aef
+- req_id: REQ-F-008
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-009
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-010
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-011
+  rule_ids:
+  - fb27cb0f_4fb0_4af5_b527_ab0cbc6fff4f
+- req_id: REQ-F-012
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-013
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-014
+  rule_ids:
+  - 2dc21a03_0fd1_41cc_95e5_c529c2153c87
+- req_id: REQ-F-015
+  rule_ids:
+  - d8312702_2e72_43bd_b9b6_66182f024225
+- req_id: REQ-F-016
+  rule_ids:
+  - f845ee81_0e55_4d0d_a0bf_fed1be6117a6
+- req_id: REQ-F-017
+  rule_ids:
+  - c5382f92_354c_4ee7_af5a_a0f8064d0044
+- req_id: REQ-F-018
+  rule_ids:
+  - 7cba54c7_740e_4218_9300_2e7d47066f39
+  - c5382f92_354c_4ee7_af5a_a0f8064d0044
+- req_id: REQ-F-019
+  rule_ids:
+  - c5382f92_354c_4ee7_af5a_a0f8064d0044
+- req_id: REQ-F-020
+  rule_ids:
+  - 7cc3a630_448e_42f3_a0c5_8ef06c00d695
+  - c2a66076_3a80_4a9f_bc3a_ef7ad15b8d7c
+- req_id: REQ-F-021
+  rule_ids:
+  - 7cc3a630_448e_42f3_a0c5_8ef06c00d695
+  - c2a66076_3a80_4a9f_bc3a_ef7ad15b8d7c
+- req_id: REQ-F-023
+  rule_ids:
+  - 693b72c8_348b_493f_933b_e6959b32fcda
+- req_id: REQ-F-024
+  rule_ids:
+  - 9951c148_6f18_44bb_8047_2ad830b9f8ac
+- req_id: REQ-F-025
+  rule_ids:
+  - beac0e73_5ba8_4939_a915_2606a1e14a6e

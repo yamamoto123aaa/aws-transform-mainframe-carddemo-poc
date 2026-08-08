@@ -1,0 +1,151 @@
+# Batch File and Resource Management - Batch Job Discovery
+# Generated: 2026-08-08T04:24:36Z
+# Source: TransformKG (Python discovery)
+
+function: BatchFileandResourceManagement
+jobs:
+  migrate:
+  - id: BAT-002
+    name: CLOSEFIL.jcl
+    description: 'Batch file closure for exclusive access; This job step closes multiple
+      files in the transaction processing region to enable exclusive batch access.
+      The step invokes the system operator interface to issue close commands for five
+      critical files: the transaction log, cross-reference index, account data, account
+      index, and user security store. Each file is closed sequentially via operator
+      commands, allowing the batch process to proceed with guaranteed exclusive access
+      to these resources.'
+    programs:
+    - SDSF
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-004
+    name: INTRDRJ1.jcl
+    description: JCL member copy to print queue; This job step copies a JCL member
+      from a partitioned dataset to the system print queue. The step reads the source
+      member (AWS.M2.CARDDEMO.JCL(INTRDRJ2)) and writes each record to print class
+      A with intrdr processing, producing a 80-byte fixed-length output suitable for
+      job submission or archival.
+    programs:
+    - IDCAMS
+    - IEBGENER
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: '[INFERRED: Classification uncertain — defaulting to
+      migrate]'
+  - id: BAT-005
+    name: INTRDRJ2.jcl
+    description: ''
+    programs:
+    - IDCAMS
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: '[INFERRED: Classification uncertain — defaulting to
+      migrate]'
+  - id: BAT-006
+    name: OPENFIL.jcl
+    description: File opening in batch environment; This JCL job invokes the SDSF
+      utility to send operator commands that open five critical files (TRANSACT, CCXREF,
+      ACCTDAT, CXACAIX, USRSEC) for exclusive batch access. The commands are issued
+      to the CICS region, marking each file with the open status so that batch processing
+      can proceed without contention from online users.
+    programs:
+    - SDSF
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup:
+  - id: BAT-001
+    name: CARDFILE.jcl
+    description: 'Close CICS region files for batch access; This job step invokes
+      the SDSF operator command interface to close specific files in the CICS region,
+      enabling exclusive batch processing. The step reads CEMT (CICS master terminal)
+      commands from inline data, directing the CICS region to close the CARDDAT and
+      CARDAIX files. Output from the command execution is routed to standard output
+      for operator visibility.; Alternate index lifecycle management; This batch job
+      manages the alternate index for the card data store. It first removes any existing
+      alternate index to ensure a clean state, then defines a new alternate index
+      keyed on the account ID field (bytes 11–16) with non-unique key support and
+      automatic upgrade capability. The alternate index enables efficient lookups
+      and range scans on account ID without requiring sequential access to the primary
+      key-sequenced dataset.; Alternate index path definition; The job defines a path
+      that relates an alternate index to its base cluster, enabling indexed access
+      to card data through the alternate index. The DEFINE PATH operation establishes
+      the logical connection between the alternate index (AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX)
+      and its path name (AWS.M2.CARDDEMO.CARDDATA.VSAM.AIX.PATH), allowing applications
+      to query card records through this alternate key.; Card data store initialization
+      and indexing; This job prepares a card data store by removing any existing instance,
+      creating a new indexed store with specific capacity and key characteristics,
+      populating it from a source file, and building an alternate index for efficient
+      lookups. The job executes three sequential steps: deletion of the prior store
+      (if present), creation of a new indexed store with 16-byte keys and 150-byte
+      records, and population of the store from a flat-file source followed by index
+      construction.; CICS file open operation; The job step invokes the system operator
+      interface to open two CICS files for exclusive batch access. The step reads
+      operator commands from inline data, directing the CICS region to open the card
+      data file and its associated index file, enabling batch processing to proceed
+      with file access.'
+    programs:
+    - IDCAMS
+    - SDSF
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-003
+    name: CUSTFILE.jcl
+    description: CICS file closure via batch operator command; This job step invokes
+      the system operator interface to execute a file-closure command against a CICS
+      region. The step reads a command from inline data that directs the CICS region
+      to close a specific file, enabling exclusive batch access or maintenance. The
+      command is submitted asynchronously through the operator interface; the job
+      does not wait for or validate the closure outcome.; Customer data store initialization
+      and population; This job prepares a customer data store by first removing any
+      existing store, then defining a new indexed-sequential store with specific capacity
+      and sharing parameters, and finally populating it by copying customer records
+      from a flat file. The three sequential steps ensure a clean, properly-configured
+      store ready for production use.; CICS file access enablement; This job step
+      invokes the system facility to send an operator command that opens a specific
+      file for exclusive batch access within the CICS region. The command targets
+      the CUSTDAT file, transitioning it from closed to open state so that batch processing
+      can proceed with direct file I/O.
+    programs:
+    - IDCAMS
+    - SDSF
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  - id: BAT-007
+    name: TRANFILE.jcl
+    description: Close transaction files in CICS region; The job invokes the SDSF
+      operator command interface to close two transaction-related files (TRANSACT
+      and CXACAIX) in the CICS application region for exclusive batch access. The
+      step reads operator commands from the ISFIN dataset and routes output to SYSOUT
+      for monitoring.; Transaction index rebuild and maintenance; This job pack removes
+      an existing alternate index on the transaction master file and then recreates
+      it with updated specifications. The alternate index enables efficient lookups
+      by processed timestamp on the transaction records, with automatic synchronization
+      when the base transaction cluster is modified. The two-step process ensures
+      a clean rebuild of the index structure.; Alternate index path definition; The
+      job defines a VSAM alternate index path that relates an alternate index to its
+      base cluster, enabling efficient access to transaction records through the alternate
+      index structure. The path definition establishes the logical connection between
+      the alternate index and the base cluster, allowing queries to be routed through
+      the alternate index when appropriate.; Transaction data store initialization
+      and indexing; This job pack prepares a transaction data store by removing any
+      existing instance, defining a new indexed structure with specific capacity and
+      key characteristics, loading transaction records from a source file, and building
+      an alternate index for efficient access. The sequence ensures a clean, properly-configured
+      store ready for transaction processing.; File access enablement for batch processing;
+      This job step invokes the operator command interface to open transaction files
+      in the CICS region for exclusive batch access. The step sends two file-open
+      commands targeting the TRANSACT and CXACAIX files, allowing the batch job to
+      read and process transaction data while the CICS region temporarily suspends
+      access to those resources.
+    programs:
+    - IDCAMS
+    - SDSF
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Setup utility for initial data load (setup)
+  skip: []

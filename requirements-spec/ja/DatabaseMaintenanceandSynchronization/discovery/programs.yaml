@@ -1,0 +1,269 @@
+# Database Maintenance and Synchronization - Program Discovery
+# Generated: 2026-08-08T04:25:04Z
+# Source: TransformKG (Python discovery)
+
+function: DatabaseMaintenanceandSynchronization
+programs:
+- name: CBADMCDJ
+  type: JCL
+  execution: batch
+  description: CICS application resource definition and installation; This job step
+    invokes the CICS configuration utility to read and process application resource
+    definitions from the input stream. The step loads the CICS system library, accesses
+    the CICS configuration data store, and processes a series of DEFINE commands that
+    register screen maps, application programs, and transaction identifiers for the
+    CARDDEMO application group. The utility validates and installs these definitions
+    into the CICS configuration, making the application resources available for runtime
+    execution.
+  transaction_id: null
+  calls:
+  - DFHCSDUP
+  invokes: DFHCSDUP
+- name: COBTUPDT
+  type: COBOL
+  execution: batch
+  description: Transaction record insertion into database; The program reads transaction
+    records sequentially from an input file, evaluates each record's type indicator,
+    and for records marked as insert operations (type 'A'), inserts the transaction
+    reference number and description into the transaction type database table. The
+    process continues until the end of the input file is reached.; Transaction type
+    database update processing; The program reads transaction records sequentially
+    from an input file, evaluates each record's type indicator, and when the type
+    is 'U' (update), updates the corresponding transaction type record in the database
+    with the new description. The process continues until the end of the input file
+    is reached.; Transaction type record deletion; The program reads transaction records
+    sequentially from an input file, evaluates each record's type indicator, and when
+    the type is marked for deletion, removes the corresponding transaction type record
+    from the database. The process continues until the end of the input file is reached.
+  transaction_id: null
+  data_stores_read: &id001
+  - INPFILE
+  includes:
+  - DCLTRTYP
+  - SQLCA
+- name: CREADB21
+  type: JCL
+  execution: batch
+  description: Database plan and package cleanup; This step invokes a TSO batch utility
+    to free (deallocate) existing database plans and packages before creating a new
+    database. The step is designed to run with a return code of 8 when the plans or
+    packages do not exist, which is an expected outcome and should not cause the job
+    to fail. The step loads the necessary database utilities and control statements
+    to perform the cleanup operation.; Database table creation via TSO batch utility;
+    This job step invokes the DB2 table-creation utility to establish the transaction-type
+    database table using an existing storage group. The step executes under the TSO
+    batch wrapper, reading table-definition control statements and utility parameters
+    from cataloged datasets, and produces diagnostic output to the job log.; Transaction
+    type database table loading; This job pack executes two sequential database table-load
+    operations via the DB2 test execution program. The first step loads the transaction
+    type lookup table; the second step, conditional on the first step's success, loads
+    the transaction type category table. Both steps invoke the same DB2 utility program
+    with different control and input datasets to populate the application's reference
+    data.
+  transaction_id: null
+  calls:
+  - IEFBR14
+  - IKJEFT01
+  invokes: IEFBR14, IKJEFT01
+- name: DBPAUTP0
+  type: JCL
+  execution: batch
+  description: Database authorization unload operation; This job step extracts and
+    unloads the authorization database (DBPAUTP0) using the IMS database utility.
+    The step invokes the database unload service with conditional activation, reading
+    from authorization data stores and IMS control libraries, and writing the extracted
+    records to a new output dataset. The operation supports IMS recovery and audit
+    functions by capturing the current state of authorization definitions.
+  transaction_id: null
+  calls:
+  - DFSRRC00
+  - IEFBR14
+  invokes: DFSRRC00, IEFBR14
+- name: DBUNLDGS
+  type: COBOL
+  execution: batch
+  description: Pending authorization record retrieval and insertion; The program retrieves
+    pending authorization summary and detail records from an IMS database using hierarchical
+    Get Next operations, validates the account identifier, and inserts matching records
+    into output data stores. The process iterates through root-level authorization
+    summaries, and for each valid summary, retrieves and inserts all associated child-level
+    authorization details until the end of each hierarchy level is reached.
+  transaction_id: null
+  calls:
+  - CBLTDLI
+  - Unresolved dynamic call to CHILD-UNQUAL-SSA
+  - Unresolved dynamic call to ROOT-UNQUAL-SSA
+  includes:
+  - CIPAUDTY
+  - CIPAUSMY
+  - IMSFUNCS
+  - PADFLPCB
+  - PASFLPCB
+  - PAUTBPCB
+- name: LOADPADB
+  type: JCL
+  execution: batch
+  description: Payment audit database load operation; This job executes an IMS batch
+    message processing program to load payment audit database records. The job invokes
+    the IMS runtime environment (DFSRRC00) with parameters specifying batch mode execution,
+    the payment audit load PSB (PAUDBLOD), and the authentication PSB (PSBPAUTB).
+    Input data flows from two source datasets (root and child records), and the IMS
+    runtime processes them against the configured database and PSB libraries, producing
+    diagnostic output to standard print and error streams.
+  transaction_id: null
+  calls:
+  - DFSRRC00
+  - PAUDBLOD
+  invokes: DFSRRC00, PAUDBLOD
+- name: MNTTRDB2
+  type: JCL
+  execution: batch
+  description: Database transaction table maintenance; This job maintains a DB2 transaction
+    table by processing batch input records that specify add, update, or delete operations.
+    The job reads transaction records from the input file, where each record begins
+    with an operation code (A for add, D for delete, U for update, or * for comment),
+    followed by a transaction type and description. The job delegates to the transaction
+    update program to execute the specified database operations against the transaction
+    table.
+  transaction_id: null
+  calls:
+  - COBTUPDT
+  - IKJEFT01
+  invokes: COBTUPDT, IKJEFT01
+- name: PAUDBLOD
+  type: COBOL
+  execution: batch
+  description: Authorization record insertion into IMS database; The program reads
+    root and child segment records from two sequential input files, validates the
+    data, and inserts them into an IMS database via the CBLTDLI interface. Root segments
+    are inserted directly; child segments are inserted only after a qualified Get
+    Unique lookup succeeds, ensuring referential integrity within the hierarchical
+    database structure.
+  transaction_id: null
+  data_stores_read: &id002
+  - AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO
+  - AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO
+  calls:
+  - Unresolved dynamic call to CHILD-UNQUAL-SSA
+  - Unresolved dynamic call to ROOT-QUAL-SSA
+  - Unresolved dynamic call to ROOT-UNQUAL-SSA
+  includes:
+  - CIPAUDTY
+  - CIPAUSMY
+  - IMSFUNCS
+  - PAUTBPCB
+- name: PAUDBUNL
+  type: COBOL
+  execution: batch
+  description: Authorization record batch processing and output; The program retrieves
+    pending authorization summary records from a database, validates the account identifier,
+    and writes matching records to an output file. For each valid summary record,
+    the program also retrieves and processes associated detail records. The process
+    continues until all root-level records have been exhausted.; Pending authorization
+    batch extraction and output; The program retrieves pending authorization records
+    from a hierarchical database, organized as root segments (accounts) and child
+    segments (authorization details). For each root segment found, the program retrieves
+    all associated child segments and writes them to an output file. Processing terminates
+    when no more root segments are available.
+  transaction_id: null
+  data_stores_write:
+  - AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO
+  - AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO
+  calls:
+  - Unresolved dynamic call to CHILD-UNQUAL-SSA
+  - Unresolved dynamic call to ROOT-UNQUAL-SSA
+  includes:
+  - CIPAUDTY
+  - CIPAUSMY
+  - IMSFUNCS
+  - PAUTBPCB
+- name: UNLDGSAM
+  type: JCL
+  execution: batch
+  description: IMS database unload execution; This job step executes the IMS database
+    unload program (DBUNLDGS) through the IMS runtime controller. The step allocates
+    access to IMS runtime libraries, database definition libraries, GSAM data stores,
+    and authorization databases, then invokes the unload process to extract data from
+    the IMS database hierarchy. Output is directed to standard print and error streams.
+  transaction_id: null
+  calls:
+  - DBUNLDGS
+  - DFSRRC00
+  invokes: DBUNLDGS, DFSRRC00
+- name: UNLDPADB
+  type: JCL
+  execution: batch
+  description: IMS database unload to sequential files; This job step invokes the
+    IMS database unload utility to extract data from the authorization database (PAUTDB)
+    in DLI mode, writing root and child records to separate sequential output files.
+    The utility reads the IMS database definitions, accesses the authorization database
+    through DLI, and produces two output datasets containing the extracted records.
+  transaction_id: null
+  calls:
+  - DFSRRC00
+  - IEFBR14
+  - PAUDBUNL
+  invokes: DFSRRC00, IEFBR14, PAUDBUNL
+- name: COBTUPDT
+  type: COBOL
+  execution: subroutine
+  description: Transaction record insertion into database; The program reads transaction
+    records sequentially from an input file, evaluates each record's type indicator,
+    and for records marked as insert operations (type 'A'), inserts the transaction
+    reference number and description into the transaction type database table. The
+    process continues until the end of the input file is reached.; Transaction type
+    database update processing; The program reads transaction records sequentially
+    from an input file, evaluates each record's type indicator, and when the type
+    is 'U' (update), updates the corresponding transaction type record in the database
+    with the new description. The process continues until the end of the input file
+    is reached.; Transaction type record deletion; The program reads transaction records
+    sequentially from an input file, evaluates each record's type indicator, and when
+    the type is marked for deletion, removes the corresponding transaction type record
+    from the database. The process continues until the end of the input file is reached.
+  data_stores_read: *id001
+- name: DBUNLDGS
+  type: COBOL
+  execution: subroutine
+  description: Pending authorization record retrieval and insertion; The program retrieves
+    pending authorization summary and detail records from an IMS database using hierarchical
+    Get Next operations, validates the account identifier, and inserts matching records
+    into output data stores. The process iterates through root-level authorization
+    summaries, and for each valid summary, retrieves and inserts all associated child-level
+    authorization details until the end of each hierarchy level is reached.
+  calls:
+  - CBLTDLI
+  - Unresolved dynamic call to CHILD-UNQUAL-SSA
+  - Unresolved dynamic call to ROOT-UNQUAL-SSA
+- name: PAUDBLOD
+  type: COBOL
+  execution: subroutine
+  description: Authorization record insertion into IMS database; The program reads
+    root and child segment records from two sequential input files, validates the
+    data, and inserts them into an IMS database via the CBLTDLI interface. Root segments
+    are inserted directly; child segments are inserted only after a qualified Get
+    Unique lookup succeeds, ensuring referential integrity within the hierarchical
+    database structure.
+  data_stores_read: *id002
+  calls:
+  - Unresolved dynamic call to CHILD-UNQUAL-SSA
+  - Unresolved dynamic call to ROOT-QUAL-SSA
+  - Unresolved dynamic call to ROOT-UNQUAL-SSA
+- name: PAUDBUNL
+  type: COBOL
+  execution: subroutine
+  description: Authorization record batch processing and output; The program retrieves
+    pending authorization summary records from a database, validates the account identifier,
+    and writes matching records to an output file. For each valid summary record,
+    the program also retrieves and processes associated detail records. The process
+    continues until all root-level records have been exhausted.; Pending authorization
+    batch extraction and output; The program retrieves pending authorization records
+    from a hierarchical database, organized as root segments (accounts) and child
+    segments (authorization details). For each root segment found, the program retrieves
+    all associated child segments and writes them to an output file. Processing terminates
+    when no more root segments are available.
+  data_stores_write:
+  - AWS.M2.CARDDEMO.PAUTDB.CHILD.FILEO
+  - AWS.M2.CARDDEMO.PAUTDB.ROOT.FILEO
+  calls:
+  - Unresolved dynamic call to CHILD-UNQUAL-SSA
+  - Unresolved dynamic call to ROOT-UNQUAL-SSA

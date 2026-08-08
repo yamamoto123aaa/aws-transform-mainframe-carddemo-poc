@@ -1,0 +1,59 @@
+# Statement and Report Generation - Batch Job Discovery
+# Generated: 2026-08-08T04:25:27Z
+# Source: TransformKG (Python discovery)
+
+function: StatementandReportGeneration
+jobs:
+  migrate:
+  - id: BAT-001
+    name: CREASTMT.jcl
+    description: Card transaction statement generation pipeline; This batch job orchestrates
+      the creation of card transaction statements by first deleting and recreating
+      a keyed transaction file, then sorting transaction records by card number and
+      transaction ID, copying the sorted records into a VSAM cluster, deleting previous
+      statement reports, and finally invoking a statement generation program that
+      reads transaction, card reference, account, and customer data to produce text
+      and HTML statement reports.
+    programs:
+    - CBSTM03A
+    - IDCAMS
+    - IEFBR14
+    - SORT
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-002
+    name: PRTCATBL.jcl
+    description: 'Transaction category balance report generation; This job unloads
+      processed transaction category balance records from a data store, filters and
+      sorts them by account identifier, transaction type, and category code, and produces
+      a formatted report output. The job executes two sequential steps: first, a data
+      copy operation retrieves the transaction category balance records; second, a
+      sort operation reorganizes the records in ascending order by account, type,
+      and category, reformats each record to include space-separated fields and a
+      formatted balance amount, and writes the sorted result to the report dataset.'
+    programs:
+    - IEFBR14
+    - SORT
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: SORT with business formatting logic (migrate)
+  - id: BAT-003
+    name: TRANREPT.jcl
+    description: Transaction report generation and filtering; This job pack unloads
+      processed transactions from a VSAM store, filters them by date range, sorts
+      them by card number, and produces a formatted transaction report. The flow involves
+      copying transactions to a backup dataset, filtering and sorting by transaction
+      date and card identifier, then delegating to a report formatter that enriches
+      the sorted transactions with reference data (card cross-reference, transaction
+      type, transaction category, and date parameters) to produce the final report
+      output.
+    programs:
+    - CBTRN03C
+    - SORT
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

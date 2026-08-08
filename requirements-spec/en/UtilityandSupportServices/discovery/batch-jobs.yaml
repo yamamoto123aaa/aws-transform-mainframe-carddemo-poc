@@ -1,0 +1,48 @@
+# Utility and Support Services - Batch Job Discovery
+# Generated: 2026-08-08T04:25:49Z
+# Source: TransformKG (Python discovery)
+
+function: UtilityandSupportServices
+jobs:
+  migrate:
+  - id: BAT-001
+    name: FTPJCL.jcl
+    description: File transfer via FTP protocol; This job executes an FTP session
+      to transfer a file from the mainframe to a remote FTP server. The job connects
+      to an FTP server using provided credentials, navigates to a specified folder,
+      and uploads a mainframe dataset to the remote system as a text file. The FTP
+      commands are supplied via inline control statements that specify the server
+      address, authentication, directory navigation, and the PUT operation to send
+      the file.
+    programs:
+    - FTP
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-002
+    name: TXT2PDF1.jcl
+    description: Text-to-PDF conversion batch job; This job converts a text file to
+      PDF format using a TSO batch wrapper. The job reads the input text dataset,
+      invokes the conversion process with browsing enabled, and writes the output
+      PDF to a named dataset. The conversion is triggered unconditionally as the main
+      batch operation.
+    programs:
+    - IKJEFT1B
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  - id: BAT-003
+    name: WAITSTEP.jcl
+    description: Batch wait operation with configurable delay; This job step invokes
+      a wait utility program to pause batch processing for a specified duration. The
+      program reads a delay value in centiseconds from inline input and suspends execution
+      accordingly, allowing time-based sequencing between dependent batch steps. The
+      delay is specified as 36 seconds (3600 centiseconds) in the control input.
+    programs:
+    - COBSWAIT
+    data_stores_read: []
+    data_stores_write: []
+    classification_rationale: Invokes custom program(s) with business logic (migrate)
+  interface: []
+  setup: []
+  skip: []

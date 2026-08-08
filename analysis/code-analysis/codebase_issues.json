@@ -1,0 +1,408 @@
+[
+  {
+    "item": {
+      "type": "Issue",
+      "severity": "ERROR",
+      "name": "Missing control card detected",
+      "description": "One or more missing control cards were detected.",
+      "impact": "May have impact during the execution.",
+      "details": "A JCL control card or configuration file is not present in the analyzed codebase.",
+      "action": "Include the missing control card in your source code inputs. If the control card is provided dynamically at runtime (e.g., via an external SYSIN file), ensure it will be available in the target environment when the modernized batch job executes."
+    },
+    "files": [
+      {
+        "file": "DBPAUTP0.jcl",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+        "details": [
+          "Missing Control Card: DFSVSMDB (Control card)"
+        ]
+      },
+      {
+        "file": "LOADPADB.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+        "details": [
+          "Missing Control Card: DFSVSMDB (Control card)"
+        ]
+      },
+      {
+        "file": "UNLDGSAM.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+        "details": [
+          "Missing Control Card: DFSVSMDB (Control card)"
+        ]
+      },
+      {
+        "file": "UNLDPADB.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+        "details": [
+          "Missing Control Card: DFSVSMDB (Control card)"
+        ]
+      }
+    ]
+  },
+  {
+    "item": {
+      "type": "Issue",
+      "severity": "ERROR",
+      "name": "Missing dependency detected",
+      "description": "One or more missing dependencies were detected in the dependencies graph.",
+      "impact": "May have impact on Transform step.",
+      "details": "A referenced component could not be found in the analyzed codebase.",
+      "action": "Verify the missing component exists in your source code and and include it in the analysis scope."
+    },
+    "files": [
+      {
+        "file": "DBUNLDGS.CBL",
+        "filePath": "demo/app-authorization-ims-db2-mq/cbl/DBUNLDGS.CBL",
+        "details": [
+          "Missing Dynamic Call Value: CHILD-UNQUAL-SSA (IMS message invocation; [Dynamic] Call)",
+          "Missing Dynamic Call Value: ROOT-UNQUAL-SSA (IMS message invocation; [Dynamic] Call)"
+        ]
+      },
+      {
+        "file": "PAUDBLOD.CBL",
+        "filePath": "demo/app-authorization-ims-db2-mq/cbl/PAUDBLOD.CBL",
+        "details": [
+          "Missing Dynamic Call Value: CHILD-UNQUAL-SSA (IMS message invocation; [Dynamic] Call)",
+          "Missing Dynamic Call Value: ROOT-QUAL-SSA (IMS message invocation; [Dynamic] Call)",
+          "Missing Dynamic Call Value: ROOT-UNQUAL-SSA (IMS message invocation; [Dynamic] Call)"
+        ]
+      },
+      {
+        "file": "PAUDBUNL.CBL",
+        "filePath": "demo/app-authorization-ims-db2-mq/cbl/PAUDBUNL.CBL",
+        "details": [
+          "Missing Dynamic Call Value: CHILD-UNQUAL-SSA (IMS message invocation; [Dynamic] Call)",
+          "Missing Dynamic Call Value: ROOT-UNQUAL-SSA (IMS message invocation; [Dynamic] Call)"
+        ]
+      },
+      {
+        "file": "CBPAUP0J.jcl",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+        "details": [
+          "Missing [Dataset, PDS]: IMS.SDFSRESL (PDS use; Read Dataset)"
+        ]
+      },
+      {
+        "file": "DBPAUTP0.jcl",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+        "details": [
+          "Missing [Dataset, PDS]: OEMA.IMS.IMSP.SDFSRESL (PDS use; Read Dataset)",
+          "Missing PDS: OEMPP.IMS.V15R01MB.PROCLIB (PDS use)"
+        ]
+      },
+      {
+        "file": "LOADPADB.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+        "details": [
+          "Missing [Dataset, PDS]: OEMA.IMS.IMSP.SDFSRESL (PDS use; Read Dataset)",
+          "Missing PDS: OEMPP.IMS.V15R01MB.PROCLIB (PDS use)"
+        ]
+      },
+      {
+        "file": "UNLDGSAM.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+        "details": [
+          "Missing [Dataset, PDS]: OEMA.IMS.IMSP.SDFSRESL (PDS use; Read Dataset)",
+          "Missing PDS: OEMPP.IMS.V15R01MB.PROCLIB (PDS use)"
+        ]
+      },
+      {
+        "file": "UNLDPADB.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+        "details": [
+          "Missing [Dataset, PDS]: OEMA.IMS.IMSP.SDFSRESL (PDS use; Read Dataset)",
+          "Missing PDS: OEMPP.IMS.V15R01MB.PROCLIB (PDS use)"
+        ]
+      },
+      {
+        "file": "CSDB2RPY.cpy",
+        "filePath": "demo/app-transaction-type-db2/cpy/CSDB2RPY.cpy",
+        "details": [
+          "Missing Dynamic Call Value: LIT-DSNTIAC (Call; [Dynamic] Call)"
+        ]
+      },
+      {
+        "file": "CREADB21.jcl",
+        "filePath": "demo/app-transaction-type-db2/jcl/CREADB21.jcl",
+        "details": [
+          "Missing PDS: OEM.DB2.DAZ1.RUNLIB.LOAD (PDS use; Resolved Symbol)",
+          "Missing PDS: OEM.DB2.DAZ1.SDSNEXIT (PDS use)",
+          "Missing [Dataset, PDS]: OEM.DB2.DAZ1.SDSNLOAD (PDS use; Read Dataset; Resolved Symbol)"
+        ]
+      },
+      {
+        "file": "MNTTRDB2.jcl",
+        "filePath": "demo/app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+        "details": [
+          "Missing PDS: OEM.DB2.DAZ1.SDSNEXIT (PDS use)"
+        ]
+      },
+      {
+        "file": "TRANEXTR.jcl",
+        "filePath": "demo/app-transaction-type-db2/jcl/TRANEXTR.jcl",
+        "details": [
+          "Missing PDS: OEM.DB2.DAZ1.RUNLIB.LOAD (PDS use)"
+        ]
+      },
+      {
+        "file": "COADM01C.cbl",
+        "filePath": "demo/cbl/COADM01C.cbl",
+        "details": [
+          "Missing Dynamic Call Value: CDEMO-ADMIN-OPT-PGMNAME (Exec CICS program; [Dynamic] Call)"
+        ]
+      },
+      {
+        "file": "COMEN01C.cbl",
+        "filePath": "demo/cbl/COMEN01C.cbl",
+        "details": [
+          "Missing Dynamic Call Value: CDEMO-MENU-OPT-PGMNAME (Exec CICS program; [Dynamic] Call)"
+        ]
+      },
+      {
+        "file": "CBADMCDJ.jcl",
+        "filePath": "demo/jcl/CBADMCDJ.jcl",
+        "details": [
+          "Missing PDS: OEM.CICSTS.V05R06M0.CICS.SDFHLOAD (PDS use)"
+        ]
+      },
+      {
+        "file": "TXT2PDF1.JCL",
+        "filePath": "demo/jcl/TXT2PDF1.JCL",
+        "details": [
+          "Missing PDS: AWS.M2.LBD.TXT2PDF.LOAD (PDS use)"
+        ]
+      }
+    ]
+  },
+  {
+    "item": {
+      "type": "Issue",
+      "severity": "ERROR",
+      "name": "Unknown file type detected",
+      "description": "One or more files are classified as UNKNOWN.",
+      "impact": "May have impact on Transform step.",
+      "details": "The classification process was unable to determine the type of one or more files in the codebase. These files may be data files, configuration files, or artifacts in an unrecognized format.",
+      "action": "Review the detected unknown files and determine if they are required for the application. If needed, manually classify them or use the correct file extensions."
+    },
+    "files": [
+      {
+        "file": "PROJECT",
+        "details": [
+          "Found 8 file(s) classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "README.md",
+        "filePath": "demo/app-authorization-ims-db2-mq/README.md",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "README.md",
+        "filePath": "demo/app-transaction-type-db2/README.md",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "README.md",
+        "filePath": "demo/app-vsam-mq/README.md",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "acctdata.txt",
+        "filePath": "demo/data/ASCII/acctdata.txt",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "carddata.txt",
+        "filePath": "demo/data/ASCII/carddata.txt",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "custdata.txt",
+        "filePath": "demo/data/ASCII/custdata.txt",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "dailytran.txt",
+        "filePath": "demo/data/ASCII/dailytran.txt",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      },
+      {
+        "file": "tcatbal.txt",
+        "filePath": "demo/data/ASCII/tcatbal.txt",
+        "details": [
+          "File classified as UNKNOWN."
+        ]
+      }
+    ]
+  },
+  {
+    "item": {
+      "type": "Issue",
+      "severity": "ERROR",
+      "name": "Unsupported system utility call detected",
+      "description": "One or more unsupported system utilities were detected in JCL steps or program CALL statements.",
+      "impact": "May have impact on Transform step and during execution.",
+      "details": "The application uses system Utilities that are not supported by the AWS Blu Age product. These utilities are invoked either through JCL EXEC PGM= statements or through CALL statements in COBOL/PL/I programs.",
+      "action": "Review the detected system utility calls in your dependencies graph and consult the documentation for the list of supported system utilities."
+    },
+    "files": [
+      {
+        "file": "PROJECT",
+        "details": [
+          "Found 3 unsupported system utility(ies):",
+          "  - AWS.M2.CARDDEMO.LOADLIB",
+          "  - DSNTIAC",
+          "  - XXXXXXXX.PROD.LOADLIB"
+        ]
+      },
+      {
+        "file": "CBPAUP0J.jcl",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl",
+        "details": [
+          "System utility not supported: XXXXXXXX.PROD.LOADLIB"
+        ]
+      },
+      {
+        "file": "DBPAUTP0.jcl",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "LOADPADB.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/LOADPADB.JCL",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "UNLDGSAM.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/UNLDGSAM.JCL",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "UNLDPADB.JCL",
+        "filePath": "demo/app-authorization-ims-db2-mq/jcl/UNLDPADB.JCL",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "COTRTLIC.cbl",
+        "filePath": "demo/app-transaction-type-db2/cbl/COTRTLIC.cbl",
+        "details": [
+          "System utility not supported: DSNTIAC"
+        ]
+      },
+      {
+        "file": "MNTTRDB2.jcl",
+        "filePath": "demo/app-transaction-type-db2/jcl/MNTTRDB2.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "CBEXPORT.jcl",
+        "filePath": "demo/jcl/CBEXPORT.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "CBIMPORT.jcl",
+        "filePath": "demo/jcl/CBIMPORT.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "CREASTMT.JCL",
+        "filePath": "demo/jcl/CREASTMT.JCL",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "INTCALC.jcl",
+        "filePath": "demo/jcl/INTCALC.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "POSTTRAN.jcl",
+        "filePath": "demo/jcl/POSTTRAN.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "READACCT.jcl",
+        "filePath": "demo/jcl/READACCT.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "READCARD.jcl",
+        "filePath": "demo/jcl/READCARD.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "READCUST.jcl",
+        "filePath": "demo/jcl/READCUST.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "READXREF.jcl",
+        "filePath": "demo/jcl/READXREF.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "TRANREPT.jcl",
+        "filePath": "demo/jcl/TRANREPT.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "WAITSTEP.jcl",
+        "filePath": "demo/jcl/WAITSTEP.jcl",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      },
+      {
+        "file": "TRANREPT.prc",
+        "filePath": "demo/proc/TRANREPT.prc",
+        "details": [
+          "System utility not supported: AWS.M2.CARDDEMO.LOADLIB"
+        ]
+      }
+    ]
+  }
+]

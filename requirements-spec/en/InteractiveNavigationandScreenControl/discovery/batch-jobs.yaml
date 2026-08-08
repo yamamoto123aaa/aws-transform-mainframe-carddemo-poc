@@ -1,0 +1,10 @@
+# Interactive Navigation and Screen Control - Batch Job Discovery
+# Generated: 2026-08-08T04:25:21Z
+# Source: TransformKG (Python discovery)
+
+function: InteractiveNavigationandScreenControl
+jobs:
+  migrate: []
+  interface: []
+  setup: []
+  skip: []

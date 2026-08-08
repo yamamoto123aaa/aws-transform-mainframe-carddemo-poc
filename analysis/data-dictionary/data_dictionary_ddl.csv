@@ -1,0 +1,32 @@
+table_name,field_name,db2_data_type,generic_data_type,schema_name,column_position,data_length,decimal_precision,decimal_scale,nullable,default_value,primary_key,foreign_key_schema,foreign_key_table,foreign_key_column,check_constraint,type,tablespace,database,partitioned,partition_clause,index_name,index_column_order,index_unique,index_clustering,index_bufferpool,index_exclude_nulls,index_padded,pk_constraint_name,pk_columns,fk_constraint_name,fk_on_delete,fk_enforcement,fk_query_optimization,business_definition
+AUTHFRDS,CARD_NUM,CHAR,ALPHANUMERIC,CARDDEMO,1,16,,,NO,,YES,,,,,TABLE,,,NO,,XAUTHFRD,ASC,YES,NO,,YES,NO,,"CARD_NUM,AUTH_TS",,,,,Primary key identifier for the card number associated with the authorization transaction
+AUTHFRDS,AUTH_TS,TIMESTAMP,TIMESTAMP,CARDDEMO,17,26,,,NO,,YES,,,,,TABLE,,,NO,,XAUTHFRD,DESC,YES,NO,,YES,NO,,"CARD_NUM,AUTH_TS",,,,,Primary key timestamp indicating when the authorization transaction occurred
+AUTHFRDS,AUTH_TYPE,CHAR,ALPHANUMERIC,CARDDEMO,43,4,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Classification code indicating the type of authorization request
+AUTHFRDS,CARD_EXPIRY_DATE,CHAR,ALPHANUMERIC,CARDDEMO,47,4,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Expiration date of the card at the time of the authorization transaction
+AUTHFRDS,MESSAGE_TYPE,CHAR,ALPHANUMERIC,CARDDEMO,51,6,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Code identifying the type of message transmitted for the authorization
+AUTHFRDS,MESSAGE_SOURCE,CHAR,ALPHANUMERIC,CARDDEMO,57,6,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Code indicating the source or origin of the authorization message
+AUTHFRDS,AUTH_ID_CODE,CHAR,ALPHANUMERIC,CARDDEMO,63,6,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Unique identifier code assigned to the authorization transaction
+AUTHFRDS,AUTH_RESP_CODE,CHAR,ALPHANUMERIC,CARDDEMO,69,2,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Response code returned from the authorization processing system
+AUTHFRDS,AUTH_RESP_REASON,CHAR,ALPHANUMERIC,CARDDEMO,71,4,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Reason or explanation associated with the authorization response code
+AUTHFRDS,PROCESSING_CODE,CHAR,ALPHANUMERIC,CARDDEMO,75,6,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Code indicating the type of processing applied to the transaction
+AUTHFRDS,TRANSACTION_AMT,DECIMAL,DECIMAL,CARDDEMO,81,7,12,2,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Monetary amount of the original transaction requested for authorization
+AUTHFRDS,APPROVED_AMT,DECIMAL,DECIMAL,CARDDEMO,88,7,12,2,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Monetary amount that was approved by the authorization system
+AUTHFRDS,MERCHANT_CATAGORY_CODE,CHAR,ALPHANUMERIC,CARDDEMO,95,4,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Classification code identifying the merchant category or industry type
+AUTHFRDS,ACQR_COUNTRY_CODE,CHAR,ALPHANUMERIC,CARDDEMO,99,3,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Country code of the acquiring institution processing the transaction
+AUTHFRDS,POS_ENTRY_MODE,SMALLINT,NUMERIC,CARDDEMO,102,2,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Numeric code indicating the method used to enter the card data at the point of sale
+AUTHFRDS,MERCHANT_ID,CHAR,ALPHANUMERIC,CARDDEMO,104,15,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Unique identifier assigned to the merchant processing the transaction
+AUTHFRDS,MERCHANT_NAME,VARCHAR,ALPHANUMERIC,CARDDEMO,119,22,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Name of the merchant where the transaction occurred
+AUTHFRDS,MERCHANT_CITY,CHAR,ALPHANUMERIC,CARDDEMO,141,13,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,City location of the merchant establishment
+AUTHFRDS,MERCHANT_STATE,CHAR,ALPHANUMERIC,CARDDEMO,154,2,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,State or province location of the merchant establishment
+AUTHFRDS,MERCHANT_ZIP,CHAR,ALPHANUMERIC,CARDDEMO,156,9,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Postal code or ZIP code of the merchant establishment
+AUTHFRDS,TRANSACTION_ID,CHAR,ALPHANUMERIC,CARDDEMO,165,15,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Unique identifier assigned to the transaction for tracking and reference purposes
+AUTHFRDS,MATCH_STATUS,CHAR,ALPHANUMERIC,CARDDEMO,180,1,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Status code indicating the result of matching or reconciliation processing
+AUTHFRDS,AUTH_FRAUD,CHAR,ALPHANUMERIC,CARDDEMO,181,1,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Indicator flag identifying whether the authorization transaction was flagged as fraudulent
+AUTHFRDS,FRAUD_RPT_DATE,DATE,DATE,CARDDEMO,182,10,,,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Date when the transaction was reported or identified as fraudulent
+AUTHFRDS,ACCT_ID,DECIMAL,DECIMAL,CARDDEMO,192,6,11,0,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Unique identifier for the account associated with the card and transaction
+AUTHFRDS,CUST_ID,DECIMAL,DECIMAL,CARDDEMO,198,5,9,0,YES,,NO,,,,,TABLE,,,NO,,,,,,,,,,,,,,,Unique identifier for the customer who owns the card and initiated the transaction
+TRANSACTION_TYPE,TR_TYPE,CHAR,ALPHANUMERIC,CARDDEMO,1,2,,,NO,,YES,,,,,TABLE,CARDSPC1,CARDDEMO,NO,,XTRAN_TYPE,ASC,YES,NO,BP0,YES,NO,,TR_TYPE,,,,,Primary key identifier for transaction type
+TRANSACTION_TYPE,TR_DESCRIPTION,VARCHAR,ALPHANUMERIC,CARDDEMO,3,50,,,NO,,NO,,,,,TABLE,CARDSPC1,CARDDEMO,NO,,,,,,,,,,,,,,,Description or name of the transaction type
+TRANSACTION_TYPE_CATEGORY,TRC_TYPE_CODE,CHAR,ALPHANUMERIC,CARDDEMO,1,2,,,NO,,YES,CARDDEMO,TRANSACTION_TYPE,TR_TYPE,,TABLE,CARDSTTC,CARDDEMO,NO,,X_TRAN_TYPE_CATG,ASC,YES,NO,BP0,YES,NO,,"TRC_TYPE_CODE,TRC_TYPE_CATEGORY",TRC_TYPE_CODE,RESTRICT,ENFORCED,,Primary key code identifying the transaction type category
+TRANSACTION_TYPE_CATEGORY,TRC_TYPE_CATEGORY,CHAR,ALPHANUMERIC,CARDDEMO,3,4,,,NO,,YES,,,,,TABLE,CARDSTTC,CARDDEMO,NO,,X_TRAN_TYPE_CATG,ASC,YES,NO,BP0,YES,NO,,"TRC_TYPE_CODE,TRC_TYPE_CATEGORY",,,,,Primary key category classification for transaction type
+TRANSACTION_TYPE_CATEGORY,TRC_CAT_DATA,VARCHAR,ALPHANUMERIC,CARDDEMO,7,50,,,NO,,NO,,,,,TABLE,CARDSTTC,CARDDEMO,NO,,,,,,,,,,,,,,,Data or details associated with the transaction type category

@@ -1,0 +1,339 @@
+# Authorization Management - Program Discovery
+# Generated: 2026-08-08T04:24:35Z
+# Source: TransformKG (Python discovery)
+
+function: AuthorizationManagement
+programs:
+- name: CBPAUP0C
+  type: COBOL
+  execution: batch
+  description: Expired authorization record cleanup; The program processes pending
+    authorization records from an IMS database, identifies those that have expired
+    based on a configurable expiry threshold, and deletes the expired records while
+    updating the authorization summary totals. The expiry threshold is either provided
+    as input or defaults to 5 days. Records are evaluated by comparing the authorization
+    date against the current date, and approved or declined amounts are decremented
+    from the summary based on the authorization response code.; Pending authorization
+    expiry and cleanup; The program processes pending authorization records from an
+    IMS database, checking each authorization detail against an expiry threshold.
+    When an authorization has expired, the program adjusts the summary counts and
+    amounts accordingly. When all authorizations in a summary have expired (both approved
+    and declined counts reach zero), the program deletes the summary record from the
+    database.
+  transaction_id: null
+  includes:
+  - CIPAUDTY
+  - CIPAUSMY
+- name: CBPAUP0J
+  type: JCL
+  execution: batch
+  description: Batch authorization expiration cleanup; This job executes an IMS batch
+    program to delete expired authorization records from the authorization database.
+    The job invokes the authorization-update program under the IMS batch message processing
+    environment, passing configuration parameters that specify the target program,
+    the PSB (Program Specification Block) for database access, and control flags.
+    The program processes authorization records and removes those that have exceeded
+    their validity period, with execution output and diagnostics routed to standard
+    job output datasets.
+  transaction_id: null
+  calls:
+  - CBPAUP0C
+  - DFSRRC00
+  invokes: CBPAUP0C, DFSRRC00
+- name: COPAUA0C
+  type: COBOL
+  execution: batch
+  description: Authorization request processing and response delivery; This program
+    processes pending authorization requests received from a message queue, validates
+    card and account information against master files and an IMS database, makes approval
+    or decline decisions based on available credit limits, and sends authorization
+    responses back through the message queue. Error conditions at each stage are logged
+    to an audit queue.
+  transaction_id: null
+  data_stores_read:
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  calls:
+  - MQCLOSE
+  - MQGET
+  - MQOPEN
+  - MQPUT1
+  includes:
+  - CCPAUERY
+  - CCPAURLY
+  - CCPAURQY
+  - CIPAUDTY
+  - CIPAUSMY
+  - CMQGMOV
+  - CMQMDV
+  - CMQODV
+  - CMQPMOV
+  - CMQTML
+  - CMQV
+  - CVACT01Y
+  - CVACT03Y
+  - CVCUS01Y
+- name: COPAUS0C
+  type: COBOL
+  execution: online
+  description: Authorization selection and program navigation; The program receives
+    user input from the authorization selection screen, validates the account identifier
+    and selection choices, and transfers control to the appropriate authorization
+    details program. The flow handles screen input collection, validates that required
+    fields are populated with valid data, maps the user's selection to the corresponding
+    authorization key, and navigates to the authorization details screen when valid
+    selections are made.; Authorization screen navigation and control transfer; The
+    program receives a communication area from a calling program, evaluates the user's
+    key input when re-entering, and routes control to the appropriate destination
+    program based on the key pressed or a default target. When PF3 is pressed, the
+    menu program is selected as the destination; when the destination is unset, the
+    signon screen is used as a fallback. The program then transfers control to the
+    selected destination program, passing the updated communication area.; Pending
+    authorization list display and navigation; The program displays a list of pending
+    authorizations for a customer account, allowing the user to navigate through pages
+    of authorization records. It retrieves account details, customer information,
+    and authorization summaries from multiple data sources, then formats and displays
+    them on a 3270 terminal screen. The user can enter an account ID, select specific
+    authorizations, and navigate forward and backward through pages of results using
+    function keys.
+  transaction_id: null
+  screens:
+  - COPAU00.bms
+  data_stores_read: &id001
+  - AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  - AWS.M2.CARDDEMO.CARDXREF.VSAM.AIX.PATH
+  - AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  calls:
+  - COMEN01C
+  - COPAUS1C
+  - COSGN00C
+  includes:
+  - CIPAUDTY
+  - CIPAUSMY
+  - COCOM01Y
+  - COPAU00
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSMSG02Y
+  - CVACT01Y
+  - CVACT02Y
+  - CVACT03Y
+  - CVCUS01Y
+  - DFHAID
+  - DFHBMSCA
+- name: COPAUS1C
+  type: COBOL
+  execution: online
+  description: 'Authorization detail screen navigation; The program handles authorization
+    detail screen interactions and navigation. When the communication area is empty,
+    it initializes the context and transfers to the authorization summary screen.
+    When re-entering with user input, it evaluates the terminal key pressed: PF3 returns
+    to the authorization summary screen, while other keys trigger alternative processing.
+    Navigation transfers control to the destination program with updated context information.;
+    Authorization transaction fraud detection and display; This program manages the
+    display and processing of pending authorization transactions with fraud detection
+    capabilities. It retrieves authorization records from the database, populates
+    a 3270 terminal screen with transaction details, and allows users to mark authorizations
+    as fraudulent or remove fraud flags via function keys. The program delegates fraud-status
+    updates to an external service and displays the current authorization state with
+    merchant and transaction information.; Authorization fraud status update workflow;
+    The program processes authorization fraud status changes initiated by user function-key
+    input. When the user presses PF5 on a reentry transaction, the program retrieves
+    the pending authorization record from the database, toggles its fraud status (confirmed
+    to removed, or removed to confirmed), delegates to a fraud-processing service
+    to validate and record the change, and updates the authorization record in the
+    database with the new fraud status.'
+  transaction_id: null
+  screens:
+  - COPAU01.bms
+  calls:
+  - COPAUS0C
+  - COPAUS2C
+  includes:
+  - CIPAUDTY
+  - CIPAUSMY
+  - COCOM01Y
+  - COPAU01
+  - COTTL01Y
+  - CSDAT01Y
+  - CSMSG01Y
+  - CSMSG02Y
+  - DFHAID
+  - DFHBMSCA
+- name: COPAUS2C
+  type: COBOL
+  execution: batch
+  description: Fraud authorization record insertion; This capability records a flagged
+    card authorization as a fraud event. It derives a formatted authorization timestamp
+    from the original authorization date and time components supplied in the input
+    parameters, assembles all transaction and merchant details into a fraud authorization
+    record, and inserts that record into the fraud authorization store with the current
+    date as the fraud report date.; Authorization fraud record update; This capability
+    updates an existing fraud record in the authorization fraud store when a duplicate-key
+    condition is detected during a prior operation. It reconstructs the authorization
+    timestamp from its numeric and date components, assembles the fraud record key
+    fields, and — only when a duplicate-key conflict was previously encountered —
+    overwrites the fraud indicator and report date for the matching card number and
+    timestamp. The fraud action code supplied by the caller drives the value written
+    to the fraud indicator field.; Fraud record add or update; This capability records
+    a fraud report by capturing the current date and attempting to add or update a
+    fraud authorization record. When the initial insert succeeds, the fraud update
+    status is marked as successful with an 'ADD SUCCESS' message. When a duplicate
+    key is detected, the capability falls back to an update path and reports 'UPDT
+    SUCCESS' or a database error message accordingly. Any other database failure sets
+    the status to failed and records the specific error code and state in the fraud
+    action message.
+  transaction_id: null
+  data_stores_write:
+  - CARDDEMO.AUTHFRDS
+  includes:
+  - AUTHFRDS
+  - AUTHFRDS.ddl
+  - CIPAUDTY
+  - SQLCA
+- name: CBPAUP0C
+  type: COBOL
+  execution: subroutine
+  description: Expired authorization record cleanup; The program processes pending
+    authorization records from an IMS database, identifies those that have expired
+    based on a configurable expiry threshold, and deletes the expired records while
+    updating the authorization summary totals. The expiry threshold is either provided
+    as input or defaults to 5 days. Records are evaluated by comparing the authorization
+    date against the current date, and approved or declined amounts are decremented
+    from the summary based on the authorization response code.; Pending authorization
+    expiry and cleanup; The program processes pending authorization records from an
+    IMS database, checking each authorization detail against an expiry threshold.
+    When an authorization has expired, the program adjusts the summary counts and
+    amounts accordingly. When all authorizations in a summary have expired (both approved
+    and declined counts reach zero), the program deletes the summary record from the
+    database.
+- name: COMEN01C
+  type: COBOL
+  execution: subroutine
+  description: Menu option selection and program transfer; The program receives a
+    menu screen input from the user, validates the selected option against available
+    menu choices and user authorization, and transfers control to the corresponding
+    target program via XCTL. The validation ensures the option is numeric, within
+    the valid range, and authorized for the user type. When validation succeeds and
+    the target program is available, the program transfers control with the communication
+    area containing the originating transaction and program context.; Menu option
+    selection and program transfer; The program receives a menu screen input from
+    the user, validates the selected option against available menu choices and user
+    authorization, and transfers control to the corresponding target program via CICS
+    XCTL. The validation ensures the option is numeric, within the valid range, and
+    authorized for the user type; invalid selections trigger an error flag. The communication
+    area is populated with originating transaction and program context before the
+    transfer.; Card demonstration application navigation control; The program receives
+    a communication area from CICS, validates the reentry context, and routes user
+    navigation based on function key input. When the PF3 key is pressed, the program
+    sets the destination to the sign-on screen and transfers control. If no destination
+    is set or the destination is empty, the program defaults to the sign-on screen
+    before transferring control to the target program.; Menu screen display and option
+    selection; The program manages a CardDemo menu interface, displaying transaction
+    information, menu options, and error messages to the user. When the program is
+    first invoked, it displays the menu screen with header information and available
+    options. When the user re-enters after selecting an option, the program receives
+    the user's menu selection, validates it against business rules (numeric range,
+    user authorization), and either displays an error message or processes the selected
+    option. The final output is the menu screen sent to the terminal with all populated
+    fields.
+  shared_with:
+  - InteractiveNavigationandScreenControl
+  - Unclassified
+  note: '[SHARED-SUBROUTINE: COMEN01C — also called by InteractiveNavigationandScreenControl,
+    Unclassified]'
+- name: COPAUS0C
+  type: COBOL
+  execution: subroutine
+  description: Authorization selection and program navigation; The program receives
+    user input from the authorization selection screen, validates the account identifier
+    and selection choices, and transfers control to the appropriate authorization
+    details program. The flow handles screen input collection, validates that required
+    fields are populated with valid data, maps the user's selection to the corresponding
+    authorization key, and navigates to the authorization details screen when valid
+    selections are made.; Authorization screen navigation and control transfer; The
+    program receives a communication area from a calling program, evaluates the user's
+    key input when re-entering, and routes control to the appropriate destination
+    program based on the key pressed or a default target. When PF3 is pressed, the
+    menu program is selected as the destination; when the destination is unset, the
+    signon screen is used as a fallback. The program then transfers control to the
+    selected destination program, passing the updated communication area.; Pending
+    authorization list display and navigation; The program displays a list of pending
+    authorizations for a customer account, allowing the user to navigate through pages
+    of authorization records. It retrieves account details, customer information,
+    and authorization summaries from multiple data sources, then formats and displays
+    them on a 3270 terminal screen. The user can enter an account ID, select specific
+    authorizations, and navigate forward and backward through pages of results using
+    function keys.
+  data_stores_read: *id001
+  calls:
+  - COMEN01C
+  - COPAUS1C
+  - COSGN00C
+- name: COPAUS1C
+  type: COBOL
+  execution: subroutine
+  description: 'Authorization detail screen navigation; The program handles authorization
+    detail screen interactions and navigation. When the communication area is empty,
+    it initializes the context and transfers to the authorization summary screen.
+    When re-entering with user input, it evaluates the terminal key pressed: PF3 returns
+    to the authorization summary screen, while other keys trigger alternative processing.
+    Navigation transfers control to the destination program with updated context information.;
+    Authorization transaction fraud detection and display; This program manages the
+    display and processing of pending authorization transactions with fraud detection
+    capabilities. It retrieves authorization records from the database, populates
+    a 3270 terminal screen with transaction details, and allows users to mark authorizations
+    as fraudulent or remove fraud flags via function keys. The program delegates fraud-status
+    updates to an external service and displays the current authorization state with
+    merchant and transaction information.; Authorization fraud status update workflow;
+    The program processes authorization fraud status changes initiated by user function-key
+    input. When the user presses PF5 on a reentry transaction, the program retrieves
+    the pending authorization record from the database, toggles its fraud status (confirmed
+    to removed, or removed to confirmed), delegates to a fraud-processing service
+    to validate and record the change, and updates the authorization record in the
+    database with the new fraud status.'
+  calls:
+  - COPAUS0C
+  - COPAUS2C
+- name: COPAUS2C
+  type: COBOL
+  execution: subroutine
+  description: Fraud authorization record insertion; This capability records a flagged
+    card authorization as a fraud event. It derives a formatted authorization timestamp
+    from the original authorization date and time components supplied in the input
+    parameters, assembles all transaction and merchant details into a fraud authorization
+    record, and inserts that record into the fraud authorization store with the current
+    date as the fraud report date.; Authorization fraud record update; This capability
+    updates an existing fraud record in the authorization fraud store when a duplicate-key
+    condition is detected during a prior operation. It reconstructs the authorization
+    timestamp from its numeric and date components, assembles the fraud record key
+    fields, and — only when a duplicate-key conflict was previously encountered —
+    overwrites the fraud indicator and report date for the matching card number and
+    timestamp. The fraud action code supplied by the caller drives the value written
+    to the fraud indicator field.; Fraud record add or update; This capability records
+    a fraud report by capturing the current date and attempting to add or update a
+    fraud authorization record. When the initial insert succeeds, the fraud update
+    status is marked as successful with an 'ADD SUCCESS' message. When a duplicate
+    key is detected, the capability falls back to an update path and reports 'UPDT
+    SUCCESS' or a database error message accordingly. Any other database failure sets
+    the status to failed and records the specific error code and state in the fraud
+    action message.
+  data_stores_write:
+  - CARDDEMO.AUTHFRDS
+- name: COSGN00C
+  type: COBOL
+  execution: subroutine
+  description: Signon screen display and user authentication; The program displays
+    a signon screen to collect user credentials, validates the entered user ID and
+    password against a security file, and redisplays the screen with appropriate error
+    messages when validation fails. The screen is populated with current date, time,
+    application identifiers, and transaction information on each display.; Sign-on
+    authentication and user session routing; The program implements a sign-on flow
+    that collects user credentials from a screen, validates them against a security
+    file, and routes authenticated users to either an administrator or general menu
+    based on their user type. The program receives input via the Enter key, validates
+    that both user ID and password are provided, retrieves the user's security record,
+    verifies the password, and transfers control to the appropriate downstream application
+    with the authenticated user's context.

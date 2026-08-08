@@ -1,0 +1,25 @@
+2026-08-08 04:06:57,293 [main] INFO : Starting generic analysis
+2026-08-08 04:06:57,295 [main] INFO : Generic analysis started at: 04:06:57 (version 20260724160636)
+2026-08-08 04:06:57,872 [main] INFO : Analysis successful, finished at: 04:06:57
+2026-08-08 04:06:57,872 [main] INFO : 237 files processed
+2026-08-08 04:06:57,872 [main] INFO : Global duration: 0 sec
+2026-08-08 04:06:57,872 [main] INFO : Outcome:
+2026-08-08 04:06:57,873 [main] INFO : - macro: 1
+2026-08-08 04:06:57,873 [main] INFO : - proc: 2
+2026-08-08 04:06:57,873 [main] INFO : - controlm: 1
+2026-08-08 04:06:57,873 [main] INFO : - dbd: 4
+2026-08-08 04:06:57,873 [main] INFO : - BINARY: 14
+2026-08-08 04:06:57,873 [main] INFO : - bms: 21
+2026-08-08 04:06:57,873 [main] INFO : - cpy: 65
+2026-08-08 04:06:57,873 [main] INFO : - sql: 9
+2026-08-08 04:06:57,873 [main] INFO : - txt: 9
+2026-08-08 04:06:57,873 [main] INFO : - jcl: 46
+2026-08-08 04:06:57,873 [main] INFO : - asm-cpy: 1
+2026-08-08 04:06:57,873 [main] INFO : - md: 3
+2026-08-08 04:06:57,873 [main] INFO : - cob: 44
+2026-08-08 04:06:57,873 [main] INFO : - csdcommand: 4
+2026-08-08 04:06:57,873 [main] INFO : - ca7: 1
+2026-08-08 04:06:57,873 [main] INFO : - asm: 2
+2026-08-08 04:06:57,873 [main] INFO : - ctl: 5
+2026-08-08 04:06:57,873 [main] INFO : - LISTCAT: 1
+2026-08-08 04:06:57,874 [main] INFO : - psb: 4

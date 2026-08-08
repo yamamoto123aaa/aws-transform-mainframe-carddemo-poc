@@ -1,0 +1,485 @@
+offset_convention: 1-based
+data_stores:
+- name: AWS.M2.CARDDEMO.ACCTDATA.VSAM.KSDS
+  type: VSAM KSDS
+  copybook_views:
+  - copybook: CVACT01Y.cpy
+    programs:
+    - CBSTM03B
+    fields:
+    - name: ACCT-ID
+      pic: PIC NUMERIC(11)
+      offset: 1
+      length: 11
+    - name: ACCT-ACTIVE-STATUS
+      pic: PIC ALPHANUMERIC(1)
+      offset: 12
+      length: 1
+    - name: ACCT-CURR-BAL
+      pic: PIC DECIMAL(12)
+      offset: 13
+      length: 12
+    - name: ACCT-CREDIT-LIMIT
+      pic: PIC DECIMAL(12)
+      offset: 25
+      length: 12
+    - name: ACCT-CASH-CREDIT-LIMIT
+      pic: PIC DECIMAL(12)
+      offset: 37
+      length: 12
+    - name: ACCT-OPEN-DATE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 49
+      length: 10
+    - name: ACCT-EXPIRAION-DATE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 59
+      length: 10
+    - name: ACCT-REISSUE-DATE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 69
+      length: 10
+    - name: ACCT-CURR-CYC-CREDIT
+      pic: PIC DECIMAL(12)
+      offset: 79
+      length: 12
+    - name: ACCT-CURR-CYC-DEBIT
+      pic: PIC DECIMAL(12)
+      offset: 91
+      length: 12
+    - name: ACCT-ADDR-ZIP
+      pic: PIC ALPHANUMERIC(10)
+      offset: 103
+      length: 10
+    - name: ACCT-GROUP-ID
+      pic: PIC ALPHANUMERIC(10)
+      offset: 113
+      length: 10
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(178)
+      offset: 123
+      length: 178
+  record_length: 300
+  internal_readers:
+  - CBSTM03B
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.CARDXREF.VSAM.KSDS
+  type: VSAM KSDS
+  copybook_views:
+  - copybook: CVACT03Y.cpy
+    programs:
+    - CBSTM03B
+    - CBTRN03C
+    fields:
+    - name: XREF-CARD-NUM
+      pic: PIC ALPHANUMERIC(16)
+      offset: 1
+      length: 16
+    - name: XREF-CUST-ID
+      pic: PIC NUMERIC(9)
+      offset: 17
+      length: 9
+    - name: XREF-ACCT-ID
+      pic: PIC NUMERIC(11)
+      offset: 26
+      length: 11
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(14)
+      offset: 37
+      length: 14
+  record_length: 50
+  internal_readers:
+  - CBSTM03B
+  - CBTRN03C
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.CUSTDATA.VSAM.KSDS
+  type: VSAM KSDS
+  copybook_views:
+  - copybook: CVCUS01Y.cpy
+    programs:
+    - CBSTM03B
+    fields:
+    - name: CUST-ID
+      pic: PIC NUMERIC(9)
+      offset: 1
+      length: 9
+    - name: CUST-FIRST-NAME
+      pic: PIC ALPHANUMERIC(25)
+      offset: 10
+      length: 25
+    - name: CUST-MIDDLE-NAME
+      pic: PIC ALPHANUMERIC(25)
+      offset: 35
+      length: 25
+    - name: CUST-LAST-NAME
+      pic: PIC ALPHANUMERIC(25)
+      offset: 60
+      length: 25
+    - name: CUST-ADDR-LINE-1
+      pic: PIC ALPHANUMERIC(50)
+      offset: 85
+      length: 50
+    - name: CUST-ADDR-LINE-2
+      pic: PIC ALPHANUMERIC(50)
+      offset: 135
+      length: 50
+    - name: CUST-ADDR-LINE-3
+      pic: PIC ALPHANUMERIC(50)
+      offset: 185
+      length: 50
+    - name: CUST-ADDR-STATE-CD
+      pic: PIC ALPHANUMERIC(2)
+      offset: 235
+      length: 2
+    - name: CUST-ADDR-COUNTRY-CD
+      pic: PIC ALPHANUMERIC(3)
+      offset: 237
+      length: 3
+    - name: CUST-ADDR-ZIP
+      pic: PIC ALPHANUMERIC(10)
+      offset: 240
+      length: 10
+    - name: CUST-PHONE-NUM-1
+      pic: PIC ALPHANUMERIC(15)
+      offset: 250
+      length: 15
+    - name: CUST-PHONE-NUM-2
+      pic: PIC ALPHANUMERIC(15)
+      offset: 265
+      length: 15
+    - name: CUST-SSN
+      pic: PIC NUMERIC(9)
+      offset: 280
+      length: 9
+    - name: CUST-GOVT-ISSUED-ID
+      pic: PIC ALPHANUMERIC(20)
+      offset: 289
+      length: 20
+    - name: CUST-DOB-YYYY-MM-DD
+      pic: PIC ALPHANUMERIC(10)
+      offset: 309
+      length: 10
+    - name: CUST-EFT-ACCOUNT-ID
+      pic: PIC ALPHANUMERIC(10)
+      offset: 319
+      length: 10
+    - name: CUST-PRI-CARD-HOLDER-IND
+      pic: PIC ALPHANUMERIC(1)
+      offset: 329
+      length: 1
+    - name: CUST-FICO-CREDIT-SCORE
+      pic: PIC NUMERIC(3)
+      offset: 330
+      length: 3
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(168)
+      offset: 333
+      length: 168
+  record_length: 500
+  internal_readers:
+  - CBSTM03B
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.DATEPARM
+  type: QSAM
+  internal_readers:
+  - CBTRN03C
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.STATEMNT.HTML
+  type: QSAM
+  internal_readers: []
+  internal_writers:
+  - CBSTM03A
+- name: AWS.M2.CARDDEMO.STATEMNT.PS
+  type: QSAM
+  internal_readers: []
+  internal_writers:
+  - CBSTM03A
+- name: AWS.M2.CARDDEMO.TRANCATG.VSAM.KSDS
+  type: VSAM KSDS
+  copybook_views:
+  - copybook: CVTRA04Y.cpy
+    programs:
+    - CBTRN03C
+    fields:
+    - name: TRAN-TYPE-CD
+      pic: PIC ALPHANUMERIC(2)
+      offset: 1
+      length: 2
+    - name: TRAN-CAT-CD
+      pic: PIC NUMERIC(4)
+      offset: 3
+      length: 4
+    - name: TRAN-CAT-TYPE-DESC
+      pic: PIC ALPHANUMERIC(50)
+      offset: 7
+      length: 50
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(4)
+      offset: 57
+      length: 4
+  record_length: 60
+  internal_readers:
+  - CBTRN03C
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.TRANREPT
+  type: GDG Base
+  copybook_views:
+  - copybook: CVTRA07Y.cpy
+    programs:
+    - CBTRN03C
+    fields:
+    - name: FILLER-10
+      pic: PIC ALPHANUMERIC(17)
+      offset: 1
+      length: 17
+    - name: FILLER-17
+      pic: PIC ALPHANUMERIC(11)
+      offset: 1
+      length: 11
+    - name: FILLER-19
+      pic: PIC ALPHANUMERIC(13)
+      offset: 1
+      length: 13
+    - name: FILLER-21
+      pic: PIC ALPHANUMERIC(11)
+      offset: 1
+      length: 11
+    - name: REPT-SHORT-NAME
+      pic: PIC ALPHANUMERIC(38)
+      offset: 1
+      length: 38
+    - name: TRAN-REPORT-TRANS-ID
+      pic: PIC ALPHANUMERIC(16)
+      offset: 1
+      length: 16
+    - name: TRANSACTION-HEADER-2
+      pic: PIC ALPHANUMERIC(133)
+      offset: 1
+      length: 133
+    - name: FILLER-18
+      pic: PIC ALPHANUMERIC(86)
+      offset: 12
+      length: 86
+    - name: FILLER-22
+      pic: PIC ALPHANUMERIC(86)
+      offset: 12
+      length: 86
+    - name: FILLER-20
+      pic: PIC ALPHANUMERIC(84)
+      offset: 14
+      length: 84
+    - name: FILLER-2
+      pic: PIC ALPHANUMERIC(1)
+      offset: 17
+      length: 1
+    - name: FILLER-11
+      pic: PIC ALPHANUMERIC(12)
+      offset: 18
+      length: 12
+    - name: TRAN-REPORT-ACCOUNT-ID
+      pic: PIC ALPHANUMERIC(11)
+      offset: 18
+      length: 11
+    - name: FILLER-3
+      pic: PIC ALPHANUMERIC(1)
+      offset: 29
+      length: 1
+    - name: FILLER-12
+      pic: PIC ALPHANUMERIC(19)
+      offset: 30
+      length: 19
+    - name: TRAN-REPORT-TYPE-CD
+      pic: PIC ALPHANUMERIC(2)
+      offset: 30
+      length: 2
+    - name: FILLER-4
+      pic: PIC ALPHANUMERIC(1)
+      offset: 32
+      length: 1
+    - name: TRAN-REPORT-TYPE-DESC
+      pic: PIC ALPHANUMERIC(15)
+      offset: 33
+      length: 15
+    - name: REPT-LONG-NAME
+      pic: PIC ALPHANUMERIC(41)
+      offset: 39
+      length: 41
+    - name: FILLER-5
+      pic: PIC ALPHANUMERIC(1)
+      offset: 48
+      length: 1
+    - name: FILLER-13
+      pic: PIC ALPHANUMERIC(35)
+      offset: 49
+      length: 35
+    - name: TRAN-REPORT-CAT-CD
+      pic: PIC NUMERIC(4)
+      offset: 49
+      length: 4
+    - name: FILLER-6
+      pic: PIC ALPHANUMERIC(1)
+      offset: 53
+      length: 1
+    - name: TRAN-REPORT-CAT-DESC
+      pic: PIC ALPHANUMERIC(29)
+      offset: 54
+      length: 29
+    - name: REPT-DATE-HEADER
+      pic: PIC ALPHANUMERIC(12)
+      offset: 80
+      length: 12
+    - name: FILLER-7
+      pic: PIC ALPHANUMERIC(1)
+      offset: 83
+      length: 1
+    - name: FILLER-14
+      pic: PIC ALPHANUMERIC(14)
+      offset: 84
+      length: 14
+    - name: TRAN-REPORT-SOURCE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 84
+      length: 10
+    - name: REPT-START-DATE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 92
+      length: 10
+    - name: FILLER-8
+      pic: PIC ALPHANUMERIC(4)
+      offset: 94
+      length: 4
+    - name: FILLER-15
+      pic: PIC ALPHANUMERIC(1)
+      offset: 98
+      length: 1
+    - name: REPT-ACCOUNT-TOTAL
+      pic: PIC DECIMAL(15)
+      offset: 98
+      length: 15
+    - name: REPT-GRAND-TOTAL
+      pic: PIC DECIMAL(15)
+      offset: 98
+      length: 15
+    - name: REPT-PAGE-TOTAL
+      pic: PIC DECIMAL(15)
+      offset: 98
+      length: 15
+    - name: TRAN-REPORT-AMT
+      pic: PIC DECIMAL(15)
+      offset: 98
+      length: 15
+    - name: FILLER-16
+      pic: PIC ALPHANUMERIC(16)
+      offset: 99
+      length: 16
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(4)
+      offset: 102
+      length: 4
+    - name: REPT-END-DATE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 106
+      length: 10
+    - name: FILLER-9
+      pic: PIC ALPHANUMERIC(2)
+      offset: 113
+      length: 2
+  record_length: 812
+  internal_readers: []
+  internal_writers:
+  - CBTRN03C
+- name: AWS.M2.CARDDEMO.TRANSACT.DALY
+  type: GDG Base
+  copybook_views:
+  - copybook: CVTRA05Y.cpy
+    programs:
+    - CBTRN03C
+    fields:
+    - name: TRAN-ID
+      pic: PIC ALPHANUMERIC(16)
+      offset: 1
+      length: 16
+    - name: TRAN-TYPE-CD
+      pic: PIC ALPHANUMERIC(2)
+      offset: 17
+      length: 2
+    - name: TRAN-CAT-CD
+      pic: PIC NUMERIC(4)
+      offset: 19
+      length: 4
+    - name: TRAN-SOURCE
+      pic: PIC ALPHANUMERIC(10)
+      offset: 23
+      length: 10
+    - name: TRAN-DESC
+      pic: PIC ALPHANUMERIC(100)
+      offset: 33
+      length: 100
+    - name: TRAN-AMT
+      pic: PIC DECIMAL(11)
+      offset: 133
+      length: 11
+    - name: TRAN-MERCHANT-ID
+      pic: PIC NUMERIC(9)
+      offset: 144
+      length: 9
+    - name: TRAN-MERCHANT-NAME
+      pic: PIC ALPHANUMERIC(50)
+      offset: 153
+      length: 50
+    - name: TRAN-MERCHANT-CITY
+      pic: PIC ALPHANUMERIC(50)
+      offset: 203
+      length: 50
+    - name: TRAN-MERCHANT-ZIP
+      pic: PIC ALPHANUMERIC(10)
+      offset: 253
+      length: 10
+    - name: TRAN-CARD-NUM
+      pic: PIC ALPHANUMERIC(16)
+      offset: 263
+      length: 16
+    - name: TRAN-ORIG-TS
+      pic: PIC ALPHANUMERIC(26)
+      offset: 279
+      length: 26
+    - name: TRAN-PROC-TS
+      pic: PIC ALPHANUMERIC(26)
+      offset: 305
+      length: 26
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(20)
+      offset: 331
+      length: 20
+  record_length: 350
+  internal_readers:
+  - CBTRN03C
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.TRANTYPE.VSAM.KSDS
+  type: VSAM KSDS
+  copybook_views:
+  - copybook: CVTRA03Y.cpy
+    programs:
+    - CBTRN03C
+    fields:
+    - name: TRAN-TYPE
+      pic: PIC ALPHANUMERIC(2)
+      offset: 1
+      length: 2
+    - name: TRAN-TYPE-DESC
+      pic: PIC ALPHANUMERIC(50)
+      offset: 3
+      length: 50
+    - name: FILLER-1
+      pic: PIC ALPHANUMERIC(8)
+      offset: 53
+      length: 8
+  record_length: 60
+  internal_readers:
+  - CBTRN03C
+  internal_writers: []
+- name: AWS.M2.CARDDEMO.TRXFL.VSAM.KSDS
+  type: VSAM-KSDS
+  internal_readers:
+  - CBSTM03B
+  internal_writers: []
