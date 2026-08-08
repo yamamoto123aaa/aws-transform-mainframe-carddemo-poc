@@ -15,6 +15,10 @@ AWS Transform for mainframe を使い、AWS公式のメインフレームサン�
 
 **注意:** 今回実行したのは「Reimagine」ワークフローです。これは要件仕様書（人間可読なMarkdown+YAML）を生成するところまでで、**実際のJavaコードへの自動変換は行っていません**。コード生成は、別途Custom job plan（Refactor/Reforge）を実行するか、この要件仕様書をKiroなどのコーディングエージェントに渡して行う想定です。
 
+5. `InterestandFeeCalculation` ドメインについては、生成済みの要件仕様書を入力にClaude Codeで実際にJavaコード（Spring Boot / Spring Batch）を実装（`modernized-app/`）。原本COBOLを精読し、要件仕様書には記載のなかった潜在バグ（最終口座の残高更新が到達不能コードになっている）を発見し、意図的に再現した上でテストも整備
+
+**補足（Custom job planについて）：** AWS Transformの自動COBOL→Java変換機能（旧Blu Ageエンジン、「AWS Transform for mainframe refactor」）は、2026年6月30日をもって新規顧客への提供が終了しています。このアカウントは新規のため当該機能は利用できず、要件仕様書からのコード生成はClaude Codeで行いました。
+
 ## フォルダ構成
 
 | フォルダ | 内容 |
@@ -27,6 +31,7 @@ AWS Transform for mainframe を使い、AWS公式のメインフレームサン�
 | `business-rules/` | ビジネスルール抽出結果のサマリー（`application.json`） |
 | `requirements-spec/en/` | 生成された要件仕様書（英語版）。11のビジネスドメインごとに `requirements.md`（EARS記法の要件一覧）、`discovery/`（画面・バッチジョブ・データストア一覧）、`traceability.yaml`（要件と元コードの対応関係） |
 | `requirements-spec/ja/` | 同上の日本語訳版 |
+| `modernized-app/interest-fee-calculation/` | `InterestandFeeCalculation`ドメインの要件仕様書をもとにClaude Codeで実装したJavaアプリ（Spring Boot / Spring Batch）。COBOL⇔Javaのマッピング表、発見した原本の既知バグとその対応方針は[こちらのREADME](./modernized-app/interest-fee-calculation/README.md)を参照 |
 
 ## 除外したもの（意図的）
 
