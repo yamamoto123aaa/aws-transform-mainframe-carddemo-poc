@@ -2,6 +2,8 @@
 
 AWS Transform for mainframe を使い、AWS公式のメインフレームサンプルアプリ [CardDemo](https://github.com/aws-samples/aws-mainframe-modernization-carddemo)（COBOL/JCL）に対してモダナイゼーション検証（Reimagineワークフロー）を実施した際の、元ソースと生成物一式です。
 
+**時系列の解説・発見した知見のまとめは [CASE_STUDY.md](./CASE_STUDY.md) を参照してください。** 何を・なぜやったか、Custom job planに変換機能がなかった件、原本COBOLで発見した潜在バグなど、背景を含めて説明しています。
+
 ## 手順書
 
 別のメインフレーム資産・別プロジェクトで同じ流れを再現するための詳細手順は [PROCEDURE.md](./PROCEDURE.md) を参照してください（AWS Transform有効化 → ワークスペース/ジョブ作成 → コネクタ設定（Neptune含む）→ 実行 → 成果物取得 → 後片付けまで）。
