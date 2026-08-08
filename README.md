@@ -2,6 +2,10 @@
 
 AWS Transform for mainframe を使い、AWS公式のメインフレームサンプルアプリ [CardDemo](https://github.com/aws-samples/aws-mainframe-modernization-carddemo)（COBOL/JCL）に対してモダナイゼーション検証（Reimagineワークフロー）を実施した際の、元ソースと生成物一式です。
 
+## 手順書
+
+別のメインフレーム資産・別プロジェクトで同じ流れを再現するための詳細手順は [PROCEDURE.md](./PROCEDURE.md) を参照してください（AWS Transform有効化 → ワークスペース/ジョブ作成 → コネクタ設定（Neptune含む）→ 実行 → 成果物取得 → 後片付けまで）。
+
 ## やったこと
 
 1. AWS Transformを有効化し、ワークスペース・S3バケット・Neptune連携用のコネクタ（CloudFormationテンプレートで構築）をセットアップ
